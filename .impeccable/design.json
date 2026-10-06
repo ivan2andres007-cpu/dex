@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T17:57:00Z",
+  "title": "Design System: Punto Prisma",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Cupertino Chalk", "canonical": "#f5f6f8" },
+      "primary-dark": { "role": "neutral", "displayName": "Deep Space Base", "canonical": "#090a0d" },
+      "surface": { "role": "neutral", "displayName": "Dark Graphite Surface", "canonical": "#12141a" },
+      "accent-emerald": { "role": "secondary", "displayName": "Action Emerald", "canonical": "#10b981" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline statement." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Product and package names." },
+      "body": { "displayName": "Body", "purpose": "Descriptions and specifications." },
+      "label": { "displayName": "Label", "purpose": "Badges and metadata." }
+    },
+    "shadows": [
+      { "name": "subtle-ambient", "value": "0 1px 3px rgba(0, 0, 0, 0.3)", "purpose": "Floating pill and small control elevation." },
+      { "name": "card-hover", "value": "0 3px 6px rgba(0, 0, 0, 0.4)", "purpose": "Tactile lift on product card hover." },
+      { "name": "drawer-elevation", "value": "0 6px 12px rgba(0, 0, 0, 0.55)", "purpose": "Slide-over drawer depth." }
+    ],
+    "motion": [
+      { "name": "snappy", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Buttons, pills, and filter interactions." },
+      { "name": "smooth", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Card elevation and drawer entrance." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "560px" },
+      { "name": "tablet", "value": "860px" },
+      { "name": "desktop", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast action button.",
+      "html": "<button class=\"ds-btn-primary\">Explorar catálogo</button>",
+      "css": ".ds-btn-primary { background: #f5f6f8; color: #090a0d; height: 48px; padding: 0 28px; border-radius: 9999px; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { background: #e2e4e9; transform: translateY(-1px); }"
+    },
+    {
+      "name": "WhatsApp Direct Button",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "Dedicated instant WhatsApp checkout trigger.",
+      "html": "<button class=\"ds-btn-wa\">Comprar por WhatsApp</button>",
+      "css": ".ds-btn-wa { background: #10b981; color: #032115; height: 40px; padding: 0 18px; border-radius: 9999px; font-weight: 700; font-size: 0.84rem; border: none; cursor: pointer; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-wa:hover { background: #14cd92; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Category Filter Pill",
+      "kind": "chip",
+      "refersTo": "filter-pill",
+      "description": "Segmented tab pill for catalog filtering.",
+      "html": "<button class=\"ds-filter-pill active\">Suscripciones</button>",
+      "css": ".ds-filter-pill { height: 38px; padding: 0 18px; border-radius: 9999px; background: #12141a; border: 1px solid rgba(255, 255, 255, 0.08); color: #a1a7b5; font-size: 0.88rem; font-weight: 500; cursor: pointer; } .ds-filter-pill.active { background: #f5f6f8; color: #090a0d; font-weight: 600; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cupertino Prism",
+    "overview": "Punto Prisma pairs the uncompromising restraint, spatial breathing room, and optical precision of Apple interfaces with the practical commerce realities of Paraguay.",
+    "keyCharacteristics": [
+      "Restrained Monochromatic Foundation",
+      "Glassmorphic Floating Chrome",
+      "Action Emerald with strict scarcity",
+      "Tabular Precision in Guaraníes (Gs.)"
+    ],
+    "rules": [
+      { "name": "The Reserve Accent Rule", "body": "Emerald green is strictly reserved for conversion, live connectivity, and WhatsApp actions.", "section": "colors" },
+      { "name": "The Tabular Pricing Rule", "body": "All prices in Guaraníes (Gs.) must use tabular figures to preserve column alignment.", "section": "typography" },
+      { "name": "The Zero Chromatic Halo Rule", "body": "Box shadows must always use neutral alpha masks. Colored glows are forbidden.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do format all currency figures as Gs. [amount] with dots.",
+      "Do use vector SVGs with uniform stroke width.",
+      "Do maintain >= 4.5:1 text contrast."
+    ],
+    "donts": [
+      "Don't use gradient text or colored text shadows.",
+      "Don't add eyebrows or kickers above section titles.",
+      "Don't use emojis as replacements for interface icons."
+    ]
+  }
+}

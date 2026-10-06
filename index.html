@@ -1,0 +1,2679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto Prisma | Suscripciones Digitales, Licencias y Desarrollo Web en Paraguay</title>
+  <meta name="description" content="Punto Prisma: Marketplace digital minimalista en Paraguay. Suscripciones de streaming, licencias de software, tecnología y desarrollo de páginas web a medida en Guaraníes (Gs.).">
+  <meta name="theme-color" content="#090a0d">
+
+  <style>
+    /* -------------------------------------------------------------
+       DESIGN SYSTEM & TOKENS (Apple-grade minimalist aesthetic)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-base: #090a0d;
+      --bg-surface: #12141a;
+      --bg-surface-elevated: #181b24;
+      --bg-surface-hover: #1f232e;
+      --bg-glass: rgba(18, 20, 26, 0.82);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.15);
+      --border-focus: rgba(255, 255, 255, 0.38);
+
+      --text-primary: #f5f6f8;
+      --text-secondary: #a1a7b5;
+      --text-tertiary: #8e95a5;
+      
+      --accent-emerald: #10b981;
+      --accent-emerald-soft: rgba(16, 185, 129, 0.12);
+      --accent-emerald-border: rgba(16, 185, 129, 0.32);
+      --accent-emerald-hover: #059669;
+
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.55);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 9999px;
+
+      --transition-snappy: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* -------------------------------------------------------------
+       BROWSER SURFACES & BASE NORMALIZATION
+       ------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-stack);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background: var(--text-primary);
+      color: var(--bg-base);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-base);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #252936;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--bg-base);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #363c4e;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+      color: inherit;
+      border: none;
+      background: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .num-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* -------------------------------------------------------------
+       NAVIGATION BAR (Floating Apple Glass Pill)
+       ------------------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      width: 100%;
+      padding: 0 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-pill {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-snappy);
+    }
+
+    .nav-pill:hover {
+      border-color: var(--border-medium);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-prism-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: color var(--transition-snappy);
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cart-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 40px;
+      padding: 0 16px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all var(--transition-snappy);
+    }
+
+    .cart-trigger-btn:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-medium);
+      transform: translateY(-1px);
+    }
+
+    .cart-trigger-btn:active {
+      transform: scale(0.96);
+    }
+
+    .cart-counter-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: var(--radius-pill);
+      background: var(--text-primary);
+      color: var(--bg-base);
+      font-size: 0.75rem;
+      font-weight: 700;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .cart-counter-badge.badge-pop {
+      animation: badgePop 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes badgePop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.32); }
+      75% { transform: scale(0.94); }
+      100% { transform: scale(1); }
+    }
+
+    /* -------------------------------------------------------------
+       HERO SHOWCASE (Spacious Apple Typography & Ambient GIF)
+       ------------------------------------------------------------- */
+    .hero-section {
+      padding: 92px 0 118px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-overlay-blur {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 20, 26, 0.52);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-bottom-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      background: linear-gradient(to bottom, rgba(9, 10, 13, 0) 0%, rgba(9, 10, 13, 0.6) 55%, var(--bg-base) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-content-wrap {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.038em;
+      max-width: 940px;
+      margin: 0 auto 24px;
+      color: var(--text-primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 28px;
+      border-radius: var(--radius-pill);
+      background: var(--text-primary);
+      color: var(--bg-base);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition-snappy);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: #e2e4e9;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 24px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.97);
+    }
+
+    .btn-whatsapp-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 24px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald-border);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-whatsapp-hero:hover {
+      background: var(--accent-emerald);
+      color: #032115;
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp-hero:active {
+      transform: scale(0.97);
+    }
+
+    .hero-ticker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    /* -------------------------------------------------------------
+       CATALOG CONTROLS & FILTER BAR
+       ------------------------------------------------------------- */
+    .catalog-header-bar {
+      margin-top: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .catalog-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    .catalog-search-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .catalog-search-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 16px 0 44px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      transition: all var(--transition-snappy);
+    }
+
+    .catalog-search-input:focus {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+    }
+
+    .catalog-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .filter-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .filter-pills-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      height: 38px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all var(--transition-snappy);
+    }
+
+    .filter-pill:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+
+    .filter-pill:active {
+      transform: scale(0.95);
+    }
+
+    .filter-pill.active {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* -------------------------------------------------------------
+       PRODUCT GRID & CARDS
+       ------------------------------------------------------------- */
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      margin-bottom: 96px;
+    }
+
+    /* Layout Utility Helpers */
+    .relative {
+      position: relative;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .z-10 {
+      z-index: 10;
+    }
+
+    .inset-0 {
+      inset: 0;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    .object-cover {
+      object-fit: cover;
+    }
+
+    .h-32 {
+      height: 8rem;
+    }
+
+    .h-40 {
+      height: 10rem;
+    }
+
+    .product-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      animation: cardFadeIn 220ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      transition: transform var(--transition-smooth), border-color var(--transition-snappy), box-shadow var(--transition-smooth);
+    }
+
+    .product-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Subtle Glass Shine Sweep Effect (Emil Kowalski / Apple Craftsmanship) */
+    .product-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.03) 25%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.03) 75%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translateX(0) skewX(-20deg);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .product-card:hover::after {
+      animation: cardShineSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardShineSweep {
+      0% {
+        transform: translateX(-100%) skewX(-20deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(380%) skewX(-20deg);
+        opacity: 0;
+      }
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-icon-frame {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+    }
+
+    .card-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      letter-spacing: 0.02em;
+    }
+
+    .card-badge.badge-green {
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border-color: var(--accent-emerald-border);
+    }
+
+    .card-badge.badge-steam {
+      background: rgba(102, 192, 244, 0.14);
+      color: #66C0F4;
+      border-color: rgba(102, 192, 244, 0.35);
+    }
+
+    .card-badge.badge-purple {
+      background: rgba(189, 52, 254, 0.14);
+      color: #BD34FE;
+      border-color: rgba(189, 52, 254, 0.35);
+    }
+
+    .card-badge.badge-blue {
+      background: rgba(0, 168, 225, 0.14);
+      color: #00A8E1;
+      border-color: rgba(0, 168, 225, 0.35);
+    }
+
+    .card-media-preview {
+      width: 100%;
+      height: 154px;
+      margin-bottom: 18px;
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.35) 100%), var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-preview-art {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+      transition: transform var(--transition-smooth);
+    }
+
+    .product-card:hover .card-preview-art {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      margin-bottom: 22px;
+    }
+
+    .product-category-tag {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      min-height: 40px;
+    }
+
+    .product-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .feature-check-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    .card-footer-box {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* AliExpress-style Pricing Hierarchy */
+    .price-box-aliexpress {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .price-main-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .product-price-val {
+      font-size: 1.34rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+
+    .discount-tag-aliexpress {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 7px;
+      background: #FF2D55;
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 800;
+      border-radius: var(--radius-sm, 6px);
+      letter-spacing: -0.01em;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      line-height: 1.2;
+    }
+
+    .price-original-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: #8E8E93;
+    }
+
+    .price-original-val {
+      text-decoration: line-through;
+      color: #8E8E93;
+    }
+
+    .price-savings-label {
+      font-size: 0.74rem;
+      color: var(--accent-emerald);
+      font-weight: 500;
+    }
+
+    .card-actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-add-cart {
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-add-cart:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-medium);
+    }
+
+    .btn-add-cart:active {
+      transform: scale(0.96);
+    }
+
+    .btn-direct-buy {
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--accent-emerald);
+      color: #032115;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 700;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-direct-buy:hover {
+      background: #14cd92;
+      transform: translateY(-1px);
+    }
+
+    .btn-direct-buy:active {
+      transform: scale(0.96);
+    }
+
+    /* -------------------------------------------------------------
+       WEB DEVELOPMENT AGENCY SECTION
+       ------------------------------------------------------------- */
+    .agency-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 64px 36px;
+      margin-bottom: 96px;
+      position: relative;
+    }
+
+    .agency-header-box {
+      max-width: 780px;
+      margin-bottom: 48px;
+    }
+
+    .agency-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .agency-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+    }
+
+    .agency-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-smooth);
+    }
+
+    .agency-card.featured-package {
+      border-color: var(--accent-emerald-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .agency-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-3px);
+    }
+
+    .agency-pkg-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .agency-pkg-ideal {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+
+    .agency-price-box {
+      margin-bottom: 26px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .agency-price-prefix {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .agency-price-value {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .agency-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .agency-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .btn-agency-quote {
+      width: 100%;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all var(--transition-snappy);
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .agency-card.featured-package .btn-agency-quote {
+      background: var(--accent-emerald);
+      color: #032115;
+      border-color: var(--accent-emerald);
+      font-weight: 700;
+    }
+
+    .btn-agency-quote:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+    }
+
+    .agency-card.featured-package .btn-agency-quote:hover {
+      background: #14cd92;
+      color: #032115;
+    }
+
+    .btn-agency-quote:active {
+      transform: scale(0.97);
+    }
+
+    /* -------------------------------------------------------------
+       GUARANTEES / TRUST SECTION
+       ------------------------------------------------------------- */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 96px;
+    }
+
+    .trust-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .trust-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    .trust-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .trust-text {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* -------------------------------------------------------------
+       CART SLIDE-OVER DRAWER (HTML5 <dialog closedby="any">)
+       ------------------------------------------------------------- */
+    dialog#cartDrawer {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: 100%;
+      max-width: 440px;
+      height: 100vh;
+      max-height: 100vh;
+      border: none;
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: transform 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                  opacity 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                  display 320ms allow-discrete,
+                  overlay 320ms allow-discrete;
+    }
+
+    dialog#cartDrawer:not([open]) {
+      display: none;
+    }
+
+    dialog#cartDrawer[open] {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    @starting-style {
+      dialog#cartDrawer[open] {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    dialog#cartDrawer.is-closing {
+      transform: translateX(100%) !important;
+      opacity: 0 !important;
+    }
+
+    dialog#cartDrawer::backdrop {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      transition: background-color 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                  backdrop-filter 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                  -webkit-backdrop-filter 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                  display 320ms allow-discrete,
+                  overlay 320ms allow-discrete;
+    }
+
+    dialog#cartDrawer[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    @starting-style {
+      dialog#cartDrawer[open]::backdrop {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+      }
+    }
+
+    dialog#cartDrawer.is-closing::backdrop {
+      background-color: rgba(0, 0, 0, 0) !important;
+      backdrop-filter: blur(0px) !important;
+      -webkit-backdrop-filter: blur(0px) !important;
+    }
+
+    .drawer-header {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+    }
+
+    .drawer-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .drawer-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-snappy);
+    }
+
+    .drawer-close-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-hover);
+    }
+
+    .drawer-close-btn:active {
+      transform: scale(0.92);
+    }
+
+    .drawer-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-empty-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 40px 20px;
+      color: var(--text-secondary);
+    }
+
+    .cart-empty-icon {
+      width: 56px;
+      height: 56px;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .cart-item-row {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .cart-item-unit-price {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-hover);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      transition: background var(--transition-snappy);
+    }
+
+    .qty-btn:hover {
+      background: #2b3140;
+    }
+
+    .qty-btn:active {
+      transform: scale(0.88);
+    }
+
+    .qty-number {
+      font-size: 0.85rem;
+      font-weight: 600;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .item-remove-btn {
+      color: var(--text-tertiary);
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition-snappy), transform var(--transition-snappy);
+    }
+
+    .item-remove-btn:hover {
+      color: #ef4444;
+    }
+
+    .item-remove-btn:active {
+      transform: scale(0.90);
+    }
+
+    .drawer-footer {
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-summary-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .summary-label {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .summary-total-val {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .btn-checkout-whatsapp {
+      width: 100%;
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--accent-emerald);
+      color: #032115;
+      border-radius: var(--radius-pill);
+      font-size: 0.98rem;
+      font-weight: 700;
+      transition: all var(--transition-snappy);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-checkout-whatsapp:hover {
+      background: #14cd92;
+      transform: translateY(-1px);
+    }
+
+    .btn-checkout-whatsapp:active {
+      transform: scale(0.97);
+    }
+
+    .checkout-guarantee-note {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      text-align: center;
+    }
+
+    /* -------------------------------------------------------------
+       TOAST NOTIFICATION
+       ------------------------------------------------------------- */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast-item {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+      animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1), toastOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes toastOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-12px) scale(0.96); }
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 64px 0 48px;
+      background: var(--bg-base);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+
+    .footer-col-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-links-list a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom-row {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE ADJUSTMENTS
+       ------------------------------------------------------------- */
+    @media (max-width: 860px) {
+      .nav-menu {
+        display: none;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .agency-section {
+        padding: 40px 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-actions-row {
+        grid-template-columns: 1fr;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-primary, .btn-secondary, .btn-whatsapp-hero {
+        width: 100%;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       ACCESSIBILITY: PREFERS REDUCED MOTION
+       ------------------------------------------------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      dialog#cartDrawer,
+      dialog#cartDrawer[open],
+      dialog#cartDrawer.is-closing {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+      }
+      dialog#cartDrawer::backdrop,
+      dialog#cartDrawer[open]::backdrop,
+      dialog#cartDrawer.is-closing::backdrop {
+        transition: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      .product-card {
+        animation: none !important;
+        transform: none !important;
+      }
+      .product-card::after {
+        display: none !important;
+        animation: none !important;
+      }
+      .product-card:hover {
+        transform: none !important;
+      }
+      .card-preview-art {
+        transition: none !important;
+      }
+      .product-card:hover .card-preview-art {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION BAR
+       ========================================== -->
+  <header class="site-header" id="top">
+    <nav class="nav-pill" aria-label="Navegación principal">
+      <div class="brand-wrap">
+        <svg class="brand-prism-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="16,3 29,26 3,26" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+          <line x1="16" y1="3" x2="16" y2="26" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2 3"/>
+          <circle cx="16" cy="18" r="2.5" fill="var(--accent-emerald)"/>
+        </svg>
+        <span>Punto Prisma</span>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+        <li><a href="#agencia" class="nav-link">Desarrollo Web</a></li>
+        <li><a href="#garantias" class="nav-link">Garantías</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="cart-trigger-btn" id="openCartBtn" aria-label="Abrir Carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-label">Carrito</span>
+          <span class="cart-counter-badge num-tabular" id="cartBadge">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         HERO SHOWCASE
+         ========================================== -->
+    <section class="hero-section relative overflow-hidden">
+      <!-- 1. Ambient Background GIF -->
+      <img src="black-background.gif" alt="" class="hero-bg-media inset-0 w-full h-full object-cover" aria-hidden="true" loading="eager">
+
+      <!-- 2. Apple Glass Dark Blur Overlay -->
+      <div class="hero-overlay-blur inset-0 w-full h-full" aria-hidden="true"></div>
+
+      <!-- 3. Bottom Fade Gradient into #090a0d Page Background -->
+      <div class="hero-bottom-fade h-40" aria-hidden="true"></div>
+
+      <!-- 4. Hero Content (relative z-10) -->
+      <div class="container hero-content-wrap relative z-10">
+        <h1 class="hero-title">Suscripciones digitales, licencias y software a medida en Paraguay.</h1>
+        <p class="hero-subtitle">
+          Marketplace local con entrega inmediata, precios transparentes en Guaraníes y desarrollo de páginas web de alta ingeniería estilo Apple.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#catalogo" class="btn-primary">
+            Explorar catálogo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <a href="#agencia" class="btn-secondary">
+            Servicios de desarrollo web
+          </a>
+
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20general." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            WhatsApp directo
+          </a>
+        </div>
+
+        <div class="hero-ticker-pill">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Entrega digital en 5-15 min • Precios en Guaraníes (Gs.) • Pagos por Transferencia o Billeteras</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CATALOG SECTION (Subscriptions, Keys & Store)
+         ========================================== -->
+    <section class="container" id="catalogo" aria-labelledby="catalogHeading">
+      <div class="catalog-header-bar">
+        <div class="catalog-title-row">
+          <h2 class="section-title" id="catalogHeading">Catálogo de Productos</h2>
+          
+          <div class="catalog-search-wrap">
+            <svg class="catalog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Steam, Mortal Kombat, Roblox, Fortnite, Discord, Gemini..." aria-label="Buscar productos">
+          </div>
+        </div>
+
+        <div class="filter-pills-row" role="tablist" aria-label="Categorías de productos">
+          <button type="button" class="filter-pill active" data-category="all" role="tab" aria-selected="true">Todos los productos</button>
+          <button type="button" class="filter-pill" data-category="gaming" role="tab" aria-selected="false">Gaming & Consolas</button>
+          <button type="button" class="filter-pill" data-category="software" role="tab" aria-selected="false">Licencias & Software</button>
+          <button type="button" class="filter-pill" data-category="ai" role="tab" aria-selected="false">Suscripciones IA</button>
+        </div>
+      </div>
+
+      <!-- Live products grid dynamically rendered via JS -->
+      <div class="products-grid" id="productsGrid" aria-live="polite">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         WEB DEVELOPMENT AGENCY SECTION
+         ========================================== -->
+    <section class="container" id="agencia" aria-labelledby="agencyHeading">
+      <div class="agency-section">
+        <div class="agency-header-box">
+          <h2 class="section-title" id="agencyHeading">Desarrollo Web & Software a Medida</h2>
+          <p class="agency-desc">
+            Diseñamos y programamos aplicaciones web, tiendas virtuales y landing pages de nivel internacional. Sin plantillas pesadas: código limpio, velocidad extrema, diseño minimalista estilo Apple e integración directa con WhatsApp.
+          </p>
+        </div>
+
+        <div class="agency-packages-grid">
+          <!-- Package 1: Landing Page Pro -->
+          <article class="agency-card">
+            <div>
+              <h3 class="agency-pkg-name">Landing Page Pro</h3>
+              <p class="agency-pkg-ideal">Ideal para profesionales, marcas personales, lanzamientos y captura de clientes potenciales.</p>
+
+              <div class="agency-price-box">
+                <span class="agency-price-prefix">Inversión única desde</span>
+                <span class="agency-price-value num-tabular">Gs. 1.200.000</span>
+              </div>
+
+              <ul class="agency-features-list">
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Diseño UI/UX exclusivo con estética minimalista</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>100% Adaptada a celulares (Mobile-First)</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Botones y formulario directo a WhatsApp</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Carga ultrarrápida optimizada para SEO Google</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Alojamiento SSL de alta velocidad incluido por 1 año</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20quiero%20cotizar%20el%20paquete%20*Landing%20Page%20Pro*%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn-agency-quote">
+              Cotizar Landing Page
+            </a>
+          </article>
+
+          <!-- Package 2: E-Commerce Completo (Featured) -->
+          <article class="agency-card featured-package">
+            <div>
+              <span class="card-badge badge-green" style="margin-bottom: 12px; display: inline-block;">Recomendado para Negocios</span>
+              <h3 class="agency-pkg-name">E-Commerce & Catálogo</h3>
+              <p class="agency-pkg-ideal">Para tiendas que desean vender por internet, gestionar pedidos y cobrar en Paraguay.</p>
+
+              <div class="agency-price-box">
+                <span class="agency-price-prefix">Inversión única desde</span>
+                <span class="agency-price-value num-tabular">Gs. 2.800.000</span>
+              </div>
+
+              <ul class="agency-features-list">
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Catálogo de productos interactivo y autogestionable</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Carrito de compras con checkout automático a WhatsApp</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Opción de pasarela de pago (Bancard / PagoMóvil / SIPAP)</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Filtros instantáneos por categorías y buscador inteligente</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Capacitación completa y soporte prioritario de 30 días</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20estoy%20interesado%20en%20el%20paquete%20*E-Commerce%20Completo*%20para%20vender%20online." target="_blank" rel="noopener noreferrer" class="btn-agency-quote">
+              Cotizar E-Commerce
+            </a>
+          </article>
+
+          <!-- Package 3: Sistema Web a Medida -->
+          <article class="agency-card">
+            <div>
+              <h3 class="agency-pkg-name">Software & Plataforma Web</h3>
+              <p class="agency-pkg-ideal">Sistemas a medida, paneles de administración, cotizadores y portales de clientes.</p>
+
+              <div class="agency-price-box">
+                <span class="agency-price-prefix">Inversión única desde</span>
+                <span class="agency-price-value num-tabular">Gs. 5.500.000</span>
+              </div>
+
+              <ul class="agency-features-list">
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Arquitectura SPA moderna y base de datos en la nube</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Módulos de autenticación, roles y permisos de usuario</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Integraciones de API personalizadas y reportes PDF/Excel</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Código fuente 100% de tu propiedad sin ataduras mensuales</span>
+                </li>
+                <li class="agency-feature-item">
+                  <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Mantenimiento y consultoría técnica dedicada</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20un%20proyecto%20de%20*Software%20a%20Medida*%20y%20me%20gustaría%20conversar." target="_blank" rel="noopener noreferrer" class="btn-agency-quote">
+              Consultar Desarrollo
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         GUARANTEES & LOCAL ADVANTAGES
+         ========================================== -->
+    <section class="container" id="garantias" aria-labelledby="guaranteesHeading">
+      <h2 class="section-title" id="guaranteesHeading" style="margin-bottom: 28px;">Compromiso y Garantías</h2>
+      
+      <div class="trust-strip">
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="trust-title">Entrega Digital Inmediata</h3>
+            <p class="trust-text">Activación directa de cuentas y claves por WhatsApp en 5 a 15 minutos tras confirmar tu pago.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="trust-title">Garantía Total de Funcionamiento</h3>
+            <p class="trust-text">Cuentas y licencias 100% verificadas. Soporte técnico y reposición inmediata si surge cualquier inconveniente.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="trust-title">Medios de Pago en Paraguay</h3>
+            <p class="trust-text">Transferencia bancaria SIPAP (todos los bancos y cooperativas), Tigo Money, Billetera Personal y Zimple.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="trust-title">Atención Personalizada 7 Días</h3>
+            <p class="trust-text">Hablas directamente con un especialista en Paraguay por WhatsApp sin bots confusos ni demoras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       CART SLIDE-OVER DRAWER
+       ========================================== -->
+  <dialog id="cartDrawer" closedby="any" aria-labelledby="cartDrawerTitle">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span id="cartDrawerTitle">Tu Carrito de Pedido</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="closeCartBtn" aria-label="Cerrar carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-content" id="cartItemsContainer">
+      <!-- Populated via JS -->
+    </div>
+
+    <div class="drawer-footer" id="cartFooter">
+      <div class="drawer-summary-row">
+        <span class="summary-label">Total a pagar:</span>
+        <span class="summary-total-val num-tabular" id="cartTotalVal">Gs. 0</span>
+      </div>
+
+      <button type="button" class="btn-checkout-whatsapp" id="checkoutWhatsappBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        Finalizar Pedido vía WhatsApp
+      </button>
+
+      <p class="checkout-guarantee-note">
+        Al hacer clic se abrirá tu WhatsApp con el detalle del pedido para coordinar el pago en Guaraníes y la entrega.
+      </p>
+    </div>
+  </dialog>
+
+  <!-- ==========================================
+       TOAST CONTAINER
+       ========================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-wrap">
+            <svg class="brand-prism-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="16,3 29,26 3,26" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <line x1="16" y1="3" x2="16" y2="26" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2 3"/>
+              <circle cx="16" cy="18" r="2.5" fill="var(--accent-emerald)"/>
+            </svg>
+            <span>Punto Prisma</span>
+          </div>
+          <p class="footer-brand-desc">
+            Plataforma híbrida en Paraguay de suscripciones digitales, activación de licencias y desarrollo web a medida con excelencia en diseño.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Productos</h3>
+          <ul class="footer-links-list">
+            <li><a href="#catalogo">Cuentas de Streaming</a></li>
+            <li><a href="#catalogo">Licencias Windows y Office</a></li>
+            <li><a href="#catalogo">Juegos y Suscripciones</a></li>
+            <li><a href="#catalogo">Tienda Tech</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Agencia Web</h3>
+          <ul class="footer-links-list">
+            <li><a href="#agencia">Landing Pages de Alta Conversión</a></li>
+            <li><a href="#agencia">Tiendas Online E-Commerce</a></li>
+            <li><a href="#agencia">Sistemas Web a Medida</a></li>
+            <li><a href="https://wa.me/595986125649" target="_blank" rel="noopener noreferrer">Solicitar Presupuesto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Atención & Pagos</h3>
+          <ul class="footer-links-list">
+            <li>Operamos en Guaraníes (Gs.)</li>
+            <li>Transferencias SIPAP / Bancos locales</li>
+            <li>Billeteras: Tigo Money / Personal / Zimple</li>
+            <li>Asunción y todo el territorio paraguayo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2026 Punto Prisma. Todos los derechos reservados. Asunción, Paraguay.</span>
+        <span>Minimalismo & Craftsmanship digital</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       APPLICATION LOGIC & STATE
+       ========================================== -->
+  <script>
+    // Configuration
+    const STORE_CONFIG = {
+      whatsappNumber: '595986125649',
+      currencySymbol: 'Gs.'
+    };
+
+    // Catalog Data in Guaraníes (Gs.) - Built 100% from actual images in imagenes/
+    const PRODUCTS = [
+      {
+        id: 'mortal-kombat-11-steam',
+        title: 'Mortal Kombat 11 (Global) - Steam Key',
+        name: 'Mortal Kombat 11 (Global) - Steam Key',
+        category: 'gaming',
+        price: 29500,
+        originalPrice: 98000,
+        discountPercentage: '-70%',
+        image: 'imagenes/167050239633864900_mortal-kombat-11.avif',
+        badge: 'Steam',
+        badgeType: 'badge-steam',
+        description: 'Clave digital oficial para PC en Steam. Combate cinemático visceral con lista completa de luchadores y nuevas mecánicas.',
+        desc: 'Clave digital oficial para PC en Steam. Combate cinemático visceral con lista completa de luchadores y nuevas mecánicas.',
+        features: ['Código digital para cuenta Steam', 'Activación Global sin restricciones', 'Entrega inmediata garantizada']
+      },
+      {
+        id: 'assetto-corsa-steam',
+        title: 'Assetto Corsa (Global) - Steam Key',
+        name: 'Assetto Corsa (Global) - Steam Key',
+        category: 'gaming',
+        price: 35000,
+        originalPrice: 115000,
+        discountPercentage: '-70%',
+        image: 'imagenes/167057641916109200_asseto-corsa.avif',
+        badge: 'Steam',
+        badgeType: 'badge-steam',
+        description: 'El simulador de carreras definitivo para PC en Steam. Física hiperrealista, circuitos escaneados por láser y soporte de mods.',
+        desc: 'El simulador de carreras definitivo para PC en Steam. Física hiperrealista, circuitos escaneados por láser y soporte de mods.',
+        features: ['Licencia original para Steam PC', 'Modding activo y multijugador online', 'Canje global inmediato']
+      },
+      {
+        id: 'wrc-10-steam',
+        title: 'WRC 10 FIA World Rally Championship (Global) - Steam Key',
+        name: 'WRC 10 FIA World Rally Championship (Global) - Steam Key',
+        category: 'gaming',
+        price: 38000,
+        originalPrice: 125000,
+        discountPercentage: '-70%',
+        image: 'imagenes/da3dd544-9d29-4424-86b8-ba89d401a913_gemini-generated-image-d80v85d80v85d80v.avif',
+        badge: 'Steam',
+        badgeType: 'badge-steam',
+        description: 'Edición aniversario del simulador oficial de la FIA para Steam. Más de 52 equipos, etapas históricas y modo carrera profesional.',
+        desc: 'Edición aniversario del simulador oficial de la FIA para Steam. Más de 52 equipos, etapas históricas y modo carrera profesional.',
+        features: ['Simulación oficial FIA WRC', 'Código digital para Steam PC', 'Multijugador y editor de diseños']
+      },
+      {
+        id: 'xbox-game-pass-1m-global',
+        title: 'Xbox Game Pass Ultimate 1 Month Global',
+        name: 'Xbox Game Pass Ultimate 1 Month Global',
+        category: 'gaming',
+        price: 65000,
+        originalPrice: 110000,
+        discountPercentage: '-41%',
+        image: 'imagenes/2400d52b-0c8b-4fbc-bf9d-35432bfdf0e7_56122.avif',
+        badge: 'Global',
+        badgeType: 'badge-green',
+        description: '1 mes de suscripción Ultimate para Xbox y PC con acceso ilimitado a cientos de juegos, EA Play y Cloud Gaming.',
+        desc: '1 mes de suscripción Ultimate para Xbox y PC con acceso ilimitado a cientos de juegos, EA Play y Cloud Gaming.',
+        features: ['Xbox Cloud Gaming + PC + Consola', 'Catálogo de más de 400 títulos', 'EA Play y multijugador incluidos']
+      },
+      {
+        id: 'roblox-100-robux',
+        title: 'Roblox 100 Robux Global',
+        name: 'Roblox 100 Robux Global',
+        category: 'gaming',
+        price: 15000,
+        originalPrice: 22000,
+        discountPercentage: '-32%',
+        image: 'imagenes/6b3b55c7-64e3-46db-83db-0a1584686cd1_roblox-global-100robux-40449.avif',
+        badge: 'Global',
+        badgeType: 'badge-green',
+        description: 'Código digital con 100 Robux para Roblox. Canje inmediato global para mejoras, skins y accesorios en tus juegos favoritos.',
+        desc: 'Código digital con 100 Robux para Roblox. Canje inmediato global para mejoras, skins y accesorios en tus juegos favoritos.',
+        features: ['100 Robux directos en tu cuenta', 'Código oficial de Roblox', 'Canje global sin vencimiento']
+      },
+      {
+        id: 'roblox-200-robux',
+        title: 'Roblox 200 Robux Global',
+        name: 'Roblox 200 Robux Global',
+        category: 'gaming',
+        price: 28000,
+        originalPrice: 40000,
+        discountPercentage: '-30%',
+        image: 'imagenes/020715b0-0148-411f-be19-127204f51095_40466.avif',
+        badge: 'Global',
+        badgeType: 'badge-green',
+        description: 'Tarjeta de regalo digital con 200 Robux para personalizar tu avatar, desbloquear habilidades y accesorios en Roblox.',
+        desc: 'Tarjeta de regalo digital con 200 Robux para personalizar tu avatar, desbloquear habilidades y accesorios en Roblox.',
+        features: ['200 Robux recargables', 'Activación en PC, móvil y consolas', 'Código seguro 100% oficial']
+      },
+      {
+        id: 'roblox-1000-robux',
+        title: 'Roblox 1000 Robux Global',
+        name: 'Roblox 1000 Robux Global',
+        category: 'gaming',
+        price: 115000,
+        originalPrice: 165000,
+        discountPercentage: '-30%',
+        image: 'imagenes/2f44ea5b-560e-4001-ae43-dd9019932032_roblox-globalglobal-1000-robux-82802.avif',
+        badge: 'Más Vendido',
+        badgeType: 'badge-green',
+        description: 'Tarjeta de regalo digital con 1000 Robux para comprar ítems legendarios, ropa de catálogo y pases de batalla en Roblox.',
+        desc: 'Tarjeta de regalo digital con 1000 Robux para comprar ítems legendarios, ropa de catálogo y pases de batalla en Roblox.',
+        features: ['1.000 Robux completos', 'Código digital oficial de entrega rápida', 'Canje global en cualquier plataforma']
+      },
+      {
+        id: 'fortnite-2800-vbucks',
+        title: 'Fortnite 2800 V-Bucks Global',
+        name: 'Fortnite 2800 V-Bucks Global',
+        category: 'gaming',
+        price: 165000,
+        originalPrice: 235000,
+        discountPercentage: '-30%',
+        image: 'imagenes/3a410178-38b2-4524-bfec-6b88353d853d_fortnite--gift-card-global-2800-v-buckspng.avif',
+        badge: 'Global',
+        badgeType: 'badge-green',
+        description: 'Tarjeta oficial de 2800 Monedas V (V-Bucks) para Fortnite en Epic Games. Desbloquea skins exclusivas, picos y el Pase de Batalla.',
+        desc: 'Tarjeta oficial de 2800 Monedas V (V-Bucks) para Fortnite en Epic Games. Desbloquea skins exclusivas, picos y el Pase de Batalla.',
+        features: ['2.800 Monedas V oficiales', 'Canje oficial directo en Epic Games', 'Válido para PC, PlayStation, Xbox y Switch']
+      },
+      {
+        id: 'discord-nitro-1m',
+        title: 'Discord Nitro 1 Month',
+        name: 'Discord Nitro 1 Month',
+        category: 'software',
+        price: 32000,
+        originalPrice: 65000,
+        discountPercentage: '-51%',
+        image: 'imagenes/733ff7c6-55ef-4399-be96-1b50b8d92f9f_1-month-trial-subscriptionpng.avif',
+        badge: 'Trial',
+        badgeType: 'badge-purple',
+        description: 'Suscripción Discord Nitro 1 Mes Trial Global. Transmisión HD 4K/60fps, emojis y stickers personalizados y 2 Server Boosts.',
+        desc: 'Suscripción Discord Nitro 1 Mes Trial Global. Transmisión HD 4K/60fps, emojis y stickers personalizados y 2 Server Boosts.',
+        features: ['Transmisión en 1080p y 4K HD', '2 Mejoras de servidor (Server Boosts)', 'Emojis personalizados en cualquier servidor']
+      },
+      {
+        id: 'discord-nitro-3m',
+        title: 'Discord Nitro 3 Months',
+        name: 'Discord Nitro 3 Months',
+        category: 'software',
+        price: 75000,
+        originalPrice: 170000,
+        discountPercentage: '-56%',
+        image: 'imagenes/c2edf3ea-09f9-4191-b13c-cb8db5a0d4fb_3-months-trial-subscriptionpng.avif',
+        badge: 'Trial',
+        badgeType: 'badge-purple',
+        description: 'Suscripción Discord Nitro 3 Meses Trial Global. Subida de archivos pesados hasta 500MB, badges especiales y personalización total.',
+        desc: 'Suscripción Discord Nitro 3 Meses Trial Global. Subida de archivos pesados hasta 500MB, badges especiales y personalización total.',
+        features: ['3 meses completos de Nitro', 'Subida de archivos pesados hasta 500MB', 'Perfil animado, banners y avatares por servidor']
+      },
+      {
+        id: 'gemini-pro-3m',
+        title: 'Gemini Pro Trial 3 Months',
+        name: 'Gemini Pro Trial 3 Months',
+        category: 'software',
+        isAI: true,
+        price: 65000,
+        originalPrice: 150000,
+        discountPercentage: '-57%',
+        image: 'imagenes/473d7577-91b4-4313-a89b-8f3183c1fd0f_chatgpt-image-sep-7--2026--03-57-02-pm.avif',
+        badge: 'Trial',
+        badgeType: 'badge-purple',
+        description: 'Acceso avanzado a Google Gemini Pro por 3 meses. Razonamiento complejo, análisis de código, multimodalidad y máxima velocidad.',
+        desc: 'Acceso avanzado a Google Gemini Pro por 3 meses. Razonamiento complejo, análisis de código, multimodalidad y máxima velocidad.',
+        features: ['3 Meses de suscripción Pro Trial', 'Ventana de contexto ultra extendida', 'Generación de texto, código y análisis visual']
+      },
+      {
+        id: 'gemini-pro-18m',
+        title: 'Gemini Pro Trial 18 Months',
+        name: 'Gemini Pro Trial 18 Months',
+        category: 'software',
+        isAI: true,
+        price: 195000,
+        originalPrice: 490000,
+        discountPercentage: '-60%',
+        image: 'imagenes/72c18e21-bf7b-4792-8414-5e7cf52a7be8_gemini-trial-1.webp',
+        badge: 'Trial',
+        badgeType: 'badge-purple',
+        description: 'Plan extendido de 18 meses para Gemini Pro. La mayor ventana de contexto, máxima velocidad y soporte para flujos profesionales de trabajo.',
+        desc: 'Plan extendido de 18 meses para Gemini Pro. La mayor ventana de contexto, máxima velocidad y soporte para flujos profesionales de trabajo.',
+        features: ['18 Meses de acceso profesional', 'Capacidades multimodales avanzadas', 'Activación global garantizada']
+      },
+      {
+        id: 'google-ai-plus',
+        title: 'Google AI Plus',
+        name: 'Google AI Plus',
+        category: 'software',
+        isAI: true,
+        price: 95000,
+        originalPrice: 210000,
+        discountPercentage: '-55%',
+        image: 'imagenes/5c3fde1f-637c-4c7a-84bd-248946535457_chatgpt-image-aug-4--2026--12-55-55-pm.avif',
+        badge: 'Más Vendido',
+        badgeType: 'badge-green',
+        description: 'Suscripción Google AI Plus con doble límite de uso en Gemini, 400GB de almacenamiento Cloud e inteligencia artificial en Gmail.',
+        desc: 'Suscripción Google AI Plus con doble límite de uso en Gemini, 400GB de almacenamiento Cloud e inteligencia artificial en Gmail.',
+        features: ['400GB de almacenamiento en Google One', 'Doble límite de consultas en Gemini', 'IA en Gmail y acceso al modelo Pro']
+      },
+      {
+        id: 'super-duolingo',
+        title: 'Super Duolingo',
+        name: 'Super Duolingo',
+        category: 'software',
+        price: 35000,
+        originalPrice: 80000,
+        discountPercentage: '-56%',
+        image: 'imagenes/4dbef178-4afa-4657-b688-afa0bfcb2827_duolingo-super.avif',
+        badge: 'Más Vendido',
+        badgeType: 'badge-green',
+        description: 'Aprende idiomas con Super Duolingo: vidas ilimitadas, cero interrupciones de anuncios y repaso personalizado de errores.',
+        desc: 'Aprende idiomas con Super Duolingo: vidas ilimitadas, cero interrupciones de anuncios y repaso personalizado de errores.',
+        features: ['Vidas ilimitadas para practicar sin límites', 'Sin anuncios publicitarios', 'Práctica de pronunciación y errores']
+      },
+      {
+        id: 'amazon-prime-video-1m',
+        title: 'Amazon Prime Video 1 Month',
+        name: 'Amazon Prime Video 1 Month',
+        category: 'software',
+        price: 28000,
+        originalPrice: 55000,
+        discountPercentage: '-49%',
+        image: 'imagenes/b1280054198e407b85d00c88.avif',
+        badge: '1 Mes',
+        badgeType: 'badge-blue',
+        description: 'Membresía digital de 1 mes para Amazon Prime Video. Películas taquilleras, series exclusivas originales y reproducción en 4K Ultra HD.',
+        desc: 'Membresía digital de 1 mes para Amazon Prime Video. Películas taquilleras, series exclusivas originales y reproducción en 4K Ultra HD.',
+        features: ['Transmisión 4K Ultra HD y HDR', 'Descargas para ver sin conexión', 'Perfiles múltiples para toda la familia']
+      }
+    ];
+
+    // Helper: Format Guaraníes (e.g. 35000 -> "Gs. 35.000")
+    function formatGs(amount) {
+      return 'Gs. ' + amount.toLocaleString('es-PY');
+    }
+
+    // Cart State
+    let cart = [];
+
+    // Load cart from LocalStorage
+    function loadCart() {
+      try {
+        const stored = localStorage.getItem('punto_prisma_cart');
+        if (stored) {
+          cart = JSON.parse(stored);
+        }
+      } catch (e) {
+        cart = [];
+      }
+      updateCartUI();
+    }
+
+    // Save cart to LocalStorage
+    function saveCart() {
+      try {
+        localStorage.setItem('punto_prisma_cart', JSON.stringify(cart));
+      } catch (e) {
+        console.error(e);
+      }
+      updateCartUI();
+    }
+
+    // Micro-interaction: Trigger Cart Badge Pop Pulse
+    function triggerBadgePop() {
+      const badge = document.getElementById('cartBadge');
+      if (!badge) return;
+      badge.classList.remove('badge-pop');
+      void badge.offsetWidth; // Force reflow to restart CSS keyframe animation
+      badge.classList.add('badge-pop');
+    }
+
+    // Add to Cart
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const productName = product.title || product.name;
+      const existingIndex = cart.findIndex(item => item.id === productId);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: productName,
+          price: product.price,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      triggerBadgePop();
+      showToast(`Añadido: ${productName}`);
+    }
+
+    // Change Item Quantity
+    function changeQty(productId, delta) {
+      const index = cart.findIndex(item => item.id === productId);
+      if (index === -1) return;
+
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      } else if (delta > 0) {
+        triggerBadgePop();
+      }
+      saveCart();
+    }
+
+    // Remove from Cart
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      saveCart();
+    }
+
+    // Update Cart UI & Badges
+    function updateCartUI() {
+      const badge = document.getElementById('cartBadge');
+      const itemsContainer = document.getElementById('cartItemsContainer');
+      const totalValElem = document.getElementById('cartTotalVal');
+      const checkoutBtn = document.getElementById('checkoutWhatsappBtn');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      badge.textContent = totalItems;
+      totalValElem.textContent = formatGs(totalPrice);
+
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = `
+          <div class="cart-empty-view">
+            <svg class="cart-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <p style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Tu carrito está vacío</p>
+            <p style="font-size: 0.85rem;">Explora las suscripciones y licencias para agregar productos.</p>
+          </div>
+        `;
+        checkoutBtn.disabled = true;
+        checkoutBtn.style.opacity = '0.5';
+        checkoutBtn.style.pointerEvents = 'none';
+      } else {
+        checkoutBtn.disabled = false;
+        checkoutBtn.style.opacity = '1';
+        checkoutBtn.style.pointerEvents = 'auto';
+
+        itemsContainer.innerHTML = cart.map(item => `
+          <div class="cart-item-row" data-id="${item.id}">
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-unit-price">${formatGs(item.price)} cada uno</div>
+            </div>
+            <div class="cart-item-actions">
+              <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)" aria-label="Disminuir cantidad">-</button>
+              <span class="qty-number num-tabular">${item.quantity}</span>
+              <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)" aria-label="Aumentar cantidad">+</button>
+              <button type="button" class="item-remove-btn" onclick="removeFromCart('${item.id}')" aria-label="Eliminar producto">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Direct WhatsApp Purchase for Single Item
+    function buyDirectWhatsApp(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const productName = product.title || product.name;
+      const discountText = product.discountPercentage ? ` (${product.discountPercentage} dto, antes ${formatGs(product.originalPrice)})` : '';
+      const message = `Hola Punto Prisma, deseo comprar el siguiente producto directamente:\n\n• *${productName}*\n• Precio de oferta: *${formatGs(product.price)}*${discountText}\n\n¿Cuáles son los datos de cuenta bancaria o billetera para transferir?`;
+      const encodedMsg = encodeURIComponent(message);
+      window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`, '_blank');
+    }
+
+    // Complete Order via WhatsApp
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return;
+
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      let itemsListText = '';
+
+      cart.forEach(item => {
+        itemsListText += `• ${item.quantity}x *${item.name}* - ${formatGs(item.price * item.quantity)}\n`;
+      });
+
+      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes? ¡Muchas gracias!`;
+      const encodedMsg = encodeURIComponent(message);
+      window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`, '_blank');
+    }
+
+    // Toast Notification Feedback
+    function showToast(text) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast-item';
+      toast.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--accent-emerald);">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span>${text}</span>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 2700);
+    }
+
+    // Product & Brand Icons Renderer with Official Colors & Logos
+    function getProductIcon(item) {
+      switch (item.id) {
+        case 'mortal-kombat-11-steam':
+        case 'assetto-corsa-steam':
+        case 'wrc-10-steam':
+          // Steam Official Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Steam">
+            <rect x="2" y="3" width="20" height="18" rx="5" fill="#171A21"/>
+            <path d="M12 5.5a6.5 6.5 0 00-6.4 5.38l3.4 1.4a2.4 2.4 0 013.3 1.37l3.6 1.48A6.5 6.5 0 0012 5.5zm4.8 6.5a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0z" fill="#66C0F4"/>
+            <circle cx="15.5" cy="12" r="1.5" fill="#FFFFFF"/>
+            <circle cx="9.2" cy="15.5" r="1.1" fill="#66C0F4"/>
+          </svg>`;
+
+        case 'roblox-100-robux':
+        case 'roblox-200-robux':
+        case 'roblox-1000-robux':
+          // Roblox Official Silver Tilted Block
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Roblox">
+            <rect x="5.5" y="5.5" width="13" height="13" rx="2.5" transform="rotate(-15 12 12)" fill="#F5F6F8"/>
+            <rect x="9.5" y="9.5" width="5" height="5" rx="1" transform="rotate(-15 12 12)" fill="#090A0D"/>
+          </svg>`;
+
+        case 'fortnite-2800-vbucks':
+          // Fortnite Cyan V-Bucks Coin Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Fortnite">
+            <circle cx="12" cy="12" r="10.5" fill="#00D2D2"/>
+            <path d="M12 4.5l5 3v9l-5 3-5-3v-9l5-3z" stroke="#032115" stroke-width="1.6" fill="none"/>
+            <path d="M9.5 9h5M9.5 12h3.5M9.5 15h2" stroke="#032115" stroke-width="2" stroke-linecap="round"/>
+          </svg>`;
+
+        case 'discord-nitro-1m':
+        case 'discord-nitro-3m':
+          // Discord Blurple Clyde Mascot
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Discord Nitro">
+            <rect x="2" y="3" width="20" height="18" rx="5" fill="#5865F2"/>
+            <path d="M8.5 10.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zm7 0a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" fill="#FFFFFF"/>
+            <path d="M17.5 7.5s-1.2-.6-2.5-.8c0 0-.3.4-.5.8-1.5-.2-3-.2-4.5 0-.2-.4-.5-.8-.5-.8-1.3.2-2.5.8-2.5.8-1.6 2.4-2 4.8-1.8 7.1 1.1.8 2.2 1.3 3.3 1.6.3-.4.5-.8.7-1.2-.6-.2-1.2-.5-1.7-.9.1-.1.3-.2.4-.3 2.1 1 4.5 1 6.6 0 .1.1.3.2.4.3-.5.4-1.1.7-1.7.9.2.4.5.8.7 1.2 1.1-.3 2.2-.8 3.3-1.6.3-2.7-.5-5-1.9-7.1z" fill="#FFFFFF"/>
+          </svg>`;
+
+        case 'gemini-pro-3m':
+        case 'gemini-pro-18m':
+          // Google Gemini Official Spark
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Gemini Pro">
+            <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" fill="url(#geminiGradient)"/>
+            <defs>
+              <linearGradient id="geminiGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4E87F8"/>
+                <stop offset="0.5" stop-color="#BD34FE"/>
+                <stop offset="1" stop-color="#FA709A"/>
+              </linearGradient>
+            </defs>
+          </svg>`;
+
+        case 'google-ai-plus':
+          // Google AI Sparkle in Blue
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Google AI Plus">
+            <rect x="2" y="3" width="20" height="18" rx="5" fill="#1A73E8"/>
+            <path d="M12 5C12 8.8 8.8 12 5 12C8.8 12 12 15.2 12 19C12 15.2 15.2 12 19 12C15.2 12 12 8.8 12 5Z" fill="#FFFFFF"/>
+          </svg>`;
+
+        case 'super-duolingo':
+          // Duolingo Owl Green
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Super Duolingo">
+            <rect x="2" y="3" width="20" height="18" rx="5" fill="#58CC02"/>
+            <circle cx="8.5" cy="11" r="2.8" fill="#FFFFFF"/>
+            <circle cx="15.5" cy="11" r="2.8" fill="#FFFFFF"/>
+            <circle cx="8.5" cy="11" r="1.2" fill="#090A0D"/>
+            <circle cx="15.5" cy="11" r="1.2" fill="#090A0D"/>
+            <path d="M12 12.8L10.5 15h3L12 12.8z" fill="#FF9600"/>
+          </svg>`;
+
+        case 'xbox-game-pass-1m-global':
+          // Xbox Green Sphere
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Xbox Game Pass">
+            <circle cx="12" cy="12" r="10.5" fill="#107C10"/>
+            <path d="M7 6.5C8.5 8.5 12 13 12 13s3.5-4.5 5-6.5c-1.5-1-3.2-1.5-5-1.5s-3.5.5-5 1.5z" fill="#090A0D"/>
+            <path d="M5.5 8c2 2.5 5 7 6.5 9.5-2.2.5-4.5-.2-6.5-1.8V8z" fill="#090A0D"/>
+            <path d="M18.5 8c-2 2.5-5 7-6.5 9.5 2.2.5 4.5-.2 6.5-1.8V8z" fill="#090A0D"/>
+          </svg>`;
+
+        case 'amazon-prime-video-1m':
+          // Prime Video Official Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Prime Video">
+            <rect x="2" y="3" width="20" height="18" rx="5" fill="#00A8E1"/>
+            <path d="M6.5 14.5c3.5 2 7.5 2 11 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 13.5l1.5 1.2-1.8.8" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>`;
+
+        default:
+          return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>`;
+      }
+    }
+
+    // Render Products Grid
+    function renderProducts(filterCategory = 'all', searchQuery = '') {
+      const grid = document.getElementById('productsGrid');
+      
+      const filtered = PRODUCTS.filter(product => {
+        const title = (product.title || product.name || '').toLowerCase();
+        const desc = (product.description || product.desc || '').toLowerCase();
+        
+        let matchesCategory = false;
+        if (filterCategory === 'all') {
+          matchesCategory = true;
+        } else if (filterCategory === 'ai') {
+          matchesCategory = product.category === 'ai' || product.isAI || product.id.startsWith('gemini') || product.id === 'google-ai-plus';
+        } else if (filterCategory === 'software') {
+          matchesCategory = product.category === 'software';
+        } else {
+          matchesCategory = product.category === filterCategory;
+        }
+
+        const matchesQuery = searchQuery === '' || 
+          title.includes(searchQuery.toLowerCase()) || 
+          desc.includes(searchQuery.toLowerCase());
+
+        return matchesCategory && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">No encontramos productos con ese criterio</p>
+            <p style="font-size: 0.9rem;">Prueba con otra palabra clave o selecciona otra categoría.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const title = item.title || item.name;
+        const desc = item.description || item.desc;
+        const badgeType = item.badgeType || (item.badge === 'Más Vendido' ? 'badge-green' : '');
+        let categoryDisplay = item.category;
+        if (item.category === 'gaming') categoryDisplay = 'Gaming & Consolas';
+        else if (item.category === 'software') categoryDisplay = item.isAI ? 'Inteligencia Artificial' : 'Licencias & Software';
+        else if (item.category === 'streaming') categoryDisplay = 'Streaming';
+        else if (item.category === 'gadgets') categoryDisplay = 'Gadgets & Tech';
+
+        return `
+        <article class="product-card relative overflow-hidden" data-id="${item.id}">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-frame" aria-hidden="true">
+                ${getProductIcon(item)}
+              </div>
+              <span class="card-badge ${badgeType}">${item.badge}</span>
+            </div>
+
+            ${item.image ? `
+              <div class="card-media-preview">
+                <img src="${item.image}" alt="${title}" class="card-preview-art" loading="lazy">
+              </div>
+            ` : ''}
+
+            <div class="card-body">
+              <div class="product-category-tag">${categoryDisplay}</div>
+              <h3 class="product-name">${title}</h3>
+              <p class="product-desc">${desc}</p>
+              
+              <ul class="product-features-list">
+                ${(item.features || []).map(f => `
+                  <li class="feature-item">
+                    <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>${f}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-footer-box">
+            <div class="price-box-aliexpress">
+              <div class="price-main-row">
+                <span class="product-price-val num-tabular">${formatGs(item.price)}</span>
+                <span class="discount-tag-aliexpress">${item.discountPercentage}</span>
+              </div>
+              <div class="price-original-row">
+                <span class="price-original-val num-tabular">${formatGs(item.originalPrice)}</span>
+                <span class="price-savings-label">Ahorras ${formatGs(item.originalPrice - item.price)}</span>
+              </div>
+            </div>
+
+            <div class="card-actions-row">
+              <button type="button" class="btn-add-cart" onclick="addToCart('${item.id}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                Al Carrito
+              </button>
+
+              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${item.id}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Comprar
+              </button>
+            </div>
+          </div>
+        </article>
+        `;
+      }).join('');
+    }
+
+    // Modal Drawer Handling with modern guidance & light-dismiss fallback
+    const cartDrawer = document.getElementById('cartDrawer');
+    const openCartBtn = document.getElementById('openCartBtn');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const checkoutWhatsappBtn = document.getElementById('checkoutWhatsappBtn');
+
+    function openCartDrawer() {
+      cartDrawer.classList.remove('is-closing');
+      cartDrawer.showModal();
+    }
+
+    function closeCartDrawer() {
+      if (!cartDrawer.open) return;
+      cartDrawer.classList.add('is-closing');
+      setTimeout(() => {
+        cartDrawer.close();
+        cartDrawer.classList.remove('is-closing');
+      }, 260);
+    }
+
+    openCartBtn.addEventListener('click', openCartDrawer);
+    closeCartBtn.addEventListener('click', closeCartDrawer);
+
+    // Smooth exit when user cancels via Escape key
+    cartDrawer.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeCartDrawer();
+    });
+
+    checkoutWhatsappBtn.addEventListener('click', () => {
+      checkoutWhatsApp();
+    });
+
+    // Fallback for browsers that do not natively support closedby="any"
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      cartDrawer.addEventListener('click', (event) => {
+        if (event.target !== cartDrawer) return;
+        const rect = cartDrawer.getBoundingClientRect();
+        const isDialogContent = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isDialogContent) {
+          closeCartDrawer();
+        }
+      });
+    }
+
+    // Filter Pills Interactivity
+    const filterPills = document.querySelectorAll('.filter-pill');
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+        currentCategory = pill.dataset.category;
+        renderProducts(currentCategory, currentSearch);
+      });
+    });
+
+    // Search Input Interactivity
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.trim();
+      renderProducts(currentCategory, currentSearch);
+    });
+
+    // Initialization on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      loadCart();
+    });
+  </script>
+</body>
+</html>
