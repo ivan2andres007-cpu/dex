@@ -1896,7 +1896,7 @@
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Steam, Mortal Kombat, Roblox, Fortnite, Discord, Gemini..." aria-label="Buscar productos">
+            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar en el catálogo..." aria-label="Buscar productos">
           </div>
         </div>
 
@@ -2258,281 +2258,7 @@
     };
 
     // Catalog Data in Guaraníes (Gs.) - Built 100% from actual images in imagenes/
-    const PRODUCTS = [
-      {
-        id: 'mortal-kombat-11-steam',
-        title: 'Mortal Kombat 11 (Global) - Steam Key',
-        name: 'Mortal Kombat 11 (Global) - Steam Key',
-        category: 'gaming',
-        price: 29500,
-        originalPrice: 98000,
-        discountPercentage: '-70%',
-        rating: '4.9',
-        soldCount: '+85 vendidos',
-        stockLeft: 3,
-        image: 'imagenes/167050239633864900_mortal-kombat-11.avif',
-        badge: 'Steam',
-        badgeType: 'badge-steam',
-        description: 'Clave digital oficial para PC en Steam. Combate cinemático visceral con lista completa de luchadores y nuevas mecánicas.',
-        desc: 'Clave digital oficial para PC en Steam. Combate cinemático visceral con lista completa de luchadores y nuevas mecánicas.',
-        features: ['Código digital para cuenta Steam', 'Activación Global sin restricciones', 'Entrega inmediata garantizada']
-      },
-      {
-        id: 'assetto-corsa-steam',
-        title: 'Assetto Corsa (Global) - Steam Key',
-        name: 'Assetto Corsa (Global) - Steam Key',
-        category: 'gaming',
-        price: 35000,
-        originalPrice: 115000,
-        discountPercentage: '-70%',
-        rating: '4.9',
-        soldCount: '+60 vendidos',
-        stockLeft: 4,
-        image: 'imagenes/167057641916109200_asseto-corsa.avif',
-        badge: 'Steam',
-        badgeType: 'badge-steam',
-        description: 'El simulador de carreras definitivo para PC en Steam. Física hiperrealista, circuitos escaneados por láser y soporte de mods.',
-        desc: 'El simulador de carreras definitivo para PC en Steam. Física hiperrealista, circuitos escaneados por láser y soporte de mods.',
-        features: ['Licencia original para Steam PC', 'Modding activo y multijugador online', 'Canje global inmediato']
-      },
-      {
-        id: 'wrc-10-steam',
-        title: 'WRC 10 FIA World Rally Championship (Global) - Steam Key',
-        name: 'WRC 10 FIA World Rally Championship (Global) - Steam Key',
-        category: 'gaming',
-        price: 38000,
-        originalPrice: 125000,
-        discountPercentage: '-70%',
-        rating: '4.8',
-        soldCount: '+35 vendidos',
-        stockLeft: 5,
-        image: 'imagenes/da3dd544-9d29-4424-86b8-ba89d401a913_gemini-generated-image-d80v85d80v85d80v.avif',
-        badge: 'Steam',
-        badgeType: 'badge-steam',
-        description: 'Edición aniversario del simulador oficial de la FIA para Steam. Más de 52 equipos, etapas históricas y modo carrera profesional.',
-        desc: 'Edición aniversario del simulador oficial de la FIA para Steam. Más de 52 equipos, etapas históricas y modo carrera profesional.',
-        features: ['Simulación oficial FIA WRC', 'Código digital para Steam PC', 'Multijugador y editor de diseños']
-      },
-      {
-        id: 'xbox-game-pass-1m-global',
-        title: 'Xbox Game Pass Ultimate 1 Month Global',
-        name: 'Xbox Game Pass Ultimate 1 Month Global',
-        category: 'gaming',
-        price: 65000,
-        originalPrice: 110000,
-        discountPercentage: '-41%',
-        rating: '4.9',
-        soldCount: '+90 vendidos',
-        stockLeft: 2,
-        image: 'imagenes/2400d52b-0c8b-4fbc-bf9d-35432bfdf0e7_56122.avif',
-        badge: 'Global',
-        badgeType: 'badge-green',
-        description: '1 mes de suscripción Ultimate para Xbox y PC con acceso ilimitado a cientos de juegos, EA Play y Cloud Gaming.',
-        desc: '1 mes de suscripción Ultimate para Xbox y PC con acceso ilimitado a cientos de juegos, EA Play y Cloud Gaming.',
-        features: ['Xbox Cloud Gaming + PC + Consola', 'Catálogo de más de 400 títulos', 'EA Play y multijugador incluidos']
-      },
-      {
-        id: 'roblox-100-robux',
-        title: 'Roblox 100 Robux Global',
-        name: 'Roblox 100 Robux Global',
-        category: 'gaming',
-        price: 15000,
-        originalPrice: 22000,
-        discountPercentage: '-32%',
-        rating: '4.9',
-        soldCount: '+75 vendidos',
-        stockLeft: 6,
-        image: 'imagenes/6b3b55c7-64e3-46db-83db-0a1584686cd1_roblox-global-100robux-40449.avif',
-        badge: 'Global',
-        badgeType: 'badge-green',
-        description: 'Código digital con 100 Robux para Roblox. Canje inmediato global para mejoras, skins y accesorios en tus juegos favoritos.',
-        desc: 'Código digital con 100 Robux para Roblox. Canje inmediato global para mejoras, skins y accesorios en tus juegos favoritos.',
-        features: ['100 Robux directos en tu cuenta', 'Código oficial de Roblox', 'Canje global sin vencimiento']
-      },
-      {
-        id: 'roblox-200-robux',
-        title: 'Roblox 200 Robux Global',
-        name: 'Roblox 200 Robux Global',
-        category: 'gaming',
-        price: 28000,
-        originalPrice: 40000,
-        discountPercentage: '-30%',
-        rating: '4.8',
-        soldCount: '+50 vendidos',
-        stockLeft: 4,
-        image: 'imagenes/020715b0-0148-411f-be19-127204f51095_40466.avif',
-        badge: 'Global',
-        badgeType: 'badge-green',
-        description: 'Tarjeta de regalo digital con 200 Robux para personalizar tu avatar, desbloquear habilidades y accesorios en Roblox.',
-        desc: 'Tarjeta de regalo digital con 200 Robux para personalizar tu avatar, desbloquear habilidades y accesorios en Roblox.',
-        features: ['200 Robux recargables', 'Activación en PC, móvil y consolas', 'Código seguro 100% oficial']
-      },
-      {
-        id: 'roblox-1000-robux',
-        title: 'Roblox 1000 Robux Global',
-        name: 'Roblox 1000 Robux Global',
-        category: 'gaming',
-        price: 115000,
-        originalPrice: 165000,
-        discountPercentage: '-30%',
-        rating: '5.0',
-        soldCount: '+100 vendidos',
-        stockLeft: 3,
-        image: 'imagenes/2f44ea5b-560e-4001-ae43-dd9019932032_roblox-globalglobal-1000-robux-82802.avif',
-        badge: 'Más Vendido',
-        badgeType: 'badge-green',
-        description: 'Tarjeta de regalo digital con 1000 Robux para comprar ítems legendarios, ropa de catálogo y pases de batalla en Roblox.',
-        desc: 'Tarjeta de regalo digital con 1000 Robux para comprar ítems legendarios, ropa de catálogo y pases de batalla en Roblox.',
-        features: ['1.000 Robux completos', 'Código digital oficial de entrega rápida', 'Canje global en cualquier plataforma']
-      },
-      {
-        id: 'fortnite-2800-vbucks',
-        title: 'Fortnite 2800 V-Bucks Global',
-        name: 'Fortnite 2800 V-Bucks Global',
-        category: 'gaming',
-        price: 165000,
-        originalPrice: 235000,
-        discountPercentage: '-30%',
-        rating: '4.9',
-        soldCount: '+65 vendidos',
-        stockLeft: 2,
-        image: 'imagenes/3a410178-38b2-4524-bfec-6b88353d853d_fortnite--gift-card-global-2800-v-buckspng.avif',
-        badge: 'Global',
-        badgeType: 'badge-green',
-        description: 'Tarjeta oficial de 2800 Monedas V (V-Bucks) para Fortnite en Epic Games. Desbloquea skins exclusivas, picos y el Pase de Batalla.',
-        desc: 'Tarjeta oficial de 2800 Monedas V (V-Bucks) para Fortnite en Epic Games. Desbloquea skins exclusivas, picos y el Pase de Batalla.',
-        features: ['2.800 Monedas V oficiales', 'Canje oficial directo en Epic Games', 'Válido para PC, PlayStation, Xbox y Switch']
-      },
-      {
-        id: 'discord-nitro-1m',
-        title: 'Discord Nitro 1 Month',
-        name: 'Discord Nitro 1 Month',
-        category: 'software',
-        price: 32000,
-        originalPrice: 65000,
-        discountPercentage: '-51%',
-        rating: '4.8',
-        soldCount: '+45 vendidos',
-        stockLeft: 5,
-        image: 'imagenes/733ff7c6-55ef-4399-be96-1b50b8d92f9f_1-month-trial-subscriptionpng.avif',
-        badge: 'Trial',
-        badgeType: 'badge-purple',
-        description: 'Suscripción Discord Nitro 1 Mes Trial Global. Transmisión HD 4K/60fps, emojis y stickers personalizados y 2 Server Boosts.',
-        desc: 'Suscripción Discord Nitro 1 Mes Trial Global. Transmisión HD 4K/60fps, emojis y stickers personalizados y 2 Server Boosts.',
-        features: ['Transmisión en 1080p y 4K HD', '2 Mejoras de servidor (Server Boosts)', 'Emojis personalizados en cualquier servidor']
-      },
-      {
-        id: 'discord-nitro-3m',
-        title: 'Discord Nitro 3 Months',
-        name: 'Discord Nitro 3 Months',
-        category: 'software',
-        price: 75000,
-        originalPrice: 170000,
-        discountPercentage: '-56%',
-        rating: '4.9',
-        soldCount: '+55 vendidos',
-        stockLeft: 3,
-        image: 'imagenes/c2edf3ea-09f9-4191-b13c-cb8db5a0d4fb_3-months-trial-subscriptionpng.avif',
-        badge: 'Trial',
-        badgeType: 'badge-purple',
-        description: 'Suscripción Discord Nitro 3 Meses Trial Global. Subida de archivos pesados hasta 500MB, badges especiales y personalización total.',
-        desc: 'Suscripción Discord Nitro 3 Meses Trial Global. Subida de archivos pesados hasta 500MB, badges especiales y personalización total.',
-        features: ['3 meses completos de Nitro', 'Subida de archivos pesados hasta 500MB', 'Perfil animado, banners y avatares por servidor']
-      },
-      {
-        id: 'gemini-pro-3m',
-        title: 'Gemini Pro Trial 3 Months',
-        name: 'Gemini Pro Trial 3 Months',
-        category: 'software',
-        isAI: true,
-        price: 65000,
-        originalPrice: 150000,
-        discountPercentage: '-57%',
-        rating: '4.9',
-        soldCount: '+70 vendidos',
-        stockLeft: 4,
-        image: 'imagenes/473d7577-91b4-4313-a89b-8f3183c1fd0f_chatgpt-image-sep-7--2026--03-57-02-pm.avif',
-        badge: 'Trial',
-        badgeType: 'badge-purple',
-        description: 'Acceso avanzado a Google Gemini Pro por 3 meses. Razonamiento complejo, análisis de código, multimodalidad y máxima velocidad.',
-        desc: 'Acceso avanzado a Google Gemini Pro por 3 meses. Razonamiento complejo, análisis de código, multimodalidad y máxima velocidad.',
-        features: ['3 Meses de suscripción Pro Trial', 'Ventana de contexto ultra extendida', 'Generación de texto, código y análisis visual']
-      },
-      {
-        id: 'gemini-pro-18m',
-        title: 'Gemini Pro Trial 18 Months',
-        name: 'Gemini Pro Trial 18 Months',
-        category: 'software',
-        isAI: true,
-        price: 195000,
-        originalPrice: 490000,
-        discountPercentage: '-60%',
-        rating: '5.0',
-        soldCount: '+40 vendidos',
-        stockLeft: 2,
-        image: 'imagenes/72c18e21-bf7b-4792-8414-5e7cf52a7be8_gemini-trial-1.webp',
-        badge: 'Trial',
-        badgeType: 'badge-purple',
-        description: 'Plan extendido de 18 meses para Gemini Pro. La mayor ventana de contexto, máxima velocidad y soporte para flujos profesionales de trabajo.',
-        desc: 'Plan extendido de 18 meses para Gemini Pro. La mayor ventana de contexto, máxima velocidad y soporte para flujos profesionales de trabajo.',
-        features: ['18 Meses de acceso profesional', 'Capacidades multimodales avanzadas', 'Activación global garantizada']
-      },
-      {
-        id: 'google-ai-plus',
-        title: 'Google AI Plus',
-        name: 'Google AI Plus',
-        category: 'software',
-        isAI: true,
-        price: 95000,
-        originalPrice: 210000,
-        discountPercentage: '-55%',
-        rating: '4.9',
-        soldCount: '+95 vendidos',
-        stockLeft: 3,
-        image: 'imagenes/5c3fde1f-637c-4c7a-84bd-248946535457_chatgpt-image-aug-4--2026--12-55-55-pm.avif',
-        badge: 'Más Vendido',
-        badgeType: 'badge-green',
-        description: 'Suscripción Google AI Plus con doble límite de uso en Gemini, 400GB de almacenamiento Cloud e inteligencia artificial en Gmail.',
-        desc: 'Suscripción Google AI Plus con doble límite de uso en Gemini, 400GB de almacenamiento Cloud e inteligencia artificial en Gmail.',
-        features: ['400GB de almacenamiento en Google One', 'Doble límite de consultas en Gemini', 'IA en Gmail y acceso al modelo Pro']
-      },
-      {
-        id: 'super-duolingo',
-        title: 'Super Duolingo',
-        name: 'Super Duolingo',
-        category: 'software',
-        price: 35000,
-        originalPrice: 80000,
-        discountPercentage: '-56%',
-        rating: '5.0',
-        soldCount: '+100 vendidos',
-        stockLeft: 2,
-        image: 'imagenes/4dbef178-4afa-4657-b688-afa0bfcb2827_duolingo-super.avif',
-        badge: 'Más Vendido',
-        badgeType: 'badge-green',
-        description: 'Aprende idiomas con Super Duolingo: vidas ilimitadas, cero interrupciones de anuncios y repaso personalizado de errores.',
-        desc: 'Aprende idiomas con Super Duolingo: vidas ilimitadas, cero interrupciones de anuncios y repaso personalizado de errores.',
-        features: ['Vidas ilimitadas para practicar sin límites', 'Sin anuncios publicitarios', 'Práctica de pronunciación y errores']
-      },
-      {
-        id: 'amazon-prime-video-1m',
-        title: 'Amazon Prime Video 1 Month',
-        name: 'Amazon Prime Video 1 Month',
-        category: 'software',
-        price: 28000,
-        originalPrice: 55000,
-        discountPercentage: '-49%',
-        rating: '4.8',
-        soldCount: '+30 vendidos',
-        stockLeft: 7,
-        image: 'imagenes/b1280054198e407b85d00c88.avif',
-        badge: '1 Mes',
-        badgeType: 'badge-blue',
-        description: 'Membresía digital de 1 mes para Amazon Prime Video. Películas taquilleras, series exclusivas originales y reproducción en 4K Ultra HD.',
-        desc: 'Membresía digital de 1 mes para Amazon Prime Video. Películas taquilleras, series exclusivas originales y reproducción en 4K Ultra HD.',
-        features: ['Transmisión 4K Ultra HD y HDR', 'Descargas para ver sin conexión', 'Perfiles múltiples para toda la familia']
-      }
-    ];
+    const PRODUCTS = [];
 
     // Helper: Format Guaraníes (e.g. 35000 -> "Gs. 35.000")
     function formatGs(amount) {
@@ -2917,6 +2643,29 @@
     function renderProducts(filterCategory = 'all', searchQuery = '') {
       const grid = document.getElementById('productsGrid');
       
+      if (!PRODUCTS || PRODUCTS.length === 0) {
+        grid.innerHTML = `
+          <div class="catalog-empty-state" style="grid-column: 1 / -1; text-align: center; padding: 70px 20px; color: var(--text-secondary);">
+            <div style="width: 56px; height: 56px; margin: 0 auto 16px; border-radius: var(--radius-md); background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                <path d="m3.3 7 8.7 5 8.7-5"/>
+                <path d="M12 22V12"/>
+              </svg>
+            </div>
+            <p style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Catálogo en actualización</p>
+            <p style="font-size: 0.9rem; max-width: 440px; margin: 0 auto 20px; line-height: 1.5; color: var(--text-secondary);">Actualmente estamos reorganizando nuestro inventario de artículos y licencias en stock. Próximamente subiremos nuevos productos disponibles.</p>
+            <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=Hola%20Punto%20Prisma,%20deseo%20consultar%20por%20un%20producto%20o%20servicio%20personalizado" target="_blank" class="btn-direct-buy" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px 24px; border-radius: var(--radius-pill); font-size: 0.9rem; font-weight: 600; margin: 0 auto;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        `;
+        return;
+      }
+
       const filtered = PRODUCTS.filter(product => {
         const title = (product.title || product.name || '').toLowerCase();
         const desc = (product.description || product.desc || '').toLowerCase();
