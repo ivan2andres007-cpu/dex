@@ -749,8 +749,43 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       line-height: 1.3;
+    }
+
+    /* Social Proof Row (Impeccable & Emil Kowalski refinement) */
+    .card-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .star-icon {
+      width: 13px;
+      height: 13px;
+      color: #F59E0B;
+      flex-shrink: 0;
+    }
+
+    .rating-val {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    .social-proof-dot {
+      color: var(--border-medium);
+      font-size: 0.7rem;
+      user-select: none;
+    }
+
+    .sold-count-val {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.78rem;
     }
 
     .product-desc {
@@ -788,7 +823,73 @@
       padding-top: 18px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
+    }
+
+    /* Scarcity Indicator Row & Micro-bar (Refined AliExpress-style trigger) */
+    .scarcity-indicator {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 2px;
+    }
+
+    .scarcity-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .scarcity-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-pill);
+      background-color: #F97316;
+      flex-shrink: 0;
+      animation: scarcityPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    @keyframes scarcityPulse {
+      0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
+      }
+      70% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 6px rgba(249, 115, 22, 0);
+      }
+      100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+      }
+    }
+
+    .scarcity-text {
+      font-size: 0.74rem;
+      color: #f97316;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .scarcity-text strong {
+      font-weight: 700;
+      color: #fb923c;
+    }
+
+    .scarcity-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+
+    .scarcity-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #F97316 0%, #FB923C 100%);
+      border-radius: var(--radius-pill);
+      transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* AliExpress-style Pricing Hierarchy */
@@ -1202,6 +1303,100 @@
       transform: scale(0.92);
     }
 
+    /* Cart Reward Progress Header (Emil Kowalski micro-interaction) */
+    .cart-reward-container {
+      padding: 14px 24px;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+    }
+
+    .reward-status-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reward-icon-wrap {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: all var(--transition-smooth);
+    }
+
+    .reward-status-text {
+      font-size: 0.80rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      transition: color var(--transition-smooth);
+    }
+
+    .reward-status-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .reward-progress-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+
+    .reward-progress-fill {
+      height: 100%;
+      background: var(--text-primary);
+      border-radius: var(--radius-pill);
+      width: 0%;
+      transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-smooth);
+      will-change: width;
+    }
+
+    /* Unlocked Reward State (Emil Kowalski subtle scale/glow micro-animation) */
+    .cart-reward-container.is-unlocked {
+      background: var(--accent-emerald-soft);
+      border-bottom-color: var(--accent-emerald-border);
+    }
+
+    .cart-reward-container.is-unlocked .reward-icon-wrap {
+      background: var(--accent-emerald);
+      color: #032115;
+      border-color: var(--accent-emerald);
+      animation: rewardPop 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-reward-container.is-unlocked .reward-status-text {
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+
+    .cart-reward-container.is-unlocked .reward-status-text strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .cart-reward-container.is-unlocked .reward-progress-fill {
+      background: var(--accent-emerald);
+    }
+
+    @keyframes rewardPop {
+      0% { transform: scale(0.88); }
+      45% { transform: scale(1.18); }
+      100% { transform: scale(1); }
+    }
+
     .drawer-content {
       flex: 1;
       overflow-y: auto;
@@ -1254,9 +1449,36 @@
       margin-bottom: 2px;
     }
 
+    .cart-item-price-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
     .cart-item-unit-price {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cart-item-original-price {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+    }
+
+    .cart-item-discount-pill {
+      font-size: 0.70rem;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald-border);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
     }
 
     .cart-item-actions {
@@ -1316,7 +1538,43 @@
       background: var(--bg-surface);
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+    }
+
+    /* Price Anchoring & Savings Summary Banner */
+    .cart-savings-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background: var(--accent-emerald-soft);
+      border: 1px solid var(--accent-emerald-border);
+      color: var(--accent-emerald);
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      transition: all var(--transition-snappy);
+    }
+
+    .cart-savings-banner strong {
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .regular-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--text-tertiary);
+    }
+
+    .summary-original-val {
+      text-decoration: line-through;
+      color: var(--text-tertiary);
+      font-weight: 500;
     }
 
     .drawer-summary-row {
@@ -1873,11 +2131,41 @@
       </button>
     </div>
 
+    <!-- Fixed Reward Progress Container (Emil Kowalski micro-interaction) -->
+    <div class="cart-reward-container" id="cartRewardContainer">
+      <div class="reward-status-row">
+        <div class="reward-icon-wrap" id="rewardIconWrap" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"/>
+            <rect x="2" y="7" width="20" height="5"/>
+            <line x1="12" y1="22" x2="12" y2="7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+          </svg>
+        </div>
+        <span class="reward-status-text" id="rewardStatusText">
+          Agrega <strong class="num-tabular">Gs. 100.000</strong> más para desbloquear una Clave Steam Sorpresa GRATIS
+        </span>
+      </div>
+      <div class="reward-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100000" aria-valuenow="0" id="rewardProgressBarTrack" aria-label="Progreso para desbloquear Clave Steam Sorpresa">
+        <div class="reward-progress-fill" id="rewardProgressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
     <div class="drawer-content" id="cartItemsContainer">
       <!-- Populated via JS -->
     </div>
 
     <div class="drawer-footer" id="cartFooter">
+      <div id="cartSavingsBanner" class="cart-savings-banner" style="display: none;">
+        <!-- Populated via JS -->
+      </div>
+
+      <div class="drawer-summary-row regular-price-row" id="cartRegularPriceRow" style="display: none;">
+        <span class="summary-label">Subtotal regular:</span>
+        <span class="summary-original-val num-tabular" id="cartOriginalVal">Gs. 0</span>
+      </div>
+
       <div class="drawer-summary-row">
         <span class="summary-label">Total a pagar:</span>
         <span class="summary-total-val num-tabular" id="cartTotalVal">Gs. 0</span>
@@ -1979,6 +2267,9 @@
         price: 29500,
         originalPrice: 98000,
         discountPercentage: '-70%',
+        rating: '4.9',
+        soldCount: '+85 vendidos',
+        stockLeft: 3,
         image: 'imagenes/167050239633864900_mortal-kombat-11.avif',
         badge: 'Steam',
         badgeType: 'badge-steam',
@@ -1994,6 +2285,9 @@
         price: 35000,
         originalPrice: 115000,
         discountPercentage: '-70%',
+        rating: '4.9',
+        soldCount: '+60 vendidos',
+        stockLeft: 4,
         image: 'imagenes/167057641916109200_asseto-corsa.avif',
         badge: 'Steam',
         badgeType: 'badge-steam',
@@ -2009,6 +2303,9 @@
         price: 38000,
         originalPrice: 125000,
         discountPercentage: '-70%',
+        rating: '4.8',
+        soldCount: '+35 vendidos',
+        stockLeft: 5,
         image: 'imagenes/da3dd544-9d29-4424-86b8-ba89d401a913_gemini-generated-image-d80v85d80v85d80v.avif',
         badge: 'Steam',
         badgeType: 'badge-steam',
@@ -2024,6 +2321,9 @@
         price: 65000,
         originalPrice: 110000,
         discountPercentage: '-41%',
+        rating: '4.9',
+        soldCount: '+90 vendidos',
+        stockLeft: 2,
         image: 'imagenes/2400d52b-0c8b-4fbc-bf9d-35432bfdf0e7_56122.avif',
         badge: 'Global',
         badgeType: 'badge-green',
@@ -2039,6 +2339,9 @@
         price: 15000,
         originalPrice: 22000,
         discountPercentage: '-32%',
+        rating: '4.9',
+        soldCount: '+75 vendidos',
+        stockLeft: 6,
         image: 'imagenes/6b3b55c7-64e3-46db-83db-0a1584686cd1_roblox-global-100robux-40449.avif',
         badge: 'Global',
         badgeType: 'badge-green',
@@ -2054,6 +2357,9 @@
         price: 28000,
         originalPrice: 40000,
         discountPercentage: '-30%',
+        rating: '4.8',
+        soldCount: '+50 vendidos',
+        stockLeft: 4,
         image: 'imagenes/020715b0-0148-411f-be19-127204f51095_40466.avif',
         badge: 'Global',
         badgeType: 'badge-green',
@@ -2069,6 +2375,9 @@
         price: 115000,
         originalPrice: 165000,
         discountPercentage: '-30%',
+        rating: '5.0',
+        soldCount: '+100 vendidos',
+        stockLeft: 3,
         image: 'imagenes/2f44ea5b-560e-4001-ae43-dd9019932032_roblox-globalglobal-1000-robux-82802.avif',
         badge: 'Más Vendido',
         badgeType: 'badge-green',
@@ -2084,6 +2393,9 @@
         price: 165000,
         originalPrice: 235000,
         discountPercentage: '-30%',
+        rating: '4.9',
+        soldCount: '+65 vendidos',
+        stockLeft: 2,
         image: 'imagenes/3a410178-38b2-4524-bfec-6b88353d853d_fortnite--gift-card-global-2800-v-buckspng.avif',
         badge: 'Global',
         badgeType: 'badge-green',
@@ -2099,6 +2411,9 @@
         price: 32000,
         originalPrice: 65000,
         discountPercentage: '-51%',
+        rating: '4.8',
+        soldCount: '+45 vendidos',
+        stockLeft: 5,
         image: 'imagenes/733ff7c6-55ef-4399-be96-1b50b8d92f9f_1-month-trial-subscriptionpng.avif',
         badge: 'Trial',
         badgeType: 'badge-purple',
@@ -2114,6 +2429,9 @@
         price: 75000,
         originalPrice: 170000,
         discountPercentage: '-56%',
+        rating: '4.9',
+        soldCount: '+55 vendidos',
+        stockLeft: 3,
         image: 'imagenes/c2edf3ea-09f9-4191-b13c-cb8db5a0d4fb_3-months-trial-subscriptionpng.avif',
         badge: 'Trial',
         badgeType: 'badge-purple',
@@ -2130,6 +2448,9 @@
         price: 65000,
         originalPrice: 150000,
         discountPercentage: '-57%',
+        rating: '4.9',
+        soldCount: '+70 vendidos',
+        stockLeft: 4,
         image: 'imagenes/473d7577-91b4-4313-a89b-8f3183c1fd0f_chatgpt-image-sep-7--2026--03-57-02-pm.avif',
         badge: 'Trial',
         badgeType: 'badge-purple',
@@ -2146,6 +2467,9 @@
         price: 195000,
         originalPrice: 490000,
         discountPercentage: '-60%',
+        rating: '5.0',
+        soldCount: '+40 vendidos',
+        stockLeft: 2,
         image: 'imagenes/72c18e21-bf7b-4792-8414-5e7cf52a7be8_gemini-trial-1.webp',
         badge: 'Trial',
         badgeType: 'badge-purple',
@@ -2162,6 +2486,9 @@
         price: 95000,
         originalPrice: 210000,
         discountPercentage: '-55%',
+        rating: '4.9',
+        soldCount: '+95 vendidos',
+        stockLeft: 3,
         image: 'imagenes/5c3fde1f-637c-4c7a-84bd-248946535457_chatgpt-image-aug-4--2026--12-55-55-pm.avif',
         badge: 'Más Vendido',
         badgeType: 'badge-green',
@@ -2177,6 +2504,9 @@
         price: 35000,
         originalPrice: 80000,
         discountPercentage: '-56%',
+        rating: '5.0',
+        soldCount: '+100 vendidos',
+        stockLeft: 2,
         image: 'imagenes/4dbef178-4afa-4657-b688-afa0bfcb2827_duolingo-super.avif',
         badge: 'Más Vendido',
         badgeType: 'badge-green',
@@ -2192,6 +2522,9 @@
         price: 28000,
         originalPrice: 55000,
         discountPercentage: '-49%',
+        rating: '4.8',
+        soldCount: '+30 vendidos',
+        stockLeft: 7,
         image: 'imagenes/b1280054198e407b85d00c88.avif',
         badge: '1 Mes',
         badgeType: 'badge-blue',
@@ -2241,6 +2574,9 @@
       badge.classList.add('badge-pop');
     }
 
+    // Free Reward Threshold constant for Emil Kowalski progress bar
+    const FREE_REWARD_THRESHOLD = 100000;
+
     // Add to Cart
     function addToCart(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
@@ -2250,11 +2586,19 @@
       const existingIndex = cart.findIndex(item => item.id === productId);
       if (existingIndex > -1) {
         cart[existingIndex].quantity += 1;
+        if (cart[existingIndex].originalPrice === undefined && product.originalPrice) {
+          cart[existingIndex].originalPrice = product.originalPrice;
+        }
+        if (cart[existingIndex].discountPercentage === undefined && product.discountPercentage) {
+          cart[existingIndex].discountPercentage = product.discountPercentage;
+        }
       } else {
         cart.push({
           id: product.id,
           name: productName,
           price: product.price,
+          originalPrice: product.originalPrice || product.price,
+          discountPercentage: product.discountPercentage || '',
           quantity: 1
         });
       }
@@ -2290,12 +2634,53 @@
       const itemsContainer = document.getElementById('cartItemsContainer');
       const totalValElem = document.getElementById('cartTotalVal');
       const checkoutBtn = document.getElementById('checkoutWhatsappBtn');
+      const savingsBanner = document.getElementById('cartSavingsBanner');
+      const regularPriceRow = document.getElementById('cartRegularPriceRow');
+      const originalValElem = document.getElementById('cartOriginalVal');
+      const rewardFill = document.getElementById('rewardProgressFill');
+      const rewardText = document.getElementById('rewardStatusText');
+      const rewardContainer = document.getElementById('cartRewardContainer');
+      const rewardTrack = document.getElementById('rewardProgressBarTrack');
+
+      // Fallback for legacy localStorage items lacking originalPrice or discountPercentage
+      cart.forEach(item => {
+        if (item.originalPrice === undefined || item.discountPercentage === undefined) {
+          const p = PRODUCTS.find(prod => prod.id === item.id);
+          if (p) {
+            if (item.originalPrice === undefined) item.originalPrice = p.originalPrice || item.price;
+            if (item.discountPercentage === undefined) item.discountPercentage = p.discountPercentage || '';
+          } else {
+            if (item.originalPrice === undefined) item.originalPrice = item.price;
+            if (item.discountPercentage === undefined) item.discountPercentage = '';
+          }
+        }
+      });
 
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const totalOriginal = cart.reduce((sum, item) => sum + ((item.originalPrice || item.price) * item.quantity), 0);
+      const totalSavings = Math.max(0, totalOriginal - totalPrice);
 
       badge.textContent = totalItems;
       totalValElem.textContent = formatGs(totalPrice);
+
+      // Reward Progress Bar update without destroying DOM (Emil Kowalski continuous transition)
+      if (rewardFill && rewardText && rewardContainer) {
+        const rewardProgress = Math.min(100, Math.round((totalPrice / FREE_REWARD_THRESHOLD) * 100));
+        rewardFill.style.width = `${rewardProgress}%`;
+        if (rewardTrack) {
+          rewardTrack.setAttribute('aria-valuenow', totalPrice);
+        }
+
+        if (totalPrice >= FREE_REWARD_THRESHOLD) {
+          rewardContainer.classList.add('is-unlocked');
+          rewardText.innerHTML = `¡Desbloqueaste tu <strong>Clave Steam Sorpresa GRATIS</strong>!`;
+        } else {
+          rewardContainer.classList.remove('is-unlocked');
+          const remaining = FREE_REWARD_THRESHOLD - totalPrice;
+          rewardText.innerHTML = `Agrega <strong class="num-tabular">${formatGs(remaining)}</strong> más para desbloquear una Clave Steam Sorpresa GRATIS`;
+        }
+      }
 
       if (cart.length === 0) {
         itemsContainer.innerHTML = `
@@ -2312,16 +2697,49 @@
         checkoutBtn.disabled = true;
         checkoutBtn.style.opacity = '0.5';
         checkoutBtn.style.pointerEvents = 'none';
+
+        if (savingsBanner) savingsBanner.style.display = 'none';
+        if (regularPriceRow) regularPriceRow.style.display = 'none';
       } else {
         checkoutBtn.disabled = false;
         checkoutBtn.style.opacity = '1';
         checkoutBtn.style.pointerEvents = 'auto';
 
-        itemsContainer.innerHTML = cart.map(item => `
+        // Savings Banner & Subtotal Regular display in #cartFooter
+        if (savingsBanner && regularPriceRow && originalValElem) {
+          if (totalSavings > 0) {
+            savingsBanner.style.display = 'flex';
+            savingsBanner.innerHTML = `
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--accent-emerald); flex-shrink: 0;">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+              <span>Estás ahorrando <strong class="num-tabular">${formatGs(totalSavings)}</strong> en este pedido</span>
+            `;
+            regularPriceRow.style.display = 'flex';
+            originalValElem.textContent = formatGs(totalOriginal);
+          } else {
+            savingsBanner.style.display = 'none';
+            regularPriceRow.style.display = 'none';
+          }
+        }
+
+        itemsContainer.innerHTML = cart.map(item => {
+          const lineSavings = (item.originalPrice && item.originalPrice > item.price)
+            ? (item.originalPrice - item.price) * item.quantity
+            : 0;
+
+          return `
           <div class="cart-item-row" data-id="${item.id}">
             <div class="cart-item-details">
               <div class="cart-item-name">${item.name}</div>
-              <div class="cart-item-unit-price">${formatGs(item.price)} cada uno</div>
+              <div class="cart-item-price-line">
+                <span class="cart-item-unit-price num-tabular">${formatGs(item.price)}</span>
+                ${item.originalPrice && item.originalPrice > item.price ? `
+                  <span class="cart-item-original-price num-tabular">${formatGs(item.originalPrice)}</span>
+                  <span class="cart-item-discount-pill num-tabular">Ahorro ${formatGs(lineSavings)}</span>
+                ` : ''}
+              </div>
             </div>
             <div class="cart-item-actions">
               <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)" aria-label="Disminuir cantidad">-</button>
@@ -2335,7 +2753,8 @@
               </button>
             </div>
           </div>
-        `).join('');
+        `;
+        }).join('');
       }
     }
 
@@ -2356,13 +2775,26 @@
       if (cart.length === 0) return;
 
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      let itemsListText = '';
+      const totalOriginal = cart.reduce((sum, item) => {
+        const orig = item.originalPrice !== undefined ? item.originalPrice : (PRODUCTS.find(p => p.id === item.id)?.originalPrice || item.price);
+        return sum + (orig * item.quantity);
+      }, 0);
+      const totalSavings = Math.max(0, totalOriginal - totalPrice);
 
+      let itemsListText = '';
       cart.forEach(item => {
         itemsListText += `• ${item.quantity}x *${item.name}* - ${formatGs(item.price * item.quantity)}\n`;
       });
 
-      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes? ¡Muchas gracias!`;
+      let bonusText = '';
+      if (totalSavings > 0) {
+        bonusText += `\n*Ahorro total aplicado: ${formatGs(totalSavings)}*`;
+      }
+      if (totalPrice >= FREE_REWARD_THRESHOLD) {
+        bonusText += `\n🎁 *Beneficio desbloqueado: Clave Steam Sorpresa Gratis*`;
+      }
+
+      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}${bonusText}\n\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes? ¡Muchas gracias!`;
       const encodedMsg = encodeURIComponent(message);
       window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`, '_blank');
     }
@@ -2527,6 +2959,8 @@
         else if (item.category === 'streaming') categoryDisplay = 'Streaming';
         else if (item.category === 'gadgets') categoryDisplay = 'Gadgets & Tech';
 
+        const stockPercent = Math.min(100, Math.max(15, Math.round((item.stockLeft / 10) * 100)));
+
         return `
         <article class="product-card relative overflow-hidden" data-id="${item.id}">
           <div>
@@ -2546,6 +2980,17 @@
             <div class="card-body">
               <div class="product-category-tag">${categoryDisplay}</div>
               <h3 class="product-name">${title}</h3>
+
+              <!-- Social Proof Row (Impeccable & Emil Kowalski) -->
+              <div class="card-social-proof">
+                <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span class="rating-val num-tabular">${item.rating}</span>
+                <span class="social-proof-dot" aria-hidden="true">•</span>
+                <span class="sold-count-val num-tabular">${item.soldCount}</span>
+              </div>
+
               <p class="product-desc">${desc}</p>
               
               <ul class="product-features-list">
@@ -2560,6 +3005,17 @@
           </div>
 
           <div class="card-footer-box">
+            <!-- Scarcity Indicator Row & Micro-bar (Refined AliExpress-style trigger) -->
+            <div class="scarcity-indicator">
+              <div class="scarcity-row">
+                <span class="scarcity-pulse-dot" aria-hidden="true"></span>
+                <span class="scarcity-text">Últimas <strong class="num-tabular">${item.stockLeft}</strong> licencias en oferta</span>
+              </div>
+              <div class="scarcity-track" role="progressbar" aria-valuenow="${item.stockLeft}" aria-valuemin="0" aria-valuemax="10" aria-label="Stock restante">
+                <div class="scarcity-fill" style="width: ${stockPercent}%;"></div>
+              </div>
+            </div>
+
             <div class="price-box-aliexpress">
               <div class="price-main-row">
                 <span class="product-price-val num-tabular">${formatGs(item.price)}</span>
