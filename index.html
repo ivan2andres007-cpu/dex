@@ -735,6 +735,21 @@
     }
 
     /* Product Notice Box (Apple-grade high-trust callout) */
+    
+    .product-notice-box.notice-blue {
+      background: rgba(102, 192, 244, 0.08);
+      border-color: rgba(102, 192, 244, 0.28);
+    }
+    .product-notice-box.notice-blue .notice-header {
+      color: #66C0F4;
+    }
+    .product-notice-box.notice-blue .notice-header svg {
+      color: #66C0F4;
+    }
+    .product-notice-box.notice-blue .notice-list li::before {
+      color: #66C0F4;
+    }
+
     .product-notice-box {
       margin-top: 14px;
       padding: 14px 16px;
@@ -2582,6 +2597,8 @@
         image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.png',
         badge: '18 Meses Trial',
         badgeType: 'badge-purple',
+        extraBadge: '5 TB Cloud',
+        extraBadgeType: 'badge-green',
         shortDesc: 'Suscripción oficial de 18 meses con 5 TB de almacenamiento en la nube, acceso ilimitado a Gemini Pro e IA en Google Workspace.',
         description: 'Suscripción premium oficial de 18 meses con 5 TB (5.000 GB) de almacenamiento en la nube y acceso VIP a los modelos de inteligencia artificial más potentes de Google.\n\nDiseñado para creadores, profesionales e investigadores que buscan máxima velocidad, análisis profundo y generación de imágenes o código de nivel profesional.',
         desc: 'Suscripción premium oficial de 18 meses con 5 TB (5.000 GB) de almacenamiento en la nube y acceso VIP a los modelos de inteligencia artificial más potentes de Google.\n\nDiseñado para creadores, profesionales e investigadores que buscan máxima velocidad, análisis profundo y generación de imágenes o código de nivel profesional.',
@@ -2594,11 +2611,49 @@
         ],
         notice: {
           title: 'Aviso Importante',
+          type: '',
           items: [
             'Solo para cuentas de Google nuevas (sin suscripción previa a Gemini).',
             'Se requiere asociar un método de pago al activar.',
             'Canjear dentro de las 48 horas posteriores a la compra.',
             'Válido únicamente para cuentas personales (no empresariales).'
+          ]
+        }
+      },
+      {
+        id: 'assetto-corsa-pc-steam',
+        title: 'Assetto Corsa (Global) (PC) - Steam - Digital Key',
+        name: 'Assetto Corsa (Global) (PC) - Steam - Digital Key',
+        category: 'gaming',
+        price: 38000,
+        originalPrice: 115000,
+        discountPercentage: '-67%',
+        rating: '4.9',
+        soldCount: '+60 vendidos',
+        stockLeft: 4,
+        image: 'imagenes/juegos/Assetto Corsa (Global) (PC) - Steam - Digital Key.png',
+        badge: 'Steam Key',
+        badgeType: 'badge-steam',
+        extraBadge: 'Global PC',
+        extraBadgeType: 'badge-blue',
+        shortDesc: 'El simulador de carreras definitivo para PC en Steam. Conducción hiperrealista, circuitos escaneados por láser y soporte activo para mods.',
+        description: 'Assetto Corsa es el simulador de carreras definitivo para PC en Steam. Diseñado con física de conducción avanzada, circuitos oficiales escaneados por tecnología láser, multijugador online competitivo y la mayor comunidad de mods de autos y pistas del mundo.',
+        desc: 'Assetto Corsa es el simulador de carreras definitivo para PC en Steam. Diseñado con física de conducción avanzada, circuitos oficiales escaneados por tecnología láser, multijugador online competitivo y la mayor comunidad de mods de autos y pistas del mundo.',
+        features: [
+          'Clave digital oficial 100% original para PC canjeable en Steam',
+          'Activación Global sin restricciones geográficas',
+          'Física hiperrealista y circuitos oficiales escaneados por láser',
+          'Compatibilidad total con mods de vehículos, circuitos y gráficos',
+          'Multijugador online activo y soporte para volantes con Force Feedback'
+        ],
+        notice: {
+          title: 'Cómo activar una clave de juego en Steam',
+          type: 'notice-blue',
+          items: [
+            '1. Inicia el software del cliente de Steam e inicia sesión en tu cuenta de Steam.',
+            '2. Haz clic en la opción del menú Juegos (Games) en la parte superior del cliente de Steam.',
+            '3. Elige Activar un producto en Steam (Activate a Product on Steam).',
+            '4. Sigue las instrucciones en pantalla para completar el proceso.'
           ]
         }
       }
@@ -2894,6 +2949,7 @@
       switch (item.id) {
         case 'mortal-kombat-11-steam':
         case 'assetto-corsa-steam':
+        case 'assetto-corsa-pc-steam':
         case 'wrc-10-steam':
           // Steam Official Icon
           return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Steam">
@@ -3049,7 +3105,7 @@
         const badgeType = item.badgeType || (item.badge === 'Más Vendido' ? 'badge-green' : '');
         let categoryDisplay = item.category;
         if (item.category === 'suscripcion' || item.category === 'suscripciones') categoryDisplay = 'Suscripción Digital • IA';
-        else if (item.category === 'gaming') categoryDisplay = 'Gaming & Consolas';
+        else if (item.category === 'gaming') categoryDisplay = 'Gaming & Steam PC';
         else if (item.category === 'software') categoryDisplay = item.isAI ? 'Inteligencia Artificial' : 'Licencias & Software';
         else if (item.category === 'streaming') categoryDisplay = 'Streaming';
         else if (item.category === 'gadgets') categoryDisplay = 'Gadgets & Tech';
@@ -3065,7 +3121,7 @@
               </div>
               <div style="display: flex; gap: 6px; align-items: center;">
                 <span class="card-badge ${badgeType}">${item.badge}</span>
-                <span class="card-badge badge-green" style="font-weight: 700;">5 TB Cloud</span>
+                ${item.extraBadge ? `<span class="card-badge ${item.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${item.extraBadge}</span>` : ''}
               </div>
             </div>
 
@@ -3244,7 +3300,7 @@
       const badgeType = product.badgeType || 'badge-purple';
       const original = product.originalPrice || product.price;
       const savings = original > product.price ? original - product.price : 0;
-      let categoryDisplay = product.category === 'suscripcion' ? 'Suscripción Digital • IA' : (product.category || '');
+      let categoryDisplay = product.category === 'suscripcion' ? 'Suscripción Digital • IA' : (product.category === 'gaming' ? 'Gaming & Steam PC' : (product.category || ''));
 
       modal.innerHTML = `
         <div class="modal-header">
@@ -3256,7 +3312,7 @@
               <div class="product-category-tag" style="margin-bottom: 2px;">${categoryDisplay}</div>
               <div style="display: flex; gap: 6px; align-items: center; margin-top: 2px;">
                 <span class="card-badge ${badgeType}">${product.badge}</span>
-                <span class="card-badge badge-green" style="font-weight: 700;">5 TB Cloud</span>
+                ${product.extraBadge ? `<span class="card-badge ${product.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${product.extraBadge}</span>` : ''}
               </div>
             </div>
           </div>
@@ -3311,13 +3367,21 @@
           ` : ''}
 
           ${product.notice ? `
-            <div class="product-notice-box" role="note" aria-label="${product.notice.title || 'Aviso Importante'}">
+            <div class="product-notice-box ${product.notice.type || ''}" role="note" aria-label="${product.notice.title || 'Aviso Importante'}">
               <div class="notice-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                  <line x1="12" y1="9" x2="12" y2="13"/>
-                  <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
+                ${product.notice.type === 'notice-blue' ? `
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                  </svg>
+                ` : `
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                `}
                 <span>${product.notice.title || 'Aviso Importante'}</span>
               </div>
               <ul class="notice-list">
