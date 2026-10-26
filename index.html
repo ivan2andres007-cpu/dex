@@ -2,10 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
   <title>Punto Prisma | Suscripciones Digitales, Licencias y Desarrollo Web en Paraguay</title>
   <meta name="description" content="Punto Prisma: Marketplace digital minimalista en Paraguay. Suscripciones de streaming, licencias de software, gaming y desarrollo web a medida en Guaraníes (Gs.).">
   <meta name="theme-color" content="#090a0d">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Punto Prisma">
+  <meta name="format-detection" content="telephone=no">
 
   <style>
     /* -------------------------------------------------------------
@@ -66,10 +71,16 @@
       /* Snappy Apple Springs & Transitions */
       --transition-snappy: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
       --transition-smooth: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Safe Area Tokens (Apple Notch / Dynamic Island / Navigation Bars) */
+      --sat: env(safe-area-inset-top, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
     }
 
     /* -------------------------------------------------------------
-       BROWSER SURFACES & NORMALIZATION
+       BROWSER SURFACES & MOBILE-NATIVE NORMALIZATION
        ------------------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -81,6 +92,8 @@
       scroll-behavior: smooth;
       color-scheme: dark;
       font-size: 16px;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
@@ -92,6 +105,9 @@
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
       min-height: 100vh;
+      min-height: 100dvh;
+      padding-left: var(--sal);
+      padding-right: var(--sar);
     }
 
     body.modal-open {
@@ -140,6 +156,28 @@
       cursor: pointer;
     }
 
+    button, a, [role="button"], input, select {
+      touch-action: manipulation;
+    }
+
+    button, [role="button"], .filter-pill, .qty-btn, .nav-link, .mobile-nav-link {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    /* iOS Auto-Zoom Prevention: Inputs < 16px force viewport zoom in Safari */
+    @media (max-width: 768px), (pointer: coarse) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
+
+    input[type="search"]::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      display: none;
+    }
+
     .num-tabular {
       font-variant-numeric: tabular-nums;
     }
@@ -165,10 +203,10 @@
        ------------------------------------------------------------- */
     .site-header {
       position: sticky;
-      top: 16px;
+      top: calc(8px + var(--sat));
       z-index: 100;
       width: 100%;
-      padding: 0 20px;
+      padding: 0 16px;
       margin-bottom: 24px;
     }
 
@@ -1438,7 +1476,9 @@
       width: 100%;
       max-width: 440px;
       height: 100vh;
+      height: 100dvh;
       max-height: 100vh;
+      max-height: 100dvh;
       border: none;
       background: var(--bg-surface);
       border-left: 1px solid var(--border-subtle);
@@ -1508,7 +1548,7 @@
     }
 
     .drawer-header {
-      padding: 20px 24px;
+      padding: calc(18px + var(--sat)) 24px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1800,7 +1840,7 @@
     }
 
     .drawer-footer {
-      padding: 20px 24px 28px;
+      padding: 20px 24px calc(24px + var(--sab));
       border-top: 1px solid var(--border-subtle);
       background: var(--bg-surface);
       display: flex;
@@ -1902,8 +1942,8 @@
       inset: 0;
       margin: auto;
       width: min(92vw, 620px);
-      height: min(88vh, 800px);
-      max-height: 88vh;
+      height: min(88vh, 88dvh, 800px);
+      max-height: min(88vh, 88dvh);
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-xl);
       background: var(--bg-surface);
@@ -1972,6 +2012,28 @@
       background-color: rgba(0, 0, 0, 0) !important;
       backdrop-filter: blur(0px) !important;
       -webkit-backdrop-filter: blur(0px) !important;
+    }
+
+    /* Apple Mobile Bottom Sheet Grab Handle */
+    .sheet-grab-bar {
+      display: none;
+      width: 100%;
+      padding: 10px 0 2px;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg-surface-elevated);
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .sheet-grab-handle {
+      width: 42px;
+      height: 5px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.24);
+      pointer-events: none;
     }
 
     .modal-header {
@@ -2057,7 +2119,7 @@
     }
 
     .modal-footer {
-      padding: 16px 24px;
+      padding: 16px 24px calc(16px + var(--sab));
       border-top: 1px solid var(--border-subtle);
       background: var(--bg-surface-elevated);
       display: flex;
@@ -2074,7 +2136,7 @@
        ------------------------------------------------------------- */
     .toast-container {
       position: fixed;
-      bottom: 24px;
+      bottom: calc(20px + var(--sab));
       left: 50%;
       transform: translateX(-50%);
       z-index: 2000;
@@ -2082,6 +2144,8 @@
       flex-direction: column;
       gap: 8px;
       pointer-events: none;
+      width: max-content;
+      max-width: calc(100vw - 32px);
     }
 
     .toast-item {
@@ -2113,7 +2177,7 @@
        ------------------------------------------------------------- */
     .site-footer {
       border-top: 1px solid var(--border-subtle);
-      padding: 64px 0 48px;
+      padding: 64px 0 calc(48px + var(--sab));
       background: var(--bg-base);
     }
 
@@ -2150,24 +2214,61 @@
       color: var(--text-secondary);
     }
 
-    .footer-links-list a:hover {
-      color: var(--text-primary);
-    }
-
-    .footer-bottom-row {
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.82rem;
-      color: var(--text-tertiary);
+    /* -------------------------------------------------------------
+       POINTER & DESKTOP HOVER STATES
+       Gated strictly behind (hover: hover) and (pointer: fine)
+       to completely prevent sticky hover states on mobile tap.
+       ------------------------------------------------------------- */
+    @media (hover: hover) and (pointer: fine) {
+      .footer-links-list a:hover {
+        color: var(--text-primary);
+      }
     }
 
     /* -------------------------------------------------------------
-       RESPONSIVE ADAPTATIONS
+       TACTILE TOUCH-PRESS FEEDBACK (Apple iOS Feel)
+       Instant, physical micro-scaling on finger tap
+       ------------------------------------------------------------- */
+    @media (hover: none), (pointer: coarse) {
+      .btn-primary:active,
+      .btn-secondary:active,
+      .btn-whatsapp-hero:active,
+      .btn-add-cart:active,
+      .btn-direct-buy:active,
+      .btn-agency-quote:active,
+      .btn-checkout-whatsapp:active,
+      .cart-trigger-btn:active,
+      .filter-pill:active,
+      .qty-btn:active {
+        transform: scale(0.96) !important;
+        transition: transform 90ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      /* Clean reset of any synthesized sticky hover states */
+      .product-card:hover {
+        transform: none !important;
+        border-color: var(--border-subtle) !important;
+        box-shadow: none !important;
+      }
+      .product-card:hover::after {
+        animation: none !important;
+      }
+      .product-card:hover .card-preview-art {
+        transform: none !important;
+        filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.55)) !important;
+      }
+      .card-media-preview:hover .media-tap-hint {
+        transform: none !important;
+        background: rgba(9, 10, 13, 0.88) !important;
+        color: var(--text-secondary) !important;
+      }
+      .btn-more-details:hover svg {
+        transform: none !important;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE ADAPTATIONS & MOBILE-FIRST POLISH
        ------------------------------------------------------------- */
     @media (max-width: 860px) {
       .nav-menu {
@@ -2178,59 +2279,256 @@
       }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 36px;
       }
       .agency-section {
-        padding: 40px 20px;
+        padding: 40px 24px;
       }
     }
 
-    @media (max-width: 640px) {
-      dialog#productModal {
-        width: 95vw;
-        height: 90vh;
-        max-height: 90vh;
-        border-radius: var(--radius-lg);
+    @media (max-width: 768px) {
+      .catalog-header-bar {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        gap: 16px;
       }
-      .modal-header {
-        padding: 14px 18px;
-      }
-      .modal-body {
-        padding: 16px 18px;
+      .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
         gap: 14px;
       }
-      .modal-footer {
-        padding: 14px 18px;
+      .catalog-search-wrap {
+        max-width: 100%;
       }
-      .modal-media-frame {
-        height: 140px;
-        max-height: 140px;
+      .catalog-search-input {
+        height: 46px;
+        font-size: 16px !important;
       }
-      .modal-media-art {
-        max-height: 120px;
+      .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .filter-pills-row {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        padding-bottom: 6px;
+      }
+      .filter-pill {
+        scroll-snap-align: start;
+        height: 42px;
+        padding: 0 16px;
+        font-size: 0.90rem;
       }
       .catalog-sort-wrap {
         width: 100%;
         margin-left: 0;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
       }
       .catalog-sort-select {
         flex: 1;
+        height: 42px;
+        font-size: 16px !important;
+      }
+      .agency-packages-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .agency-card {
+        padding: 28px 22px;
+      }
+      .trust-strip {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 64px;
       }
     }
 
-    @media (max-width: 560px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
       }
-      .card-actions-row {
-        grid-template-columns: 1fr;
+      .site-header {
+        padding: 0 12px;
+        top: calc(6px + var(--sat));
+      }
+      .nav-pill {
+        height: 56px;
+        padding: 0 14px;
+      }
+
+      /* Hero Mobile Typography & Finger-Friendly CTAs */
+      .hero-section {
+        padding: 52px 0 68px;
+      }
+      .hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.75rem);
+        line-height: 1.14;
+        margin-bottom: 16px;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.55;
+        margin-bottom: 28px;
       }
       .hero-cta-group {
         flex-direction: column;
         width: 100%;
+        gap: 12px;
+        margin-bottom: 28px;
       }
       .btn-primary, .btn-secondary, .btn-whatsapp-hero {
         width: 100%;
+        height: 50px;
+        font-size: 0.96rem;
+      }
+      .hero-ticker-pill {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+        padding: 8px 14px;
+        font-size: 0.80rem;
+      }
+
+      /* Product Cards on Mobile (Single Column Touch Layout) */
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 64px;
+      }
+      .product-card {
+        padding: 20px 18px;
+      }
+      .card-media-preview {
+        height: 150px;
+      }
+      .card-preview-art {
+        max-height: 130px;
+      }
+      .card-actions-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .btn-add-cart, .btn-direct-buy {
+        height: 44px;
+        font-size: 0.88rem;
+      }
+
+      /* Cart Slide-Over Drawer: Full screen on small mobile screens */
+      dialog#cartDrawer {
+        max-width: 100%;
+        border-left: none;
+      }
+      .drawer-header {
+        padding: calc(16px + var(--sat)) 20px 16px;
+      }
+      .drawer-content {
+        padding: 16px 18px;
+      }
+      .drawer-footer {
+        padding: 16px 18px calc(24px + var(--sab));
+      }
+      .btn-checkout-whatsapp {
+        height: 52px;
+        font-size: 1rem;
+      }
+
+      /* Apple Bottom Sheet Modal on Mobile (Docked to bottom edge) */
+      dialog#productModal {
+        inset: auto 0 0 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: min(88dvh, 88vh) !important;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        border-top: 1px solid var(--border-medium) !important;
+        box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.75) !important;
+        transform: translateY(100%);
+        will-change: transform;
+      }
+
+      dialog#productModal[open] {
+        transform: translateY(0);
+      }
+
+      @starting-style {
+        dialog#productModal[open] {
+          transform: translateY(100%);
+          opacity: 1;
+        }
+      }
+
+      dialog#productModal.is-closing {
+        transform: translateY(100%) !important;
+        opacity: 0.95 !important;
+      }
+
+      .sheet-grab-bar {
+        display: flex;
+      }
+
+      .modal-header {
+        padding: 12px 18px 14px;
+      }
+      .modal-body {
+        padding: 14px 18px;
+        gap: 14px;
+      }
+      .modal-media-frame {
+        height: 130px;
+        max-height: 130px;
+      }
+      .modal-media-art {
+        max-height: 110px;
+      }
+      .modal-footer {
+        padding: 14px 18px calc(18px + var(--sab));
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        padding: 0 10px;
+      }
+      .brand-wrap {
+        gap: 8px;
+        font-size: 0.98rem;
+      }
+      .brand-prism-icon {
+        width: 22px;
+        height: 22px;
+      }
+      .cart-label {
+        display: none;
+      }
+      .cart-trigger-btn {
+        padding: 0 12px;
+        gap: 6px;
+        height: 38px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .card-actions-row {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -2246,14 +2544,20 @@
       }
       dialog#cartDrawer,
       dialog#cartDrawer[open],
-      dialog#cartDrawer.is-closing {
+      dialog#cartDrawer.is-closing,
+      dialog#productModal,
+      dialog#productModal[open],
+      dialog#productModal.is-closing {
         transform: none !important;
         opacity: 1 !important;
         transition: none !important;
       }
       dialog#cartDrawer::backdrop,
       dialog#cartDrawer[open]::backdrop,
-      dialog#cartDrawer.is-closing::backdrop {
+      dialog#cartDrawer.is-closing::backdrop,
+      dialog#productModal::backdrop,
+      dialog#productModal[open]::backdrop,
+      dialog#productModal.is-closing::backdrop {
         transition: none !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
@@ -3551,6 +3855,15 @@
 
     if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
+    // Outside click dismissal for mobile nav panel
+    document.addEventListener('click', (e) => {
+      if (!mobileNavPanel || !mobileNavPanel.classList.contains('open')) return;
+      const header = document.querySelector('.site-header');
+      if (header && !header.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
     // Product Details Modal Controller (Apple-grade panel)
     function openProductDetails(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
@@ -3570,6 +3883,9 @@
       let categoryDisplay = product.category === 'suscripcion' ? 'Suscripción Digital • IA' : (product.category === 'gaming' ? 'Gaming & Steam PC' : 'Licencias & Software');
 
       modal.innerHTML = `
+        <div class="sheet-grab-bar" id="sheetGrabBar" aria-hidden="true">
+          <div class="sheet-grab-handle"></div>
+        </div>
         <div class="modal-header">
           <div style="display: flex; align-items: center; gap: 10px;">
             <div class="card-icon-frame" style="width: 38px; height: 38px;" aria-hidden="true">
@@ -3706,6 +4022,7 @@
       document.body.classList.add('modal-open');
       modal.classList.remove('is-closing');
       modal.showModal();
+      setupSheetSwipeGesture(modal);
       const closeBtn = document.getElementById('modalCloseBtn');
       if (closeBtn) closeBtn.focus();
     }
@@ -3731,6 +4048,68 @@
           lastFocusedElement = null;
         }
       }, 260);
+    }
+
+    // Native Apple Bottom Sheet swipe-down-to-dismiss gesture on mobile
+    function setupSheetSwipeGesture(modal) {
+      if (!modal) return;
+      let startY = 0;
+      let currentY = 0;
+      let isDragging = false;
+      const grabBar = modal.querySelector('.sheet-grab-bar');
+      const header = modal.querySelector('.modal-header');
+
+      function onTouchStart(e) {
+        if (window.innerWidth > 640) return;
+        const touch = e.touches[0];
+        startY = touch.clientY;
+        currentY = startY;
+        isDragging = true;
+        modal.style.transition = 'none';
+      }
+
+      function onTouchMove(e) {
+        if (!isDragging || window.innerWidth > 640) return;
+        const touch = e.touches[0];
+        currentY = touch.clientY;
+        const deltaY = currentY - startY;
+        if (deltaY > 0) {
+          modal.style.transform = `translateY(${deltaY}px)`;
+        }
+      }
+
+      function onTouchEnd() {
+        if (!isDragging || window.innerWidth > 640) return;
+        isDragging = false;
+        const deltaY = currentY - startY;
+        if (deltaY > 60) {
+          modal.style.transition = 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)';
+          modal.style.transform = 'translateY(100%)';
+          setTimeout(() => {
+            modal.style.transform = '';
+            modal.style.transition = '';
+            closeProductDetails();
+          }, 200);
+        } else {
+          modal.style.transition = 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)';
+          modal.style.transform = 'translateY(0)';
+          setTimeout(() => {
+            modal.style.transform = '';
+            modal.style.transition = '';
+          }, 200);
+        }
+      }
+
+      if (grabBar) {
+        grabBar.addEventListener('touchstart', onTouchStart, { passive: true });
+        grabBar.addEventListener('touchmove', onTouchMove, { passive: true });
+        grabBar.addEventListener('touchend', onTouchEnd, { passive: true });
+      }
+      if (header) {
+        header.addEventListener('touchstart', onTouchStart, { passive: true });
+        header.addEventListener('touchmove', onTouchMove, { passive: true });
+        header.addEventListener('touchend', onTouchEnd, { passive: true });
+      }
     }
 
     const productModal = document.getElementById('productModal');
