@@ -2394,28 +2394,157 @@
         font-size: 0.80rem;
       }
 
-      /* Product Cards on Mobile (Single Column Touch Layout) */
+      /* Product Cards on Mobile (Compact 2-Column Grid / 2 por fila) */
       .products-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
         margin-bottom: 64px;
       }
       .product-card {
-        padding: 20px 18px;
+        padding: 12px 10px;
+        border-radius: var(--radius-md);
+      }
+      .card-top-row {
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+      .card-icon-frame {
+        width: 30px;
+        height: 30px;
+        border-radius: var(--radius-sm);
+      }
+      .card-icon-frame svg {
+        width: 16px;
+        height: 16px;
+      }
+      .card-badge {
+        font-size: 0.72rem;
+        padding: 2px 6px;
       }
       .card-media-preview {
-        height: 150px;
+        height: 110px;
+        margin-bottom: 8px;
+        border-radius: var(--radius-sm);
       }
       .card-preview-art {
-        max-height: 130px;
+        max-height: 92px;
+        padding: 4px;
       }
-      .card-actions-row {
-        grid-template-columns: 1fr 1fr;
+      .media-tap-hint {
+        display: none;
+      }
+      .card-body {
+        margin-bottom: 8px;
+      }
+      .product-category-tag {
+        font-size: 0.72rem;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .product-name {
+        font-size: 0.88rem;
+        line-height: 1.25;
+        margin-bottom: 4px;
+        min-height: 2.5em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .card-social-proof {
+        gap: 4px;
+        font-size: 0.72rem;
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+      }
+      .star-icon {
+        width: 12px;
+        height: 12px;
+      }
+      .rating-val {
+        font-size: 0.75rem;
+      }
+      .sold-count-val {
+        font-size: 0.72rem;
+      }
+      .delivery-status-tag,
+      .card-social-proof .social-proof-dot:last-of-type,
+      .product-desc,
+      .btn-more-details {
+        display: none;
+      }
+      .card-footer-box {
+        padding-top: 8px;
         gap: 8px;
       }
-      .btn-add-cart, .btn-direct-buy {
-        height: 44px;
-        font-size: 0.88rem;
+      .stock-indicator {
+        font-size: 0.72rem;
+      }
+      .stock-live-badge {
+        gap: 4px;
+      }
+      .stock-status-dot {
+        width: 5px;
+        height: 5px;
+      }
+      .stock-count-text {
+        font-size: 0.70rem;
+      }
+      .stock-progress-track {
+        height: 2.5px;
+      }
+      .price-box {
+        gap: 2px;
+      }
+      .price-main-row {
+        gap: 6px;
+      }
+      .product-price-val {
+        font-size: 1.02rem;
+      }
+      .discount-badge {
+        font-size: 0.70rem;
+        padding: 1px 5px;
+      }
+      .price-original-row {
+        gap: 4px;
+        font-size: 0.72rem;
+      }
+      .price-savings-label {
+        font-size: 0.70rem;
+      }
+      .card-actions-row {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .btn-direct-buy {
+        width: 100%;
+        height: 36px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 0 8px;
+        gap: 5px;
+        border-radius: var(--radius-pill);
+      }
+      .btn-direct-buy svg {
+        width: 13px;
+        height: 13px;
+      }
+      .btn-add-cart {
+        width: 100%;
+        height: 32px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        padding: 0 8px;
+        gap: 5px;
+        border-radius: var(--radius-pill);
+      }
+      .btn-add-cart svg {
+        width: 13px;
+        height: 13px;
       }
 
       /* Cart Slide-Over Drawer: Full screen on small mobile screens */
@@ -2496,8 +2625,34 @@
     }
 
     @media (max-width: 480px) {
-      .site-header {
+      .container {
         padding: 0 10px;
+      }
+      .products-grid {
+        gap: 8px;
+      }
+      .product-card {
+        padding: 10px 8px;
+      }
+      .card-media-preview {
+        height: 100px;
+      }
+      .card-preview-art {
+        max-height: 84px;
+      }
+      .product-price-val {
+        font-size: 0.96rem;
+      }
+      .btn-direct-buy {
+        height: 34px;
+        font-size: 0.78rem;
+      }
+      .btn-add-cart {
+        height: 30px;
+        font-size: 0.74rem;
+      }
+      .site-header {
+        padding: 0 8px;
       }
       .brand-wrap {
         gap: 8px;
@@ -2511,7 +2666,7 @@
         display: none;
       }
       .cart-trigger-btn {
-        padding: 0 12px;
+        padding: 0 10px;
         gap: 6px;
         height: 38px;
       }
@@ -2523,12 +2678,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .card-actions-row {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -3113,7 +3262,7 @@
         rating: '5.0',
         soldCount: '+48 vendidos',
         stockLeft: 3,
-        image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.png',
+        image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.jpg',
         badge: '18 Meses Trial',
         badgeType: 'badge-purple',
         extraBadge: '5 TB Cloud',
@@ -3149,7 +3298,7 @@
         rating: '4.9',
         soldCount: '+60 vendidos',
         stockLeft: 4,
-        image: 'imagenes/juegos/Assetto Corsa (Global) (PC) - Steam - Digital Key.png',
+        image: 'imagenes/juegos/Assetto Corsa (Global) (PC) - Steam - Digital Key.jpg',
         badge: 'Steam Key',
         badgeType: 'badge-steam',
         extraBadge: 'Global PC',
@@ -3185,7 +3334,7 @@
         rating: '4.8',
         soldCount: '+120 vendidos',
         stockLeft: 8,
-        image: 'imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.png',
+        image: 'imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.jpg',
         badge: 'Steam Grand',
         badgeType: 'badge-steam',
         extraBadge: 'Sorpresa PC',
@@ -3235,11 +3384,11 @@
       } catch (e) {
         cart = [];
       }
-      // Re-hydrate any missing metadata from active catalog
+      // Re-hydrate metadata & sync latest product image from active catalog
       cart.forEach(item => {
         const p = PRODUCTS.find(prod => prod.id === item.id);
         if (p) {
-          if (!item.image) item.image = p.image || '';
+          item.image = p.image || '';
           if (item.originalPrice === undefined) item.originalPrice = p.originalPrice;
           if (item.discountPercentage === undefined) item.discountPercentage = p.discountPercentage;
         }
@@ -3276,9 +3425,7 @@
 
       if (existingIndex > -1) {
         cart[existingIndex].quantity += qtyToAdd;
-        if (!cart[existingIndex].image && product.image) {
-          cart[existingIndex].image = product.image;
-        }
+        cart[existingIndex].image = product.image || cart[existingIndex].image || '';
       } else {
         cart.push({
           id: product.id,
