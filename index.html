@@ -57,9 +57,37 @@
       --accent-amber-soft: rgba(245, 158, 11, 0.12);
       --accent-amber-border: rgba(245, 158, 11, 0.28);
 
-      /* Typography Stacks */
+      /* Typography Stacks (Preserved Apple / San Francisco Stack) */
       --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --font-mono: "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+      /* Typographic Scale Tokens (Scaled against --p-scale) */
+      --p-scale: 1;
+      --text-display: clamp(2.3rem, 5.2vw, 4.4rem);
+      --text-headline: clamp(1.8rem, 3.2vw, 2.6rem);
+      --text-title-lg: calc(1.35rem * var(--p-scale));
+      --text-title: calc(1.18rem * var(--p-scale));
+      --text-title-sm: calc(1.05rem * var(--p-scale));
+      --text-body: calc(0.95rem * var(--p-scale));
+      --text-body-sm: calc(0.88rem * var(--p-scale));
+      --text-label: calc(0.78rem * var(--p-scale));
+
+      /* Optical Leading & Tracking */
+      --leading-display: 1.08;
+      --leading-headline: 1.15;
+      --leading-title: 1.30;
+      --leading-body: 1.55;
+      --leading-relaxed: 1.65;
+
+      --tracking-display: -0.038em;
+      --tracking-headline: -0.030em;
+      --tracking-title: -0.020em;
+      --tracking-normal: normal;
+      --tracking-label: 0.050em;
+
+      /* Measure & Rhythm Tokens (Optimal 45ch-75ch Reading Sweet Spot) */
+      --measure-prose: 68ch;
+      --measure-compact: 54ch;
 
       /* Elevation Shadows (Neutral Alpha Masks - Zero Chromatic Halos) */
       --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -106,7 +134,10 @@
       background-color: var(--bg-base);
       color: var(--text-primary);
       font-family: var(--font-stack);
-      line-height: 1.55;
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      letter-spacing: var(--tracking-normal);
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
@@ -114,6 +145,14 @@
       min-height: 100dvh;
       padding-left: var(--sal);
       padding-right: var(--sar);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      text-wrap: balance;
+    }
+
+    p {
+      text-wrap: pretty;
     }
 
     body.modal-open {
@@ -242,8 +281,8 @@
       align-items: center;
       gap: 12px;
       font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
+      font-size: var(--text-title-sm);
+      letter-spacing: var(--tracking-title);
     }
 
     .brand-prism-icon {
@@ -260,7 +299,7 @@
     }
 
     .nav-link {
-      font-size: 0.92rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
       font-weight: 500;
       transition: color var(--transition-snappy);
@@ -288,7 +327,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       color: var(--text-primary);
-      font-size: 0.90rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       transition: all var(--transition-snappy);
     }
@@ -313,8 +352,9 @@
       border-radius: var(--radius-pill);
       background: var(--text-primary);
       color: var(--bg-base);
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 700;
+      font-variant-numeric: tabular-nums;
       transform-origin: center center;
       will-change: transform;
     }
@@ -432,22 +472,24 @@
     }
 
     .hero-title {
-      font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+      font-size: var(--text-display);
       font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.038em;
+      line-height: var(--leading-display);
+      letter-spacing: var(--tracking-display);
+      text-wrap: balance;
       max-width: 960px;
       margin: 0 auto 22px;
       color: var(--text-primary);
     }
 
     .hero-subtitle {
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-size: var(--text-title-sm);
       color: var(--text-secondary);
-      max-width: 680px;
+      max-width: var(--measure-compact);
       margin: 0 auto 36px;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: var(--leading-relaxed);
+      text-wrap: pretty;
     }
 
     .hero-cta-group {
@@ -470,7 +512,7 @@
       background: var(--text-primary);
       color: var(--bg-base);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       transition: all var(--transition-snappy);
       box-shadow: var(--shadow-sm);
     }
@@ -497,7 +539,7 @@
       color: var(--text-primary);
       border: 1px solid var(--border-medium);
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       transition: all var(--transition-snappy);
     }
 
@@ -523,7 +565,7 @@
       color: var(--accent-emerald);
       border: 1px solid var(--accent-emerald-border);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       transition: all var(--transition-snappy);
     }
 
@@ -545,7 +587,9 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
-      font-size: 0.85rem;
+      font-size: var(--text-body-sm);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
       color: var(--text-secondary);
     }
 
@@ -578,17 +622,21 @@
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-size: var(--text-headline);
       font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      letter-spacing: var(--tracking-headline);
+      line-height: var(--leading-headline);
       color: var(--text-primary);
+      text-wrap: balance;
     }
 
     .catalog-subheading {
-      font-size: 0.88rem;
-      color: var(--text-tertiary);
-      margin-top: 4px;
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      margin-top: 6px;
+      line-height: var(--leading-body);
+      max-width: var(--measure-compact);
+      text-wrap: pretty;
     }
 
     .catalog-search-wrap {
@@ -605,7 +653,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       color: var(--text-primary);
-      font-size: 0.92rem;
+      font-size: var(--text-body-sm);
       transition: all var(--transition-snappy);
     }
 
@@ -675,7 +723,7 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       white-space: nowrap;
       display: inline-flex;
@@ -711,8 +759,9 @@
       border-radius: var(--radius-pill);
       background: rgba(255, 255, 255, 0.08);
       color: var(--text-tertiary);
-      font-size: 0.74rem;
+      font-size: var(--text-label);
       font-weight: 600;
+      font-variant-numeric: tabular-nums;
     }
 
     .filter-pill.active .pill-count {
@@ -729,7 +778,7 @@
     }
 
     .sort-label {
-      font-size: 0.85rem;
+      font-size: var(--text-body-sm);
       color: var(--text-tertiary);
       white-space: nowrap;
     }
@@ -741,7 +790,7 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       appearance: none;
       -webkit-appearance: none;
@@ -852,14 +901,15 @@
     }
 
     .card-badge {
-      font-size: 0.76rem;
+      font-size: var(--text-label);
       font-weight: 600;
       padding: 4px 10px;
       border-radius: var(--radius-pill);
       background: var(--bg-surface-elevated);
       color: var(--text-secondary);
       border: 1px solid var(--border-subtle);
-      letter-spacing: 0.02em;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
     }
 
     .card-badge.badge-green {
@@ -1006,21 +1056,22 @@
     }
 
     .product-category-tag {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: var(--tracking-label);
       margin-bottom: 6px;
     }
 
     .product-name {
-      font-size: 1.18rem;
+      font-size: var(--text-title);
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: var(--tracking-title);
       color: var(--text-primary);
       margin-bottom: 8px;
-      line-height: 1.3;
+      line-height: var(--leading-title);
+      text-wrap: balance;
       transition: color var(--transition-snappy);
     }
 
@@ -1033,7 +1084,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       margin-bottom: 10px;
       line-height: 1;
     }
@@ -1048,40 +1099,44 @@
     .rating-val {
       color: var(--text-primary);
       font-weight: 600;
-      font-size: 0.82rem;
+      font-size: var(--text-label);
+      font-variant-numeric: tabular-nums;
     }
 
     .social-proof-dot {
       color: var(--border-medium);
-      font-size: 0.7rem;
+      font-size: var(--text-label);
       user-select: none;
     }
 
     .sold-count-val {
       color: var(--text-secondary);
       font-weight: 500;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
+      font-variant-numeric: tabular-nums;
     }
 
     .delivery-status-tag {
       color: var(--accent-emerald);
-      font-weight: 500;
-      font-size: 0.76rem;
+      font-weight: 600;
+      font-size: var(--text-label);
     }
 
     .product-desc {
-      font-size: 0.90rem;
+      font-size: var(--text-body);
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: var(--leading-body);
       margin-bottom: 12px;
-      min-height: 42px;
+      min-height: 44px;
+      text-wrap: pretty;
+      max-width: 48ch;
     }
 
     .btn-more-details {
       background: none;
       border: none;
       color: var(--text-secondary);
-      font-size: 0.84rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       cursor: pointer;
       padding: 0;
@@ -1117,7 +1172,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
+      font-variant-numeric: tabular-nums;
     }
 
     .stock-live-badge {
@@ -1173,11 +1229,12 @@
     }
 
     .product-price-val {
-      font-size: 1.34rem;
+      font-size: var(--text-title-lg);
       font-weight: 700;
       color: var(--text-primary);
       letter-spacing: -0.025em;
       line-height: 1.1;
+      font-variant-numeric: tabular-nums;
     }
 
     .discount-badge {
@@ -1187,19 +1244,21 @@
       padding: 2px 8px;
       background: var(--accent-red);
       color: #ffffff;
-      font-size: 0.75rem;
+      font-size: var(--text-label);
       font-weight: 700;
       border-radius: var(--radius-sm);
       letter-spacing: -0.01em;
       line-height: 1.2;
+      font-variant-numeric: tabular-nums;
     }
 
     .price-original-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.82rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
     }
 
     .price-original-val {
@@ -1208,9 +1267,10 @@
     }
 
     .price-savings-label {
-      font-size: 0.76rem;
+      font-size: var(--text-label);
       color: var(--accent-emerald);
-      font-weight: 500;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
     }
 
     .card-actions-row {
@@ -1229,7 +1289,7 @@
       color: var(--text-primary);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
       transition: all var(--transition-snappy);
     }
@@ -1252,7 +1312,7 @@
       background: var(--accent-emerald);
       color: #032115;
       border-radius: var(--radius-pill);
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 700;
       transition: all var(--transition-snappy);
     }
@@ -1364,17 +1424,19 @@
       border: 1px solid rgba(16, 185, 129, 0.25);
       border-radius: var(--radius-pill);
       color: var(--accent-emerald);
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 600;
+      letter-spacing: 0.02em;
       margin-bottom: 12px;
     }
 
     .physical-header-desc {
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 680px;
+      line-height: var(--leading-relaxed);
+      max-width: var(--measure-prose);
       margin-top: 10px;
+      text-wrap: pretty;
     }
 
     .btn-open-catalog-header {
@@ -1387,7 +1449,7 @@
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-medium);
       color: var(--text-primary);
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -1462,8 +1524,10 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+      font-size: var(--text-label);
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
     }
 
     .physical-card-badge .badge-purple {
@@ -1482,24 +1546,28 @@
     }
 
     .physical-card-category {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
       font-weight: 600;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
       margin-bottom: 4px;
     }
 
     .physical-card-title {
-      font-size: 0.98rem;
+      font-size: var(--text-title-sm);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 8px;
-      line-height: 1.35;
+      line-height: var(--leading-title);
+      letter-spacing: var(--tracking-title);
       cursor: pointer;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       min-height: 2.7em;
+      text-wrap: balance;
     }
 
     .physical-card-title:hover {
@@ -1511,8 +1579,9 @@
       align-items: center;
       gap: 6px;
       margin-bottom: 12px;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
     }
 
     .physical-price-row {
@@ -1527,15 +1596,17 @@
     }
 
     .physical-current-price {
-      font-size: 1.15rem;
+      font-size: var(--text-title);
       font-weight: 700;
       color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
     }
 
     .physical-orig-price {
-      font-size: 0.82rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
       text-decoration: line-through;
+      font-variant-numeric: tabular-nums;
     }
 
     .physical-actions-row {
@@ -1551,7 +1622,7 @@
       background: var(--bg-surface-hover);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
-      font-size: 0.82rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
       cursor: pointer;
       transition: all var(--transition-snappy);
@@ -1613,15 +1684,20 @@
 
     .explore-title {
       display: block;
-      font-size: 0.98rem;
+      font-size: var(--text-title-sm);
+      font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 2px;
+      text-wrap: balance;
     }
 
     .explore-desc {
       display: block;
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
+      line-height: var(--leading-body);
+      max-width: var(--measure-prose);
+      text-wrap: pretty;
     }
 
     .btn-explore-full {
@@ -1634,7 +1710,7 @@
       background: var(--accent-emerald);
       color: #032115;
       border: none;
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -1714,23 +1790,27 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 600;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
       color: var(--accent-emerald);
       margin-bottom: 6px;
     }
 
     .physical-modal-title {
-      font-size: 1.35rem;
+      font-size: var(--text-title-lg);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: var(--tracking-title);
+      text-wrap: balance;
       color: var(--text-primary);
     }
 
     .physical-modal-subtitle {
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
       margin-top: 4px;
+      text-wrap: pretty;
     }
 
     .physical-modal-toolbar {
@@ -1767,7 +1847,7 @@
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       font-family: inherit;
       transition: border-color var(--transition-snappy), background var(--transition-snappy);
     }
@@ -1798,7 +1878,7 @@
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      font-size: 0.80rem;
+      font-size: var(--text-label);
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -1888,10 +1968,12 @@
     }
 
     .agency-desc {
-      font-size: 1.05rem;
+      font-size: var(--text-title-sm);
       color: var(--text-secondary);
       margin-top: 14px;
-      line-height: 1.6;
+      line-height: var(--leading-relaxed);
+      max-width: var(--measure-prose);
+      text-wrap: pretty;
     }
 
     .agency-tabs-nav {
@@ -1932,17 +2014,20 @@
     }
 
     .agency-pkg-name {
-      font-size: 1.45rem;
+      font-size: var(--text-title-lg);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: var(--tracking-title);
+      line-height: var(--leading-title);
+      text-wrap: balance;
       margin-bottom: 8px;
     }
 
     .agency-pkg-ideal {
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
       margin-bottom: 20px;
-      line-height: 1.45;
+      line-height: var(--leading-body);
+      text-wrap: pretty;
     }
 
     .agency-price-box {
@@ -1952,17 +2037,18 @@
     }
 
     .agency-price-prefix {
-      font-size: 0.80rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
       display: block;
       margin-bottom: 2px;
     }
 
     .agency-price-value {
-      font-size: 1.85rem;
+      font-size: var(--text-headline);
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: var(--tracking-headline);
       color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
     }
 
     .agency-features-list {
@@ -1977,9 +2063,9 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
-      line-height: 1.4;
+      line-height: var(--leading-body);
     }
 
     .feature-check-icon {
@@ -1999,7 +2085,7 @@
       gap: 10px;
       border-radius: var(--radius-pill);
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: var(--text-body-sm);
       transition: all var(--transition-snappy);
       background: var(--bg-surface-elevated);
       color: var(--text-primary);
@@ -2061,16 +2147,19 @@
     }
 
     .trust-title {
-      font-size: 0.98rem;
+      font-size: var(--text-title-sm);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 4px;
+      line-height: var(--leading-title);
+      text-wrap: balance;
     }
 
     .trust-text {
-      font-size: 0.85rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
-      line-height: 1.45;
+      line-height: var(--leading-body);
+      text-wrap: pretty;
     }
 
     /* -------------------------------------------------------------
@@ -2100,24 +2189,28 @@
       border: 1px solid rgba(16, 185, 129, 0.25);
       border-radius: var(--radius-pill);
       color: var(--accent-emerald);
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 600;
+      letter-spacing: 0.02em;
       margin-bottom: 14px;
     }
 
     .coming-soon-headline {
-      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      font-size: var(--text-headline);
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: var(--tracking-headline);
       color: var(--text-primary);
-      line-height: 1.25;
+      line-height: var(--leading-headline);
+      text-wrap: balance;
       margin-bottom: 10px;
     }
 
     .coming-soon-desc {
-      font-size: 0.92rem;
+      font-size: var(--text-body);
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: var(--leading-relaxed);
+      max-width: var(--measure-prose);
+      text-wrap: pretty;
     }
 
     .coming-soon-grid {
@@ -2162,26 +2255,30 @@
     }
 
     .mystery-tag {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 600;
       color: var(--text-tertiary);
-      letter-spacing: 0.03em;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
     }
 
     .mystery-title {
-      font-size: 1.12rem;
+      font-size: var(--text-title);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 8px;
-      line-height: 1.35;
+      line-height: var(--leading-title);
+      letter-spacing: var(--tracking-title);
+      text-wrap: balance;
     }
 
     .mystery-text {
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: var(--leading-body);
       flex-grow: 1;
       margin-bottom: 16px;
+      text-wrap: pretty;
     }
 
     .mystery-footer {
@@ -2192,12 +2289,13 @@
     }
 
     .mystery-eta {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       font-weight: 600;
       color: var(--accent-emerald);
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      font-variant-numeric: tabular-nums;
     }
 
     .coming-soon-cta-box {
@@ -2219,13 +2317,13 @@
     }
 
     .coming-soon-cta-text strong {
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       color: var(--text-primary);
       font-weight: 600;
     }
 
     .coming-soon-cta-text span {
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
     }
 
@@ -2239,7 +2337,7 @@
       background: var(--bg-surface-hover);
       border: 1px solid var(--border-medium);
       color: var(--text-primary);
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
@@ -2347,9 +2445,9 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.15rem;
+      font-size: var(--text-title);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: var(--tracking-title);
     }
 
     .drawer-close-btn {
@@ -2406,7 +2504,7 @@
     }
 
     .reward-status-text {
-      font-size: 0.80rem;
+      font-size: var(--text-label);
       color: var(--text-secondary);
       line-height: 1.35;
       letter-spacing: -0.01em;
@@ -2532,7 +2630,7 @@
     }
 
     .cart-item-name {
-      font-size: 0.92rem;
+      font-size: var(--text-body);
       font-weight: 600;
       color: var(--text-primary);
       white-space: nowrap;
@@ -2550,19 +2648,21 @@
     }
 
     .cart-item-unit-price {
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
       color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
     }
 
     .cart-item-original-price {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
       text-decoration: line-through;
+      font-variant-numeric: tabular-nums;
     }
 
     .cart-item-discount-pill {
-      font-size: 0.70rem;
+      font-size: var(--text-label);
       font-weight: 600;
       padding: 1px 7px;
       border-radius: var(--radius-pill);
@@ -2571,6 +2671,7 @@
       border: 1px solid var(--accent-emerald-border);
       letter-spacing: -0.01em;
       line-height: 1.3;
+      font-variant-numeric: tabular-nums;
     }
 
     .cart-item-actions {
@@ -2590,7 +2691,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: var(--text-body-sm);
       color: var(--text-primary);
       transition: background var(--transition-snappy);
     }
@@ -2604,8 +2705,9 @@
     }
 
     .qty-number {
-      font-size: 0.86rem;
+      font-size: var(--text-body-sm);
       font-weight: 600;
+      font-variant-numeric: tabular-nums;
       min-width: 18px;
       text-align: center;
     }
@@ -2644,10 +2746,11 @@
       background: var(--accent-emerald-soft);
       border: 1px solid var(--accent-emerald-border);
       color: var(--accent-emerald);
-      font-size: 0.82rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       line-height: 1.35;
       letter-spacing: -0.01em;
+      font-variant-numeric: tabular-nums;
     }
 
     .cart-savings-banner strong {
@@ -2659,14 +2762,16 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
     }
 
     .summary-original-val {
       text-decoration: line-through;
       color: var(--text-tertiary);
       font-weight: 500;
+      font-variant-numeric: tabular-nums;
     }
 
     .drawer-summary-row {
@@ -2676,15 +2781,16 @@
     }
 
     .summary-label {
-      font-size: 0.95rem;
+      font-size: var(--text-body);
       color: var(--text-secondary);
     }
 
     .summary-total-val {
-      font-size: 1.55rem;
+      font-size: var(--text-headline);
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: var(--tracking-headline);
       color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
     }
 
     .btn-checkout-whatsapp {
@@ -2697,7 +2803,7 @@
       background: var(--accent-emerald);
       color: #032115;
       border-radius: var(--radius-pill);
-      font-size: 0.98rem;
+      font-size: var(--text-body);
       font-weight: 700;
       transition: all var(--transition-snappy);
       box-shadow: var(--shadow-sm);
@@ -3162,12 +3268,13 @@
     }
 
     .modal-pro-title {
-      font-size: 1.30rem;
+      font-size: var(--text-title-lg);
       font-weight: 700;
       color: var(--text-primary);
-      line-height: 1.35;
+      line-height: var(--leading-title);
       margin-bottom: 8px;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--tracking-title);
+      text-wrap: balance;
     }
 
     /* AliExpress-style Price Promo Card */
@@ -3190,10 +3297,10 @@
     }
 
     .promo-tag-badge {
-      font-size: 0.74rem;
+      font-size: var(--text-label);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: var(--tracking-label);
       color: var(--accent-emerald);
       display: inline-flex;
       align-items: center;
@@ -3201,12 +3308,13 @@
     }
 
     .promo-savings-badge {
-      font-size: 0.76rem;
+      font-size: var(--text-label);
       font-weight: 700;
       color: #ffffff;
       background: var(--accent-emerald);
       padding: 2px 8px;
       border-radius: var(--radius-pill);
+      font-variant-numeric: tabular-nums;
     }
 
     .promo-price-row {
@@ -3216,23 +3324,25 @@
     }
 
     .promo-price-current {
-      font-size: 1.85rem;
+      font-size: var(--text-headline);
       font-weight: 800;
       color: #ffffff;
-      letter-spacing: -0.03em;
+      letter-spacing: var(--tracking-headline);
       line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
 
     .promo-orig-row {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.82rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
     }
 
     .promo-orig-label {
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-tertiary);
     }
 
@@ -3240,7 +3350,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.78rem;
+      font-size: var(--text-label);
       color: var(--text-secondary);
       padding-top: 6px;
       border-top: 1px dashed rgba(255, 255, 255, 0.1);
@@ -3273,12 +3383,12 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.82rem;
+      font-size: var(--text-label);
       font-weight: 700;
       color: var(--accent-purple);
       margin-bottom: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: var(--tracking-label);
     }
 
     .ai-sparkle-icon {
@@ -3299,9 +3409,10 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: 0.85rem;
+      font-size: var(--text-body-sm);
       color: var(--text-secondary);
-      line-height: 1.45;
+      line-height: var(--leading-body);
+      text-wrap: pretty;
     }
 
     @media (min-width: 769px) {
@@ -3327,7 +3438,7 @@
     }
 
     .modal-qty-label {
-      font-size: 0.88rem;
+      font-size: var(--text-body-sm);
       font-weight: 500;
       color: var(--text-secondary);
     }
@@ -3341,11 +3452,12 @@
     .modal-qty-control .qty-btn {
       width: 32px;
       height: 32px;
-      font-size: 0.95rem;
+      font-size: var(--text-body);
     }
 
     .modal-qty-control .qty-number {
-      font-size: 0.98rem;
+      font-size: var(--text-body);
+      font-variant-numeric: tabular-nums;
       min-width: 24px;
       text-align: center;
     }
@@ -4625,7 +4737,7 @@
           <div>
             <div class="physical-badge">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>ENVÍOS A TODO EL PAÍS • STOCK INMEDIATO</span>
+              <span>Envíos a todo el país • Stock inmediato</span>
             </div>
             <h2 class="section-title" id="physicalHeading">Artículos Físicos & Equipamiento</h2>
             <p class="physical-header-desc">
@@ -4890,7 +5002,7 @@
         <div class="coming-soon-header">
           <div class="coming-soon-badge">
             <span class="status-dot" aria-hidden="true"></span>
-            <span>PRÓXIMAMENTE • EN EL RADAR</span>
+            <span>Próximamente • En el radar</span>
           </div>
           <h2 class="coming-soon-headline" id="comingSoonTitle">
             Nuevas licencias, herramientas de IA y servicios en camino
