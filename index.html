@@ -1403,7 +1403,7 @@
 
     .physical-preview-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -1416,6 +1416,8 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      min-width: 0;
+      overflow: hidden;
       transition: transform var(--transition-snappy), border-color var(--transition-snappy), box-shadow var(--transition-snappy);
     }
 
@@ -1453,6 +1455,30 @@
       top: 10px;
       left: 10px;
       z-index: 2;
+    }
+
+    .physical-card-badge .card-badge {
+      background: rgba(9, 10, 13, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .physical-card-badge .badge-purple {
+      color: #e09aff;
+      border: 1px solid rgba(224, 154, 255, 0.45);
+    }
+
+    .physical-card-badge .badge-blue {
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+
+    .physical-card-badge .badge-green {
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.45);
     }
 
     .physical-card-category {
@@ -1800,7 +1826,7 @@
 
     .physical-modal-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -4066,7 +4092,7 @@
       }
 
       .physical-section-card {
-        padding: 32px 16px;
+        padding: 24px 12px;
         margin-bottom: 48px;
         border-radius: var(--radius-lg);
       }
@@ -4074,79 +4100,202 @@
       .physical-header-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 24px;
+        gap: 14px;
+        margin-bottom: 20px;
       }
 
       .btn-open-catalog-header {
         width: 100%;
         justify-content: center;
+        height: 44px;
       }
 
       .physical-preview-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .physical-card {
-        padding: 10px;
+        padding: 9px 8px 11px;
         border-radius: var(--radius-md);
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .physical-img-wrap {
+        margin-bottom: 8px;
+        border-radius: var(--radius-sm);
+      }
+
+      .physical-card-badge {
+        top: 6px;
+        left: 6px;
+      }
+
+      .physical-card-badge .card-badge {
+        font-size: 0.68rem;
+        padding: 2px 7px;
+      }
+
+      .physical-card-category {
+        font-size: 0.68rem;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .physical-card-title {
-        font-size: 0.88rem;
-        min-height: 2.6em;
+        font-size: 0.80rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 4px;
+        min-height: 2.5em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .physical-meta-row {
+        font-size: 0.70rem;
+        gap: 4px;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .physical-meta-row .phys-sold-count,
+      .physical-meta-row .phys-stock-sep {
+        display: none !important;
+      }
+
+      .physical-price-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 2px 6px;
+        margin-top: auto;
+        margin-bottom: 8px;
+        padding-top: 6px;
+        border-top: 1px solid var(--border-subtle);
       }
 
       .physical-current-price {
-        font-size: 1rem;
+        font-size: 0.94rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        white-space: nowrap;
+        line-height: 1.2;
+      }
+
+      .physical-orig-price {
+        font-size: 0.72rem;
+        color: var(--text-tertiary);
+        text-decoration: line-through;
+        white-space: nowrap;
+        line-height: 1.2;
+      }
+
+      .physical-actions-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .btn-phys-details {
+        height: 32px;
+        padding: 0 4px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-phys-cart {
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+        border-radius: var(--radius-sm);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .btn-phys-cart svg {
+        width: 14px;
+        height: 14px;
       }
 
       .physical-explore-bar {
-        padding: 18px 16px;
+        padding: 16px 14px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 14px;
       }
 
       .btn-explore-full {
         width: 100%;
         justify-content: center;
+        height: 44px;
       }
 
       dialog.physical-modal-dialog {
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        max-height: 100%;
-        border-radius: 0;
-        inset: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100dvh !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        inset: 0 !important;
+        border: none !important;
       }
 
       .physical-modal-shell {
-        max-height: 100vh;
+        height: 100dvh;
         max-height: 100dvh;
       }
 
       .physical-modal-header {
         padding: 16px;
+        padding-top: calc(16px + var(--sat));
       }
 
       .physical-modal-toolbar {
-        padding: 12px 16px;
-      }
-
-      .physical-modal-body {
-        padding: 16px;
-      }
-
-      .physical-modal-grid {
-        grid-template-columns: repeat(2, 1fr);
+        padding: 10px 14px;
         gap: 10px;
       }
 
+      .physical-search-input {
+        font-size: 16px !important;
+      }
+
+      .physical-filters-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .physical-modal-body {
+        padding: 12px 10px;
+      }
+
+      .physical-modal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px;
+        width: 100%;
+      }
+
       .physical-modal-footer {
-        padding: 14px 16px calc(14px + var(--sab));
+        padding: 12px 14px calc(14px + var(--sab));
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
@@ -4207,6 +4356,37 @@
         gap: 6px;
         height: 38px;
       }
+
+      /* Ultra-compact physical goods on narrow smartphones */
+      .physical-section-card {
+        padding: 18px 8px;
+        border-radius: var(--radius-md);
+      }
+      .physical-preview-grid {
+        gap: 6px;
+      }
+      .physical-card {
+        padding: 7px 6px 9px;
+      }
+      .physical-card-title {
+        font-size: 0.76rem;
+      }
+      .physical-current-price {
+        font-size: 0.88rem;
+      }
+      .btn-phys-details {
+        height: 32px;
+        font-size: 0.70rem;
+      }
+      .btn-phys-cart {
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+      }
+      .physical-modal-grid {
+        gap: 6px !important;
+      }
+
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 28px;
@@ -4887,8 +5067,8 @@
        ========================================== -->
   <dialog id="physicalCatalogModal" class="physical-modal-dialog" closedby="any" aria-labelledby="physModalHeading">
     <div class="physical-modal-shell">
-      <div class="physical-modal-header">
-        <div>
+      <header class="physical-modal-header">
+        <div class="physical-modal-title-wrap">
           <div class="physical-modal-badge">
             <span class="status-dot" aria-hidden="true"></span>
             <span>CATÁLOGO DE PRODUCTOS FÍSICOS</span>
@@ -4902,7 +5082,7 @@
             <line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
-      </div>
+      </header>
 
       <!-- Search & Filter Controls Toolbar Inside Modal -->
       <div class="physical-modal-toolbar">
@@ -6595,14 +6775,16 @@
           <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
 
           <div class="physical-meta-row">
-            <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 14px; height: 14px; color: var(--accent-amber);">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
-            <span>•</span>
-            <span>${item.soldCount}</span>
-            <span>•</span>
-            <span style="color: var(--accent-emerald);">En stock</span>
+            <span class="phys-rating-wrap" style="display: inline-flex; align-items: center; gap: 3px;">
+              <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 13px; height: 13px; color: var(--accent-amber); display: inline-block; vertical-align: -1px;">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
+            </span>
+            <span class="phys-meta-sep">•</span>
+            <span class="phys-sold-count">${item.soldCount}</span>
+            <span class="phys-meta-sep phys-stock-sep">•</span>
+            <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
           </div>
 
           <div class="physical-price-row">
@@ -6693,14 +6875,16 @@
           <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
 
           <div class="physical-meta-row">
-            <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 14px; height: 14px; color: var(--accent-amber);">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
-            <span>•</span>
-            <span>${item.soldCount}</span>
-            <span>•</span>
-            <span style="color: var(--accent-emerald);">En stock</span>
+            <span class="phys-rating-wrap" style="display: inline-flex; align-items: center; gap: 3px;">
+              <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 13px; height: 13px; color: var(--accent-amber); display: inline-block; vertical-align: -1px;">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
+            </span>
+            <span class="phys-meta-sep">•</span>
+            <span class="phys-sold-count">${item.soldCount}</span>
+            <span class="phys-meta-sep phys-stock-sep">•</span>
+            <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
           </div>
 
           <div class="physical-price-row">
