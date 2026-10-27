@@ -710,6 +710,9 @@
       overflow-x: auto;
       padding-bottom: 4px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
     }
 
     .filter-pills-row::-webkit-scrollbar {
@@ -2357,6 +2360,8 @@
     dialog#cartDrawer {
       position: fixed;
       inset: 0 0 0 auto;
+      margin: 0;
+      margin-left: auto;
       width: 100%;
       max-width: 440px;
       height: 100vh;
@@ -2682,8 +2687,12 @@
     }
 
     .qty-btn {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      position: relative;
+      touch-action: manipulation;
       border-radius: var(--radius-pill);
       background: var(--bg-surface-hover);
       border: 1px solid var(--border-subtle);
@@ -2694,6 +2703,13 @@
       font-size: var(--text-body-sm);
       color: var(--text-primary);
       transition: background var(--transition-snappy);
+    }
+
+    .qty-btn::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      pointer-events: auto;
     }
 
     .qty-btn:hover {
@@ -2714,9 +2730,23 @@
 
     .item-remove-btn {
       color: var(--text-tertiary);
-      padding: 6px;
+      padding: 8px;
+      min-width: 36px;
+      min-height: 36px;
+      position: relative;
+      touch-action: manipulation;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border-radius: var(--radius-sm);
       transition: color var(--transition-snappy), transform var(--transition-snappy);
+    }
+
+    .item-remove-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      pointer-events: auto;
     }
 
     .item-remove-btn:hover {
@@ -3561,10 +3591,20 @@
     .vertical-switch-container {
       margin: 0 auto 36px;
       max-width: 760px;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+
+    .vertical-switch-container::-webkit-scrollbar {
+      display: none;
     }
 
     .vertical-switch-pill {
@@ -3586,6 +3626,7 @@
       justify-content: center;
       gap: 8px;
       height: 42px;
+      min-height: 42px;
       padding: 0 14px;
       border-radius: var(--radius-pill);
       font-size: var(--text-body-sm);
@@ -3597,6 +3638,7 @@
       transition: all var(--transition-snappy);
       white-space: nowrap;
       text-decoration: none;
+      touch-action: manipulation;
     }
 
     .vswitch-btn:hover {
@@ -3610,20 +3652,39 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
     }
 
-    @media (max-width: 640px) {
+    .vswitch-label-full {
+      display: inline;
+    }
+
+    .vswitch-label-short {
+      display: none;
+    }
+
+    @media (max-width: 580px) {
       .vertical-switch-container {
         margin-bottom: 24px;
-        padding: 0 10px;
+        padding: 0 8px;
+      }
+      .vertical-switch-pill {
+        padding: 3px;
+        gap: 3px;
       }
       .vswitch-btn {
-        font-size: 0.76rem;
+        font-size: 0.78rem;
         padding: 0 6px;
         height: 38px;
+        min-height: 38px;
         gap: 4px;
       }
       .vswitch-btn svg {
         width: 13px;
         height: 13px;
+      }
+      .vswitch-label-full {
+        display: none;
+      }
+      .vswitch-label-short {
+        display: inline;
       }
     }
 
@@ -3708,6 +3769,7 @@
       position: relative;
       width: 100%;
       overflow: hidden;
+      overscroll-behavior-x: contain;
     }
 
     .filter-pills-row-wrapper::after {
@@ -3966,6 +4028,8 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
         padding-bottom: 6px;
       }
       .filter-pill {
@@ -4219,13 +4283,16 @@
       .card-actions-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 5px;
+        gap: 6px;
         margin-top: 2px;
       }
       .btn-direct-buy {
         width: 100%;
-        height: 32px;
-        font-size: 0.72rem;
+        height: 38px;
+        min-height: 38px;
+        position: relative;
+        touch-action: manipulation;
+        font-size: 0.74rem;
         font-weight: 700;
         padding: 0 4px;
         gap: 4px;
@@ -4233,20 +4300,35 @@
         order: 2;
         white-space: nowrap;
       }
+      .btn-direct-buy::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        pointer-events: auto;
+      }
       .btn-direct-buy svg {
         width: 12px;
         height: 12px;
       }
       .btn-add-cart {
         width: 100%;
-        height: 32px;
-        font-size: 0.72rem;
+        height: 38px;
+        min-height: 38px;
+        position: relative;
+        touch-action: manipulation;
+        font-size: 0.74rem;
         font-weight: 600;
         padding: 0 4px;
         gap: 4px;
         border-radius: var(--radius-sm);
         order: 1;
         white-space: nowrap;
+      }
+      .btn-add-cart::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        pointer-events: auto;
       }
       .btn-add-cart svg {
         width: 12px;
@@ -4256,6 +4338,9 @@
       /* Cart Slide-Over Drawer: Full screen on small mobile screens */
       dialog#cartDrawer {
         max-width: 100%;
+        width: 100% !important;
+        inset: 0 !important;
+        margin: 0 !important;
         border-left: none;
       }
       .drawer-header {
@@ -4329,8 +4414,12 @@
         flex-direction: row;
         overflow-x: auto;
         overflow-y: hidden;
-        justify-content: center;
+        justify-content: flex-start;
         max-height: none;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        padding-bottom: 4px;
       }
       .modal-thumb-vertical-btn {
         width: 50px;
@@ -4629,9 +4718,12 @@
       }
 
       .btn-phys-details {
-        height: 32px;
-        padding: 0 4px;
-        font-size: 0.72rem;
+        height: 38px;
+        min-height: 38px;
+        position: relative;
+        touch-action: manipulation;
+        padding: 0 6px;
+        font-size: 0.74rem;
         font-weight: 600;
         border-radius: var(--radius-sm);
         white-space: nowrap;
@@ -4640,15 +4732,32 @@
         justify-content: center;
       }
 
+      .btn-phys-details::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        pointer-events: auto;
+      }
+
       .btn-phys-cart {
-        height: 32px;
-        width: 32px;
-        min-width: 32px;
+        height: 38px;
+        width: 38px;
+        min-width: 38px;
+        min-height: 38px;
+        position: relative;
+        touch-action: manipulation;
         border-radius: var(--radius-sm);
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 0;
+      }
+
+      .btn-phys-cart::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        pointer-events: auto;
       }
 
       .btn-phys-cart svg {
@@ -4979,15 +5088,18 @@
       <div class="vertical-switch-pill" role="tablist">
         <a href="#catalogo" class="vswitch-btn active" id="vswitch-catalogo" role="tab" aria-selected="true" onclick="setVerticalFocus('catalogo')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <span>Suscripciones & IA</span>
+          <span class="vswitch-label-full">Suscripciones & IA</span>
+          <span class="vswitch-label-short">Digital</span>
         </a>
         <a href="#articulos-fisicos" class="vswitch-btn" id="vswitch-fisicos" role="tab" aria-selected="false" onclick="setVerticalFocus('fisicos')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          <span>Hardware & Periféricos</span>
+          <span class="vswitch-label-full">Hardware & Periféricos</span>
+          <span class="vswitch-label-short">Hardware</span>
         </a>
         <a href="#agencia" class="vswitch-btn" id="vswitch-agencia" role="tab" aria-selected="false" onclick="setVerticalFocus('agencia')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>Desarrollo Web</span>
+          <span class="vswitch-label-full">Desarrollo Web</span>
+          <span class="vswitch-label-short">Agencia Web</span>
         </a>
       </div>
     </nav>
@@ -7435,7 +7547,7 @@
           </div>
 
           <div class="physical-card-category">${categoryName}</div>
-          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
+          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" style="cursor: pointer;" title="${title}">${item.name}</h3>
 
           <div class="physical-meta-row">
             <span class="phys-rating-wrap" style="display: inline-flex; align-items: center; gap: 3px;">
