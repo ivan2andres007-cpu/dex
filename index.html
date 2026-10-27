@@ -4543,14 +4543,14 @@
         color: var(--text-tertiary);
       }
 
-      /* Apple Bottom Sheet Modal on Mobile (Docked to bottom edge) */
+      /* Apple Bottom Sheet Modal on Mobile (Docked higher up to maximize content view) */
       dialog#productModal {
         inset: auto 0 0 0 !important;
         margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
-        height: auto !important;
-        max-height: min(88dvh, 88vh) !important;
+        height: min(95dvh, 95vh) !important;
+        max-height: min(95dvh, 95vh) !important;
         border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
         border-left: none !important;
         border-right: none !important;
@@ -4579,22 +4579,23 @@
 
       .sheet-grab-bar {
         display: flex;
+        padding: 6px 0 2px;
       }
 
       .modal-header {
-        padding: 12px 18px 14px;
+        padding: 6px 16px 8px;
       }
       .modal-body {
         display: flex;
         flex-direction: column;
-        padding: 14px 18px;
-        gap: 14px;
+        padding: 10px 16px;
+        gap: 10px;
       }
       .modal-gallery-layout {
         flex-direction: column-reverse;
         align-items: stretch;
         position: static;
-        gap: 10px;
+        gap: 8px;
       }
       .modal-thumbs-vertical {
         flex-direction: row;
@@ -4605,11 +4606,12 @@
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
         overscroll-behavior-x: contain;
-        padding-bottom: 4px;
+        padding-bottom: 2px;
+        gap: 6px;
       }
       .modal-thumb-vertical-btn {
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
       }
       .modal-carousel-container,
       .modal-media-frame {
@@ -4617,7 +4619,12 @@
       }
       .modal-carousel-slide,
       .modal-media-frame {
-        max-height: min(320px, 42vh);
+        max-height: min(235px, 28vh);
+      }
+      .modal-carousel-slide img,
+      .modal-media-frame img {
+        max-height: min(235px, 28vh);
+        object-fit: contain;
       }
       .modal-desktop-actions {
         display: none !important;
@@ -4626,8 +4633,15 @@
         display: flex !important;
       }
       .modal-footer {
-        padding: 14px 18px calc(18px + var(--sab));
+        padding: 10px 16px calc(12px + var(--sab));
+        gap: 10px;
         box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+      }
+      .modal-footer .btn-modal-cart,
+      .modal-footer .btn-modal-buy {
+        height: 42px;
+        min-height: 42px;
+        font-size: 0.88rem;
       }
 
       /* Web Development & Software Packages Mobile Tabs & Polish */
