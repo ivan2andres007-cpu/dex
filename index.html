@@ -3307,6 +3307,10 @@
       text-wrap: balance;
     }
 
+    .modal-social-proof {
+      margin-bottom: 14px;
+    }
+
     /* AliExpress-style Price Promo Card */
     .modal-promo-price-card {
       background: linear-gradient(145deg, rgba(16, 185, 129, 0.08) 0%, rgba(9, 10, 13, 0.85) 100%);
@@ -4549,8 +4553,8 @@
         margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
-        height: min(95dvh, 95vh) !important;
-        max-height: min(95dvh, 95vh) !important;
+        height: min(96dvh, 96vh) !important;
+        max-height: min(96dvh, 96vh) !important;
         border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
         border-left: none !important;
         border-right: none !important;
@@ -4579,23 +4583,23 @@
 
       .sheet-grab-bar {
         display: flex;
-        padding: 6px 0 2px;
+        padding: 5px 0 1px;
       }
 
       .modal-header {
-        padding: 6px 16px 8px;
+        padding: 4px 14px 6px;
       }
       .modal-body {
         display: flex;
         flex-direction: column;
-        padding: 10px 16px;
-        gap: 10px;
+        padding: 8px 14px 76px 14px !important;
+        gap: 8px !important;
       }
       .modal-gallery-layout {
         flex-direction: column-reverse;
         align-items: stretch;
         position: static;
-        gap: 8px;
+        gap: 6px;
       }
       .modal-thumbs-vertical {
         flex-direction: row;
@@ -4610,38 +4614,241 @@
         gap: 6px;
       }
       .modal-thumb-vertical-btn {
-        width: 44px;
-        height: 44px;
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: var(--radius-xs) !important;
       }
       .modal-carousel-container,
-      .modal-media-frame {
-        max-width: 100%;
+      .modal-gallery-layout .modal-carousel-container {
+        max-width: 100% !important;
+        aspect-ratio: auto !important;
+        height: 235px !important;
+        max-height: 235px !important;
+        border-radius: var(--radius-md) !important;
       }
-      .modal-carousel-slide,
-      .modal-media-frame {
-        max-height: min(235px, 28vh);
+      .modal-carousel-track {
+        height: 100% !important;
+      }
+      .modal-carousel-slide {
+        aspect-ratio: auto !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        padding: 4px 0 !important;
       }
       .modal-carousel-slide img,
+      .modal-carousel-img,
       .modal-media-frame img {
-        max-height: min(235px, 28vh);
-        object-fit: contain;
+        height: 100% !important;
+        max-height: 226px !important;
+        width: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
       }
+      .modal-carousel-dots {
+        bottom: 6px !important;
+        padding: 3px 6px !important;
+        gap: 5px !important;
+      }
+      .modal-carousel-counter {
+        top: 6px !important;
+        right: 6px !important;
+        padding: 3px 7px !important;
+        font-size: 0.70rem !important;
+      }
+
+      /* Details & Typography Hierarchy */
+      .modal-details-col {
+        gap: 6px !important;
+      }
+      .modal-pro-title {
+        font-size: 1.02rem !important;
+        font-weight: 700 !important;
+        line-height: 1.25 !important;
+        margin-bottom: 2px !important;
+        letter-spacing: -0.015em !important;
+        color: var(--text-primary) !important;
+      }
+      .modal-details-col .card-social-proof,
+      .modal-social-proof {
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        margin-bottom: 4px !important;
+        font-size: 0.75rem !important;
+        line-height: 1.25 !important;
+      }
+      .modal-details-col .card-social-proof .star-icon,
+      .modal-social-proof .star-icon {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .modal-details-col .card-social-proof .rating-val,
+      .modal-social-proof .rating-val {
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+      }
+      .modal-details-col .card-social-proof .sold-count-val,
+      .modal-social-proof .sold-count-val {
+        font-size: 0.75rem !important;
+      }
+      .modal-details-col .delivery-status-tag,
+      .modal-social-proof .delivery-status-tag {
+        display: inline-flex !important;
+        color: var(--accent-emerald) !important;
+        font-weight: 600 !important;
+        font-size: 0.75rem !important;
+      }
+      .modal-details-col .social-proof-dot,
+      .modal-social-proof .social-proof-dot {
+        display: inline !important;
+        font-size: 0.75rem !important;
+      }
+
+      /* AliExpress-style Oferta Especial Card (Compact & High conversion) */
+      .modal-promo-price-card {
+        padding: 7px 12px 8px 12px !important;
+        gap: 4px !important;
+        border-radius: var(--radius-md) !important;
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.12) 0%, rgba(14, 17, 24, 0.95) 100%) !important;
+        border: 1px solid rgba(16, 185, 129, 0.3) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+      }
+      .promo-header-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 6px !important;
+      }
+      .promo-tag-badge {
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        color: var(--accent-emerald) !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+      }
+      .promo-savings-badge {
+        font-size: 0.70rem !important;
+        font-weight: 700 !important;
+        background: var(--accent-emerald) !important;
+        color: #ffffff !important;
+        padding: 1px 7px !important;
+        border-radius: var(--radius-pill) !important;
+      }
+      .promo-price-row {
+        display: flex !important;
+        align-items: baseline !important;
+        gap: 7px !important;
+        margin: 0 !important;
+      }
+      .promo-price-current {
+        font-size: 1.35rem !important;
+        font-weight: 800 !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.02em !important;
+        color: #ffffff !important;
+      }
+      .discount-badge {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        background: #ef4444 !important;
+        color: #ffffff !important;
+        padding: 1px 5px !important;
+        border-radius: var(--radius-pill) !important;
+      }
+      .promo-orig-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 0.70rem !important;
+        color: var(--text-tertiary) !important;
+        margin-top: -2px !important;
+      }
+      .promo-badge-note {
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 0.68rem !important;
+        color: var(--text-secondary) !important;
+        padding-top: 3px !important;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08) !important;
+        line-height: 1.2 !important;
+      }
+      .promo-badge-note svg {
+        width: 12px !important;
+        height: 12px !important;
+        flex-shrink: 0 !important;
+      }
+
+      .modal-qty-control {
+        padding: 8px 12px !important;
+        border-radius: var(--radius-sm) !important;
+      }
+      .modal-qty-label {
+        font-size: 0.78rem !important;
+      }
+
       .modal-desktop-actions {
         display: none !important;
       }
       dialog#productModal .modal-footer {
         display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 8px 12px calc(8px + var(--sab)) !important;
+        gap: 8px !important;
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5) !important;
+        background: rgba(14, 16, 22, 0.96) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-top: 1px solid var(--border-subtle) !important;
       }
-      .modal-footer {
-        padding: 10px 16px calc(12px + var(--sab));
-        gap: 10px;
-        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+      dialog#productModal .modal-footer .price-box {
+        flex-shrink: 0 !important;
+        min-width: 0 !important;
       }
-      .modal-footer .btn-modal-cart,
-      .modal-footer .btn-modal-buy {
-        height: 42px;
-        min-height: 42px;
-        font-size: 0.88rem;
+      dialog#productModal .modal-footer .price-main-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+      }
+      dialog#productModal .modal-footer .product-price-val {
+        font-size: 1.05rem !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+      }
+      dialog#productModal .modal-footer .discount-badge {
+        font-size: 0.68rem !important;
+        padding: 1px 5px !important;
+      }
+      dialog#productModal .modal-footer .price-original-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-size: 0.70rem !important;
+      }
+      dialog#productModal .modal-footer .price-savings-label {
+        display: none !important;
+      }
+      dialog#productModal .modal-footer > div:last-child {
+        display: flex !important;
+        gap: 6px !important;
+        flex: 1 !important;
+        justify-content: flex-end !important;
+      }
+      dialog#productModal .modal-footer .btn-add-cart,
+      dialog#productModal .modal-footer .btn-direct-buy {
+        flex: 1 !important;
+        white-space: nowrap !important;
+        padding: 0 8px !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        font-size: 0.82rem !important;
+        gap: 4px !important;
       }
 
       /* Web Development & Software Packages Mobile Tabs & Polish */
@@ -7276,7 +7483,7 @@
           <div class="modal-details-col">
             <div>
               <h3 id="modalProductTitle" class="modal-pro-title">${title}</h3>
-              <div class="card-social-proof" style="margin-bottom: 14px;">
+              <div class="card-social-proof modal-social-proof">
                 <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
