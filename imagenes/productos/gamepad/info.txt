@@ -1,0 +1,46 @@
+NOMBRE DEL PRODUCTO:
+
+Gamepad Inalámbrico Bluetooth Multiplataforma 
+
+COLOR / VARIANTE:
+
+Negro con joysticks de colores
+
+PRECIO DE COSTO / REFERENCIA:
+
+Gs. 129.000 
+
+COMPATIBILIDAD:
+
+- Nintendo Switch (Switch estándar, Switch Lite, Switch OLED)
+
+- PC / Windows
+
+- iOS (iPhone / iPad)
+
+- Android (Smartphones y Tablets)
+
+CONECTIVIDAD:
+
+- Inalámbrica: Bluetooth
+
+- Cableada: USB Type-C
+
+CARACTERÍSTICAS PRINCIPALES:
+
+- Joysticks con tecnología Hall Effect: Mayor precisión y sin problemas de drift.
+
+- Función Turbo: Ajustable para disparos o acciones continuas en juegos de acción.
+
+- Motores de vibración dual: Retroalimentación háptica inmersiva para impactos y movimientos.
+
+- Gatillos y botones lineales de alta respuesta.
+
+- Batería recargable integrada de larga duración.
+
+- Diseño ergonómico con agarre texturizado antideslizante.
+
+DESCRIPCIÓN COMERCIAL (Para la web):
+
+"Lleva tu experiencia de juego al siguiente nivel con este mando inalámbrico multiplataforma. Diseñado para ofrecer máxima precisión y comodidad, cuenta con joysticks con tecnología Hall Effect para evitar el desgaste por drift, retroiluminación RGB estilizada y función Turbo programable. Compatible de forma nativa con Nintendo Switch (todas las versiones), PC, Android e iOS mediante conexión Bluetooth estable. Su batería recargable de alta capacidad y sistema de vibración háptica aseguran sesiones de juego prolongadas y totalmente inmersivas."
+

@@ -1335,6 +1335,516 @@
     }
 
     /* -------------------------------------------------------------
+       ARTÍCULOS FÍSICOS & HARDWARE SECTION
+       ------------------------------------------------------------- */
+    .physical-section-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 56px 40px;
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    .physical-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .physical-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      background: var(--accent-emerald-soft);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-pill);
+      color: var(--accent-emerald);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .physical-header-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 680px;
+      margin-top: 10px;
+    }
+
+    .btn-open-catalog-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 22px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-open-catalog-header:hover {
+      background: var(--accent-emerald);
+      color: #032115;
+      border-color: var(--accent-emerald);
+      transform: translateY(-1px);
+    }
+
+    .physical-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .physical-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform var(--transition-snappy), border-color var(--transition-snappy), box-shadow var(--transition-snappy);
+    }
+
+    .physical-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-medium);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .physical-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #090a0d;
+      margin-bottom: 14px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .physical-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-smooth);
+    }
+
+    .physical-card:hover .physical-img {
+      transform: scale(1.04);
+    }
+
+    .physical-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    .physical-card-category {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .physical-card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.7em;
+    }
+
+    .physical-card-title:hover {
+      color: var(--accent-emerald);
+    }
+
+    .physical-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+    }
+
+    .physical-price-row {
+      margin-top: auto;
+      margin-bottom: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .physical-current-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .physical-orig-price {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+    }
+
+    .physical-actions-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+
+    .btn-phys-details {
+      height: 38px;
+      padding: 0 12px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-hover);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-phys-details:hover {
+      background: var(--bg-surface-active);
+      border-color: var(--border-medium);
+    }
+
+    .btn-phys-cart {
+      height: 38px;
+      width: 38px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-emerald);
+      border: none;
+      color: #032115;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-phys-cart:hover {
+      background: var(--accent-emerald-hover);
+      transform: scale(1.05);
+    }
+
+    .physical-explore-bar {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .explore-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .explore-icon-frame {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .explore-title {
+      display: block;
+      font-size: 0.98rem;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .explore-desc {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .btn-explore-full {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 24px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-emerald);
+      color: #032115;
+      border: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-explore-full:hover {
+      background: var(--accent-emerald-hover);
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------------------
+       DEDICATED FULL PHYSICAL CATALOG MODAL
+       ------------------------------------------------------------- */
+    dialog.physical-modal-dialog {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      width: 92%;
+      max-width: 1040px;
+      max-height: 90vh;
+      border-radius: var(--radius-xl);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+      padding: 0;
+      z-index: 1000;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.96);
+      transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
+                  display 260ms allow-discrete,
+                  overlay 260ms allow-discrete;
+    }
+
+    dialog.physical-modal-dialog:not([open]) {
+      display: none;
+    }
+
+    dialog.physical-modal-dialog[open] {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @starting-style {
+      dialog.physical-modal-dialog[open] {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+    }
+
+    dialog.physical-modal-dialog.is-closing {
+      opacity: 0 !important;
+      transform: scale(0.96) !important;
+    }
+
+    .physical-modal-shell {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-height: 90vh;
+    }
+
+    .physical-modal-header {
+      padding: 22px 28px;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .physical-modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-emerald);
+      margin-bottom: 6px;
+    }
+
+    .physical-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .physical-modal-subtitle {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .physical-modal-toolbar {
+      padding: 16px 28px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .physical-search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .physical-search-box .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .physical-search-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 16px 0 42px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-family: inherit;
+      transition: border-color var(--transition-snappy), background var(--transition-snappy);
+    }
+
+    .physical-search-input:focus {
+      outline: none;
+      border-color: var(--accent-emerald);
+      background: var(--bg-surface-hover);
+    }
+
+    .physical-filters-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .physical-filters-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .phys-filter-pill {
+      height: 32px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.80rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-snappy);
+    }
+
+    .phys-filter-pill:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+
+    .phys-filter-pill.active {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .physical-modal-body {
+      padding: 24px 28px;
+      overflow-y: auto;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .physical-modal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .physical-modal-footer {
+      padding: 20px 28px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .physical-footer-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .physical-footer-note {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .btn-phys-close-footer {
+      height: 38px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-hover);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition-snappy);
+    }
+
+    .btn-phys-close-footer:hover {
+      background: var(--bg-surface-active);
+    }
+
+    /* -------------------------------------------------------------
        WEB DEVELOPMENT AGENCY SECTION
        ------------------------------------------------------------- */
     .agency-section {
@@ -3095,6 +3605,97 @@
         justify-content: center;
         height: 44px;
       }
+
+      .physical-section-card {
+        padding: 32px 16px;
+        margin-bottom: 48px;
+        border-radius: var(--radius-lg);
+      }
+
+      .physical-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .btn-open-catalog-header {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .physical-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .physical-card {
+        padding: 10px;
+        border-radius: var(--radius-md);
+      }
+
+      .physical-card-title {
+        font-size: 0.88rem;
+        min-height: 2.6em;
+      }
+
+      .physical-current-price {
+        font-size: 1rem;
+      }
+
+      .physical-explore-bar {
+        padding: 18px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .btn-explore-full {
+        width: 100%;
+        justify-content: center;
+      }
+
+      dialog.physical-modal-dialog {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
+        inset: 0;
+      }
+
+      .physical-modal-shell {
+        max-height: 100vh;
+        max-height: 100dvh;
+      }
+
+      .physical-modal-header {
+        padding: 16px;
+      }
+
+      .physical-modal-toolbar {
+        padding: 12px 16px;
+      }
+
+      .physical-modal-body {
+        padding: 16px;
+      }
+
+      .physical-modal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .physical-modal-footer {
+        padding: 14px 16px calc(14px + var(--sab));
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .btn-phys-close-footer {
+        width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
@@ -3225,6 +3826,7 @@
 
       <ul class="nav-menu">
         <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+        <li><a href="#articulos-fisicos" class="nav-link">Artículos Físicos</a></li>
         <li><a href="#agencia" class="nav-link">Desarrollo Web</a></li>
         <li><a href="#garantias" class="nav-link">Garantías</a></li>
         <li><a href="#proximamente" class="nav-link">Próximamente</a></li>
@@ -3253,7 +3855,8 @@
 
     <!-- Mobile Nav Slide-Down Panel -->
     <div class="mobile-nav-panel" id="mobileNavPanel">
-      <a href="#catalogo" class="mobile-nav-link" onclick="closeMobileMenu()">Catálogo de Productos</a>
+      <a href="#catalogo" class="mobile-nav-link" onclick="closeMobileMenu()">Catálogo de Cuentas & Juegos</a>
+      <a href="#articulos-fisicos" class="mobile-nav-link" onclick="closeMobileMenu()">Artículos Físicos (Envíos Paraguay)</a>
       <a href="#agencia" class="mobile-nav-link" onclick="closeMobileMenu()">Desarrollo Web & Software</a>
       <a href="#garantias" class="mobile-nav-link" onclick="closeMobileMenu()">Garantías & Medios de Pago</a>
       <a href="#proximamente" class="mobile-nav-link" onclick="closeMobileMenu()">Próximamente • En el Radar</a>
@@ -3371,6 +3974,64 @@
       <!-- Live products grid dynamically rendered via JS -->
       <div class="products-grid" id="productsGrid" aria-live="polite">
         <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         ARTÍCULOS FÍSICOS & HARDWARE SECTION
+         ========================================== -->
+    <section class="container" id="articulos-fisicos" aria-labelledby="physicalHeading">
+      <div class="physical-section-card">
+        <div class="physical-header-row">
+          <div>
+            <div class="physical-badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>ENVÍOS A TODO EL PAÍS • STOCK INMEDIATO</span>
+            </div>
+            <h2 class="section-title" id="physicalHeading">Artículos Físicos & Equipamiento</h2>
+            <p class="physical-header-desc">
+              Periféricos, controles y accesorios con garantía oficial. Envíos express en el día para Asunción y Gran Asunción, y encomiendas a todo Paraguay.
+            </p>
+          </div>
+          <button type="button" class="btn-open-catalog-header" onclick="openPhysicalCatalogModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Ver todos los artículos
+          </button>
+        </div>
+
+        <!-- Featured Physical Preview Grid -->
+        <div class="physical-preview-grid" id="physicalPreviewGrid" aria-live="polite">
+          <!-- Rendered dynamically by renderPhysicalPreview() -->
+        </div>
+
+        <!-- Explore Full Catalog Callout Bar -->
+        <div class="physical-explore-bar">
+          <div class="explore-info">
+            <span class="explore-icon-frame" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </span>
+            <div>
+              <strong class="explore-title">¿Deseas explorar todo el catálogo de artículos físicos?</strong>
+              <span class="explore-desc">Abre la ventana dedicada con buscador instantáneo, filtros por categoría y disponibilidad.</span>
+            </div>
+          </div>
+          <button type="button" class="btn-explore-full" onclick="openPhysicalCatalogModal()">
+            Explorar catálogo completo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -3763,6 +4424,75 @@
   </dialog>
 
   <!-- ==========================================
+       DEDICATED FULL PHYSICAL CATALOG MODAL
+       ========================================== -->
+  <dialog id="physicalCatalogModal" class="physical-modal-dialog" closedby="any" aria-labelledby="physModalHeading">
+    <div class="physical-modal-shell">
+      <div class="physical-modal-header">
+        <div>
+          <div class="physical-modal-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>CATÁLOGO DE PRODUCTOS FÍSICOS</span>
+          </div>
+          <h2 class="physical-modal-title" id="physModalHeading">Artículos Físicos Disponibles</h2>
+          <p class="physical-modal-subtitle">Envíos directos a todo Paraguay • Garantía oficial escrita</p>
+        </div>
+        <button type="button" class="drawer-close-btn" onclick="closePhysicalCatalogModal()" aria-label="Cerrar catálogo físico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Search & Filter Controls Toolbar Inside Modal -->
+      <div class="physical-modal-toolbar">
+        <div class="physical-search-box">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="9" r="6"/>
+            <line x1="13.5" y1="13.5" x2="18" y2="18"/>
+          </svg>
+          <input type="search" id="physSearchInput" class="physical-search-input" placeholder="Buscar por nombre o periférico..." oninput="handlePhysicalSearch(event)" aria-label="Buscar artículos físicos">
+        </div>
+
+        <div class="physical-filters-bar" role="tablist" aria-label="Categorías físicas">
+          <button type="button" class="phys-filter-pill active" data-phys-category="all" onclick="filterPhysicalCategory('all', this)">
+            Todos (<span id="phys-count-all">0</span>)
+          </button>
+          <button type="button" class="phys-filter-pill" data-phys-category="gaming" onclick="filterPhysicalCategory('gaming', this)">
+            Gaming & Controles (<span id="phys-count-gaming">0</span>)
+          </button>
+          <button type="button" class="phys-filter-pill" data-phys-category="audio" onclick="filterPhysicalCategory('audio', this)">
+            Audio (<span id="phys-count-audio">0</span>)
+          </button>
+          <button type="button" class="phys-filter-pill" data-phys-category="perifericos" onclick="filterPhysicalCategory('perifericos', this)">
+            Periféricos (<span id="phys-count-perifericos">0</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable Grid Body -->
+      <div class="physical-modal-body">
+        <div class="physical-modal-grid" id="physicalModalGrid">
+          <!-- Dynamically populated via JS renderPhysicalModalGrid() -->
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="physical-modal-footer">
+        <div class="physical-footer-info">
+          <p class="physical-footer-note">
+            🛵 Entrega en el día para Gran Asunción • 🚚 Envíos al interior por encomienda vía WhatsApp
+          </p>
+        </div>
+        <button type="button" class="btn-phys-close-footer" onclick="closePhysicalCatalogModal()">
+          Cerrar Catálogo
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==========================================
        PRODUCT DETAILS MODAL (Apple-grade panel)
        ========================================== -->
   <dialog id="productModal" closedby="any" aria-labelledby="modalProductTitle">
@@ -3958,6 +4688,163 @@
       }
     ];
 
+    // Physical Products Catalog Data in Guaraníes (Gs.)
+    const PHYSICAL_PRODUCTS = [
+      {
+        id: 'gamepad-pro-wireless',
+        title: 'Gamepad Inalámbrico Pro Bluetooth & 2.4G (PC / Switch / Móvil)',
+        name: 'Gamepad Inalámbrico Pro Bluetooth & 2.4G',
+        category: 'gaming',
+        isPhysical: true,
+        price: 195000,
+        originalPrice: 270000,
+        discountPercentage: '-28%',
+        rating: '4.9',
+        soldCount: '+24 vendidos',
+        stockLeft: 5,
+        image: 'imagenes/productos/gamepad-pro-wireless.jpg',
+        badge: 'Inalámbrico',
+        badgeType: 'badge-purple',
+        extraBadge: 'Multiplataforma',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Control ergonómico inalámbrico con sticks Hall Effect anti-drift, batería recargable y vibración háptica dual.',
+        description: 'Gamepad inalámbrico de alto rendimiento para PC, Steam, Nintendo Switch y celulares. Incorpora sensores magnéticos Hall Effect que eliminan por completo el desgaste y el drift, gatillos analógicos progresivos y doble motor de vibración háptica.',
+        features: [
+          'Triple conectividad: Bluetooth 5.0, receptor USB 2.4 GHz y cable Tipo-C',
+          'Joysticks magnéticos Hall Effect (cero drift garantizado)',
+          'Batería recargable de 800 mAh con hasta 14 horas continuas de autonomía',
+          'Vibración háptica dual regulable y giroscopio de 6 ejes integrado',
+          'Compatible con PC (Windows), Steam Deck, Switch, Android e iOS'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos a todo el interior de Paraguay por encomienda (24 a 48 hs).',
+            '🛡️ Garantía escrita de 3 meses por desperfectos de fábrica.',
+            '🔌 Incluye cable de carga trenzado USB-C, receptor inalámbrico y manual.'
+          ]
+        }
+      },
+      {
+        id: 'auriculares-gamer-71',
+        title: 'Auriculares Gamer Inalámbricos 7.1 Surround con Micrófono Extraíble',
+        name: 'Auriculares Gamer Inalámbricos 7.1 Surround',
+        category: 'audio',
+        isPhysical: true,
+        price: 245000,
+        originalPrice: 350000,
+        discountPercentage: '-30%',
+        rating: '4.8',
+        soldCount: '+18 vendidos',
+        stockLeft: 4,
+        image: 'imagenes/productos/auriculares-gamer-pro.jpg',
+        badge: 'Audio 7.1',
+        badgeType: 'badge-blue',
+        extraBadge: 'Cancelación Ruido',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Sonido envolvente 7.1 de baja latencia con almohadillas de memory foam y micrófono con cancelación de ruido.',
+        description: 'Headset gamer inalámbrico de precisión acústica diseñado para largas sesiones competitivas. Drivers de 50 mm con ecualización espacial, diadema reforzada en aluminio y micrófono desmontable con filtro antipop.',
+        features: [
+          'Conexión inalámbrica 2.4 GHz de ultra baja latencia (menos de 20ms)',
+          'Drivers acústicos de 50 mm con sonido envolvente posicional 7.1',
+          'Almohadillas transpirables de espuma viscoelástica (Memory Foam)',
+          'Micrófono flexible y desmontable con cancelación activa de ruido ambiente',
+          'Batería de larga duración: hasta 24 horas continuas por carga'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos a todo el país por encomiendas con guía de seguimiento.',
+            '🛡️ Garantía oficial de 3 meses de reposición inmediata.',
+            '🎧 Incluye dongle USB transmisor, cable auxiliar 3.5mm y cable USB-C.'
+          ]
+        }
+      },
+      {
+        id: 'teclado-mecanico-rgb-65',
+        title: 'Teclado Mecánico Compacto 65% RGB Switch Red Hot-Swap',
+        name: 'Teclado Mecánico Compacto 65% RGB',
+        category: 'perifericos',
+        isPhysical: true,
+        price: 220000,
+        originalPrice: 310000,
+        discountPercentage: '-29%',
+        rating: '4.9',
+        soldCount: '+35 vendidos',
+        stockLeft: 3,
+        image: 'imagenes/productos/teclado-mecanico-rgb.jpg',
+        badge: 'Switches Red',
+        badgeType: 'badge-green',
+        extraBadge: 'Hot-Swap',
+        extraBadgeType: 'badge-purple',
+        shortDesc: 'Chasis de aluminio mecanizado con switches lineales Red pre-lubricados e iluminación RGB configurable.',
+        description: 'Teclado mecánico compacto de diseño minimalista al 65%. Placa de aluminio anodizado, teclas PBT de doble inyección resistentes al desgaste, espuma insonorizadora interna y circuito PCB con zócalos hot-swap para cambiar switches fácilmente sin soldar.',
+        features: [
+          'Switches mecánicos Red lineales pre-lubricados (pulsación suave y silenciosa)',
+          'Zócalos Hot-Swap compatibles con switches mecánicos de 3 y 5 pines',
+          'Teclas PBT Double-Shot que no se desgastan ni acumulan brillo con el uso',
+          'Cable desmontable mallado USB Tipo-C a USB-A',
+          'Anti-Ghosting completo (N-Key Rollover) y memoria interna de perfiles'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos en el día para Asunción y ciudades vecinas.',
+            '🚚 Envíos a todo el interior de Paraguay por encomienda.',
+            '🛡️ Garantía escrita de 3 meses.',
+            '⌨️ Incluye extractor de teclas, extractor de switches y 2 switches de repuesto.'
+          ]
+        }
+      },
+      {
+        id: 'mouse-gamer-ultralight',
+        title: 'Mouse Gamer Ergonómico Ultra-Ligero 16.000 DPI con Sensor Óptico',
+        name: 'Mouse Gamer Ergonómico Ultra-Ligero',
+        category: 'perifericos',
+        isPhysical: true,
+        price: 150000,
+        originalPrice: 215000,
+        discountPercentage: '-30%',
+        rating: '4.9',
+        soldCount: '+42 vendidos',
+        stockLeft: 6,
+        image: 'imagenes/productos/mouse-gamer-pro.jpg',
+        badge: '16.000 DPI',
+        badgeType: 'badge-purple',
+        extraBadge: 'Ultra Ligero',
+        extraBadgeType: 'badge-blue',
+        shortDesc: 'Sensor óptico de grado esports, peso pluma de 62 gramos, switches ópticos y cable Paracord ultra flexible.',
+        description: 'Mouse gamer diseñado para máxima precisión y velocidad en juegos competitivos. Sensor óptico nativo de alta gama con aceleración de 50G, skates de PTFE 100% virgen para deslizamiento sin fricción y switches ópticos con vida útil de 80 millones de clics.',
+        features: [
+          'Sensor óptico para gaming de alta precisión ajustable de 400 a 16.000 DPI',
+          'Peso ultra ligero de solo 62 gramos para evitar fatiga en muñeca',
+          'Switches ópticos instantáneos (sin retraso de debounce ni doble clic)',
+          'Deslizadores (skates) 100% PTFE puro con bordes redondeados',
+          'Iluminación sutil inferior con efectos programables'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Entrega express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos diarios a todo Paraguay por encomienda con número de guía.',
+            '🛡️ Garantía de 3 meses con soporte directo por WhatsApp.',
+            '🖱️ Incluye juego adicional de skates PTFE de repuesto.'
+          ]
+        }
+      }
+    ];
+
+    // Helper: Find product across both digital and physical catalogs
+    function findProduct(id) {
+      return PRODUCTS.find(p => p.id === id) || PHYSICAL_PRODUCTS.find(p => p.id === id);
+    }
+
     // Helper: Format Guaraníes (e.g. 35000 -> "Gs. 35.000")
     function formatGs(amount) {
       return 'Gs. ' + Number(amount || 0).toLocaleString('es-PY');
@@ -3968,6 +4855,8 @@
     let currentCategory = 'all';
     let currentSearch = '';
     let currentSort = 'featured';
+    let currentPhysicalCategory = 'all';
+    let currentPhysicalSearch = '';
     let lastFocusedElement = null;
     let modalQuantity = 1;
 
@@ -3983,7 +4872,7 @@
       }
       // Re-hydrate metadata & sync latest product image from active catalog
       cart.forEach(item => {
-        const p = PRODUCTS.find(prod => prod.id === item.id);
+        const p = findProduct(item.id);
         if (p) {
           item.image = p.image || '';
           if (item.originalPrice === undefined) item.originalPrice = p.originalPrice;
@@ -4014,7 +4903,7 @@
 
     // Add to Cart
     function addToCart(productId, qtyToAdd = 1) {
-      const product = PRODUCTS.find(p => p.id === productId);
+      const product = findProduct(productId);
       if (!product) return;
 
       const productName = product.title || product.name;
@@ -4109,7 +4998,7 @@
               <path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
             <p style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary); font-size: 1.05rem;">Tu carrito está vacío</p>
-            <p style="font-size: 0.88rem; max-width: 260px; line-height: 1.45; margin-bottom: 20px;">Explora las suscripciones y licencias para agregar productos.</p>
+            <p style="font-size: 0.88rem; max-width: 260px; line-height: 1.45; margin-bottom: 20px;">Explora las suscripciones, licencias y artículos físicos para agregar productos.</p>
             <button type="button" class="btn-primary" onclick="closeCartDrawer(); window.location.hash = '#catalogo';" style="height: 40px; padding: 0 20px; font-size: 0.86rem;">
               Explorar catálogo
             </button>
@@ -4191,16 +5080,22 @@
 
     // Direct WhatsApp Purchase
     function buyDirectWhatsApp(productId, quantity = 1) {
-      const product = PRODUCTS.find(p => p.id === productId);
+      const product = findProduct(productId);
       if (!product) return;
 
       const productName = product.title || product.name;
       const qty = Math.max(1, parseInt(quantity, 10) || 1);
       const totalAmount = product.price * qty;
       const discountText = product.discountPercentage ? ` (${product.discountPercentage} dto.)` : '';
-      
       const qtyText = qty > 1 ? `*${qty}x ${productName}*` : `*${productName}*`;
-      const message = `Hola Punto Prisma, deseo comprar directamente el siguiente producto:\n\n• ${qtyText}\n• Total: *${formatGs(totalAmount)}*${discountText}\n\n¿Cuáles son los datos de cuenta bancaria (SIPAP) para transferir? ¡Muchas gracias!`;
+      
+      let message;
+      if (product.isPhysical) {
+        message = `Hola Punto Prisma, deseo comprar el siguiente artículo físico:\n\n• ${qtyText}\n• Total: *${formatGs(totalAmount)}*${discountText}\n\n¿Tienen disponibilidad para coordinar el pago en Guaraníes (SIPAP) y la entrega o envío en Paraguay? ¡Muchas gracias!`;
+      } else {
+        message = `Hola Punto Prisma, deseo comprar directamente el siguiente producto:\n\n• ${qtyText}\n• Total: *${formatGs(totalAmount)}*${discountText}\n\n¿Cuáles son los datos de cuenta bancaria (SIPAP) para transferir? ¡Muchas gracias!`;
+      }
+
       const encodedMsg = encodeURIComponent(message);
       window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`, '_blank');
     }
@@ -4211,13 +5106,17 @@
 
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const totalOriginal = cart.reduce((sum, item) => {
-        const orig = item.originalPrice !== undefined ? item.originalPrice : (PRODUCTS.find(p => p.id === item.id)?.originalPrice || item.price);
+        const prod = findProduct(item.id);
+        const orig = item.originalPrice !== undefined ? item.originalPrice : (prod?.originalPrice || item.price);
         return sum + (orig * item.quantity);
       }, 0);
       const totalSavings = Math.max(0, totalOriginal - totalPrice);
 
       let itemsListText = '';
+      let hasPhysical = false;
       cart.forEach(item => {
+        const prod = findProduct(item.id);
+        if (prod && prod.isPhysical) hasPhysical = true;
         itemsListText += `• ${item.quantity}x *${item.name}* - ${formatGs(item.price * item.quantity)}\n`;
       });
 
@@ -4228,8 +5127,11 @@
       if (totalPrice >= FREE_REWARD_THRESHOLD) {
         bonusText += `\n🎁 *Beneficio desbloqueado: Clave Steam Sorpresa Gratis*`;
       }
+      if (hasPhysical) {
+        bonusText += `\n📦 *Incluye artículo(s) físico(s) para coordinar dirección de entrega o encomienda.*`;
+      }
 
-      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}${bonusText}\n\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes? ¡Muchas gracias!`;
+      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}${bonusText}\n\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes (SIPAP)? ¡Muchas gracias!`;
       const encodedMsg = encodeURIComponent(message);
       window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`, '_blank');
     }
@@ -4279,6 +5181,45 @@
                 <stop offset="1" stop-color="#FA709A"/>
               </linearGradient>
             </defs>
+          </svg>`;
+
+        case 'gamepad-pro-wireless':
+          // Gamepad Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Control Gamepad Inalámbrico">
+            <line x1="6" y1="12" x2="10" y2="12"></line>
+            <line x1="8" y1="10" x2="8" y2="14"></line>
+            <circle cx="15.5" cy="12.5" r=".75" fill="currentColor"></circle>
+            <circle cx="17.5" cy="10.5" r=".75" fill="currentColor"></circle>
+            <rect x="2" y="6" width="20" height="12" rx="6"></rect>
+          </svg>`;
+
+        case 'auriculares-gamer-71':
+          // Headset Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Auriculares Gamer 7.1">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+          </svg>`;
+
+        case 'teclado-mecanico-rgb-65':
+          // Keyboard Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Teclado Mecánico RGB">
+            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+            <line x1="6" y1="8" x2="6.01" y2="8"></line>
+            <line x1="10" y1="8" x2="10.01" y2="8"></line>
+            <line x1="14" y1="8" x2="14.01" y2="8"></line>
+            <line x1="18" y1="8" x2="18.01" y2="8"></line>
+            <line x1="6" y1="12" x2="6.01" y2="12"></line>
+            <line x1="10" y1="12" x2="10.01" y2="12"></line>
+            <line x1="14" y1="12" x2="14.01" y2="12"></line>
+            <line x1="18" y1="12" x2="18.01" y2="12"></line>
+            <line x1="8" y1="16" x2="16" y2="16"></line>
+          </svg>`;
+
+        case 'mouse-gamer-ultralight':
+          // Mouse Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Mouse Gamer Ultra-Ligero">
+            <rect x="5" y="2" width="14" height="20" rx="7"></rect>
+            <line x1="12" y1="6" x2="12" y2="10"></line>
           </svg>`;
 
         default:
@@ -4622,7 +5563,7 @@
 
     // Product Details Modal Controller (Apple-grade panel)
     function openProductDetails(productId) {
-      const product = PRODUCTS.find(p => p.id === productId);
+      const product = findProduct(productId);
       if (!product) return;
 
       const modal = document.getElementById('productModal');
@@ -4636,7 +5577,21 @@
       const badgeType = product.badgeType || 'badge-purple';
       const original = product.originalPrice || product.price;
       const savings = original > product.price ? original - product.price : 0;
-      let categoryDisplay = product.category === 'suscripcion' ? 'Suscripción Digital • IA' : (product.category === 'gaming' ? 'Gaming & Steam PC' : 'Licencias & Software');
+      
+      let categoryDisplay;
+      if (product.isPhysical) {
+        if (product.category === 'gaming') categoryDisplay = 'Hardware • Gaming & Mandos';
+        else if (product.category === 'audio') categoryDisplay = 'Hardware • Audio Gamer';
+        else categoryDisplay = 'Hardware • Periféricos PC';
+      } else if (product.category === 'suscripcion') {
+        categoryDisplay = 'Suscripción Digital • IA';
+      } else if (product.category === 'gaming') {
+        categoryDisplay = 'Gaming & Steam PC';
+      } else {
+        categoryDisplay = 'Licencias & Software';
+      }
+
+      const deliveryTagText = product.isPhysical ? 'Envíos a todo Paraguay' : 'Entrega 5-15 min';
 
       modal.innerHTML = `
         <div class="sheet-grab-bar" id="sheetGrabBar" aria-hidden="true">
@@ -4680,7 +5635,7 @@
               <span class="social-proof-dot" aria-hidden="true">•</span>
               <span class="sold-count-val num-tabular">${product.soldCount}</span>
               <span class="social-proof-dot" aria-hidden="true">•</span>
-              <span class="delivery-status-tag">Entrega 5-15 min</span>
+              <span class="delivery-status-tag">${deliveryTagText}</span>
             </div>
           </div>
 
@@ -4948,10 +5903,256 @@
       });
     }
 
+    // -------------------------------------------------------------
+    // CONTROLLERS FOR ARTÍCULOS FÍSICOS & HARDWARE
+    // -------------------------------------------------------------
+
+    // Render Featured Physical Products Preview Grid
+    function renderPhysicalPreview() {
+      const grid = document.getElementById('physicalPreviewGrid');
+      if (!grid) return;
+
+      grid.innerHTML = PHYSICAL_PRODUCTS.map(item => {
+        const title = item.title || item.name;
+        let categoryName = 'Hardware';
+        if (item.category === 'gaming') categoryName = 'Gaming & Mandos';
+        else if (item.category === 'audio') categoryName = 'Audio Gamer 7.1';
+        else if (item.category === 'perifericos') categoryName = 'Periféricos';
+
+        return `
+        <article class="physical-card" data-id="${item.id}">
+          <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
+            <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            <div class="physical-card-badge">
+              <span class="card-badge ${item.badgeType}">${item.badge}</span>
+            </div>
+          </div>
+
+          <div class="physical-card-category">${categoryName}</div>
+          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
+
+          <div class="physical-meta-row">
+            <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 14px; height: 14px; color: var(--accent-amber);">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
+            <span>•</span>
+            <span>${item.soldCount}</span>
+            <span>•</span>
+            <span style="color: var(--accent-emerald);">En stock</span>
+          </div>
+
+          <div class="physical-price-row">
+            <span class="physical-current-price num-tabular">${formatGs(item.price)}</span>
+            ${item.originalPrice ? `<span class="physical-orig-price num-tabular">${formatGs(item.originalPrice)}</span>` : ''}
+          </div>
+
+          <div class="physical-actions-row">
+            <button type="button" class="btn-phys-details" onclick="openProductDetails('${item.id}')">
+              Ver detalles
+            </button>
+            <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+        `;
+      }).join('');
+    }
+
+    // Update Counts inside Dedicated Physical Modal
+    function updatePhysicalCategoryCounts() {
+      const countAll = document.getElementById('phys-count-all');
+      const countGaming = document.getElementById('phys-count-gaming');
+      const countAudio = document.getElementById('phys-count-audio');
+      const countPerifericos = document.getElementById('phys-count-perifericos');
+
+      if (countAll) countAll.textContent = PHYSICAL_PRODUCTS.length;
+      if (countGaming) countGaming.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'gaming').length;
+      if (countAudio) countAudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'audio').length;
+      if (countPerifericos) countPerifericos.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'perifericos').length;
+    }
+
+    // Render Full Catalog Grid inside Modal with Category & Search Filters
+    function renderPhysicalModalGrid(category = currentPhysicalCategory, query = currentPhysicalSearch) {
+      const grid = document.getElementById('physicalModalGrid');
+      if (!grid) return;
+
+      const q = (query || '').toLowerCase().trim();
+      const filtered = PHYSICAL_PRODUCTS.filter(item => {
+        const matchesCategory = (category === 'all') || (item.category === category);
+        const title = (item.title || item.name || '').toLowerCase();
+        const desc = (item.description || item.shortDesc || '').toLowerCase();
+        const matchesQuery = q === '' || title.includes(q) || desc.includes(q);
+        return matchesCategory && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: var(--text-secondary);">
+            <div style="width: 50px; height: 50px; margin: 0 auto 14px; border-radius: var(--radius-md); background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">No encontramos artículos físicos</p>
+            <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 16px;">Intenta con otro término o selecciona "Todos".</p>
+            <button type="button" class="btn-secondary" onclick="filterPhysicalCategory('all')" style="height: 38px; padding: 0 18px; font-size: 0.84rem;">
+              Ver todos los artículos
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const title = item.title || item.name;
+        let categoryName = 'Hardware';
+        if (item.category === 'gaming') categoryName = 'Gaming & Mandos';
+        else if (item.category === 'audio') categoryName = 'Audio Gamer 7.1';
+        else if (item.category === 'perifericos') categoryName = 'Periféricos';
+
+        return `
+        <article class="physical-card" data-id="${item.id}">
+          <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
+            <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            <div class="physical-card-badge">
+              <span class="card-badge ${item.badgeType}">${item.badge}</span>
+            </div>
+          </div>
+
+          <div class="physical-card-category">${categoryName}</div>
+          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
+
+          <div class="physical-meta-row">
+            <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 14px; height: 14px; color: var(--accent-amber);">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
+            <span>•</span>
+            <span>${item.soldCount}</span>
+            <span>•</span>
+            <span style="color: var(--accent-emerald);">En stock</span>
+          </div>
+
+          <div class="physical-price-row">
+            <span class="physical-current-price num-tabular">${formatGs(item.price)}</span>
+            ${item.originalPrice ? `<span class="physical-orig-price num-tabular">${formatGs(item.originalPrice)}</span>` : ''}
+          </div>
+
+          <div class="physical-actions-row">
+            <button type="button" class="btn-phys-details" onclick="openProductDetails('${item.id}')">
+              Ver detalles
+            </button>
+            <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+        `;
+      }).join('');
+    }
+
+    // Open Dedicated Physical Goods Catalog Modal
+    function openPhysicalCatalogModal() {
+      const modal = document.getElementById('physicalCatalogModal');
+      if (!modal) return;
+
+      lastFocusedElement = document.activeElement;
+      document.body.classList.add('modal-open');
+      modal.classList.remove('is-closing');
+      modal.showModal();
+
+      currentPhysicalCategory = 'all';
+      currentPhysicalSearch = '';
+      const input = document.getElementById('physSearchInput');
+      if (input) input.value = '';
+
+      const pills = document.querySelectorAll('.phys-filter-pill');
+      pills.forEach(p => {
+        const isAll = p.dataset.physCategory === 'all';
+        p.classList.toggle('active', isAll);
+        p.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+
+      updatePhysicalCategoryCounts();
+      renderPhysicalModalGrid('all', '');
+    }
+
+    // Close Dedicated Physical Goods Catalog Modal
+    function closePhysicalCatalogModal() {
+      const modal = document.getElementById('physicalCatalogModal');
+      if (!modal || !modal.open) return;
+
+      modal.classList.add('is-closing');
+      setTimeout(() => {
+        modal.close();
+        modal.classList.remove('is-closing');
+        document.body.classList.remove('modal-open');
+        if (lastFocusedElement) {
+          lastFocusedElement.focus();
+          lastFocusedElement = null;
+        }
+      }, 260);
+    }
+
+    // Physical Search Input Handler
+    function handlePhysicalSearch(event) {
+      currentPhysicalSearch = event.target.value;
+      renderPhysicalModalGrid(currentPhysicalCategory, currentPhysicalSearch);
+    }
+
+    // Physical Category Filter Handler
+    function filterPhysicalCategory(category, button) {
+      currentPhysicalCategory = category;
+      const pills = document.querySelectorAll('.phys-filter-pill');
+      pills.forEach(p => {
+        const isMatch = p.dataset.physCategory === category;
+        p.classList.toggle('active', isMatch);
+        p.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      const input = document.getElementById('physSearchInput');
+      renderPhysicalModalGrid(category, input ? input.value : '');
+    }
+
+    // Physical Modal light-dismiss and escape listeners
+    const physicalModalElem = document.getElementById('physicalCatalogModal');
+    if (physicalModalElem) {
+      physicalModalElem.addEventListener('cancel', (e) => {
+        e.preventDefault();
+        closePhysicalCatalogModal();
+      });
+      physicalModalElem.addEventListener('click', (event) => {
+        if (event.target !== physicalModalElem) return;
+        const rect = physicalModalElem.getBoundingClientRect();
+        const isInDialog = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+          closePhysicalCatalogModal();
+        }
+      });
+    }
+
     // Initialization on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
       updateCategoryPillCounts();
       renderProducts();
+      updatePhysicalCategoryCounts();
+      renderPhysicalPreview();
       loadCart();
     });
   </script>
