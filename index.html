@@ -6310,18 +6310,27 @@
     function adjustModalQty(delta, unitPrice) {
       modalQuantity = Math.max(1, modalQuantity + delta);
       const display = document.getElementById('modalQtyDisplay');
-      const priceVal = document.getElementById('modalPriceVal');
-      const origVal = document.getElementById('modalOrigVal');
-      const savingsVal = document.getElementById('modalSavingsVal');
       if (display) display.textContent = modalQuantity;
-      if (priceVal) priceVal.textContent = formatGs(unitPrice * modalQuantity);
-      if (origVal && origVal.dataset.unitOrig) {
-        const uOrig = Number(origVal.dataset.unitOrig);
-        origVal.textContent = formatGs(uOrig * modalQuantity);
-        if (savingsVal) {
-          savingsVal.textContent = `Ahorras ${formatGs((uOrig - unitPrice) * modalQuantity)}`;
+
+      const priceVals = document.querySelectorAll('#modalPriceVal');
+      priceVals.forEach(el => el.textContent = formatGs(unitPrice * modalQuantity));
+
+      const origVals = document.querySelectorAll('#modalOrigVal');
+      origVals.forEach(origVal => {
+        if (origVal.dataset.unitOrig) {
+          const uOrig = Number(origVal.dataset.unitOrig);
+          origVal.textContent = formatGs(uOrig * modalQuantity);
         }
-      }
+      });
+
+      const savingsVals = document.querySelectorAll('#modalSavingsVal, #modalSavingsBadge');
+      savingsVals.forEach(sVal => {
+        const uOrig = Number(document.querySelector('#modalOrigVal')?.dataset?.unitOrig || 0);
+        if (uOrig > unitPrice) {
+          const sText = formatGs((uOrig - unitPrice) * modalQuantity);
+          sVal.textContent = sVal.id === 'modalSavingsBadge' ? `Ahorro ${sText}` : `Ahorras ${sText}`;
+        }
+      });
     }
 
     function closeProductDetails() {
@@ -6419,7 +6428,7 @@
         const counterEl = document.getElementById('carouselCurrentSlide');
         if (counterEl) counterEl.textContent = activeIdx + 1;
 
-        const thumbs = document.querySelectorAll('.modal-thumb-btn');
+        const thumbs = document.querySelectorAll('.modal-thumb-vertical-btn, .modal-thumb-btn');
         thumbs.forEach((thumb, i) => {
           thumb.classList.toggle('active', i === activeIdx);
         });
