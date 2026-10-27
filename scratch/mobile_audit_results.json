@@ -1,0 +1,811 @@
+{
+  "iphone-375x812": {
+    "overflowIssues": [
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 211,
+          "right": 392,
+          "width": 180
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 402,
+          "right": 572,
+          "width": 170
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "class": "",
+        "rect": {
+          "left": 419,
+          "right": 529,
+          "width": 110
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "SPAN",
+        "id": "countGaming",
+        "class": "pill-count num-tabular",
+        "rect": {
+          "left": 537,
+          "right": 555,
+          "width": 18
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 582,
+          "right": 759,
+          "width": 177
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "class": "",
+        "rect": {
+          "left": 599,
+          "right": 716,
+          "width": 117
+        },
+        "docWidth": 375
+      },
+      {
+        "tag": "SPAN",
+        "id": "countSoftware",
+        "class": "pill-count num-tabular",
+        "rect": {
+          "left": 724,
+          "right": 742,
+          "width": 18
+        },
+        "docWidth": 375
+      }
+    ],
+    "tapTargetIssues": [
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "Google AI Pro - Gemini 18 Mont",
+        "width": 158,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 75,
+        "height": 38
+      },
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "Assetto Corsa (Global) (PC) - ",
+        "width": 158,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 75,
+        "height": 38
+      },
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "1 Juego Steam Aleatorio - Gran",
+        "width": 158,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 75,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 109,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 109,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 109,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 109,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-landing",
+        "class": "agency-tab-btn active",
+        "text": "Landing Page",
+        "width": 102,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-ecommerce",
+        "class": "agency-tab-btn",
+        "text": "E-Commerce ★",
+        "width": 100,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-software",
+        "class": "agency-tab-btn",
+        "text": "Software",
+        "width": 100,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "modalCloseBtn",
+        "class": "drawer-close-btn",
+        "text": "",
+        "width": 34,
+        "height": 34
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "modal-thumb-vertical-btn active",
+        "text": "",
+        "width": 36,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "modal-thumb-vertical-btn ",
+        "text": "",
+        "width": 36,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "qty-btn",
+        "text": "-",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "qty-btn",
+        "text": "+",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 104,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 102,
+        "height": 38
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Cuentas e Inteligencia Artific",
+        "width": 186,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Licencias Oficiales PC & Steam",
+        "width": 185,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Juegos y Suscripciones",
+        "width": 138,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Próximos Lanzamientos",
+        "width": 143,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Landing Pages de Alta Conversi",
+        "width": 206,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Tiendas Online E-Commerce",
+        "width": 172,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Sistemas Web a Medida",
+        "width": 145,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Solicitar Presupuesto",
+        "width": 127,
+        "height": 18
+      }
+    ],
+    "states": {
+      "home": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-1-home.png"
+      },
+      "menu": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-2-menu.png",
+        "isOpen": true
+      },
+      "tabs": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-3-tabs.png"
+      },
+      "search": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-4-search.png",
+        "resultCount": 0
+      },
+      "productModal": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-5-product-modal.png",
+        "metrics": {
+          "isOpen": true,
+          "modalHeight": 780,
+          "promoBottom": 585,
+          "footerTop": 757,
+          "isPromoVisibleAboveFooter": true
+        }
+      },
+      "cart": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\iphone-375x812-6-cart.png",
+        "metrics": {
+          "isOpen": true,
+          "itemsCount": 0,
+          "footerHeight": 0,
+          "hasCheckoutBtn": false
+        }
+      }
+    },
+    "historyBackWorks": true
+  },
+  "android-360x800": {
+    "overflowIssues": [
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 211,
+          "right": 392,
+          "width": 180
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "SPAN",
+        "id": "countSuscripcion",
+        "class": "pill-count num-tabular",
+        "rect": {
+          "left": 357,
+          "right": 375,
+          "width": 18
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 402,
+          "right": 572,
+          "width": 170
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "class": "",
+        "rect": {
+          "left": 419,
+          "right": 529,
+          "width": 110
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "SPAN",
+        "id": "countGaming",
+        "class": "pill-count num-tabular",
+        "rect": {
+          "left": 537,
+          "right": 555,
+          "width": 18
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "filter-pill",
+        "rect": {
+          "left": 582,
+          "right": 759,
+          "width": 177
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "class": "",
+        "rect": {
+          "left": 599,
+          "right": 716,
+          "width": 117
+        },
+        "docWidth": 360
+      },
+      {
+        "tag": "SPAN",
+        "id": "countSoftware",
+        "class": "pill-count num-tabular",
+        "rect": {
+          "left": 724,
+          "right": 742,
+          "width": 18
+        },
+        "docWidth": 360
+      }
+    ],
+    "tapTargetIssues": [
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "Google AI Pro - Gemini 18 Mont",
+        "width": 150,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 73,
+        "height": 38
+      },
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "Assetto Corsa (Global) (PC) - ",
+        "width": 150,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 73,
+        "height": 38
+      },
+      {
+        "tag": "H3",
+        "id": "",
+        "class": "product-name",
+        "text": "1 Juego Steam Aleatorio - Gran",
+        "width": 150,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 77,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 73,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 101,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 101,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 101,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-details",
+        "text": "Ver detalles",
+        "width": 101,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-phys-cart",
+        "text": "",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-landing",
+        "class": "agency-tab-btn active",
+        "text": "Landing Page",
+        "width": 96,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-ecommerce",
+        "class": "agency-tab-btn",
+        "text": "E-Commerce ★",
+        "width": 98,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "tab-software",
+        "class": "agency-tab-btn",
+        "text": "Software",
+        "width": 94,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "modalCloseBtn",
+        "class": "drawer-close-btn",
+        "text": "",
+        "width": 34,
+        "height": 34
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "modal-thumb-vertical-btn active",
+        "text": "",
+        "width": 36,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "modal-thumb-vertical-btn ",
+        "text": "",
+        "width": 36,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "qty-btn",
+        "text": "-",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "qty-btn",
+        "text": "+",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-add-cart",
+        "text": "Al Carrito",
+        "width": 97,
+        "height": 38
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "class": "btn-direct-buy",
+        "text": "Comprar",
+        "width": 95,
+        "height": 38
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Cuentas e Inteligencia Artific",
+        "width": 186,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Licencias Oficiales PC & Steam",
+        "width": 185,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Juegos y Suscripciones",
+        "width": 138,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Próximos Lanzamientos",
+        "width": 143,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Landing Pages de Alta Conversi",
+        "width": 206,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Tiendas Online E-Commerce",
+        "width": 172,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Sistemas Web a Medida",
+        "width": 145,
+        "height": 18
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "class": "",
+        "text": "Solicitar Presupuesto",
+        "width": 127,
+        "height": 18
+      }
+    ],
+    "states": {
+      "home": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-1-home.png"
+      },
+      "menu": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-2-menu.png",
+        "isOpen": true
+      },
+      "tabs": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-3-tabs.png"
+      },
+      "search": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-4-search.png",
+        "resultCount": 0
+      },
+      "productModal": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-5-product-modal.png",
+        "metrics": {
+          "isOpen": true,
+          "modalHeight": 768,
+          "promoBottom": 584,
+          "footerTop": 745,
+          "isPromoVisibleAboveFooter": true
+        }
+      },
+      "cart": {
+        "screenshot": "C:\\Users\\Portfolio\\Desktop\\dex\\scratch\\screenshots\\android-360x800-6-cart.png",
+        "metrics": {
+          "isOpen": true,
+          "itemsCount": 0,
+          "footerHeight": 0,
+          "hasCheckoutBtn": false
+        }
+      }
+    },
+    "historyBackWorks": true
+  }
+}
