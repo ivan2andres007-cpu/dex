@@ -2701,9 +2701,9 @@
       position: fixed;
       inset: 0;
       margin: auto;
-      width: min(92vw, 620px);
-      height: min(88vh, 88dvh, 800px);
-      max-height: min(88vh, 88dvh);
+      width: min(94vw, 980px);
+      height: min(90vh, 90dvh, 760px);
+      max-height: min(90vh, 90dvh);
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-xl);
       background: var(--bg-surface);
@@ -2807,15 +2807,16 @@
     }
 
     .modal-body {
-      padding: 20px 24px;
+      padding: 24px 28px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
       flex: 1 1 auto;
       min-height: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: minmax(360px, 440px) 1fr;
+      gap: 32px;
+      align-items: flex-start;
     }
 
     .modal-body::-webkit-scrollbar {
@@ -2835,10 +2836,12 @@
 
     .modal-media-frame {
       width: 100%;
-      aspect-ratio: 16 / 10;
-      max-height: 240px;
-      border-radius: var(--radius-md);
-      background: #08090c;
+      max-width: 440px;
+      margin: 0 auto;
+      aspect-ratio: 1 / 1;
+      max-height: min(440px, 48vh);
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 50% 50%, #151821 0%, #090a0d 100%);
       border: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
@@ -2846,15 +2849,445 @@
       overflow: hidden;
       padding: 0;
       flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     .modal-media-art {
       width: 100%;
       height: 100%;
       max-height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+    }
+
+    /* Modal Swipeable Media Carousel - High-End E-Commerce Showcase */
+    .modal-carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 50% 50%, #151821 0%, #090a0d 100%);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      flex-shrink: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      touch-action: pan-y pinch-zoom;
+      cursor: grab;
+    }
+
+    .modal-carousel-track.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .modal-carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: min(440px, 48vh);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .modal-carousel-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-pill);
+      background: rgba(18, 20, 26, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all var(--transition-snappy);
+    }
+
+    .carousel-nav-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-medium);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .carousel-nav-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-nav-btn.next {
+      right: 10px;
+    }
+
+    .modal-carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      background: rgba(9, 10, 13, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      z-index: 10;
+    }
+
+    .modal-carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all var(--transition-snappy);
+    }
+
+    .modal-carousel-dot.active {
+      width: 18px;
+      background: var(--accent-emerald);
+    }
+
+    .modal-carousel-counter {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      background: rgba(9, 10, 13, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      font-size: 0.76rem;
+      font-weight: 600;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .modal-thumbnails-track {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-top: -2px;
+      margin-bottom: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 4px;
+    }
+
+    .modal-thumbnails-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-thumb-btn {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-subtle);
+      background: #090a0d;
+      padding: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition-snappy), transform var(--transition-snappy), box-shadow var(--transition-snappy);
+    }
+
+    .modal-thumb-btn:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-2px);
+    }
+
+    .modal-thumb-btn.active {
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.35);
+    }
+
+    .modal-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-xs);
+      pointer-events: none;
+    }
+
+    /* AliExpress Style Gallery Layout (Vertical Thumbnails on Left + Main Viewer) */
+    .modal-gallery-layout {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      position: sticky;
+      top: 0;
+    }
+
+    .modal-thumbs-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+      max-height: 440px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .modal-thumbs-vertical::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-thumb-vertical-btn {
+      width: 58px;
+      height: 58px;
+      flex-shrink: 0;
       border-radius: var(--radius-sm);
+      border: 2px solid var(--border-subtle);
+      background: #090a0d;
+      padding: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition-snappy), transform var(--transition-snappy), box-shadow var(--transition-snappy);
+    }
+
+    .modal-thumb-vertical-btn:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-1px);
+    }
+
+    .modal-thumb-vertical-btn.active {
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.35);
+    }
+
+    .modal-thumb-vertical-btn .modal-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-xs);
+      pointer-events: none;
+    }
+
+    .modal-gallery-layout .modal-carousel-container {
+      flex: 1;
+      min-width: 0;
+      max-width: 100%;
+      margin: 0;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 50% 50%, #151821 0%, #090a0d 100%);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Details Column (Right Side) */
+    .modal-details-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .modal-pro-title {
+      font-size: 1.30rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+
+    /* AliExpress-style Price Promo Card */
+    .modal-promo-price-card {
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08) 0%, rgba(9, 10, 13, 0.85) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .promo-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .promo-tag-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-emerald);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .promo-savings-badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--accent-emerald);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .promo-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .promo-price-current {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .promo-orig-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    .promo-orig-label {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+    }
+
+    .promo-badge-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      padding-top: 6px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      margin-top: 4px;
+    }
+
+    .promo-badge-note svg {
+      color: var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    /* Desktop Action Buttons Row in Right Column */
+    .modal-desktop-actions {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 10px;
+      margin-top: 2px;
+      margin-bottom: 4px;
+    }
+
+    /* AI Highlights / Resumen Clave (AliExpress style) */
+    .modal-ai-summary-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+
+    .ai-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-purple);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .ai-sparkle-icon {
+      color: var(--accent-purple);
+      font-size: 1rem;
+    }
+
+    .ai-summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ai-summary-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    @media (min-width: 769px) {
+      dialog#productModal .modal-footer {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .carousel-nav-btn {
+        display: none;
+      }
     }
 
     .modal-qty-control {
@@ -3435,15 +3868,41 @@
         padding: 12px 18px 14px;
       }
       .modal-body {
+        display: flex;
+        flex-direction: column;
         padding: 14px 18px;
         gap: 14px;
       }
-      .modal-media-frame {
-        height: 130px;
-        max-height: 130px;
+      .modal-gallery-layout {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        position: static;
+        gap: 10px;
       }
-      .modal-media-art {
-        max-height: 110px;
+      .modal-thumbs-vertical {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: center;
+        max-height: none;
+      }
+      .modal-thumb-vertical-btn {
+        width: 50px;
+        height: 50px;
+      }
+      .modal-carousel-container,
+      .modal-media-frame {
+        max-width: 100%;
+      }
+      .modal-carousel-slide,
+      .modal-media-frame {
+        max-height: min(320px, 42vh);
+      }
+      .modal-desktop-actions {
+        display: none !important;
+      }
+      dialog#productModal .modal-footer {
+        display: flex !important;
       }
       .modal-footer {
         padding: 14px 18px calc(18px + var(--sab));
@@ -4691,30 +5150,37 @@
     // Physical Products Catalog Data in Guaraníes (Gs.)
     const PHYSICAL_PRODUCTS = [
       {
-        id: 'gamepad-pro-wireless',
-        title: 'Gamepad Inalámbrico Pro Bluetooth & 2.4G (PC / Switch / Móvil)',
-        name: 'Gamepad Inalámbrico Pro Bluetooth & 2.4G',
+        id: 'gamepad-bluetooth-multiplataforma',
+        title: 'Gamepad Inalámbrico Bluetooth Multiplataforma (Switch / PC / Móvil)',
+        name: 'Gamepad Inalámbrico Bluetooth Multiplataforma',
         category: 'gaming',
         isPhysical: true,
-        price: 195000,
-        originalPrice: 270000,
-        discountPercentage: '-28%',
-        rating: '4.9',
-        soldCount: '+24 vendidos',
+        price: 129000,
+        originalPrice: 185000,
+        discountPercentage: '-30%',
+        rating: '5.0',
+        soldCount: '+28 vendidos',
         stockLeft: 5,
-        image: 'imagenes/productos/gamepad-pro-wireless.jpg',
-        badge: 'Inalámbrico',
+        image: 'imagenes/productos/gamepad-bluetooth-multiplataforma/1.jpg',
+        images: [
+          'imagenes/productos/gamepad-bluetooth-multiplataforma/1.jpg',
+          'imagenes/productos/gamepad-bluetooth-multiplataforma/2.jpg'
+        ],
+        badge: 'Hall Effect',
         badgeType: 'badge-purple',
         extraBadge: 'Multiplataforma',
         extraBadgeType: 'badge-green',
-        shortDesc: 'Control ergonómico inalámbrico con sticks Hall Effect anti-drift, batería recargable y vibración háptica dual.',
-        description: 'Gamepad inalámbrico de alto rendimiento para PC, Steam, Nintendo Switch y celulares. Incorpora sensores magnéticos Hall Effect que eliminan por completo el desgaste y el drift, gatillos analógicos progresivos y doble motor de vibración háptica.',
+        shortDesc: 'Control inalámbrico con joysticks magnéticos Hall Effect anti-drift, función Turbo regulable y vibración háptica dual.',
+        description: 'Lleva tu experiencia de juego al siguiente nivel con este mando inalámbrico multiplataforma. Diseñado para ofrecer máxima precisión y comodidad, cuenta con joysticks con tecnología Hall Effect para evitar el desgaste por drift, retroiluminación RGB estilizada y función Turbo programable.\n\nCompatible de forma nativa con Nintendo Switch (todas las versiones: Estándar, Lite y OLED), PC con Windows, Android e iOS mediante conexión Bluetooth estable de baja latencia o cable USB Type-C. Su batería recargable de alta capacidad y sistema de vibración háptica aseguran sesiones de juego prolongadas y totalmente inmersivas.',
         features: [
-          'Triple conectividad: Bluetooth 5.0, receptor USB 2.4 GHz y cable Tipo-C',
-          'Joysticks magnéticos Hall Effect (cero drift garantizado)',
-          'Batería recargable de 800 mAh con hasta 14 horas continuas de autonomía',
-          'Vibración háptica dual regulable y giroscopio de 6 ejes integrado',
-          'Compatible con PC (Windows), Steam Deck, Switch, Android e iOS'
+          'Joysticks con tecnología magnética Hall Effect: Máxima precisión y cero problemas de drift',
+          'Compatibilidad completa: Nintendo Switch (Estándar, Lite, OLED), PC / Windows, iOS (iPhone/iPad) y Android',
+          'Conectividad dual: Inalámbrica por Bluetooth de alta estabilidad y cableada vía USB Type-C',
+          'Función Turbo ajustable: Para ráfagas continuas de disparos y acciones en juegos competitivos',
+          'Motores de vibración háptica dual: Sensaciones táctiles inmersivas en impactos y aceleración',
+          'Gatillos y botones de alta respuesta táctil lineal y durabilidad extendida',
+          'Batería recargable integrada de larga duración para sesiones continuas sin interrupciones',
+          'Diseño ergonómico con agarre texturizado antideslizante y acabado negro con aros rojo/cian'
         ],
         notice: {
           title: 'Garantía & Envíos en Paraguay',
@@ -4723,7 +5189,7 @@
             '📦 Envíos express en el día para Asunción y Gran Asunción.',
             '🚚 Envíos a todo el interior de Paraguay por encomienda (24 a 48 hs).',
             '🛡️ Garantía escrita de 3 meses por desperfectos de fábrica.',
-            '🔌 Incluye cable de carga trenzado USB-C, receptor inalámbrico y manual.'
+            '🔌 Incluye cable de carga USB Tipo-C y manual oficial de sincronización.'
           ]
         }
       },
@@ -4739,7 +5205,10 @@
         rating: '4.8',
         soldCount: '+18 vendidos',
         stockLeft: 4,
-        image: 'imagenes/productos/auriculares-gamer-pro.jpg',
+        image: 'imagenes/productos/auriculares-gamer-71/1.jpg',
+        images: [
+          'imagenes/productos/auriculares-gamer-71/1.jpg'
+        ],
         badge: 'Audio 7.1',
         badgeType: 'badge-blue',
         extraBadge: 'Cancelación Ruido',
@@ -4776,7 +5245,10 @@
         rating: '4.9',
         soldCount: '+35 vendidos',
         stockLeft: 3,
-        image: 'imagenes/productos/teclado-mecanico-rgb.jpg',
+        image: 'imagenes/productos/teclado-mecanico-rgb-65/1.jpg',
+        images: [
+          'imagenes/productos/teclado-mecanico-rgb-65/1.jpg'
+        ],
         badge: 'Switches Red',
         badgeType: 'badge-green',
         extraBadge: 'Hot-Swap',
@@ -4813,7 +5285,10 @@
         rating: '4.9',
         soldCount: '+42 vendidos',
         stockLeft: 6,
-        image: 'imagenes/productos/mouse-gamer-pro.jpg',
+        image: 'imagenes/productos/mouse-gamer-ultralight/1.jpg',
+        images: [
+          'imagenes/productos/mouse-gamer-ultralight/1.jpg'
+        ],
         badge: '16.000 DPI',
         badgeType: 'badge-purple',
         extraBadge: 'Ultra Ligero',
@@ -5184,6 +5659,7 @@
           </svg>`;
 
         case 'gamepad-pro-wireless':
+        case 'gamepad-bluetooth-multiplataforma':
           // Gamepad Icon
           return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Control Gamepad Inalámbrico">
             <line x1="6" y1="12" x2="10" y2="12"></line>
@@ -5619,82 +6095,171 @@
         </div>
 
         <div class="modal-body">
-          ${product.image ? `
-            <div class="modal-media-frame">
-              <img src="${product.image}" alt="${title}" class="modal-media-art">
-            </div>
-          ` : ''}
+          <!-- Left Column: AliExpress Gallery (Vertical Thumbnails + Main Showcase) -->
+          <div class="modal-gallery-layout">
+            ${(() => {
+              const imgList = (product.images && product.images.length) ? product.images : (product.image ? [product.image] : []);
+              if (!imgList.length) return '';
+              return `
+                ${imgList.length > 1 ? `
+                  <div class="modal-thumbs-vertical" id="modalThumbnailsTrack">
+                    ${imgList.map((img, idx) => `
+                      <button type="button" class="modal-thumb-vertical-btn ${idx === 0 ? 'active' : ''}" onclick="goToProductSlide(${idx})" onmouseenter="goToProductSlide(${idx})" aria-label="Ver foto ${idx + 1}" data-index="${idx}">
+                        <img src="${img}" alt="Miniatura ${idx + 1}" class="modal-thumb-img">
+                      </button>
+                    `).join('')}
+                  </div>
+                ` : ''}
 
-          <div>
-            <h3 id="modalProductTitle" style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; line-height: 1.35;">${title}</h3>
-            <div class="card-social-proof" style="margin-bottom: 14px;">
-              <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-              <span class="rating-val num-tabular">${product.rating}</span>
-              <span class="social-proof-dot" aria-hidden="true">•</span>
-              <span class="sold-count-val num-tabular">${product.soldCount}</span>
-              <span class="social-proof-dot" aria-hidden="true">•</span>
-              <span class="delivery-status-tag">${deliveryTagText}</span>
-            </div>
+                <div class="modal-carousel-container" id="modalCarouselContainer">
+                  <div class="modal-carousel-track" id="modalCarouselTrack" onscroll="handleCarouselScroll(this)" tabindex="0" role="region" aria-label="Galería de fotos de ${title}">
+                    ${imgList.map((img, idx) => `
+                      <div class="modal-carousel-slide" data-index="${idx}">
+                        <img src="${img}" alt="${title} - Vista ${idx + 1}" class="modal-carousel-img" draggable="false" loading="lazy">
+                      </div>
+                    `).join('')}
+                  </div>
+                  ${imgList.length > 1 ? `
+                    <button type="button" class="carousel-nav-btn prev" onclick="scrollProductCarousel(-1)" aria-label="Foto anterior">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button type="button" class="carousel-nav-btn next" onclick="scrollProductCarousel(1)" aria-label="Siguiente foto">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <div class="modal-carousel-dots" id="modalCarouselDots">
+                      ${imgList.map((_, idx) => `
+                        <button type="button" class="modal-carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToProductSlide(${idx})" aria-label="Ir a foto ${idx + 1}"></button>
+                      `).join('')}
+                    </div>
+                    <div class="modal-carousel-counter" id="modalCarouselCounter">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span id="carouselCurrentSlide">1</span>&nbsp;/&nbsp;${imgList.length}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            })()}
           </div>
 
-          <!-- Quantity Stepper Row inside Modal (Placed ABOVE description) -->
-          <div class="modal-qty-control">
-            <span class="modal-qty-label">Cantidad a solicitar:</span>
-            <div class="modal-qty-stepper">
-              <button type="button" class="qty-btn" onclick="adjustModalQty(-1, ${product.price})" aria-label="Disminuir">-</button>
-              <span class="qty-number num-tabular" id="modalQtyDisplay">1</span>
-              <button type="button" class="qty-btn" onclick="adjustModalQty(1, ${product.price})" aria-label="Aumentar">+</button>
-            </div>
-          </div>
-
-          <div>
-            <span style="display: block; font-size: 0.76rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">Descripción:</span>
-            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-              <p>${desc.replace(/\n\n/g, '</p><p style="margin-top: 10px;">')}</p>
-            </div>
-          </div>
-
-          ${product.features && product.features.length ? `
+          <!-- Right Column: Details, AliExpress-style Promo Price Card, Buy Box & Features -->
+          <div class="modal-details-col">
             <div>
-              <span style="display: block; font-size: 0.76rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">Características clave:</span>
-              <ul class="agency-features-list" style="margin-bottom: 0;">
-                ${product.features.map(f => `
-                  <li class="agency-feature-item" style="font-size: 0.84rem;">
-                    <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>${f}</span>
-                  </li>
-                `).join('')}
-              </ul>
-            </div>
-          ` : ''}
-
-          ${product.notice ? `
-            <div class="product-notice-box ${product.notice.type || ''}" role="note" aria-label="${product.notice.title || 'Aviso Importante'}">
-              <div class="notice-header">
-                ${product.notice.type === 'notice-blue' ? `
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="16" x2="12" y2="12"/>
-                    <line x1="12" y1="8" x2="12.01" y2="8"/>
-                  </svg>
-                ` : `
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                    <line x1="12" y1="9" x2="12" y2="13"/>
-                    <line x1="12" y1="17" x2="12.01" y2="17"/>
-                  </svg>
-                `}
-                <span>${product.notice.title || 'Aviso Importante'}</span>
+              <h3 id="modalProductTitle" class="modal-pro-title">${title}</h3>
+              <div class="card-social-proof" style="margin-bottom: 14px;">
+                <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span class="rating-val num-tabular">${product.rating}</span>
+                <span class="social-proof-dot" aria-hidden="true">•</span>
+                <span class="sold-count-val num-tabular">${product.soldCount}</span>
+                <span class="social-proof-dot" aria-hidden="true">•</span>
+                <span class="delivery-status-tag">${deliveryTagText}</span>
               </div>
-              <ul class="notice-list">
-                ${product.notice.items.map(it => `
-                  <li>${it}</li>
-                `).join('')}
-              </ul>
             </div>
-          ` : ''}
+
+            <!-- AliExpress-style Promo Price Card -->
+            <div class="modal-promo-price-card">
+              <div class="promo-header-row">
+                <span class="promo-tag-badge">⚡ Oferta Especial</span>
+                ${savings > 0 ? `<span class="promo-savings-badge" id="modalSavingsBadge">Ahorro ${formatGs(savings)}</span>` : ''}
+              </div>
+              <div class="promo-price-row">
+                <span class="promo-price-current num-tabular" id="modalPriceVal">${formatGs(product.price)}</span>
+                ${product.discountPercentage ? `<span class="discount-badge">${product.discountPercentage}</span>` : ''}
+              </div>
+              ${savings > 0 ? `
+                <div class="promo-orig-row">
+                  <span class="promo-orig-label">Precio habitual:</span>
+                  <span class="price-original-val num-tabular" id="modalOrigVal" data-unit-orig="${original}">${formatGs(original)}</span>
+                </div>
+              ` : ''}
+              <div class="promo-badge-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Pago seguro en Paraguay (Transferencia SIPAP o efectivo a coordinar)</span>
+              </div>
+            </div>
+
+            <!-- Quantity Stepper Row (Above Action Buttons) -->
+            <div class="modal-qty-control">
+              <span class="modal-qty-label">Cantidad a solicitar:</span>
+              <div class="modal-qty-stepper">
+                <button type="button" class="qty-btn" onclick="adjustModalQty(-1, ${product.price})" aria-label="Disminuir">-</button>
+                <span class="qty-number num-tabular" id="modalQtyDisplay">1</span>
+                <button type="button" class="qty-btn" onclick="adjustModalQty(1, ${product.price})" aria-label="Aumentar">+</button>
+              </div>
+            </div>
+
+            <!-- Action Buttons for Desktop View -->
+            <div class="modal-desktop-actions">
+              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="height: 46px; font-size: 0.94rem;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Comprar por WhatsApp
+              </button>
+              <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="height: 46px; font-size: 0.90rem;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                Al Carrito
+              </button>
+            </div>
+
+            <!-- Resumen Clave / AI Highlights (AliExpress style) -->
+            ${product.features && product.features.length ? `
+              <div class="modal-ai-summary-card">
+                <div class="ai-summary-header">
+                  <span class="ai-sparkle-icon" aria-hidden="true">✦</span>
+                  <span>Resumen clave del artículo</span>
+                </div>
+                <ul class="ai-summary-list">
+                  ${product.features.map(f => `
+                    <li>
+                      <svg class="feature-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>${f}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <!-- Description -->
+            <div>
+              <span style="display: block; font-size: 0.76rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">Detalles & Descripción:</span>
+              <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                <p>${desc.replace(/\n\n/g, '</p><p style="margin-top: 10px;">')}</p>
+              </div>
+            </div>
+
+            <!-- Guarantees & Shipping Notice -->
+            ${product.notice ? `
+              <div class="product-notice-box ${product.notice.type || ''}" role="note" aria-label="${product.notice.title || 'Aviso Importante'}">
+                <div class="notice-header">
+                  ${product.notice.type === 'notice-blue' ? `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="16" x2="12" y2="12"/>
+                      <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                  ` : `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                      <line x1="12" y1="9" x2="12" y2="13"/>
+                      <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                  `}
+                  <span>${product.notice.title || 'Aviso Importante'}</span>
+                </div>
+                <ul class="notice-list">
+                  ${product.notice.items.map(it => `
+                    <li>${it}</li>
+                  `).join('')}
+                </ul>
+              </div>
+            ` : ''}
+          </div>
         </div>
 
         <div class="modal-footer">
@@ -5734,6 +6299,10 @@
       modal.classList.remove('is-closing');
       modal.showModal();
       setupSheetSwipeGesture(modal);
+      const carouselTrack = document.getElementById('modalCarouselTrack');
+      if (carouselTrack) {
+        setupCarouselDrag(carouselTrack);
+      }
       const closeBtn = document.getElementById('modalCloseBtn');
       if (closeBtn) closeBtn.focus();
     }
@@ -5830,6 +6399,91 @@
         header.addEventListener('touchmove', onTouchMove, { passive: true });
         header.addEventListener('touchend', onTouchEnd, { passive: true });
       }
+    }
+
+    // Product Modal Image Carousel Controller
+    let carouselScrollTimer = null;
+    function handleCarouselScroll(track) {
+      if (!track) return;
+      if (carouselScrollTimer) cancelAnimationFrame(carouselScrollTimer);
+      carouselScrollTimer = requestAnimationFrame(() => {
+        const slideWidth = track.clientWidth;
+        if (slideWidth <= 0) return;
+        const activeIdx = Math.round(track.scrollLeft / slideWidth);
+
+        const dots = document.querySelectorAll('.modal-carousel-dot');
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIdx);
+        });
+
+        const counterEl = document.getElementById('carouselCurrentSlide');
+        if (counterEl) counterEl.textContent = activeIdx + 1;
+
+        const thumbs = document.querySelectorAll('.modal-thumb-btn');
+        thumbs.forEach((thumb, i) => {
+          thumb.classList.toggle('active', i === activeIdx);
+        });
+      });
+    }
+
+    function scrollProductCarousel(direction) {
+      const track = document.getElementById('modalCarouselTrack');
+      if (!track) return;
+      const slideWidth = track.clientWidth;
+      track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+    }
+
+    function goToProductSlide(index) {
+      const track = document.getElementById('modalCarouselTrack');
+      if (!track) return;
+      const slideWidth = track.clientWidth;
+      track.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+    }
+
+    function setupCarouselDrag(track) {
+      if (!track) return;
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        track.classList.add('is-dragging');
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      const stopDrag = () => {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove('is-dragging');
+        const slideWidth = track.clientWidth;
+        if (slideWidth > 0) {
+          const targetIndex = Math.round(track.scrollLeft / slideWidth);
+          track.scrollTo({ left: targetIndex * slideWidth, behavior: 'smooth' });
+        }
+      };
+
+      track.addEventListener('mouseleave', stopDrag);
+      track.addEventListener('mouseup', stopDrag);
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX);
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          scrollProductCarousel(-1);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          scrollProductCarousel(1);
+        }
+      });
     }
 
     const productModal = document.getElementById('productModal');
