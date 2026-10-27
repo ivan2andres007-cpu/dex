@@ -3517,6 +3517,314 @@
     }
 
     /* -------------------------------------------------------------
+       UNDO TOAST (Cart Item Removal Grace Period - Delight [P3])
+       ------------------------------------------------------------- */
+    .toast-undo-item {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-pill);
+      padding: 8px 10px 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-modal);
+      animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: auto;
+      max-width: 90vw;
+    }
+
+    .toast-undo-btn {
+      background: var(--accent-emerald);
+      color: #032115;
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: transform var(--transition-snappy), background var(--transition-snappy);
+      white-space: nowrap;
+    }
+
+    .toast-undo-btn:hover {
+      background: var(--accent-emerald-hover);
+    }
+
+    .toast-undo-btn:active {
+      transform: scale(0.94);
+    }
+
+    /* -------------------------------------------------------------
+       VERTICAL SEGMENTED SWITCHER (Marketplace Flow Navigation - Layout [P2])
+       ------------------------------------------------------------- */
+    .vertical-switch-container {
+      margin: 0 auto 36px;
+      max-width: 760px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+    }
+
+    .vertical-switch-pill {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      gap: 4px;
+      width: 100%;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vswitch-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-snappy);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .vswitch-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-hover);
+    }
+
+    .vswitch-btn.active {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 640px) {
+      .vertical-switch-container {
+        margin-bottom: 24px;
+        padding: 0 10px;
+      }
+      .vswitch-btn {
+        font-size: 0.76rem;
+        padding: 0 6px;
+        height: 38px;
+        gap: 4px;
+      }
+      .vswitch-btn svg {
+        width: 13px;
+        height: 13px;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       CART LINE BADGES & DELIVERY NOTICE (Harden [P2] & Diego Persona)
+       ------------------------------------------------------------- */
+    .cart-item-type-badge {
+      font-size: var(--text-label);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 1px 7px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    .cart-item-type-badge.digital {
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .cart-item-type-badge.physical {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .cart-delivery-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      font-size: var(--text-label);
+      line-height: 1.4;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .cart-delivery-pill svg {
+      flex-shrink: 0;
+      color: var(--accent-emerald);
+    }
+
+    /* -------------------------------------------------------------
+       SEARCH KBD HINT & HORIZONTAL FILTER SCROLL SHADOW (Polish)
+       ------------------------------------------------------------- */
+    .search-kbd-hint {
+      position: absolute;
+      right: 38px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 2px 7px;
+      font-family: var(--font-mono);
+      font-size: var(--text-label);
+      color: var(--text-tertiary);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      pointer-events: none;
+      line-height: 1.3;
+      transition: opacity var(--transition-snappy);
+    }
+
+    .catalog-search-input:focus ~ .search-kbd-hint,
+    .catalog-search-wrap.has-value .search-kbd-hint {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .search-kbd-hint {
+        display: none !important;
+      }
+    }
+
+    .filter-pills-row-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .filter-pills-row-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      pointer-events: none;
+      background: linear-gradient(to right, transparent, var(--bg-base));
+      opacity: 0.9;
+    }
+
+    /* -------------------------------------------------------------
+       SEARCH & FILTER ZERO-STATE COMPONENT (Clarify [P1])
+       ------------------------------------------------------------- */
+    .catalog-zero-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 56px 20px 60px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      max-width: 620px;
+      margin: 12px auto 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .zero-state-icon-box {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+    }
+
+    .zero-state-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .zero-state-desc {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      margin-bottom: 20px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: pretty;
+    }
+
+    .zero-state-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .zero-chip-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: var(--text-label);
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all var(--transition-snappy);
+    }
+
+    .zero-chip-btn:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+      transform: translateY(-1px);
+    }
+
+    .zero-state-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-whatsapp-query {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald-border);
+      border-radius: var(--radius-pill);
+      height: 42px;
+      padding: 0 18px;
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-snappy);
+    }
+
+    .btn-whatsapp-query:hover {
+      background: var(--accent-emerald);
+      color: #032115;
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------------------
        SITE FOOTER
        ------------------------------------------------------------- */
     .site-footer {
@@ -4665,6 +4973,26 @@
     </section>
 
     <!-- ==========================================
+         VERTICAL SEGMENTED SWITCHER (Marketplace Flow Navigation - Layout [P2])
+         ========================================== -->
+    <nav class="vertical-switch-container" aria-label="Secciones del marketplace">
+      <div class="vertical-switch-pill" role="tablist">
+        <a href="#catalogo" class="vswitch-btn active" id="vswitch-catalogo" role="tab" aria-selected="true" onclick="setVerticalFocus('catalogo')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Suscripciones & IA</span>
+        </a>
+        <a href="#articulos-fisicos" class="vswitch-btn" id="vswitch-fisicos" role="tab" aria-selected="false" onclick="setVerticalFocus('fisicos')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Hardware & Periféricos</span>
+        </a>
+        <a href="#agencia" class="vswitch-btn" id="vswitch-agencia" role="tab" aria-selected="false" onclick="setVerticalFocus('agencia')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Desarrollo Web</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- ==========================================
          CATALOG SECTION (Polished Controls & Grid)
          ========================================== -->
     <section class="container" id="catalogo" aria-labelledby="catalogHeading">
@@ -4675,12 +5003,13 @@
             <p class="catalog-subheading" id="catalogResultCount">Mostrando productos verificados con entrega inmediata</p>
           </div>
           
-          <div class="catalog-search-wrap">
+          <div class="catalog-search-wrap" id="catalogSearchWrap">
             <svg class="catalog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Gemini, Assetto Corsa, Steam..." aria-label="Buscar productos">
+            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Gemini, Assetto Corsa, Steam... (Presiona '/' para buscar)" aria-label="Buscar productos">
+            <kbd class="search-kbd-hint" aria-hidden="true" title="Presiona '/' para buscar">/</kbd>
             <button type="button" id="clearSearchBtn" class="search-clear-btn" aria-label="Limpiar búsqueda" style="display: none;">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -4691,23 +5020,25 @@
         </div>
 
         <div class="catalog-toolbar">
-          <div class="filter-pills-row" role="tablist" aria-label="Categorías de productos">
-            <button type="button" class="filter-pill active" data-category="all" role="tab" aria-selected="true">
-              <span>Todos los productos</span>
-              <span class="pill-count num-tabular" id="countAll">3</span>
-            </button>
-            <button type="button" class="filter-pill" data-category="suscripcion" role="tab" aria-selected="false">
-              <span>Suscripciones & IA</span>
-              <span class="pill-count num-tabular" id="countSuscripcion">1</span>
-            </button>
-            <button type="button" class="filter-pill" data-category="gaming" role="tab" aria-selected="false">
-              <span>Gaming & Steam</span>
-              <span class="pill-count num-tabular" id="countGaming">2</span>
-            </button>
-            <button type="button" class="filter-pill" data-category="software" role="tab" aria-selected="false">
-              <span>Licencias & Claves</span>
-              <span class="pill-count num-tabular" id="countSoftware">1</span>
-            </button>
+          <div class="filter-pills-row-wrapper">
+            <div class="filter-pills-row" role="tablist" aria-label="Categorías de productos">
+              <button type="button" class="filter-pill active" data-category="all" role="tab" aria-selected="true">
+                <span>Todos los productos</span>
+                <span class="pill-count num-tabular" id="countAll">3</span>
+              </button>
+              <button type="button" class="filter-pill" data-category="suscripcion" role="tab" aria-selected="false">
+                <span>Suscripciones & IA</span>
+                <span class="pill-count num-tabular" id="countSuscripcion">1</span>
+              </button>
+              <button type="button" class="filter-pill" data-category="gaming" role="tab" aria-selected="false">
+                <span>Gaming & Steam</span>
+                <span class="pill-count num-tabular" id="countGaming">2</span>
+              </button>
+              <button type="button" class="filter-pill" data-category="software" role="tab" aria-selected="false">
+                <span>Licencias & Claves</span>
+                <span class="pill-count num-tabular" id="countSoftware">1</span>
+              </button>
+            </div>
           </div>
 
           <div class="catalog-sort-wrap">
@@ -5612,6 +5943,17 @@
       return PRODUCTS.find(p => p.id === id) || PHYSICAL_PRODUCTS.find(p => p.id === id);
     }
 
+    // Helper: Escape HTML strings to prevent XSS / render issues
+    function escapeHtml(str) {
+      return String(str || '').replace(/[&<>"']/g, m => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[m]);
+    }
+
     // Helper: Format Guaraníes (e.g. 35000 -> "Gs. 35.000")
     function formatGs(amount) {
       return 'Gs. ' + Number(amount || 0).toLocaleString('es-PY');
@@ -5626,26 +5968,34 @@
     let currentPhysicalSearch = '';
     let lastFocusedElement = null;
     let modalQuantity = 1;
+    let lastRemovedItem = null;
+    let undoToastTimeout = null;
 
-    // Load cart from LocalStorage
+    // Load cart from LocalStorage (Harden [P2])
     function loadCart() {
       try {
         const stored = localStorage.getItem('punto_prisma_cart');
         if (stored) {
-          cart = JSON.parse(stored);
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            cart = parsed.filter(item => item && item.id && Number(item.price) > 0).map(item => {
+              const p = findProduct(item.id);
+              return {
+                id: item.id,
+                name: item.name || (p ? (p.title || p.name) : 'Producto'),
+                price: Number(item.price) || (p ? p.price : 0),
+                originalPrice: item.originalPrice !== undefined ? Number(item.originalPrice) : (p?.originalPrice || item.price),
+                discountPercentage: item.discountPercentage || (p?.discountPercentage || ''),
+                image: (p && p.image) || item.image || '',
+                isPhysical: (p && p.isPhysical) !== undefined ? !!p.isPhysical : !!item.isPhysical,
+                quantity: Math.max(1, Math.round(Number(item.quantity) || 1))
+              };
+            });
+          }
         }
       } catch (e) {
         cart = [];
       }
-      // Re-hydrate metadata & sync latest product image from active catalog
-      cart.forEach(item => {
-        const p = findProduct(item.id);
-        if (p) {
-          item.image = p.image || '';
-          if (item.originalPrice === undefined) item.originalPrice = p.originalPrice;
-          if (item.discountPercentage === undefined) item.discountPercentage = p.discountPercentage;
-        }
-      });
       updateCartUI();
     }
 
@@ -5654,7 +6004,7 @@
       try {
         localStorage.setItem('punto_prisma_cart', JSON.stringify(cart));
       } catch (e) {
-        console.error(e);
+        console.error('Error saving cart to localStorage:', e);
       }
       updateCartUI();
     }
@@ -5675,10 +6025,12 @@
 
       const productName = product.title || product.name;
       const existingIndex = cart.findIndex(item => item.id === productId);
+      const safeQty = Math.max(1, Math.round(Number(qtyToAdd) || 1));
 
       if (existingIndex > -1) {
-        cart[existingIndex].quantity += qtyToAdd;
+        cart[existingIndex].quantity += safeQty;
         cart[existingIndex].image = product.image || cart[existingIndex].image || '';
+        cart[existingIndex].isPhysical = !!product.isPhysical;
       } else {
         cart.push({
           id: product.id,
@@ -5687,13 +6039,14 @@
           originalPrice: product.originalPrice || product.price,
           discountPercentage: product.discountPercentage || '',
           image: product.image || '',
-          quantity: qtyToAdd
+          isPhysical: !!product.isPhysical,
+          quantity: safeQty
         });
       }
 
       saveCart();
       triggerBadgePop();
-      showToast(qtyToAdd > 1 ? `Añadido (${qtyToAdd}x): ${productName}` : `Añadido: ${productName}`);
+      showToast(safeQty > 1 ? `Añadido (${safeQty}x): ${productName}` : `Añadido: ${productName}`);
     }
 
     // Change Item Quantity in Cart Drawer
@@ -5701,22 +6054,82 @@
       const index = cart.findIndex(item => item.id === productId);
       if (index === -1) return;
 
+      if (cart[index].quantity + delta <= 0) {
+        removeFromCart(productId);
+        return;
+      }
+
       cart[index].quantity += delta;
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      } else if (delta > 0) {
+      if (delta > 0) {
         triggerBadgePop();
       }
       saveCart();
     }
 
-    // Remove item from Cart
+    // Remove item from Cart with Delight Undo (Delight [P3])
     function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
+      const index = cart.findIndex(item => item.id === productId);
+      if (index === -1) return;
+
+      lastRemovedItem = { ...cart[index] };
+      cart.splice(index, 1);
       saveCart();
+      showUndoToast(lastRemovedItem);
     }
 
-    // Update Cart UI & Badges
+    // Show Undo Toast Notification (4.8s grace period)
+    function showUndoToast(item) {
+      const container = document.getElementById('toastContainer');
+      if (!container || !item) return;
+      if (undoToastTimeout) clearTimeout(undoToastTimeout);
+
+      const existingToast = document.getElementById('cartUndoToast');
+      if (existingToast && existingToast.parentNode) {
+        existingToast.parentNode.removeChild(existingToast);
+      }
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-undo-item';
+      toast.id = 'cartUndoToast';
+      toast.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--accent-red); flex-shrink: 0;">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          <span style="font-size: 0.84rem; font-weight: 500;">Eliminaste <strong>${escapeHtml(item.name)}</strong></span>
+        </div>
+        <button type="button" class="toast-undo-btn" onclick="undoRemoveFromCart()">Deshacer</button>
+      `;
+
+      container.appendChild(toast);
+
+      undoToastTimeout = setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+        lastRemovedItem = null;
+      }, 4800);
+    }
+
+    // Undo Item Removal
+    function undoRemoveFromCart() {
+      if (!lastRemovedItem) return;
+      cart.push(lastRemovedItem);
+      const restoredName = lastRemovedItem.name;
+      lastRemovedItem = null;
+      saveCart();
+      triggerBadgePop();
+
+      const toast = document.getElementById('cartUndoToast');
+      if (toast && toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+      if (undoToastTimeout) clearTimeout(undoToastTimeout);
+      showToast(`Restaurado: ${restoredName}`);
+    }
+
+    // Update Cart UI, Badges, Delivery Details & Progress
     function updateCartUI() {
       const badge = document.getElementById('cartBadge');
       const itemsContainer = document.getElementById('cartItemsContainer');
@@ -5734,6 +6147,7 @@
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const totalOriginal = cart.reduce((sum, item) => sum + ((item.originalPrice || item.price) * item.quantity), 0);
       const totalSavings = Math.max(0, totalOriginal - totalPrice);
+      const hasPhysicalItems = cart.some(item => item.isPhysical || findProduct(item.id)?.isPhysical);
 
       if (badge) badge.textContent = totalItems;
       if (totalValElem) totalValElem.textContent = formatGs(totalPrice);
@@ -5803,15 +6217,32 @@
           }
         }
 
-        itemsContainer.innerHTML = cart.map(item => {
+        const deliveryNoticeHtml = hasPhysicalItems ? `
+          <div class="cart-delivery-pill" style="margin-bottom: 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+            <span>📦 <strong>Pedido con artículo físico:</strong> Coordinaremos dirección de envío o encomienda por WhatsApp.</span>
+          </div>
+        ` : `
+          <div class="cart-delivery-pill" style="margin-bottom: 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <span>⚡ <strong>Entrega digital inmediata:</strong> Acceso y credenciales en 5-15 min vía WhatsApp / Correo.</span>
+          </div>
+        `;
+
+        itemsContainer.innerHTML = deliveryNoticeHtml + cart.map(item => {
           const lineSavings = (item.originalPrice && item.originalPrice > item.price)
             ? (item.originalPrice - item.price) * item.quantity
             : 0;
+          const isPhys = item.isPhysical || (findProduct(item.id)?.isPhysical);
 
           return `
           <div class="cart-item-row" data-id="${item.id}">
             <div class="cart-item-thumb">
-              ${item.image ? `<img src="${item.image}" alt="${item.name}" class="cart-thumb-img">` : `
+              ${item.image ? `<img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-thumb-img">` : `
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="2" y="3" width="20" height="18" rx="4"/>
                   <line x1="8" y1="12" x2="16" y2="12"/>
@@ -5819,7 +6250,10 @@
               `}
             </div>
             <div class="cart-item-details">
-              <div class="cart-item-name" title="${item.name}">${item.name}</div>
+              <div class="cart-item-name" title="${escapeHtml(item.name)}">
+                ${escapeHtml(item.name)}
+                <span class="cart-item-type-badge ${isPhys ? 'physical' : 'digital'}">${isPhys ? 'Físico' : 'Digital'}</span>
+              </div>
               <div class="cart-item-price-line">
                 <span class="cart-item-unit-price num-tabular">${formatGs(item.price * item.quantity)}</span>
                 ${item.originalPrice && item.originalPrice > item.price ? `
@@ -5832,7 +6266,7 @@
               <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)" aria-label="Disminuir cantidad">-</button>
               <span class="qty-number num-tabular">${item.quantity}</span>
               <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)" aria-label="Aumentar cantidad">+</button>
-              <button type="button" class="item-remove-btn" onclick="removeFromCart('${item.id}')" aria-label="Eliminar producto">
+              <button type="button" class="item-remove-btn" onclick="removeFromCart('${item.id}')" aria-label="Eliminar producto ${escapeHtml(item.name)}">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="3 6 5 6 21 6"></polyline>
                   <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -6065,21 +6499,42 @@
         }
       }
 
-      // Empty State
+      // Empty State (Clarify [P1] - Zero-State Recovery)
       if (filtered.length === 0) {
+        const queryTerm = searchQuery.trim();
         grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 64px 20px; color: var(--text-secondary);">
-            <div style="width: 54px; height: 54px; margin: 0 auto 16px; border-radius: var(--radius-md); background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="catalog-zero-state" role="status" aria-live="polite">
+            <div class="zero-state-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"/>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
             </div>
-            <p style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">No encontramos productos con ese criterio</p>
-            <p style="font-size: 0.90rem; max-width: 400px; margin: 0 auto 20px; color: var(--text-secondary); line-height: 1.45;">Prueba con otra palabra clave o restablece los filtros del catálogo.</p>
-            <button type="button" class="btn-secondary" onclick="resetFilters()" style="height: 42px; padding: 0 20px; font-size: 0.88rem;">
-              Restablecer catálogo
-            </button>
+            <h3 class="zero-state-title">
+              ${queryTerm ? `No encontramos resultados para "${escapeHtml(queryTerm)}"` : 'No hay productos disponibles en esta categoría'}
+            </h3>
+            <p class="zero-state-desc">
+              Revisa si hay algún error tipográfico, explora nuestras opciones populares o pregúntanos directamente por WhatsApp si buscas algún juego o suscripción que no figure en la lista.
+            </p>
+
+            <div class="zero-state-chips" aria-label="Búsquedas sugeridas">
+              <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Gemini')">✦ Gemini Pro</button>
+              <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Steam')">🎮 Steam PC</button>
+              <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Assetto')">🏎️ Assetto Corsa</button>
+              <button type="button" class="zero-chip-btn" onclick="openPhysicalCatalogModal()">📦 Ver artículos físicos</button>
+            </div>
+
+            <div class="zero-state-actions">
+              <button type="button" class="btn-secondary" onclick="resetFilters()" style="height: 42px; padding: 0 20px; font-size: 0.88rem;">
+                Restablecer catálogo
+              </button>
+              <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(queryTerm ? `Hola Punto Prisma, busco "${queryTerm}" en la tienda y no lo encontré. ¿Tienen disponibilidad o precio?` : 'Hola Punto Prisma, deseo consultar por un producto que no figura en el catálogo web.')}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-query">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Preguntar por WhatsApp
+              </a>
+            </div>
           </div>
         `;
         return;
@@ -6098,8 +6553,8 @@
         return `
         <article class="product-card" data-id="${item.id}">
           ${item.image ? `
-            <div class="card-media-preview" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" title="Toca para ver detalles de ${title}" role="button" tabindex="0" aria-label="Ver detalles de ${title}">
-              <img src="${item.image}" alt="${title}" class="card-preview-art" loading="lazy">
+            <div class="card-media-preview" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" title="Toca para ver detalles de ${escapeHtml(title)}" role="button" tabindex="0" aria-label="Ver detalles de ${escapeHtml(title)}">
+              <img src="${item.image}" alt="${escapeHtml(title)}" class="card-preview-art" loading="lazy">
               
               <div class="card-floating-icon" aria-hidden="true">
                 ${getProductIcon(item)}
@@ -6125,7 +6580,7 @@
           <div class="card-content-wrap">
             <div class="card-body">
               <div class="product-category-tag">${categoryDisplay}</div>
-              <h3 class="product-name" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" style="cursor: pointer;" title="Toca para ver detalles">${title}</h3>
+              <h3 class="product-name" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" style="cursor: pointer;" title="Toca para ver detalles">${escapeHtml(title)}</h3>
 
               <!-- Social Proof Row -->
               <div class="card-social-proof">
@@ -6165,7 +6620,7 @@
               </div>
 
               <div class="card-actions-row">
-                <button type="button" class="btn-add-cart" onclick="addToCart('${item.id}')" aria-label="Agregar ${title} al carrito">
+                <button type="button" class="btn-add-cart" onclick="addToCart('${item.id}')" aria-label="Agregar ${escapeHtml(title)} al carrito">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                     <line x1="3" y1="6" x2="21" y2="6"/>
@@ -6174,7 +6629,7 @@
                   Al Carrito
                 </button>
 
-                <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${item.id}')" aria-label="Comprar ${title} directamente por WhatsApp">
+                <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${item.id}')" aria-label="Comprar ${escapeHtml(title)} directamente por WhatsApp">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                   </svg>
@@ -6196,11 +6651,13 @@
 
       const searchInput = document.getElementById('searchInput');
       const clearBtn = document.getElementById('clearSearchBtn');
+      const searchWrap = document.getElementById('catalogSearchWrap');
       const sortSelect = document.getElementById('sortSelect');
       const pills = document.querySelectorAll('.filter-pill');
 
       if (searchInput) searchInput.value = '';
       if (clearBtn) clearBtn.style.display = 'none';
+      if (searchWrap) searchWrap.classList.remove('has-value');
       if (sortSelect) sortSelect.value = 'featured';
 
       pills.forEach(p => {
@@ -6210,6 +6667,72 @@
       });
 
       renderProducts();
+    }
+
+    // Apply Suggested Search Term from Zero-State Chips
+    function applySearchTerm(term) {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const searchWrap = document.getElementById('catalogSearchWrap');
+      if (searchInput) {
+        searchInput.value = term;
+        searchInput.focus();
+      }
+      if (clearBtn) clearBtn.style.display = 'flex';
+      if (searchWrap) searchWrap.classList.add('has-value');
+      currentSearch = term;
+      currentCategory = 'all';
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(p => {
+        const isAll = p.dataset.category === 'all';
+        p.classList.toggle('active', isAll);
+        p.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+      renderProducts();
+    }
+
+    // Vertical Switcher Navigation (Layout [P2])
+    function setVerticalFocus(target) {
+      const btns = document.querySelectorAll('.vswitch-btn');
+      btns.forEach(b => {
+        const isTarget = b.id === `vswitch-${target}`;
+        b.classList.toggle('active', isTarget);
+        b.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+      });
+    }
+
+    // Active Section Observer for Vertical Switcher
+    function initVerticalScrollSpy() {
+      const sections = [
+        { id: 'catalogo', btnId: 'vswitch-catalogo' },
+        { id: 'articulos-fisicos', btnId: 'vswitch-fisicos' },
+        { id: 'agencia', btnId: 'vswitch-agencia' }
+      ];
+
+      if (!('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const found = sections.find(s => s.id === entry.target.id);
+            if (found) {
+              sections.forEach(s => {
+                const btn = document.getElementById(s.btnId);
+                if (btn) {
+                  const active = s.id === found.id;
+                  btn.classList.toggle('active', active);
+                  btn.setAttribute('aria-selected', active ? 'true' : 'false');
+                }
+              });
+            }
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      sections.forEach(s => {
+        const el = document.getElementById(s.id);
+        if (el) observer.observe(el);
+      });
     }
 
     // Keyboard trigger helper for product cards
@@ -6826,12 +7349,17 @@
     // Search Input & Clear Button Interactivity
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const searchWrap = document.getElementById('catalogSearchWrap');
 
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         currentSearch = e.target.value;
+        const hasText = currentSearch.trim().length > 0;
         if (clearSearchBtn) {
-          clearSearchBtn.style.display = currentSearch.trim() ? 'flex' : 'none';
+          clearSearchBtn.style.display = hasText ? 'flex' : 'none';
+        }
+        if (searchWrap) {
+          searchWrap.classList.toggle('has-value', hasText);
         }
         renderProducts(currentCategory, currentSearch, currentSort);
       });
@@ -6845,9 +7373,32 @@
         }
         currentSearch = '';
         clearSearchBtn.style.display = 'none';
+        if (searchWrap) {
+          searchWrap.classList.remove('has-value');
+        }
         renderProducts(currentCategory, currentSearch, currentSort);
       });
     }
+
+    // Keyboard Hotkey (Press '/' to focus search, Esc to blur)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+        e.preventDefault();
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+        if (searchInput.value) {
+          searchInput.value = '';
+          currentSearch = '';
+          if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+          if (searchWrap) searchWrap.classList.remove('has-value');
+          renderProducts(currentCategory, currentSearch, currentSort);
+        }
+        searchInput.blur();
+      }
+    });
 
     // Sort Dropdown Interactivity
     const sortSelect = document.getElementById('sortSelect');
@@ -6949,19 +7500,32 @@
       });
 
       if (filtered.length === 0) {
+        const queryTerm = q.trim();
         grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: var(--text-secondary);">
-            <div style="width: 50px; height: 50px; margin: 0 auto 14px; border-radius: var(--radius-md); background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="catalog-zero-state" style="margin: 20px auto; max-width: 580px;">
+            <div class="zero-state-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"/>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
             </div>
-            <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">No encontramos artículos físicos</p>
-            <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 16px;">Intenta con otro término o selecciona "Todos".</p>
-            <button type="button" class="btn-secondary" onclick="filterPhysicalCategory('all')" style="height: 38px; padding: 0 18px; font-size: 0.84rem;">
-              Ver todos los artículos
-            </button>
+            <h3 class="zero-state-title">
+              ${queryTerm ? `No encontramos artículos para "${escapeHtml(queryTerm)}"` : 'No hay artículos en esta categoría'}
+            </h3>
+            <p class="zero-state-desc">
+              Revisa si hay algún error de tipeo o pregúntanos por WhatsApp si podemos conseguir el periférico o accesorio que buscas.
+            </p>
+            <div class="zero-state-actions">
+              <button type="button" class="btn-secondary" onclick="filterPhysicalCategory('all')" style="height: 40px; padding: 0 18px; font-size: 0.86rem;">
+                Ver todos los artículos
+              </button>
+              <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(queryTerm ? `Hola Punto Prisma, busco el artículo físico "${queryTerm}" y no figura en la web. ¿Pueden cotizarlo?` : 'Hola Punto Prisma, busco un artículo físico específico.')}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-query" style="height: 40px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Consultar por WhatsApp
+              </a>
+            </div>
           </div>
         `;
         return;
@@ -7113,6 +7677,7 @@
       updatePhysicalCategoryCounts();
       renderPhysicalPreview();
       loadCart();
+      initVerticalScrollSpy();
     });
   </script>
 </body>
