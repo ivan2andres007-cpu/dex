@@ -501,6 +501,141 @@
       margin-bottom: 40px;
     }
 
+    /* -------------------------------------------------------------
+       TACTILE HEARTBEAT KEYFRAMES (Organic Biological Double-Beat)
+       Rhythmic double-pulse (lub-dub) followed by a peaceful rest
+       ------------------------------------------------------------- */
+    @keyframes heartbeatEmerald {
+      0% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      12% {
+        transform: scale(1.035);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      }
+      22% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      34% {
+        transform: scale(1.048);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.48);
+      }
+      48% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+    }
+
+    @keyframes heartbeatEmeraldSoft {
+      0% {
+        transform: scale(1);
+      }
+      12% {
+        transform: scale(1.03);
+      }
+      22% {
+        transform: scale(1);
+      }
+      34% {
+        transform: scale(1.042);
+      }
+      48% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes heartbeatPrimary {
+      0% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      12% {
+        transform: scale(1.032);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      }
+      22% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      34% {
+        transform: scale(1.045);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      }
+      48% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-sm);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       PRICE VIBRATION KEYFRAMES (Product Detail Modal)
+       Energetic vibration for ~1.3s,
+       followed by ~3.1s of calm stillness, then repeating endlessly.
+       ------------------------------------------------------------- */
+    @keyframes priceVibrateCycle {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      2% {
+        transform: translate(-1.5px, 0.5px) rotate(-0.8deg) scale(1.04);
+      }
+      4% {
+        transform: translate(1.5px, -0.5px) rotate(0.8deg) scale(1.04);
+      }
+      6% {
+        transform: translate(-1.5px, -0.5px) rotate(-0.6deg) scale(1.04);
+      }
+      8% {
+        transform: translate(1.5px, 0.5px) rotate(0.6deg) scale(1.04);
+      }
+      10% {
+        transform: translate(-1.2px, 0.5px) rotate(-0.5deg) scale(1.035);
+      }
+      12% {
+        transform: translate(1.2px, -0.5px) rotate(0.5deg) scale(1.035);
+      }
+      14% {
+        transform: translate(-1.2px, 0) rotate(-0.4deg) scale(1.035);
+      }
+      16% {
+        transform: translate(1.2px, 0) rotate(0.4deg) scale(1.035);
+      }
+      18% {
+        transform: translate(-0.8px, 0.5px) rotate(-0.3deg) scale(1.02);
+      }
+      20% {
+        transform: translate(0.8px, -0.5px) rotate(0.3deg) scale(1.02);
+      }
+      22% {
+        transform: translate(-0.5px, 0) rotate(-0.2deg) scale(1.01);
+      }
+      24% {
+        transform: translate(0.5px, 0) rotate(0.2deg) scale(1.01);
+      }
+      26% {
+        transform: translate(-0.2px, 0) rotate(-0.1deg) scale(1.005);
+      }
+      28% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+    }
+
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -515,16 +650,21 @@
       font-size: var(--text-body);
       transition: all var(--transition-snappy);
       box-shadow: var(--shadow-sm);
+      animation: heartbeatPrimary 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      will-change: transform, box-shadow;
     }
 
     .btn-primary:hover {
       background: #e2e4e9;
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
       box-shadow: var(--shadow-md);
+      animation-play-state: paused;
     }
 
     .btn-primary:active {
-      transform: scale(0.97);
+      transform: scale(0.97) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     .btn-secondary {
@@ -567,16 +707,23 @@
       font-weight: 600;
       font-size: var(--text-body);
       transition: all var(--transition-snappy);
+      animation: heartbeatEmeraldSoft 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 0.5s;
+      will-change: transform, box-shadow;
     }
 
     .btn-whatsapp-hero:hover {
       background: var(--accent-emerald);
       color: #032115;
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      animation-play-state: paused;
     }
 
     .btn-whatsapp-hero:active {
-      transform: scale(0.97);
+      transform: scale(0.97) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     .hero-ticker-pill {
@@ -1318,15 +1465,29 @@
       font-size: var(--text-body-sm);
       font-weight: 700;
       transition: all var(--transition-snappy);
+      animation: heartbeatEmerald 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      will-change: transform, box-shadow;
+    }
+
+    .product-card:nth-child(2n) .btn-direct-buy {
+      animation-delay: 0.35s;
+    }
+
+    .product-card:nth-child(3n) .btn-direct-buy {
+      animation-delay: 0.7s;
     }
 
     .btn-direct-buy:hover {
       background: var(--accent-emerald-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.025);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      animation-play-state: paused;
     }
 
     .btn-direct-buy:active {
-      transform: scale(0.96);
+      transform: scale(0.96) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     /* -------------------------------------------------------------
@@ -1648,11 +1809,21 @@
       justify-content: center;
       cursor: pointer;
       transition: all var(--transition-snappy);
+      animation: heartbeatEmerald 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      will-change: transform, box-shadow;
     }
 
     .btn-phys-cart:hover {
       background: var(--accent-emerald-hover);
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      animation-play-state: paused;
+    }
+
+    .btn-phys-cart:active {
+      transform: scale(0.92) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     .physical-explore-bar {
@@ -1718,11 +1889,22 @@
       cursor: pointer;
       white-space: nowrap;
       transition: all var(--transition-snappy);
+      animation: heartbeatEmerald 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 0.5s;
+      will-change: transform, box-shadow;
     }
 
     .btn-explore-full:hover {
       background: var(--accent-emerald-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      animation-play-state: paused;
+    }
+
+    .btn-explore-full:active {
+      transform: scale(0.96) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     /* -------------------------------------------------------------
@@ -2837,15 +3019,22 @@
       font-weight: 700;
       transition: all var(--transition-snappy);
       box-shadow: var(--shadow-sm);
+      animation: heartbeatEmerald 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 0.4s;
+      will-change: transform, box-shadow;
     }
 
     .btn-checkout-whatsapp:hover {
       background: var(--accent-emerald-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      animation-play-state: paused;
     }
 
     .btn-checkout-whatsapp:active {
-      transform: scale(0.97);
+      transform: scale(0.97) !important;
+      box-shadow: none !important;
+      animation: none !important;
     }
 
     .checkout-guarantee-note {
@@ -3364,6 +3553,14 @@
       letter-spacing: var(--tracking-headline);
       line-height: 1;
       font-variant-numeric: tabular-nums;
+      display: inline-block;
+      transform-origin: center center;
+      will-change: transform, text-shadow;
+      animation: priceVibrateCycle 4.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    }
+
+    .promo-price-current:hover {
+      animation-play-state: paused;
     }
 
     .promo-orig-row {
@@ -3955,11 +4152,15 @@
       .btn-direct-buy:active,
       .btn-agency-quote:active,
       .btn-checkout-whatsapp:active,
+      .btn-phys-cart:active,
+      .btn-explore-full:active,
       .cart-trigger-btn:active,
       .filter-pill:active,
       .qty-btn:active {
         transform: scale(0.96) !important;
         transition: transform 90ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+        animation: none !important;
+        box-shadow: none !important;
       }
 
       /* Clean reset of any synthesized sticky hover states */
@@ -4803,6 +5004,10 @@
         line-height: 1.1 !important;
         letter-spacing: -0.02em !important;
         color: #ffffff !important;
+        display: inline-block !important;
+        transform-origin: center center !important;
+        will-change: transform, text-shadow !important;
+        animation: priceVibrateCycle 4.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite !important;
       }
       .discount-badge {
         font-size: 0.68rem !important;
@@ -4873,6 +5078,10 @@
         font-size: 1.05rem !important;
         font-weight: 800 !important;
         white-space: nowrap !important;
+        display: inline-block !important;
+        transform-origin: center center !important;
+        will-change: transform, text-shadow !important;
+        animation: priceVibrateCycle 4.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite !important;
       }
       dialog#productModal .modal-footer .discount-badge {
         font-size: 0.68rem !important;
@@ -7852,7 +8061,12 @@
       if (display) display.textContent = modalQuantity;
 
       const priceVals = document.querySelectorAll('#modalPriceVal');
-      priceVals.forEach(el => el.textContent = formatGs(unitPrice * modalQuantity));
+      priceVals.forEach(el => {
+        el.textContent = formatGs(unitPrice * modalQuantity);
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+      });
 
       const origVals = document.querySelectorAll('#modalOrigVal');
       origVals.forEach(origVal => {
