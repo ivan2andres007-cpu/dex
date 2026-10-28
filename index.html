@@ -4,7 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
   <title>Punto Prisma | Suscripciones Digitales, Licencias y Desarrollo Web en Paraguay</title>
-  <meta name="description" content="Punto Prisma: Marketplace digital minimalista en Paraguay. Suscripciones de streaming, licencias de software, gaming y desarrollo web a medida en Guaraníes (Gs.).">
+  <meta name="description" content="Punto Prisma: Marketplace digital en Paraguay. Suscripciones de IA y streaming, licencias de software, gaming y desarrollo web a medida en Guaraníes (Gs.) con entrega en 5-15 min vía WhatsApp.">
+  <link rel="canonical" href="https://puntoprisma.store/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / WhatsApp / Facebook Link Previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Punto Prisma">
+  <meta property="og:title" content="Punto Prisma | Suscripciones Digitales, Licencias y Desarrollo Web en Paraguay">
+  <meta property="og:description" content="Ahorra hasta un 80% en suscripciones digitales, licencias de software y gaming en Guaraníes (Gs.) con entrega inmediata por WhatsApp y SIPAP 0% comisión.">
+  <meta property="og:url" content="https://puntoprisma.store/">
+  <meta property="og:image" content="https://puntoprisma.store/imagenes/suscripciones/Google%20AI%20Pro%20-%20Gemini%2018%20Months%20Trial%20(Global)%20-%20Digital%20Key.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_PY">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Punto Prisma | Suscripciones Digitales y Licencias en Paraguay">
+  <meta name="twitter:description" content="Marketplace digital en Paraguay. Precios transparentes en Guaraníes, entrega inmediata y desarrollo web estilo Apple.">
+  <meta name="twitter:image" content="https://puntoprisma.store/imagenes/suscripciones/Google%20AI%20Pro%20-%20Gemini%2018%20Months%20Trial%20(Global)%20-%20Digital%20Key.jpg">
+
+  <!-- Crisp Retina SVG Favicon (Eliminates 404 on /favicon.ico) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpolygon%20points%3D%2216%2C3%2029%2C26%203%2C26%22%20fill%3D%22none%22%20stroke%3D%22%23f5f6f8%22%20stroke-width%3D%222.4%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2218%22%20r%3D%223%22%20fill%3D%22%2310b981%22%2F%3E%3C%2Fsvg%3E">
+
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#090a0d">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090a0d">
   <meta name="color-scheme" content="dark">
@@ -12,6 +35,32 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Punto Prisma">
   <meta name="format-detection" content="telephone=no">
+
+  <!-- Structured Data (JSON-LD) for Search Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "Punto Prisma",
+    "url": "https://puntoprisma.store/",
+    "logo": "https://puntoprisma.store/imagenes/suscripciones/Google%20AI%20Pro%20-%20Gemini%2018%20Months%20Trial%20(Global)%20-%20Digital%20Key.jpg",
+    "description": "Marketplace digital y tienda de licencias de software, gaming y desarrollo web a medida en Paraguay.",
+    "currenciesAccepted": "PYG",
+    "paymentAccepted": "Transferencia Bancaria SIPAP, Tarjeta de Crédito, Billeteras Electrónicas",
+    "priceRange": "Gs. 19.000 - Gs. 5.500.000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PY",
+      "addressLocality": "Asunción"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+595986125649",
+      "contactType": "customer service",
+      "availableLanguage": "Spanish"
+    }
+  }
+  </script>
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -207,6 +256,27 @@
     :focus-visible {
       outline: 2px solid var(--border-focus);
       outline-offset: 3px;
+    }
+
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 9999;
+      background: var(--text-primary);
+      color: var(--bg-base);
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: top 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+    .skip-to-content:focus {
+      top: 16px;
+      outline: 2px solid var(--accent-emerald);
+      outline-offset: 2px;
     }
 
     a {
@@ -6268,6 +6338,8 @@
   </style>
 </head>
 <body>
+  <!-- Accessible Skip Link (W3C/Apple Standard) -->
+  <a href="#catalogo" class="skip-to-content">Saltar al catálogo de productos</a>
 
   <!-- ==========================================
        NAVIGATION BAR
@@ -6330,7 +6402,7 @@
          ========================================== -->
     <section class="hero-section relative overflow-hidden">
       <!-- 1. Ambient Background GIF -->
-      <img src="black-background.gif" alt="" class="hero-bg-media inset-0 w-full h-full object-cover" aria-hidden="true" loading="eager">
+      <img src="black-background.gif" alt="" class="hero-bg-media inset-0 w-full h-full object-cover" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
 
       <!-- 2. Apple Glass Dark Blur Overlay -->
       <div class="hero-overlay-blur inset-0 w-full h-full" aria-hidden="true"></div>
