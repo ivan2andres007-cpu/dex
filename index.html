@@ -4841,22 +4841,26 @@
         gap: 8px !important;
       }
       .modal-gallery-layout {
-        flex-direction: column-reverse;
-        align-items: stretch;
-        position: static;
-        gap: 6px;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-direction: column-reverse !important;
+        align-items: stretch !important;
+        position: static !important;
+        gap: 6px !important;
+        margin: 0 auto !important;
       }
       .modal-thumbs-vertical {
-        flex-direction: row;
-        overflow-x: auto;
-        overflow-y: hidden;
-        justify-content: flex-start;
-        max-height: none;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        overscroll-behavior-x: contain;
-        padding-bottom: 2px;
-        gap: 6px;
+        width: 100% !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        justify-content: flex-start !important;
+        max-height: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+        overscroll-behavior-x: contain !important;
+        padding-bottom: 2px !important;
+        gap: 6px !important;
       }
       .modal-thumb-vertical-btn {
         width: 36px !important;
@@ -4865,39 +4869,48 @@
       }
       .modal-carousel-container,
       .modal-gallery-layout .modal-carousel-container {
+        width: 100% !important;
         max-width: 100% !important;
         aspect-ratio: auto !important;
         height: 235px !important;
         max-height: 235px !important;
         border-radius: var(--radius-md) !important;
-      }
-      /* Parity rule: when product has single image (no thumbnails), match the 275px total height of multi-image gallery */
-      .modal-gallery-layout:not(:has(.modal-thumbs-vertical)) .modal-carousel-container {
-        height: 275px !important;
-        max-height: 275px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: radial-gradient(circle at 50% 50%, #151821 0%, #090a0d 100%) !important;
+        border: 1px solid var(--border-subtle) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+        overflow: hidden !important;
       }
       .modal-carousel-track {
+        width: 100% !important;
         height: 100% !important;
+        display: flex !important;
       }
       .modal-carousel-slide {
+        flex: 0 0 100% !important;
+        width: 100% !important;
         aspect-ratio: auto !important;
         height: 100% !important;
         max-height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         padding: 4px 0 !important;
+        margin: 0 auto !important;
       }
       .modal-carousel-slide img,
       .modal-carousel-img,
       .modal-media-frame img {
         height: 100% !important;
-        max-height: 226px !important;
+        max-height: 220px !important;
         width: auto !important;
         max-width: 100% !important;
         object-fit: contain !important;
         margin: 0 auto !important;
-      }
-      .modal-gallery-layout:not(:has(.modal-thumbs-vertical)) .modal-carousel-slide img,
-      .modal-gallery-layout:not(:has(.modal-thumbs-vertical)) .modal-carousel-img {
-        max-height: 265px !important;
+        display: block !important;
       }
       .modal-carousel-dots {
         bottom: 6px !important;
