@@ -1614,6 +1614,13 @@
       animation: none !important;
     }
 
+    .btn-direct-text-short {
+      display: none;
+    }
+    .btn-direct-text-full {
+      display: inline;
+    }
+
     /* -------------------------------------------------------------
        NOTICE BOXES (Inside Product Details Modal)
        ------------------------------------------------------------- */
@@ -4869,26 +4876,31 @@
         z-index: 2;
       }
 
-      /* Product Cards on Mobile (Apple-grade 1-Column Boutique Layout) */
+      /* Product Cards on Mobile: 2 per row (2 por fila, 1 por columna) */
       .products-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
         margin-bottom: 56px;
       }
       .product-card {
         padding: 0;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
         background: var(--bg-surface);
         border: 1px solid var(--border-subtle);
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
       .card-media-preview {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 1 / 1;
         width: 100%;
         height: auto;
         position: relative;
         overflow: hidden;
         border-radius: 0;
+        background: #08090c;
+        border-bottom: 1px solid var(--border-subtle);
       }
       .card-preview-art {
         width: 100%;
@@ -4896,52 +4908,70 @@
         object-fit: cover;
       }
       .card-floating-icon {
-        top: 10px;
-        left: 10px;
-        width: 30px;
-        height: 30px;
+        top: 6px;
+        left: 6px;
+        width: 24px;
+        height: 24px;
         border-radius: var(--radius-sm);
+        background: rgba(9, 10, 13, 0.78);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .card-floating-icon svg {
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
       }
       .card-floating-badges {
-        top: 10px;
-        right: 10px;
-        gap: 6px;
+        top: 6px;
+        right: 6px;
+        gap: 4px;
         display: flex;
         align-items: center;
       }
       .card-floating-badges .card-badge {
-        font-size: 0.72rem;
-        padding: 3px 8px;
-        font-weight: 600;
+        font-size: 0.64rem;
+        padding: 2px 6px;
+        font-weight: 700;
         backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: var(--radius-pill);
       }
       .card-floating-badges .card-badge:nth-child(n+2) {
-        display: inline-flex !important; /* In 1-col, both badges fit gracefully */
+        display: none !important; /* Keep mobile card preview clean and visible */
       }
       .card-content-wrap {
-        padding: 14px 16px 16px;
+        padding: 10px 8px 10px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
       }
       .card-body {
-        margin-bottom: 8px;
+        margin-bottom: 4px;
+        flex: 1;
       }
       .product-category-tag {
-        font-size: 0.72rem;
+        font-size: 0.66rem;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: var(--accent-emerald);
-        margin-bottom: 4px;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .product-name {
-        font-size: 1.02rem;
+        font-size: 0.82rem;
         font-weight: 700;
-        line-height: 1.32;
-        margin-bottom: 6px;
-        min-height: auto;
+        line-height: 1.25;
+        margin-bottom: 4px;
+        height: 2.5em;
+        min-height: 2.5em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -4951,140 +4981,138 @@
       .card-social-proof {
         display: flex;
         align-items: center;
-        gap: 6px;
-        font-size: 0.76rem;
-        margin-bottom: 8px;
+        gap: 4px;
+        font-size: 0.68rem;
+        margin-bottom: 4px;
         color: var(--text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
       }
       .star-icon {
-        width: 13px;
-        height: 13px;
+        width: 11px;
+        height: 11px;
         color: #f59e0b;
+        flex-shrink: 0;
       }
       .rating-val {
-        font-size: 0.78rem;
+        font-size: 0.70rem;
         font-weight: 700;
         color: var(--text-primary);
       }
       .sold-count-val {
-        font-size: 0.74rem;
+        font-size: 0.68rem;
         color: var(--text-tertiary);
       }
-      .delivery-status-tag {
-        display: inline-flex !important;
-        font-size: 0.74rem;
-        color: var(--accent-emerald);
-        font-weight: 600;
-      }
-      .delivery-status-dot {
-        display: inline !important;
-      }
+      .delivery-status-tag,
+      .delivery-status-dot,
       .product-desc,
       .btn-more-details,
       .media-tap-hint {
         display: none !important;
       }
       .card-footer-box {
-        padding-top: 8px;
+        padding-top: 6px;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 5px;
       }
       .stock-indicator {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 0.74rem;
+        font-size: 0.68rem;
+        white-space: nowrap;
+        overflow: hidden;
       }
       .stock-live-badge {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
         color: var(--text-secondary);
+        font-size: 0.66rem;
       }
       .stock-status-dot {
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
+        flex-shrink: 0;
       }
       .stock-count-text {
-        display: inline-block !important;
-        font-size: 0.74rem;
+        font-size: 0.66rem;
         color: var(--text-tertiary);
         font-weight: 500;
       }
       .stock-progress-track {
-        height: 3px;
+        height: 2px;
         background: rgba(255, 255, 255, 0.08);
         border-radius: var(--radius-pill);
         overflow: hidden;
       }
       .price-box {
         display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 2px;
+        flex-direction: column;
+        gap: 1px;
+        margin-top: 1px;
       }
       .price-main-row {
         display: flex;
         align-items: baseline;
-        gap: 8px;
+        justify-content: space-between;
+        gap: 4px;
       }
       .product-price-val {
-        font-size: 1.25rem;
+        font-size: 0.98rem;
         font-weight: 800;
         letter-spacing: -0.02em;
         color: var(--text-primary);
+        white-space: nowrap;
       }
       .discount-badge {
-        font-size: 0.72rem;
+        font-size: 0.64rem;
         font-weight: 700;
-        padding: 2px 7px;
+        padding: 1px 4px;
         border-radius: var(--radius-sm);
         background: rgba(16, 185, 129, 0.15);
         color: var(--accent-emerald);
         border: 1px solid rgba(16, 185, 129, 0.25);
+        white-space: nowrap;
       }
       .price-original-row {
         display: flex;
         align-items: baseline;
-        gap: 6px;
-        font-size: 0.78rem;
+        gap: 4px;
+        font-size: 0.68rem;
       }
       .price-original-val {
-        font-size: 0.78rem;
+        font-size: 0.68rem;
         text-decoration: line-through;
         color: var(--text-tertiary);
       }
       .price-savings-label {
-        display: inline !important;
-        font-size: 0.72rem;
-        color: var(--accent-emerald);
-        font-weight: 600;
+        display: none !important;
       }
       .card-actions-row {
         display: flex;
-        gap: 8px;
-        margin-top: 4px;
+        gap: 4px;
+        margin-top: 2px;
+        width: 100%;
       }
       .card-actions-row .btn-direct-buy {
-        flex: 1.4;
+        flex: 1.25;
       }
       .card-actions-row .btn-add-cart {
         flex: 1;
       }
       .btn-direct-buy {
         width: 100%;
-        height: 44px;
-        min-height: 44px;
+        height: 38px;
+        min-height: 38px;
         position: relative;
         touch-action: manipulation;
-        font-size: 0.88rem;
+        font-size: 0.74rem;
         font-weight: 700;
-        padding: 0 12px;
-        gap: 6px;
+        padding: 0 6px;
+        gap: 4px;
         border-radius: var(--radius-pill);
         background: var(--accent-emerald);
         color: #032115;
@@ -5102,19 +5130,26 @@
         pointer-events: auto;
       }
       .btn-direct-buy svg {
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+      }
+      .btn-direct-text-full {
+        display: none !important;
+      }
+      .btn-direct-text-short {
+        display: inline !important;
       }
       .btn-add-cart {
         width: 100%;
-        height: 44px;
-        min-height: 44px;
+        height: 38px;
+        min-height: 38px;
         position: relative;
         touch-action: manipulation;
-        font-size: 0.86rem;
+        font-size: 0.70rem;
         font-weight: 600;
-        padding: 0 10px;
-        gap: 6px;
+        padding: 0 4px;
+        gap: 3px;
         border-radius: var(--radius-pill);
         background: var(--bg-surface-elevated);
         border: 1px solid var(--border-medium);
@@ -5132,8 +5167,9 @@
         pointer-events: auto;
       }
       .btn-add-cart svg {
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
       }
 
       /* Cart Slide-Over Drawer: Full screen & streamlined on mobile */
@@ -6238,6 +6274,17 @@
         height: 42px;
         min-height: 42px;
         min-width: 42px;
+      }
+
+      /* Compact 2-column digital products on narrow smartphones */
+      .products-grid {
+        gap: 8px;
+      }
+      .product-name {
+        font-size: 0.80rem;
+      }
+      .product-price-val {
+        font-size: 0.94rem;
       }
 
       /* Ultra-compact physical goods on narrow smartphones */
@@ -8323,14 +8370,15 @@
                     <line x1="3" y1="6" x2="21" y2="6"/>
                     <path d="M16 10a4 4 0 0 1-8 0"/>
                   </svg>
-                  ${isOutOfStock ? 'Agotado' : '+ Carrito'}
+                  <span class="btn-cart-text">${isOutOfStock ? 'Agotado' : '+ Carrito'}</span>
                 </button>
 
                 <button type="button" class="btn-direct-buy" onclick="${isOutOfStock ? `askStockWhatsApp('${item.id}')` : `buyDirectWhatsApp('${item.id}')`}" aria-label="${isOutOfStock ? 'Consultar stock por WhatsApp' : `Pedir ${escapeHtml(title)} al instante por WhatsApp`}">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                   </svg>
-                  ${isOutOfStock ? 'Consultar Stock' : 'Pedir al Instante ⚡'}
+                  <span class="btn-direct-text-full">${isOutOfStock ? 'Consultar Stock' : 'Pedir al Instante ⚡'}</span>
+                  <span class="btn-direct-text-short">${isOutOfStock ? 'Consultar' : 'Pedir ⚡'}</span>
                 </button>
               </div>
             </div>

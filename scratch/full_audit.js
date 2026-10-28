@@ -64,7 +64,7 @@ assertTest('No Stuck Hover on Touch (@media hover: hover)', html.includes('@medi
 assertTest('Guaraníes Formatting (formatGs)', html.includes('function formatGs(amount)'));
 assertTest('Cart Storage (localStorage)', html.includes('localStorage.getItem(\'punto_prisma_cart\')'));
 assertTest('In-Cart Order Bump Container', html.includes('id="cartOrderBumpBox"'));
-assertTest('Streamlined 1-Col Mobile Grid', html.includes('.products-grid {') && html.includes('grid-template-columns: 1fr;'));
+assertTest('Mobile 2-Column Grid (2 por fila)', html.includes('.products-grid {') && html.includes('grid-template-columns: repeat(2, minmax(0, 1fr));'));
 assertTest('Touch Friendly 44px Buttons', html.includes('min-height: 44px;'));
 assertTest('WhatsApp Order Dispatcher with Fallback', html.includes('function dispatchWhatsAppOrder(') && html.includes('showWhatsAppOrderToast'));
 assertTest('Direct WhatsApp Order', html.includes('function buyDirectWhatsApp('));
