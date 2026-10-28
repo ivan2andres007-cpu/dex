@@ -525,6 +525,10 @@
       margin-bottom: 40px;
     }
 
+    .hero-sub-ctas {
+      display: contents;
+    }
+
     /* -------------------------------------------------------------
        TACTILE HEARTBEAT KEYFRAMES (Organic Biological Double-Beat)
        Rhythmic double-pulse (lub-dub) followed by a peaceful rest
@@ -3094,6 +3098,21 @@
       line-height: 1.4;
     }
 
+    .cart-trust-single-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      color: var(--text-tertiary);
+      text-align: center;
+      line-height: 1.35;
+      padding-top: 2px;
+    }
+    .cart-trust-single-line span {
+      white-space: nowrap;
+    }
+
     /* -------------------------------------------------------------
        CRO: IN-CART 1-CLICK ORDER BUMP (Emil Kowalski Craft)
        ------------------------------------------------------------- */
@@ -4702,34 +4721,69 @@
       .hero-cta-group {
         flex-direction: column;
         width: 100%;
-        gap: 10px;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin-bottom: 16px;
       }
-      .btn-primary, .btn-secondary {
+      .btn-primary.hero-btn-main {
         width: 100%;
-        height: 46px;
-        font-size: 0.94rem;
+        height: 48px;
+        font-size: 0.95rem;
+        font-weight: 700;
       }
-      .btn-whatsapp-hero {
-        width: auto !important;
-        max-width: 260px !important;
+      .hero-sub-ctas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+      }
+      .hero-sub-ctas .btn-whatsapp-hero {
+        width: 100% !important;
+        max-width: none !important;
         height: 40px !important;
         min-height: 40px !important;
-        padding: 0 16px !important;
-        font-size: 0.86rem !important;
-        align-self: center !important;
+        padding: 0 10px !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        align-self: stretch !important;
         background: rgba(16, 185, 129, 0.08) !important;
         border: 1px solid rgba(16, 185, 129, 0.3) !important;
         color: var(--accent-emerald) !important;
         border-radius: var(--radius-pill) !important;
-        gap: 6px !important;
+        gap: 5px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+      }
+      .hero-sub-ctas .hero-btn-sub {
+        width: 100% !important;
+        max-width: none !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        padding: 0 10px !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        border-radius: var(--radius-pill) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
       }
       .hero-ticker-pill {
         width: 100%;
-        max-width: 340px;
+        max-width: 360px;
         justify-content: center;
-        padding: 8px 14px;
-        font-size: 0.80rem;
+        padding: 6px 12px;
+        font-size: 0.76rem;
+      }
+
+      /* Search on Mobile: Hide physical keyboard hint and polish padding */
+      .search-kbd-hint {
+        display: none !important;
+      }
+      .catalog-search-input {
+        font-size: 0.84rem;
+        padding-right: 36px !important;
       }
 
       /* Visual Fade Mask on Filter Pills to signal swipeable content */
@@ -4745,95 +4799,79 @@
         z-index: 2;
       }
 
-      /* Product Cards on Mobile (Compact 2-Column Grid / 2 por fila) */
+      /* Product Cards on Mobile (Apple-grade 1-Column Boutique Layout) */
       .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-bottom: 64px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 56px;
       }
       .product-card {
         padding: 0;
-        border-radius: var(--radius-md);
-      }
-      .card-top-row {
-        gap: 6px;
-        margin-bottom: 8px;
-      }
-      .card-icon-frame {
-        width: 30px;
-        height: 30px;
-        border-radius: var(--radius-sm);
-      }
-      .card-icon-frame svg {
-        width: 16px;
-        height: 16px;
-      }
-      .card-badge {
-        font-size: 0.70rem;
-        padding: 2px 6px;
+        border-radius: var(--radius-lg);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        overflow: hidden;
       }
       .card-media-preview {
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 16 / 9;
         width: 100%;
         height: auto;
-        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
         border-radius: 0;
       }
       .card-preview-art {
         width: 100%;
         height: 100%;
-        max-height: none;
-        padding: 0;
         object-fit: cover;
       }
       .card-floating-icon {
-        top: 6px;
-        left: 6px;
-        width: 26px;
-        height: 26px;
+        top: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
         border-radius: var(--radius-sm);
       }
       .card-floating-icon svg {
-        width: 14px;
-        height: 14px;
+        width: 15px;
+        height: 15px;
       }
       .card-floating-badges {
-        top: 6px;
-        right: 6px;
-        gap: 3px;
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+        display: flex;
+        align-items: center;
       }
       .card-floating-badges .card-badge {
-        font-size: 0.68rem;
-        padding: 2px 6px;
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        font-weight: 600;
+        backdrop-filter: blur(8px);
       }
       .card-floating-badges .card-badge:nth-child(n+2) {
-        display: none !important; /* Hide secondary badge on mobile grid image so artwork is visible */
+        display: inline-flex !important; /* In 1-col, both badges fit gracefully */
       }
       .card-content-wrap {
-        padding: 10px 10px 12px;
-      }
-      .media-tap-hint {
-        display: none !important;
+        padding: 14px 16px 16px;
       }
       .card-body {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
       .product-category-tag {
-        font-size: 0.70rem;
-        margin-bottom: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        letter-spacing: 0.03em;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: var(--text-tertiary);
+        color: var(--accent-emerald);
+        margin-bottom: 4px;
       }
       .product-name {
-        font-size: 0.80rem;
-        font-weight: 600;
-        line-height: 1.25;
-        margin-bottom: 4px;
-        min-height: 2.5em;
+        font-size: 1.02rem;
+        font-weight: 700;
+        line-height: 1.32;
+        margin-bottom: 6px;
+        min-height: auto;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -4841,102 +4879,149 @@
         color: var(--text-primary);
       }
       .card-social-proof {
-        gap: 4px;
-        font-size: 0.70rem;
-        margin-bottom: 4px;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.76rem;
+        margin-bottom: 8px;
+        color: var(--text-secondary);
       }
       .star-icon {
-        width: 11px;
-        height: 11px;
+        width: 13px;
+        height: 13px;
+        color: #f59e0b;
       }
       .rating-val {
-        font-size: 0.72rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--text-primary);
       }
       .sold-count-val {
-        font-size: 0.70rem;
+        font-size: 0.74rem;
+        color: var(--text-tertiary);
       }
-      .delivery-status-tag,
-      .delivery-status-dot,
+      .delivery-status-tag {
+        display: inline-flex !important;
+        font-size: 0.74rem;
+        color: var(--accent-emerald);
+        font-weight: 600;
+      }
+      .delivery-status-dot {
+        display: inline !important;
+      }
       .product-desc,
-      .btn-more-details {
+      .btn-more-details,
+      .media-tap-hint {
         display: none !important;
       }
       .card-footer-box {
-        padding-top: 6px;
-        gap: 6px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
       .stock-indicator {
-        font-size: 0.70rem;
-        white-space: nowrap;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.74rem;
       }
       .stock-live-badge {
-        gap: 4px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--text-secondary);
       }
       .stock-status-dot {
-        width: 5px;
-        height: 5px;
+        width: 6px;
+        height: 6px;
       }
       .stock-count-text {
-        display: none !important; /* Keep only "• Stock disponible" with progress bar on mobile */
+        display: inline-block !important;
+        font-size: 0.74rem;
+        color: var(--text-tertiary);
+        font-weight: 500;
       }
       .stock-progress-track {
-        height: 2px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-pill);
+        overflow: hidden;
       }
       .price-box {
-        gap: 2px;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 2px;
       }
       .price-main-row {
-        gap: 5px;
-        flex-wrap: nowrap;
+        display: flex;
         align-items: baseline;
+        gap: 8px;
       }
       .product-price-val {
-        font-size: 0.98rem;
-        font-weight: 700;
+        font-size: 1.25rem;
+        font-weight: 800;
         letter-spacing: -0.02em;
-        white-space: nowrap;
+        color: var(--text-primary);
       }
       .discount-badge {
-        font-size: 0.68rem;
-        padding: 1px 5px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: var(--radius-sm);
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--accent-emerald);
+        border: 1px solid rgba(16, 185, 129, 0.25);
       }
       .price-original-row {
-        gap: 4px;
-        font-size: 0.70rem;
-        white-space: nowrap;
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        font-size: 0.78rem;
       }
       .price-original-val {
-        font-size: 0.70rem;
+        font-size: 0.78rem;
+        text-decoration: line-through;
+        color: var(--text-tertiary);
       }
       .price-savings-label {
-        display: none !important; /* Hide on mobile to prevent line-breaking fragmentation */
+        display: inline !important;
+        font-size: 0.72rem;
+        color: var(--accent-emerald);
+        font-weight: 600;
       }
       .card-actions-row {
         display: flex;
-        gap: 6px;
-        margin-top: 2px;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .card-actions-row .btn-direct-buy {
+        flex: 1.4;
       }
       .card-actions-row .btn-add-cart {
         flex: 1;
       }
-      .card-actions-row .btn-direct-buy {
-        flex: 1.45;
-      }
       .btn-direct-buy {
         width: 100%;
-        height: 38px;
-        min-height: 38px;
+        height: 44px;
+        min-height: 44px;
         position: relative;
         touch-action: manipulation;
-        font-size: var(--text-label);
+        font-size: 0.88rem;
         font-weight: 700;
-        padding: 0 4px;
-        gap: 4px;
-        border-radius: var(--radius-sm);
+        padding: 0 12px;
+        gap: 6px;
+        border-radius: var(--radius-pill);
+        background: var(--accent-emerald);
+        color: #032115;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         order: 2;
         white-space: nowrap;
       }
@@ -4947,20 +5032,26 @@
         pointer-events: auto;
       }
       .btn-direct-buy svg {
-        width: 12px;
-        height: 12px;
+        width: 15px;
+        height: 15px;
       }
       .btn-add-cart {
         width: 100%;
-        height: 38px;
-        min-height: 38px;
+        height: 44px;
+        min-height: 44px;
         position: relative;
         touch-action: manipulation;
-        font-size: var(--text-label);
+        font-size: 0.86rem;
         font-weight: 600;
-        padding: 0 4px;
-        gap: 4px;
-        border-radius: var(--radius-sm);
+        padding: 0 10px;
+        gap: 6px;
+        border-radius: var(--radius-pill);
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-medium);
+        color: var(--text-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         order: 1;
         white-space: nowrap;
       }
@@ -4971,8 +5062,8 @@
         pointer-events: auto;
       }
       .btn-add-cart svg {
-        width: 12px;
-        height: 12px;
+        width: 15px;
+        height: 15px;
       }
 
       /* Cart Slide-Over Drawer: Full screen & streamlined on mobile */
@@ -5128,21 +5219,22 @@
 
       /* Compact, ergonomic footer: leaves ample room for cart content */
       .drawer-footer {
-        padding: 9px 14px calc(10px + var(--sab));
-        gap: 6px;
+        padding: 10px 16px calc(12px + var(--sab));
+        gap: 8px;
         background: var(--bg-surface);
         border-top: 1px solid var(--border-subtle);
       }
       .cart-savings-banner {
-        padding: 5px 8px;
-        gap: 6px;
-        border-radius: var(--radius-sm);
-        font-size: var(--text-label);
+        padding: 8px 12px;
+        gap: 8px;
+        border-radius: var(--radius-md);
+        font-size: 0.78rem;
         line-height: 1.35;
+        margin-top: 4px;
       }
       .cart-savings-banner svg {
-        width: 13px;
-        height: 13px;
+        width: 14px;
+        height: 14px;
       }
       .regular-price-row {
         font-size: var(--text-label);
@@ -5154,33 +5246,40 @@
         justify-content: space-between;
       }
       .summary-label {
-        font-size: 0.84rem;
+        font-size: 0.86rem;
         color: var(--text-secondary);
       }
       .summary-total-val {
-        font-size: 1.20rem;
-        font-weight: 700;
+        font-size: 1.25rem;
+        font-weight: 800;
         letter-spacing: -0.01em;
         color: var(--text-primary);
       }
       .btn-checkout-whatsapp {
-        height: 42px;
-        min-height: 42px;
-        font-size: 0.88rem;
+        height: 46px;
+        min-height: 46px;
+        font-size: 0.92rem;
         font-weight: 700;
-        gap: 6px;
+        gap: 8px;
         border-radius: var(--radius-pill);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
       }
       .btn-checkout-whatsapp svg {
-        width: 16px;
-        height: 16px;
+        width: 17px;
+        height: 17px;
       }
-      .checkout-guarantee-note {
-        font-size: var(--text-label);
-        line-height: 1.35;
-        margin-top: 0;
+      .cart-trust-single-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.74rem;
         color: var(--text-tertiary);
+        text-align: center;
+        line-height: 1.35;
+      }
+      .checkout-guarantee-note,
+      .cart-trust-badges-row {
+        display: none !important;
       }
 
       /* Apple Bottom Sheet Modal on Mobile (Docked higher up to maximize content view) */
@@ -6047,36 +6146,7 @@
 
     @media (max-width: 480px) {
       .container {
-        padding: 0 10px;
-      }
-      .products-grid {
-        gap: 8px;
-      }
-      .product-card {
-        padding: 0;
-      }
-      .card-media-preview {
-        aspect-ratio: 1 / 1;
-        height: auto;
-      }
-      .card-preview-art {
-        max-height: none;
-      }
-      .card-content-wrap {
-        padding: 8px 7px 10px;
-      }
-      .product-price-val {
-        font-size: 0.96rem;
-      }
-      .btn-direct-buy {
-        height: 38px;
-        min-height: 38px;
-        font-size: var(--text-label);
-      }
-      .btn-add-cart {
-        height: 38px;
-        min-height: 38px;
-        font-size: var(--text-label);
+        padding: 0 12px;
       }
       .site-header {
         padding: 0 8px;
@@ -6276,7 +6346,7 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="#catalogo" class="btn-primary" style="padding: 0 22px; font-weight: 700;">
+          <a href="#catalogo" class="btn-primary hero-btn-main" style="padding: 0 22px; font-weight: 700;">
             Explorar Ofertas y Catálogo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -6284,16 +6354,18 @@
             </svg>
           </a>
 
-          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20sobre%20productos%20y%20pagos%20SIPAP." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            </svg>
-            WhatsApp directo (Atención inmediata)
-          </a>
+          <div class="hero-sub-ctas">
+            <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20sobre%20productos%20y%20pagos%20SIPAP." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              <span>WhatsApp directo</span>
+            </a>
 
-          <a href="#agencia" class="btn-secondary" style="font-size: 0.84rem; opacity: 0.88;">
-            Agencia Web & Software
-          </a>
+            <a href="#agencia" class="btn-secondary hero-btn-sub" style="font-size: 0.84rem; opacity: 0.88;">
+              <span>Agencia Web</span>
+            </a>
+          </div>
         </div>
 
         <div class="hero-ticker-pill">
@@ -6342,7 +6414,7 @@
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Gemini, Assetto Corsa, Steam... (Presiona '/' para buscar)" aria-label="Buscar productos">
+            <input type="text" id="searchInput" class="catalog-search-input" placeholder="Buscar Gemini, Assetto Corsa, Steam..." aria-label="Buscar productos">
             <kbd class="search-kbd-hint" aria-hidden="true" title="Presiona '/' para buscar">/</kbd>
             <button type="button" id="clearSearchBtn" class="search-clear-btn" aria-label="Limpiar búsqueda" style="display: none;">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -6807,18 +6879,20 @@
       </div>
     </div>
 
-    <div class="drawer-content" id="cartItemsContainer">
-      <!-- Populated via JS -->
-    </div>
+    <div class="drawer-content" id="cartDrawerScroll">
+      <div id="cartItemsContainer">
+        <!-- Populated via JS -->
+      </div>
 
-    <div class="drawer-footer" id="cartFooter">
       <!-- CRO: In-Cart 1-Click Order Bump (Grand Steam Key) -->
       <div id="cartOrderBumpBox" class="cart-order-bump-box"></div>
 
       <div id="cartSavingsBanner" class="cart-savings-banner" style="display: none;">
         <!-- Populated via JS -->
       </div>
+    </div>
 
+    <div class="drawer-footer" id="cartFooter">
       <div class="drawer-summary-row regular-price-row" id="cartRegularPriceRow" style="display: none;">
         <span class="summary-label">Subtotal regular:</span>
         <span class="summary-original-val num-tabular" id="cartOriginalVal">Gs. 0</span>
@@ -6829,22 +6903,6 @@
         <span class="summary-total-val num-tabular" id="cartTotalVal">Gs. 0</span>
       </div>
 
-      <!-- Trust Steps Badge Row -->
-      <div class="cart-trust-badges-row" aria-hidden="true">
-        <div class="cart-trust-badge-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          <span>WhatsApp directo</span>
-        </div>
-        <div class="cart-trust-badge-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-          <span>SIPAP 0% recargo</span>
-        </div>
-        <div class="cart-trust-badge-pill">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>Entrega en 5-15m</span>
-        </div>
-      </div>
-
       <button type="button" class="btn-checkout-whatsapp" id="checkoutWhatsappBtn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
@@ -6852,9 +6910,9 @@
         <span>Finalizar Pedido vía WhatsApp</span>
       </button>
 
-      <p class="checkout-guarantee-note">
-        🔒 Transferencia Bancaria SIPAP (Itaú, ueno, Continental, BNF) • Cero Comisiones • Garantía Escrita de reposición inmediata.
-      </p>
+      <div class="cart-trust-single-line">
+        <span>🔒 SIPAP 0% comisión • Entrega 5-15 min • Garantía Escrita</span>
+      </div>
     </div>
   </dialog>
 
