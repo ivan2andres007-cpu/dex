@@ -1473,12 +1473,12 @@
     }
 
     .card-actions-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      display: flex;
+      gap: 8px;
     }
 
     .btn-add-cart {
+      flex: 1;
       height: 42px;
       display: inline-flex;
       align-items: center;
@@ -1503,6 +1503,7 @@
     }
 
     .btn-direct-buy {
+      flex: 1.4;
       height: 42px;
       display: inline-flex;
       align-items: center;
@@ -3094,6 +3095,307 @@
     }
 
     /* -------------------------------------------------------------
+       CRO: IN-CART 1-CLICK ORDER BUMP (Emil Kowalski Craft)
+       ------------------------------------------------------------- */
+    .cart-order-bump-box {
+      margin-bottom: 12px;
+    }
+
+    .cart-order-bump-card {
+      background: linear-gradient(135deg, rgba(24, 28, 40, 0.95), rgba(14, 16, 24, 0.98));
+      border: 1px dashed rgba(245, 158, 11, 0.45);
+      border-radius: var(--radius-card);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      transition: border-color var(--transition-snappy) var(--ease-out);
+    }
+
+    .cart-order-bump-card:hover {
+      border-color: rgba(245, 158, 11, 0.7);
+    }
+
+    .cart-order-bump-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .bump-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      background: rgba(245, 158, 11, 0.16);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .bump-discount-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-emerald);
+    }
+
+    .cart-order-bump-body {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bump-thumb-img {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .bump-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .bump-title {
+      font-size: var(--text-label);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bump-prices {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-label);
+    }
+
+    .bump-price-current {
+      font-weight: 800;
+      color: var(--accent-amber);
+    }
+
+    .bump-price-orig {
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+      font-size: 0.72rem;
+    }
+
+    .btn-add-bump {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: var(--accent-amber);
+      color: #1a1002;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform var(--transition-snappy) var(--ease-out), filter var(--transition-snappy);
+    }
+
+    .btn-add-bump:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.1);
+    }
+
+    .btn-add-bump:active {
+      transform: scale(0.96);
+    }
+
+    .bump-added-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: var(--radius-card);
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+
+    /* Trust Steps Pill above Checkout Button */
+    .cart-trust-badges-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .cart-trust-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 3px 8px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .cart-trust-badge-pill svg {
+      color: var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    /* -------------------------------------------------------------
+       CRO: MOBILE STICKY BOTTOM QUICK-BUY BAR (Thumb Zone)
+       ------------------------------------------------------------- */
+    .mobile-sticky-quick-bar {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-quick-bar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 850;
+        padding: 8px 12px calc(8px + var(--sab));
+        background: rgba(10, 12, 17, 0.94);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border-subtle);
+        box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.55);
+        transform: translateY(120%);
+        transition: transform var(--transition-normal) var(--ease-drawer), opacity var(--transition-normal) var(--ease-out);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .mobile-sticky-quick-bar.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-sticky-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .sticky-cart-summary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        min-width: 0;
+      }
+
+      .sticky-cart-icon-wrap {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border-radius: var(--radius-sm);
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-emerald);
+        flex-shrink: 0;
+      }
+
+      .sticky-cart-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: var(--accent-emerald);
+        color: #032115;
+        font-size: 0.65rem;
+        font-weight: 800;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sticky-cart-text {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .sticky-cart-total {
+        font-weight: 800;
+        font-size: 0.98rem;
+        color: #fff;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .sticky-cart-note {
+        font-size: 0.68rem;
+        color: var(--text-tertiary);
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .btn-sticky-order {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: var(--accent-emerald);
+        color: #032115;
+        font-weight: 700;
+        font-size: 0.88rem;
+        height: 42px;
+        padding: 0 16px;
+        border-radius: var(--radius-pill);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(16, 185, 129, 0.3);
+        white-space: nowrap;
+        transition: transform var(--transition-snappy) var(--ease-out), filter var(--transition-snappy);
+      }
+
+      .btn-sticky-order:active {
+        transform: scale(0.96);
+      }
+
+      /* Hide sticky bar when a full modal is open */
+      body.modal-open .mobile-sticky-quick-bar {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(120%) !important;
+      }
+    }
+
+    /* -------------------------------------------------------------
        PRODUCT DETAILS MODAL (<dialog id="productModal">)
        Apple-grade centered dialog with neutral depth & smooth spring
        ------------------------------------------------------------- */
@@ -4614,10 +4916,15 @@
         display: none !important; /* Hide on mobile to prevent line-breaking fragmentation */
       }
       .card-actions-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
         gap: 6px;
         margin-top: 2px;
+      }
+      .card-actions-row .btn-add-cart {
+        flex: 1;
+      }
+      .card-actions-row .btn-direct-buy {
+        flex: 1.45;
       }
       .btn-direct-buy {
         width: 100%;
@@ -6011,29 +6318,29 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="#catalogo" class="btn-primary">
-            Explorar catálogo
+          <a href="#catalogo" class="btn-primary" style="padding: 0 22px; font-weight: 700;">
+            Explorar Ofertas y Catálogo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
 
-          <a href="#agencia" class="btn-secondary">
-            Servicios de desarrollo web
-          </a>
-
-          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20general." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20sobre%20productos%20y%20pagos%20SIPAP." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
-            WhatsApp directo
+            WhatsApp directo (Atención inmediata)
+          </a>
+
+          <a href="#agencia" class="btn-secondary" style="font-size: 0.84rem; opacity: 0.88;">
+            Agencia Web & Software
           </a>
         </div>
 
         <div class="hero-ticker-pill">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Entrega digital en 5-15 min • Precios en Guaraníes (Gs.) • Transferencia Bancaria SIPAP</span>
+          <span>Entrega digital en 5-15 min • Precios en Guaraníes (Gs.) • Transferencia Bancaria SIPAP (0% comisión)</span>
         </div>
       </div>
     </section>
@@ -6547,6 +6854,9 @@
     </div>
 
     <div class="drawer-footer" id="cartFooter">
+      <!-- CRO: In-Cart 1-Click Order Bump (Grand Steam Key) -->
+      <div id="cartOrderBumpBox" class="cart-order-bump-box"></div>
+
       <div id="cartSavingsBanner" class="cart-savings-banner" style="display: none;">
         <!-- Populated via JS -->
       </div>
@@ -6561,15 +6871,31 @@
         <span class="summary-total-val num-tabular" id="cartTotalVal">Gs. 0</span>
       </div>
 
+      <!-- Trust Steps Badge Row -->
+      <div class="cart-trust-badges-row" aria-hidden="true">
+        <div class="cart-trust-badge-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>WhatsApp directo</span>
+        </div>
+        <div class="cart-trust-badge-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <span>SIPAP 0% recargo</span>
+        </div>
+        <div class="cart-trust-badge-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Entrega en 5-15m</span>
+        </div>
+      </div>
+
       <button type="button" class="btn-checkout-whatsapp" id="checkoutWhatsappBtn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
-        Finalizar Pedido vía WhatsApp
+        <span>Finalizar Pedido vía WhatsApp</span>
       </button>
 
       <p class="checkout-guarantee-note">
-        Al hacer clic se abrirá tu WhatsApp con el detalle del pedido para coordinar el pago en Guaraníes y la entrega digital.
+        🔒 Transferencia Bancaria SIPAP (Itaú, ueno, Continental, BNF) • Cero Comisiones • Garantía Escrita de reposición inmediata.
       </p>
     </div>
   </dialog>
@@ -6664,6 +6990,35 @@
       </button>
       <button type="button" class="dev-break-ui-btn" data-dataset="empty" onclick="switchDataset('empty')">
         Vacío (0)
+      </button>
+    </div>
+  </aside>
+
+  <!-- =============================================================
+       CRO: MOBILE STICKY BOTTOM QUICK-BUY BAR (High Conversion Thumb Zone)
+       ============================================================= -->
+  <aside class="mobile-sticky-quick-bar" id="mobileStickyQuickBar" aria-label="Acceso rápido al pedido">
+    <div class="mobile-sticky-content">
+      <div class="sticky-cart-summary" onclick="openCartDrawer()" role="button" tabindex="0">
+        <div class="sticky-cart-icon-wrap" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="sticky-cart-badge num-tabular" id="stickyCartBadge">0</span>
+        </div>
+        <div class="sticky-cart-text">
+          <span class="sticky-cart-total num-tabular" id="stickyCartTotal">Gs. 0</span>
+          <span class="sticky-cart-note">Entrega 5-15m • SIPAP</span>
+        </div>
+      </div>
+      <button type="button" class="btn-sticky-order" onclick="openCartDrawer()" aria-label="Ver carrito y confirmar pedido">
+        <span>Ver Pedido</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
       </button>
     </div>
   </aside>
@@ -7379,6 +7734,12 @@
           checkoutBtn.disabled = true;
           checkoutBtn.style.opacity = '0.5';
           checkoutBtn.style.pointerEvents = 'none';
+          checkoutBtn.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>Finalizar Pedido vía WhatsApp</span>
+          `;
         }
         if (savingsBanner) savingsBanner.style.display = 'none';
         if (regularPriceRow) regularPriceRow.style.display = 'none';
@@ -7387,6 +7748,12 @@
           checkoutBtn.disabled = false;
           checkoutBtn.style.opacity = '1';
           checkoutBtn.style.pointerEvents = 'auto';
+          checkoutBtn.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>Confirmar Pedido • ${formatGs(totalPrice)} ➔</span>
+          `;
         }
 
         if (savingsBanner && regularPriceRow && originalValElem) {
@@ -7467,9 +7834,75 @@
         `;
         }).join('');
       }
+
+      // CRO: Render 1-Click Order Bump inside Cart Drawer
+      const bumpBox = document.getElementById('cartOrderBumpBox');
+      if (bumpBox) {
+        if (cart.length === 0) {
+          bumpBox.style.display = 'none';
+        } else {
+          const hasBump = cart.some(item => item.id === 'random-steam-grand');
+          bumpBox.style.display = 'block';
+          if (!hasBump) {
+            bumpBox.innerHTML = `
+              <div class="cart-order-bump-card" role="region" aria-label="Oferta especial en carrito">
+                <div class="cart-order-bump-header">
+                  <span class="bump-badge">⚡ Oferta Flash en Carrito</span>
+                  <span class="bump-discount-tag">Ahorras Gs. 36.000 (-65%)</span>
+                </div>
+                <div class="cart-order-bump-body">
+                  <img src="imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.jpg" alt="1 Juego Steam Grand" class="bump-thumb-img" loading="lazy">
+                  <div class="bump-info">
+                    <div class="bump-title">1 Juego Steam Sorpresa (Grand PC)</div>
+                    <div class="bump-prices">
+                      <span class="bump-price-current num-tabular">Gs. 19.000</span>
+                      <span class="bump-price-orig num-tabular">Gs. 55.000</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-add-bump" onclick="addOrderBumpItem()" aria-label="Añadir 1 juego sorpresa por Gs. 19.000">
+                    + Añadir
+                  </button>
+                </div>
+              </div>
+            `;
+          } else {
+            bumpBox.innerHTML = `
+              <div class="bump-added-pill">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>¡Juego Steam Sorpresa añadido con <strong>65% de descuento</strong>!</span>
+              </div>
+            `;
+          }
+        }
+      }
+
+      // CRO: Update Mobile Sticky Quick-Buy Bar
+      const stickyBar = document.getElementById('mobileStickyQuickBar');
+      const stickyBadge = document.getElementById('stickyCartBadge');
+      const stickyTotal = document.getElementById('stickyCartTotal');
+      if (stickyBar) {
+        if (totalItems > 0) {
+          if (stickyBadge) stickyBadge.textContent = totalItems;
+          if (stickyTotal) stickyTotal.textContent = formatGs(totalPrice);
+          stickyBar.classList.add('is-visible');
+        } else {
+          stickyBar.classList.remove('is-visible');
+        }
+      }
     }
 
-    // Direct WhatsApp Purchase
+    // CRO: 1-Click In-Cart Order Bump Action
+    function addOrderBumpItem() {
+      const bumpId = 'random-steam-grand';
+      const prod = findProduct(bumpId);
+      if (!prod) return;
+      addToCart(bumpId, 1);
+      showToast('🎁 ¡Juego Steam Sorpresa añadido con 65% OFF!');
+    }
+
+    // Direct WhatsApp Purchase (CRO High-Converting Structured Message)
     function buyDirectWhatsApp(productId, quantity = 1) {
       const product = findProduct(productId);
       if (!product) return;
@@ -7482,9 +7915,9 @@
       
       let message;
       if (product.isPhysical) {
-        message = `Hola Punto Prisma, deseo comprar el siguiente artículo físico:\n\n• ${qtyText}\n• Total: *${formatGs(totalAmount)}*${discountText}\n\n¿Tienen disponibilidad para coordinar el pago en Guaraníes (SIPAP) y la entrega o envío en Paraguay? ¡Muchas gracias!`;
+        message = `🚀 *PEDIDO DIRECTO - PUNTO PRISMA*\n━━━━━━━━━━━━━━━━━━━━\n• Artículo: ${qtyText} [Hardware Físico]\n• Total a abonar: *${formatGs(totalAmount)}*${discountText}\n🏦 *Forma de pago:* Transferencia Bancaria SIPAP\n📍 *Ciudad/Barrio de entrega:* [Completar aquí]\n━━━━━━━━━━━━━━━━━━━━\n¿Tienen disponibilidad para coordinar el pago en Guaraníes (SIPAP) y la entrega o envío en Paraguay? ¡Muchas gracias!`;
       } else {
-        message = `Hola Punto Prisma, deseo comprar directamente el siguiente producto:\n\n• ${qtyText}\n• Total: *${formatGs(totalAmount)}*${discountText}\n\n¿Cuáles son los datos de cuenta bancaria (SIPAP) para transferir? ¡Muchas gracias!`;
+        message = `🚀 *PEDIDO DIRECTO - PUNTO PRISMA*\n━━━━━━━━━━━━━━━━━━━━\n• Producto: ${qtyText} [Licencia Digital]\n• Total a abonar: *${formatGs(totalAmount)}*${discountText}\n🏦 *Forma de pago:* Transferencia Bancaria SIPAP\n⚡ *Entrega:* Digital en 5-15 min por WhatsApp\n━━━━━━━━━━━━━━━━━━━━\n¿Cuáles son los datos de cuenta bancaria (SIPAP) para realizar la transferencia ahora? ¡Muchas gracias!`;
       }
 
       const encodedMsg = encodeURIComponent(message);
@@ -7500,7 +7933,7 @@
       dispatchWhatsAppOrder(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`);
     }
 
-    // Complete Order via WhatsApp from Cart Drawer
+    // Complete Order via WhatsApp from Cart Drawer (CRO High-Converting Structured Message)
     function checkoutWhatsApp() {
       if (cart.length === 0) return;
 
@@ -7517,21 +7950,23 @@
       cart.forEach(item => {
         const prod = findProduct(item.id);
         if (prod && prod.isPhysical) hasPhysical = true;
-        itemsListText += `• ${item.quantity}x *${item.name}* - ${formatGs(item.price * item.quantity)}\n`;
+        const typeTag = (prod && prod.isPhysical) ? '[Físico]' : '[Digital]';
+        itemsListText += `• ${item.quantity}x *${item.name}* ${typeTag} - ${formatGs(item.price * item.quantity)}\n`;
       });
 
       let bonusText = '';
       if (totalSavings > 0) {
-        bonusText += `\n*Ahorro total aplicado: ${formatGs(totalSavings)}*`;
+        bonusText += `💰 *Ahorro total aplicado:* ${formatGs(totalSavings)}\n`;
       }
       if (totalPrice >= FREE_REWARD_THRESHOLD) {
-        bonusText += `\n🎁 *Beneficio desbloqueado: Clave Steam Sorpresa Gratis*`;
-      }
-      if (hasPhysical) {
-        bonusText += `\n📦 *Incluye artículo(s) físico(s) para coordinar dirección de entrega o encomienda.*`;
+        bonusText += `🎁 *Beneficio desbloqueado:* Clave Steam Sorpresa GRATIS\n`;
       }
 
-      const message = `Hola Punto Prisma, deseo confirmar el siguiente pedido desde la web:\n\n${itemsListText}${bonusText}\n\n*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n\n¿Me facilitan los datos para la transferencia en Guaraníes (SIPAP)? ¡Muchas gracias!`;
+      const deliveryLine = hasPhysical
+        ? `📍 *Dirección/Ciudad para encomienda o delivery:* [Completar aquí]\n`
+        : `⚡ *Entrega:* Inmediata en 5-15 min por este chat\n`;
+
+      const message = `🚀 *NUEVO PEDIDO - PUNTO PRISMA*\n━━━━━━━━━━━━━━━━━━━━\n${itemsListText.trim()}\n━━━━━━━━━━━━━━━━━━━━\n${bonusText}*TOTAL A PAGAR: ${formatGs(totalPrice)}*\n🏦 *Forma de pago:* Transferencia Bancaria SIPAP (Itaú, ueno, Continental, BNF)\n${deliveryLine}━━━━━━━━━━━━━━━━━━━━\n¿Me facilitan los datos bancarios para realizar la transferencia ahora? ¡Muchas gracias!`;
       const encodedMsg = encodeURIComponent(message);
       dispatchWhatsAppOrder(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`);
     }
@@ -7842,7 +8277,7 @@
         const stockPercent = isOutOfStock ? 0 : Math.min(100, Math.max(20, Math.round((item.stockLeft / 10) * 100)));
         const stockText = isOutOfStock 
           ? 'Agotado temporalmente' 
-          : (item.stockLeft === 1 ? 'Última 1 unidad disponible' : `Últimas ${item.stockLeft} licencias`);
+          : (item.stockLeft === 1 ? '🔥 ¡Última 1 unidad hoy!' : `Últimas ${item.stockLeft} disponibles`);
 
         return `
         <article class="product-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
@@ -7921,14 +8356,14 @@
                     <line x1="3" y1="6" x2="21" y2="6"/>
                     <path d="M16 10a4 4 0 0 1-8 0"/>
                   </svg>
-                  ${isOutOfStock ? 'Agotado' : 'Al Carrito'}
+                  ${isOutOfStock ? 'Agotado' : '+ Carrito'}
                 </button>
 
-                <button type="button" class="btn-direct-buy" onclick="${isOutOfStock ? `askStockWhatsApp('${item.id}')` : `buyDirectWhatsApp('${item.id}')`}" aria-label="${isOutOfStock ? 'Consultar stock por WhatsApp' : `Comprar ${escapeHtml(title)} directamente por WhatsApp`}">
+                <button type="button" class="btn-direct-buy" onclick="${isOutOfStock ? `askStockWhatsApp('${item.id}')` : `buyDirectWhatsApp('${item.id}')`}" aria-label="${isOutOfStock ? 'Consultar stock por WhatsApp' : `Pedir ${escapeHtml(title)} al instante por WhatsApp`}">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                   </svg>
-                  ${isOutOfStock ? 'Consultar' : 'Comprar'}
+                  ${isOutOfStock ? 'Consultar Stock' : 'Pedir al Instante ⚡'}
                 </button>
               </div>
             </div>
@@ -8307,19 +8742,19 @@
 
             <!-- Action Buttons for Desktop View -->
             <div class="modal-desktop-actions">
-              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="height: 46px; font-size: 0.94rem;">
+              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="height: 46px; font-size: 0.94rem; flex: 1.35;">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                 </svg>
-                Comprar por WhatsApp
+                Pedir por WhatsApp ⚡
               </button>
-              <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="height: 46px; font-size: 0.90rem;">
+              <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="height: 46px; font-size: 0.90rem; flex: 1;">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                   <line x1="3" y1="6" x2="21" y2="6"/>
                   <path d="M16 10a4 4 0 0 1-8 0"/>
                 </svg>
-                Al Carrito
+                + Al Carrito
               </button>
             </div>
 
@@ -8393,19 +8828,19 @@
           </div>
 
           <div style="display: flex; gap: 8px;">
-            <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="padding: 0 18px; height: 42px;">
+            <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="padding: 0 14px; height: 42px;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
-              Al Carrito
+              + Carrito
             </button>
-            <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="padding: 0 20px; height: 42px;">
+            <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="padding: 0 18px; height: 42px; font-weight: 700;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
-              Comprar
+              Pedir al Instante ⚡
             </button>
           </div>
         </div>
