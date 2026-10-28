@@ -63,6 +63,51 @@
         "canonical": "#ef4444",
         "tonalRamp": ["#200505", "#450a0a", "#7f1d1d", "#b91c1c", "#ef4444", "#f87171", "#fca5a5", "#fecaca"]
       },
+      "accent-steam": {
+        "role": "secondary",
+        "displayName": "Steam Sky Blue",
+        "canonical": "#66c0f4"
+      },
+      "accent-steam-soft": {
+        "role": "secondary",
+        "displayName": "Steam Sky Blue Soft Tint",
+        "canonical": "rgba(102, 192, 244, 0.12)"
+      },
+      "accent-purple": {
+        "role": "secondary",
+        "displayName": "Hot-Swap Purple",
+        "canonical": "#bd34fe"
+      },
+      "accent-purple-light": {
+        "role": "secondary",
+        "displayName": "Hot-Swap Light Purple",
+        "canonical": "#e09aff"
+      },
+      "accent-purple-soft": {
+        "role": "secondary",
+        "displayName": "Hot-Swap Purple Soft Tint",
+        "canonical": "rgba(189, 52, 254, 0.12)"
+      },
+      "accent-blue": {
+        "role": "secondary",
+        "displayName": "Cyan Blue Accent",
+        "canonical": "#00a8e1"
+      },
+      "accent-blue-soft": {
+        "role": "secondary",
+        "displayName": "Cyan Blue Soft Tint",
+        "canonical": "rgba(0, 168, 225, 0.12)"
+      },
+      "accent-cyan": {
+        "role": "secondary",
+        "displayName": "Sky Cyan Accent",
+        "canonical": "#38bdf8"
+      },
+      "accent-amber-soft": {
+        "role": "tertiary",
+        "displayName": "Notice Amber Soft Tint",
+        "canonical": "rgba(245, 158, 11, 0.06)"
+      },
       "text-primary": {
         "role": "neutral",
         "displayName": "Chalk Primary Text",
@@ -84,21 +129,57 @@
         "displayName": "Display",
         "purpose": "Hero title statement."
       },
+      "display-sm": {
+        "displayName": "Display Small (Mobile)",
+        "purpose": "Mobile hero title statement."
+      },
       "headline": {
         "displayName": "Headline",
         "purpose": "Major section titles."
+      },
+      "title-xl": {
+        "displayName": "Title XL",
+        "purpose": "Agency pricing highlights."
+      },
+      "title-lg": {
+        "displayName": "Title Large",
+        "purpose": "Modal product and package card titles."
+      },
+      "title-md": {
+        "displayName": "Title Medium",
+        "purpose": "Section package headers."
       },
       "title": {
         "displayName": "Title",
         "purpose": "Product and package card titles."
       },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Card sub-titles and modal footer pricing."
+      },
       "body": {
         "displayName": "Body",
         "purpose": "Descriptions, paragraphs, and specifications (measure <= 68ch)."
       },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Secondary specs, badges, and bullet descriptions."
+      },
+      "body-xs": {
+        "displayName": "Body Extra Small",
+        "purpose": "Meta details and physical card specs."
+      },
       "label": {
         "displayName": "Label",
         "purpose": "Category badges and metadata tags."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Mobile tags and promo savings badges."
+      },
+      "nano": {
+        "displayName": "Nano",
+        "purpose": "Compact rating and tiny delivery tags."
       }
     },
     "shadows": [

@@ -13,6 +13,15 @@ colors:
   accent-emerald-hover: "#14cd92"
   accent-emerald-soft: "rgba(16, 185, 129, 0.12)"
   accent-red: "#ef4444"
+  accent-steam: "#66c0f4"
+  accent-steam-soft: "rgba(102, 192, 244, 0.12)"
+  accent-purple: "#bd34fe"
+  accent-purple-light: "#e09aff"
+  accent-purple-soft: "rgba(189, 52, 254, 0.12)"
+  accent-blue: "#00a8e1"
+  accent-blue-soft: "rgba(0, 168, 225, 0.12)"
+  accent-cyan: "#38bdf8"
+  accent-amber-soft: "rgba(245, 158, 11, 0.06)"
   backdrop-overlay: "rgba(0, 0, 0, 0.65)"
   border-subtle: "rgba(255, 255, 255, 0.08)"
   border-medium: "rgba(255, 255, 255, 0.15)"
@@ -26,29 +35,81 @@ typography:
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: "-0.038em"
+  display-sm:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "clamp(1.85rem, 8vw, 2.5rem)"
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: "-0.035em"
   headline:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif"
     fontSize: "clamp(1.8rem, 3.2vw, 2.6rem)"
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.03em"
+  title-xl:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "1.55rem"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.025em"
+  title-lg:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "1.35rem"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.02em"
+  title-md:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: "-0.02em"
   title:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
     fontSize: "1.18rem"
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "-0.02em"
+  title-sm:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "1.05rem"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.015em"
   body:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
     fontSize: "0.95rem"
     fontWeight: 400
     lineHeight: 1.55
     letterSpacing: "normal"
+  body-sm:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "0.88rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  body-xs:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "0.84rem"
+    fontWeight: 400
+    lineHeight: 1.45
+    letterSpacing: "normal"
   label:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
     fontSize: "0.78rem"
     fontWeight: 600
     letterSpacing: "0.05em"
+  micro:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "0.70rem"
+    fontWeight: 600
+    letterSpacing: "0.04em"
+  nano:
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif"
+    fontSize: "0.68rem"
+    fontWeight: 600
+    letterSpacing: "0.03em"
 rounded:
   sm: "8px"
   md: "14px"
