@@ -6144,48 +6144,6 @@
     }
 
 
-    /* Dev Break-UI Segmented Control (Fixed, non-intrusive bottom pill) */
-    .dev-break-ui-panel {
-      position: fixed;
-      bottom: calc(8px + var(--sab));
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1500;
-      pointer-events: auto;
-    }
-    .dev-break-ui-track {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      padding: 3px;
-      background: rgba(18, 20, 26, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-pill);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-    }
-    .dev-break-ui-btn {
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      border: none;
-      background: transparent;
-      color: var(--text-secondary);
-      font-size: 0.72rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: var(--font-stack);
-      transition: background-color 140ms var(--ease-out), color 140ms var(--ease-out);
-      white-space: nowrap;
-      touch-action: manipulation;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-    .dev-break-ui-btn.active {
-      background: var(--text-primary);
-      color: var(--bg-base);
-    }
-
     /* -------------------------------------------------------------
        ACCESSIBILITY: PREFERS REDUCED MOTION
        ------------------------------------------------------------- */
@@ -6976,23 +6934,6 @@
     <!-- Populated directly via JS openProductDetails(id) -->
   </dialog>
 
-  <!-- ==========================================
-  <!-- =============================================================
-       BREAK-UI HARNESS: SEGMENTED DATASET TOGGLE (Dev-Only Testing)
-       ============================================================= -->
-  <aside class="dev-break-ui-panel" id="devBreakUiPanel" aria-label="Control de pruebas de datos extremos">
-    <div class="dev-break-ui-track" role="group" aria-label="Cambiar datos de prueba">
-      <button type="button" class="dev-break-ui-btn active" data-dataset="demo" onclick="switchDataset('demo')">
-        Demo Data
-      </button>
-      <button type="button" class="dev-break-ui-btn" data-dataset="worst" onclick="switchDataset('worst')">
-        Worst Case
-      </button>
-      <button type="button" class="dev-break-ui-btn" data-dataset="empty" onclick="switchDataset('empty')">
-        Vacío (0)
-      </button>
-    </div>
-  </aside>
 
   <!-- =============================================================
        CRO: MOBILE STICKY BOTTOM QUICK-BUY BAR (High Conversion Thumb Zone)
@@ -7399,110 +7340,6 @@
     }
 
 
-    // -------------------------------------------------------------
-    // BREAK-UI: FIXTURES & ADVERSARIAL TESTING DATASETS
-    // -------------------------------------------------------------
-    const DEMO_PRODUCTS = JSON.parse(JSON.stringify(PRODUCTS));
-
-    const WORST_CASE_PRODUCTS = [
-      {
-        id: 'worst-case-enterprise-gcp',
-        title: 'Google Cloud Platform Enterprise Architecture Plus Ultra Multi-Tenant 36-Month Trial Digital Key (Global Unlimited Multi-User License)',
-        name: 'Google Cloud Platform Enterprise Architecture Plus Ultra Multi-Tenant 36-Month Trial Digital Key (Global Unlimited Multi-User License)',
-        category: 'suscripcion',
-        isAI: true,
-        price: 12850000,
-        originalPrice: 25700000,
-        discountPercentage: '-50%',
-        rating: '5.0',
-        soldCount: '+12.450 vendidos',
-        stockLeft: 0,
-        image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.jpg',
-        badge: 'Garantía Extendida 36 Meses Corporativa',
-        badgeType: 'badge-purple',
-        extraBadge: 'Soporte VIP 24/7 Global Dedicado',
-        extraBadgeType: 'badge-green',
-        shortDesc: 'Licencia corporativa con token_inquebrantable_sin_espacios_ABCD1234EFGH5678IJKL9012MNOP3456_verificado para prueba de contención.',
-        description: 'Licencia empresarial con infraestructura de alta concurrencia, 10 TB de almacenamiento y acceso sin restricciones a todos los clusters de cómputo.',
-        features: [
-          'Capacidad ultra elástica con 10 TB de cuota cloud escalable',
-          'SLA 99.99% garantizado contractualmente con respuesta en 15 minutos',
-          'Auditoría SOC2 Tipo II e ISO 27001 con cifrado AES-256 de extremo a extremo'
-        ],
-        notice: {
-          title: 'Requisitos de Despliegue Empresarial',
-          type: 'notice-blue',
-          items: [
-            'Requiere validación de dominio corporativo antes de la asignación.',
-            'Activación inmediata disponible las 24 horas del día.'
-          ]
-        }
-      },
-      {
-        id: 'worst-case-single-stock',
-        title: 'AI Tool',
-        name: 'AI Tool',
-        category: 'gaming',
-        price: 15000,
-        originalPrice: 15000,
-        discountPercentage: null,
-        rating: '4.9',
-        soldCount: '1 vendido',
-        stockLeft: 1,
-        image: 'imagenes/juegos/Assetto Corsa (Global) (PC) - Steam - Digital Key.jpg',
-        badge: 'Single Unit',
-        badgeType: 'badge-steam',
-        extraBadge: null,
-        shortDesc: 'Prueba de stock unitario singular (1 licencia vs plural) y precio regular sin descuento.',
-        description: 'Herramienta compacta para verificación de casos de borde en stock.',
-        features: ['Una sola característica de prueba'],
-        notice: null
-      },
-      {
-        id: 'worst-case-unicode-diacritics',
-        title: 'Česká Lípa Špecifikácia Žltý Kôň (Global Steam PC Key) 🚀🎮',
-        name: 'Česká Lípa Špecifikácia Žltý Kôň (Global Steam PC Key) 🚀🎮',
-        category: 'gaming',
-        price: 990000,
-        originalPrice: 1200000,
-        discountPercentage: '-18%',
-        rating: '4.7',
-        soldCount: '+340 vendidos',
-        stockLeft: 5,
-        image: 'imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.jpg',
-        badge: 'Steam Unicode',
-        badgeType: 'badge-steam',
-        extraBadge: 'UTF-8 Test',
-        extraBadgeType: 'badge-purple',
-        shortDesc: 'Test con caracteres diacríticos extendidos, acentos complejos, emojis y tall glyphs.',
-        description: 'Verificación de renderizado con diacríticos y emojis en títulos y descripciones.',
-        features: ['Compatibilidad Unicode completa', 'Prueba tipográfica'],
-        notice: null
-      }
-    ];
-
-    function switchDataset(type) {
-      if (type === 'worst') {
-        PRODUCTS.length = 0;
-        PRODUCTS.push(...WORST_CASE_PRODUCTS);
-      } else if (type === 'empty') {
-        PRODUCTS.length = 0;
-      } else {
-        PRODUCTS.length = 0;
-        PRODUCTS.push(...DEMO_PRODUCTS);
-      }
-      document.querySelectorAll('.dev-break-ui-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.dataset === type);
-      });
-      const url = new URL(window.location);
-      if (type === 'demo') {
-        url.searchParams.delete('data');
-      } else {
-        url.searchParams.set('data', type);
-      }
-      window.history.replaceState({}, '', url);
-      renderProducts();
-    }
 
     // State Variables
     let cart = [];
