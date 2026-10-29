@@ -1760,7 +1760,7 @@
 
     .physical-preview-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -7378,6 +7378,7 @@
         title: 'Auriculares Gamer Inalámbricos 7.1 Surround con Micrófono Extraíble',
         name: 'Auriculares Gamer Inalámbricos 7.1 Surround',
         category: 'audio',
+        subCategory: 'Audio Gamer 7.1',
         isPhysical: true,
         price: 245000,
         originalPrice: 350000,
@@ -7410,6 +7411,52 @@
             '🚚 Envíos a todo el país por encomiendas con guía de seguimiento.',
             '🛡️ Garantía oficial de 3 meses de reposición inmediata.',
             '🎧 Incluye dongle USB transmisor, cable auxiliar 3.5mm y cable USB-C.'
+          ]
+        }
+      },
+      {
+        id: 'earpods-lightning',
+        title: 'Apple EarPods con Conector Lightning (Audio HD, Micrófono y Mando Integrado)',
+        name: 'Apple EarPods con Conector Lightning',
+        category: 'audio',
+        subCategory: 'Audio & Apple EarPods',
+        isPhysical: true,
+        price: 145000,
+        originalPrice: 210000,
+        discountPercentage: '-31%',
+        rating: '4.9',
+        soldCount: '+46 vendidos',
+        stockLeft: 8,
+        image: 'imagenes/productos/earpods-lightning/1.jpg',
+        images: [
+          'imagenes/productos/earpods-lightning/1.jpg',
+          'imagenes/productos/earpods-lightning/2.jpg',
+          'imagenes/productos/earpods-lightning/3.jpg'
+        ],
+        badge: 'Lightning Nativo',
+        badgeType: 'badge-blue',
+        extraBadge: 'Mando & Mic',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Auriculares anatómicos con conector Lightning digital directo, graves más profundos, micrófono de alta fidelidad y control de llamadas y volumen.',
+        description: 'Los EarPods con conector Lightning combinan el icónico diseño geométrico de Apple con una arquitectura acústica optimizada para la anatomía del oído, ofreciendo un ajuste superior y aislamiento natural del ruido exterior.\n\nDiseñados para maximizar la salida acústica digital sin compresión analógica, entregan graves nítidos y agudos definidos sin distorsión. El mando integrado en el cable te permite ajustar el volumen, controlar la reproducción multimedia y responder o finalizar llamadas con un solo toque.\n\nCompatibles de forma directa y nativa con todos los modelos de iPhone y iPad equipados con puerto Lightning, sin necesidad de adaptadores ni emparejamiento Bluetooth.',
+        features: [
+          'Conexión Lightning digital directa: Audio puro sin latencia ni interferencias',
+          'Diseño geométrico anatómico: Mayor comodidad y estabilidad en el oído frente a auriculares tradicionales',
+          'Altavoces optimizados: Tonos graves más profundos y ricos con agudos cristalinos',
+          'Micrófono integrado de alta fidelidad: Llamadas de voz y notas de audio nítidas',
+          'Mando remoto integrado en cable: Control de volumen (+/-), reproducción de música/video y gestión de llamadas',
+          'Protección mejorada contra sudor y salpicaduras para uso diario y deporte',
+          'Cable flexible reforzado de 1.2 m con terminal Lightning anodizado de alta resistencia',
+          'Compatibilidad total con iPhone (14, 13, 12, 11, X, SE, 8, 7) y iPads con entrada Lightning'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos a todo el interior de Paraguay por encomienda (24 a 48 hs).',
+            '🛡️ Garantía escrita de 3 meses por desperfectos de fábrica.',
+            '💵 Medios de pago: Transferencia SIPAP 0% comisión o efectivo contra entrega a coordinar.'
           ]
         }
       },
@@ -8141,6 +8188,12 @@
             <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
           </svg>`;
 
+        case 'earpods-lightning':
+          // Apple EarPods Lightning Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Apple EarPods Lightning">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+          </svg>`;
+
         case 'teclado-mecanico-rgb-65':
           // Keyboard Icon
           return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Teclado Mecánico RGB">
@@ -8623,7 +8676,7 @@
       let categoryDisplay;
       if (product.isPhysical) {
         if (product.category === 'gaming') categoryDisplay = 'Hardware • Gaming & Mandos';
-        else if (product.category === 'audio') categoryDisplay = 'Hardware • Audio Gamer';
+        else if (product.category === 'audio') categoryDisplay = `Hardware • ${product.subCategory || 'Audio & Sonido'}`;
         else categoryDisplay = 'Hardware • Periféricos PC';
       } else if (product.category === 'suscripcion') {
         categoryDisplay = 'Suscripción Digital • IA';
@@ -9226,9 +9279,9 @@
       grid.innerHTML = PHYSICAL_PRODUCTS.map(item => {
         const title = item.title || item.name;
         let categoryName = 'Hardware';
-        if (item.category === 'gaming') categoryName = 'Gaming & Mandos';
-        else if (item.category === 'audio') categoryName = 'Audio Gamer 7.1';
-        else if (item.category === 'perifericos') categoryName = 'Periféricos';
+        if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
+        else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
+        else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
 
         return `
         <article class="physical-card" data-id="${item.id}">
@@ -9339,9 +9392,9 @@
       grid.innerHTML = filtered.map(item => {
         const title = item.title || item.name;
         let categoryName = 'Hardware';
-        if (item.category === 'gaming') categoryName = 'Gaming & Mandos';
-        else if (item.category === 'audio') categoryName = 'Audio Gamer 7.1';
-        else if (item.category === 'perifericos') categoryName = 'Periféricos';
+        if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
+        else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
+        else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
 
         return `
         <article class="physical-card" data-id="${item.id}">
