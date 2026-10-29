@@ -47,15 +47,24 @@ articles.forEach(art => {
   console.log(`${id}: ${hasAgotado ? '🔴 AGOTADO' : '🟢 EN STOCK'} | WhatsApp Action: ${hasActionWhatsApp}`);
 });
 
-console.log('\n=== TEST 2: PHYSICAL MODAL GRID ===');
-sandbox.renderPhysicalModalGrid('all', '');
+console.log('\n=== TEST 3: CATEGORY FILTERING (AUDIO) ===');
+sandbox.renderPhysicalModalGrid('audio', '');
 articles = previewHTML.split('</article>');
 articles.forEach(art => {
   const m = art.match(/data-id="([^"]+)"/);
   if (!m) return;
   const id = m[1];
   const hasAgotado = art.includes('Agotado');
-  const hasEnStock = art.includes('En stock');
-  const hasActionWhatsApp = art.includes('is-sold-out-action');
-  console.log(`${id}: ${hasAgotado ? '🔴 AGOTADO' : '🟢 EN STOCK'} | WhatsApp Action: ${hasActionWhatsApp}`);
+  console.log(`${id}: ${hasAgotado ? '🔴 AGOTADO' : '🟢 EN STOCK'}`);
+});
+
+console.log('\n=== TEST 4: CATEGORY FILTERING (PERIFERICOS) ===');
+sandbox.renderPhysicalModalGrid('perifericos', '');
+articles = previewHTML.split('</article>');
+articles.forEach(art => {
+  const m = art.match(/data-id="([^"]+)"/);
+  if (!m) return;
+  const id = m[1];
+  const hasAgotado = art.includes('Agotado');
+  console.log(`${id}: ${hasAgotado ? '🔴 AGOTADO' : '🟢 EN STOCK'}`);
 });
