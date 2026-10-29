@@ -2103,6 +2103,38 @@
       animation: none !important;
     }
 
+    /* Out of Stock Treatment for Physical Cards */
+    .physical-card.is-out-of-stock {
+      border-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .physical-card.is-out-of-stock .physical-img {
+      filter: grayscale(45%) contrast(90%) opacity(0.82);
+      transition: filter var(--transition-snappy), opacity var(--transition-snappy), transform var(--transition-smooth);
+    }
+
+    .physical-card.is-out-of-stock:hover .physical-img {
+      filter: grayscale(20%) contrast(96%) opacity(0.95);
+      transform: scale(1.04);
+    }
+
+    .physical-card.is-out-of-stock .btn-phys-cart,
+    .btn-phys-cart.is-sold-out-action {
+      background: rgba(37, 211, 102, 0.12) !important;
+      color: #25d366 !important;
+      border: 1px solid rgba(37, 211, 102, 0.4) !important;
+      animation: none !important;
+      box-shadow: none !important;
+    }
+
+    .physical-card.is-out-of-stock .btn-phys-cart:hover,
+    .btn-phys-cart.is-sold-out-action:hover {
+      background: rgba(37, 211, 102, 0.22) !important;
+      border-color: rgba(37, 211, 102, 0.7) !important;
+      color: #4ade80 !important;
+      transform: scale(1.08) !important;
+    }
+
     .physical-explore-bar {
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-subtle);
@@ -9605,17 +9637,31 @@
 
       grid.innerHTML = PHYSICAL_PRODUCTS.map(item => {
         const title = item.title || item.name;
+        const isOutOfStock = item.stockLeft === 0;
         let categoryName = 'Hardware';
         if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
         else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
         else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
 
         return `
-        <article class="physical-card" data-id="${item.id}">
+        <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
           <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
             <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            ${isOutOfStock ? `
+              <div class="card-sold-out-watermark" aria-hidden="true">
+                <span class="sold-out-chip">
+                  <span class="sold-out-dot"></span> Agotado
+                </span>
+              </div>
+            ` : ''}
             <div class="physical-card-badge">
-              <span class="card-badge ${item.badgeType}">${item.badge}</span>
+              ${isOutOfStock ? `
+                <span class="card-badge badge-sold-out" style="font-weight: 700;">
+                  <span class="badge-dot-sold-out" aria-hidden="true"></span> Agotado
+                </span>
+              ` : `
+                <span class="card-badge ${item.badgeType}">${item.badge}</span>
+              `}
             </div>
           </div>
 
@@ -9632,7 +9678,11 @@
             <span class="phys-meta-sep">•</span>
             <span class="phys-sold-count">${item.soldCount}</span>
             <span class="phys-meta-sep phys-stock-sep">•</span>
-            <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
+            ${isOutOfStock ? `
+              <span class="phys-stock-tag" style="color: #f87171; font-weight: 700;">Agotado</span>
+            ` : `
+              <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
+            `}
           </div>
 
           <div class="physical-price-row">
@@ -9644,13 +9694,21 @@
             <button type="button" class="btn-phys-details" onclick="openProductDetails('${item.id}')">
               Ver detalles
             </button>
-            <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-            </button>
+            ${isOutOfStock ? `
+              <button type="button" class="btn-phys-cart is-sold-out-action" onclick="askStockWhatsApp('${item.id}')" aria-label="Consultar reposición de ${escapeHtml(title)} por WhatsApp" title="Consultar reposición por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </button>
+            ` : `
+              <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </button>
+            `}
           </div>
         </article>
         `;
@@ -9718,17 +9776,31 @@
 
       grid.innerHTML = filtered.map(item => {
         const title = item.title || item.name;
+        const isOutOfStock = item.stockLeft === 0;
         let categoryName = 'Hardware';
         if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
         else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
         else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
 
         return `
-        <article class="physical-card" data-id="${item.id}">
+        <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
           <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
             <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            ${isOutOfStock ? `
+              <div class="card-sold-out-watermark" aria-hidden="true">
+                <span class="sold-out-chip">
+                  <span class="sold-out-dot"></span> Agotado
+                </span>
+              </div>
+            ` : ''}
             <div class="physical-card-badge">
-              <span class="card-badge ${item.badgeType}">${item.badge}</span>
+              ${isOutOfStock ? `
+                <span class="card-badge badge-sold-out" style="font-weight: 700;">
+                  <span class="badge-dot-sold-out" aria-hidden="true"></span> Agotado
+                </span>
+              ` : `
+                <span class="card-badge ${item.badgeType}">${item.badge}</span>
+              `}
             </div>
           </div>
 
@@ -9745,7 +9817,11 @@
             <span class="phys-meta-sep">•</span>
             <span class="phys-sold-count">${item.soldCount}</span>
             <span class="phys-meta-sep phys-stock-sep">•</span>
-            <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
+            ${isOutOfStock ? `
+              <span class="phys-stock-tag" style="color: #f87171; font-weight: 700;">Agotado</span>
+            ` : `
+              <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
+            `}
           </div>
 
           <div class="physical-price-row">
@@ -9757,13 +9833,21 @@
             <button type="button" class="btn-phys-details" onclick="openProductDetails('${item.id}')">
               Ver detalles
             </button>
-            <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-            </button>
+            ${isOutOfStock ? `
+              <button type="button" class="btn-phys-cart is-sold-out-action" onclick="askStockWhatsApp('${item.id}')" aria-label="Consultar reposición de ${escapeHtml(title)} por WhatsApp" title="Consultar reposición por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </button>
+            ` : `
+              <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </button>
+            `}
           </div>
         </article>
         `;
