@@ -22,7 +22,8 @@ const localImages = [
   'imagenes/productos/auriculares-gamer-71/1.jpg',
   'imagenes/productos/teclado-mecanico-rgb-65/1.jpg',
   'imagenes/productos/mouse-gamer-ultralight/1.jpg',
-  'imagenes/productos/earpods-lightning/1.jpg'
+  'imagenes/productos/earpods-lightning/1.jpg',
+  'imagenes/productos/lente-cpl-universal-52mm/1.jpg'
 ];
 
 let missingCount = 0;
