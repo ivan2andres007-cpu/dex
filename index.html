@@ -1446,6 +1446,28 @@
     .stock-status-dot.is-sold-out {
       background: var(--accent-red) !important;
       outline: 2px solid var(--accent-red-soft);
+      box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+    }
+
+    .card-badge.badge-sold-out {
+      background: rgba(239, 68, 68, 0.16) !important;
+      color: #fca5a5 !important;
+      border-color: rgba(239, 68, 68, 0.45) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-dot-sold-out {
+      width: 5px;
+      height: 5px;
+      border-radius: var(--radius-pill);
+      background: #ef4444;
+      box-shadow: 0 0 6px #ef4444;
+      display: inline-block;
+      flex-shrink: 0;
     }
 
     .stock-count-text {
@@ -1463,17 +1485,141 @@
     }
 
     .stock-progress-fill.is-sold-out {
-      background: var(--accent-red) !important;
+      background: rgba(239, 68, 68, 0.45) !important;
     }
 
     .btn-add-cart.btn-disabled {
       opacity: 0.45;
       cursor: not-allowed;
       pointer-events: none;
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: var(--text-tertiary);
+    }
+
+    /* Out of Stock Card Treatment (Emil Kowalski / Apple-grade UX) */
+    .product-card.is-out-of-stock {
+      border-color: rgba(255, 255, 255, 0.07);
     }
 
     .product-card.is-out-of-stock .card-preview-art {
-      filter: grayscale(35%) contrast(90%);
+      filter: grayscale(45%) contrast(90%) opacity(0.82);
+      transition: filter var(--transition-snappy), opacity var(--transition-snappy), transform var(--transition-snappy);
+    }
+
+    .product-card.is-out-of-stock:hover .card-preview-art {
+      filter: grayscale(20%) contrast(96%) opacity(0.95);
+    }
+
+    /* Sold Out Watermark Overlay on Card Image */
+    .card-sold-out-watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8, 9, 13, 0.48);
+      backdrop-filter: blur(2.5px);
+      -webkit-backdrop-filter: blur(2.5px);
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity var(--transition-snappy);
+    }
+
+    .sold-out-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(18, 20, 29, 0.94);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fca5a5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      transform: translateZ(0);
+    }
+
+    /* Dedicated WhatsApp Restock Inquiry Action Button */
+    .product-card.is-out-of-stock .btn-direct-buy,
+    .btn-direct-buy.is-sold-out-action {
+      background: rgba(37, 211, 102, 0.12) !important;
+      color: #25d366 !important;
+      border: 1px solid rgba(37, 211, 102, 0.4) !important;
+      animation: none !important;
+      box-shadow: none !important;
+    }
+
+    .product-card.is-out-of-stock .btn-direct-buy:hover,
+    .btn-direct-buy.is-sold-out-action:hover {
+      background: rgba(37, 211, 102, 0.22) !important;
+      border-color: rgba(37, 211, 102, 0.7) !important;
+      color: #4ade80 !important;
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .product-card.is-out-of-stock .btn-direct-buy:active,
+    .btn-direct-buy.is-sold-out-action:active {
+      transform: scale(0.96) !important;
+    }
+
+    /* Modal Out-of-Stock Personalization */
+    .modal-promo-price-card.is-sold-out-card {
+      border-color: rgba(239, 68, 68, 0.28);
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(18, 20, 29, 0.85) 100%);
+    }
+
+    .promo-tag-badge.is-sold-out-badge {
+      background: rgba(239, 68, 68, 0.18);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .promo-restock-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .modal-sold-out-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 16px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      border-radius: var(--radius-md);
+      margin: 14px 0 16px;
+    }
+
+    .sold-out-alert-icon {
+      color: #f87171;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .sold-out-alert-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .sold-out-alert-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #fca5a5;
+    }
+
+    .sold-out-alert-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
     }
 
     .stock-progress-fill {
@@ -4943,6 +5089,22 @@
       .card-floating-badges .card-badge:nth-child(n+2) {
         display: none !important; /* Keep mobile card preview clean and visible */
       }
+      .sold-out-chip {
+        padding: 3px 8px;
+        font-size: 0.63rem;
+        gap: 4px;
+      }
+      .modal-sold-out-alert {
+        padding: 10px 12px;
+        gap: 8px;
+        margin: 10px 0 14px;
+      }
+      .sold-out-alert-title {
+        font-size: 0.80rem;
+      }
+      .sold-out-alert-desc {
+        font-size: 0.74rem;
+      }
       .card-content-wrap {
         padding: 10px 8px 10px;
         display: flex;
@@ -7385,7 +7547,7 @@
         discountPercentage: '-30%',
         rating: '4.8',
         soldCount: '+18 vendidos',
-        stockLeft: 4,
+        stockLeft: 0,
         image: 'imagenes/productos/auriculares-gamer-71/1.jpg',
         images: [
           'imagenes/productos/auriculares-gamer-71/1.jpg'
@@ -7471,7 +7633,7 @@
         discountPercentage: '-29%',
         rating: '4.9',
         soldCount: '+35 vendidos',
-        stockLeft: 3,
+        stockLeft: 0,
         image: 'imagenes/productos/teclado-mecanico-rgb-65/1.jpg',
         images: [
           'imagenes/productos/teclado-mecanico-rgb-65/1.jpg'
@@ -7511,7 +7673,7 @@
         discountPercentage: '-30%',
         rating: '4.9',
         soldCount: '+42 vendidos',
-        stockLeft: 6,
+        stockLeft: 0,
         image: 'imagenes/productos/mouse-gamer-ultralight/1.jpg',
         images: [
           'imagenes/productos/mouse-gamer-ultralight/1.jpg'
@@ -7678,6 +7840,12 @@
       if (!product) return;
 
       const productName = product.title || product.name;
+
+      if (product.stockLeft === 0) {
+        showToast(`⚠️ "${productName}" está agotado temporalmente.`);
+        return;
+      }
+
       const existingIndex = cart.findIndex(item => item.id === productId);
       const safeQty = Math.max(1, Math.round(Number(qtyToAdd) || 1));
 
@@ -8016,6 +8184,11 @@
       const product = findProduct(productId);
       if (!product) return;
 
+      if (product.stockLeft === 0) {
+        askStockWhatsApp(productId);
+        return;
+      }
+
       const productName = product.title || product.name;
       const qty = Math.max(1, parseInt(quantity, 10) || 1);
       const totalAmount = product.price * qty;
@@ -8036,8 +8209,8 @@
     // Inquire about Stock / Restock via WhatsApp (Break-UI Out-of-Stock handling)
     function askStockWhatsApp(productId) {
       const product = findProduct(productId);
-      const name = product ? (product.title || product.name) : 'este producto';
-      const message = `Hola Punto Prisma, veo que "${name}" no tiene stock actualmente en la web. ¿Tendrán reposición o fecha estimada de disponibilidad? ¡Muchas gracias!`;
+      const name = product ? (product.title || product.name) : 'este artículo';
+      const message = `👋 *CONSULTA DE REPOSICIÓN - PUNTO PRISMA*\n━━━━━━━━━━━━━━━━━━━━\n• Artículo: *${name}*\n• Estado en web: *Agotado temporalmente*\n━━━━━━━━━━━━━━━━━━━━\nHola Punto Prisma, me interesa mucho este producto. ¿Tienen fecha estimada de reposición o disponibilidad para reservar una unidad cuando ingrese el nuevo lote? ¡Muchas gracias!`;
       const encodedMsg = encodeURIComponent(message);
       dispatchWhatsAppOrder(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMsg}`);
     }
@@ -8410,14 +8583,26 @@
           ${item.image ? `
             <div class="card-media-preview" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" title="Toca para ver detalles de ${escapeHtml(title)}" role="button" tabindex="0" aria-label="Ver detalles de ${escapeHtml(title)}">
               <img src="${item.image}" alt="${escapeHtml(title)}" class="card-preview-art" loading="lazy">
+              ${isOutOfStock ? `
+                <div class="card-sold-out-watermark" aria-hidden="true">
+                  <span class="sold-out-chip">
+                    <span class="sold-out-dot"></span> Agotado
+                  </span>
+                </div>
+              ` : ''}
               
               <div class="card-floating-icon" aria-hidden="true">
                 ${getProductIcon(item)}
               </div>
 
               <div class="card-floating-badges">
+                ${isOutOfStock ? `
+                  <span class="card-badge badge-sold-out">
+                    <span class="badge-dot-sold-out" aria-hidden="true"></span>Agotado
+                  </span>
+                ` : ''}
                 <span class="card-badge ${badgeType}">${item.badge}</span>
-                ${item.extraBadge ? `<span class="card-badge ${item.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${item.extraBadge}</span>` : ''}
+                ${(!isOutOfStock && item.extraBadge) ? `<span class="card-badge ${item.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${item.extraBadge}</span>` : ''}
               </div>
             </div>
           ` : `
@@ -8426,8 +8611,13 @@
                 ${getProductIcon(item)}
               </div>
               <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                ${isOutOfStock ? `
+                  <span class="card-badge badge-sold-out">
+                    <span class="badge-dot-sold-out" aria-hidden="true"></span>Agotado
+                  </span>
+                ` : ''}
                 <span class="card-badge ${badgeType}">${item.badge}</span>
-                ${item.extraBadge ? `<span class="card-badge ${item.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${item.extraBadge}</span>` : ''}
+                ${(!isOutOfStock && item.extraBadge) ? `<span class="card-badge ${item.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${item.extraBadge}</span>` : ''}
               </div>
             </div>
           `}
@@ -8455,12 +8645,12 @@
               <div class="stock-indicator">
                 <div class="stock-live-badge">
                   <span class="stock-status-dot ${isOutOfStock ? 'is-sold-out' : ''}" aria-hidden="true"></span>
-                  <span>${isOutOfStock ? 'Sin stock' : 'Stock disponible'}</span>
+                  <span style="${isOutOfStock ? 'color: var(--accent-red); font-weight: 600;' : ''}">${isOutOfStock ? 'Sin stock disponible' : 'Stock disponible'}</span>
                 </div>
-                <span class="stock-count-text num-tabular">${stockText}</span>
+                <span class="stock-count-text num-tabular" style="${isOutOfStock ? 'color: #f87171; font-weight: 600;' : ''}">${stockText}</span>
               </div>
               <div class="stock-progress-track" role="progressbar" aria-valuenow="${item.stockLeft}" aria-valuemin="0" aria-valuemax="10" aria-label="Nivel de stock disponible">
-                <div class="stock-progress-fill ${isOutOfStock ? 'is-sold-out' : ''}" style="transform: scaleX(${stockPercent / 100});"></div>
+                <div class="stock-progress-fill ${isOutOfStock ? 'is-sold-out' : ''}" style="transform: scaleX(${isOutOfStock ? 1 : stockPercent / 100});"></div>
               </div>
 
               <div class="price-box">
@@ -8476,21 +8666,29 @@
               </div>
 
               <div class="card-actions-row">
-                <button type="button" class="btn-add-cart ${isOutOfStock ? 'btn-disabled' : ''}" ${isOutOfStock ? 'disabled' : `onclick="addToCart('${item.id}')"`} aria-label="${isOutOfStock ? 'Producto agotado' : `Agregar ${escapeHtml(title)} al carrito`}">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <path d="M16 10a4 4 0 0 1-8 0"/>
-                  </svg>
-                  <span class="btn-cart-text">${isOutOfStock ? 'Agotado' : '+ Carrito'}</span>
+                <button type="button" class="btn-add-cart ${isOutOfStock ? 'btn-disabled' : ''}" ${isOutOfStock ? 'disabled aria-disabled="true"' : `onclick="addToCart('${item.id}')"`} aria-label="${isOutOfStock ? 'Producto agotado' : `Agregar ${escapeHtml(title)} al carrito`}">
+                  ${isOutOfStock ? `
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                    </svg>
+                    <span class="btn-cart-text">Agotado</span>
+                  ` : `
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                      <line x1="3" y1="6" x2="21" y2="6"/>
+                      <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="btn-cart-text">+ Carrito</span>
+                  `}
                 </button>
 
-                <button type="button" class="btn-direct-buy" onclick="${isOutOfStock ? `askStockWhatsApp('${item.id}')` : `buyDirectWhatsApp('${item.id}')`}" aria-label="${isOutOfStock ? 'Consultar stock por WhatsApp' : `Pedir ${escapeHtml(title)} al instante por WhatsApp`}">
+                <button type="button" class="btn-direct-buy ${isOutOfStock ? 'is-sold-out-action' : ''}" onclick="${isOutOfStock ? `askStockWhatsApp('${item.id}')` : `buyDirectWhatsApp('${item.id}')`}" aria-label="${isOutOfStock ? `Consultar reposición de ${escapeHtml(title)} por WhatsApp` : `Pedir ${escapeHtml(title)} al instante por WhatsApp`}">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                   </svg>
-                  <span class="btn-direct-text-full">${isOutOfStock ? 'Consultar Stock' : 'Pedir al Instante ⚡'}</span>
-                  <span class="btn-direct-text-short">${isOutOfStock ? 'Consultar' : 'Pedir ⚡'}</span>
+                  <span class="btn-direct-text-full">${isOutOfStock ? 'Consultar Stock 💬' : 'Pedir al Instante ⚡'}</span>
+                  <span class="btn-direct-text-short">${isOutOfStock ? 'Consultar 💬' : 'Pedir ⚡'}</span>
                 </button>
               </div>
             </div>
@@ -8725,6 +8923,7 @@
 
       lastFocusedElement = document.activeElement;
       modalQuantity = 1;
+      const isOutOfStock = product.stockLeft === 0;
 
       const title = product.title || product.name;
       const desc = product.description || product.shortDesc || '';
@@ -8759,6 +8958,11 @@
             <div style="min-width: 0; flex: 1;">
               <div class="product-category-tag" style="margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${categoryDisplay}</div>
               <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap;">
+                ${isOutOfStock ? `
+                  <span class="card-badge badge-sold-out" style="font-weight: 700;">
+                    <span class="badge-dot-sold-out" aria-hidden="true"></span> Agotado
+                  </span>
+                ` : ''}
                 <span class="card-badge ${badgeType}">${product.badge}</span>
                 ${product.extraBadge ? `<span class="card-badge ${product.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${product.extraBadge}</span>` : ''}
               </div>
@@ -8794,6 +8998,13 @@
                     ${imgList.map((img, idx) => `
                       <div class="modal-carousel-slide" data-index="${idx}">
                         <img src="${img}" alt="${title} - Vista ${idx + 1}" class="modal-carousel-img" draggable="false" loading="lazy">
+                        ${isOutOfStock ? `
+                          <div class="card-sold-out-watermark" aria-hidden="true" style="backdrop-filter: blur(1.5px);">
+                            <span class="sold-out-chip" style="font-size: 0.72rem; padding: 5px 12px;">
+                              <span class="sold-out-dot"></span> Agotado Temporalmente
+                            </span>
+                          </div>
+                        ` : ''}
                       </div>
                     `).join('')}
                   </div>
@@ -8836,10 +9047,15 @@
             </div>
 
             <!-- AliExpress-style Promo Price Card -->
-            <div class="modal-promo-price-card">
+            <div class="modal-promo-price-card ${isOutOfStock ? 'is-sold-out-card' : ''}">
               <div class="promo-header-row">
-                <span class="promo-tag-badge">⚡ Oferta Especial</span>
-                ${savings > 0 ? `<span class="promo-savings-badge" id="modalSavingsBadge">Ahorro ${formatGs(savings)}</span>` : ''}
+                ${isOutOfStock ? `
+                  <span class="promo-tag-badge is-sold-out-badge">⚠️ Sin Stock en Depósito</span>
+                  <span class="promo-restock-tag">Próximo lote en camino</span>
+                ` : `
+                  <span class="promo-tag-badge">⚡ Oferta Especial</span>
+                  ${savings > 0 ? `<span class="promo-savings-badge" id="modalSavingsBadge">Ahorro ${formatGs(savings)}</span>` : ''}
+                `}
               </div>
               <div class="promo-price-row">
                 <span class="promo-price-current num-tabular" id="modalPriceVal">${formatGs(product.price)}</span>
@@ -8852,37 +9068,76 @@
                 </div>
               ` : ''}
               <div class="promo-badge-note">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span>Pago seguro en Paraguay (Transferencia SIPAP o efectivo a coordinar)</span>
+                ${isOutOfStock ? `
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <span>¿Deseas este producto? Puedes consultar la fecha de reposición o reservarlo sin compromiso por WhatsApp.</span>
+                ` : `
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Pago seguro en Paraguay (Transferencia SIPAP o efectivo a coordinar)</span>
+                `}
               </div>
             </div>
 
-            <!-- Quantity Stepper Row (Above Action Buttons) -->
-            <div class="modal-qty-control">
-              <span class="modal-qty-label">Cantidad a solicitar:</span>
-              <div class="modal-qty-stepper">
-                <button type="button" class="qty-btn" onclick="adjustModalQty(-1, ${product.price})" aria-label="Disminuir">-</button>
-                <span class="qty-number num-tabular" id="modalQtyDisplay">1</span>
-                <button type="button" class="qty-btn" onclick="adjustModalQty(1, ${product.price})" aria-label="Aumentar">+</button>
+            ${isOutOfStock ? `
+              <!-- Restock Alert Notification Box -->
+              <div class="modal-sold-out-alert" role="status">
+                <div class="sold-out-alert-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <div class="sold-out-alert-content">
+                  <span class="sold-out-alert-title">Artículo agotado temporalmente</span>
+                  <span class="sold-out-alert-desc">Actualmente no quedan unidades en nuestro depósito. Pulsa el botón de abajo para consultar la fecha de reposición o solicitar que te avisemos prioritariamente al reingresar.</span>
+                </div>
               </div>
-            </div>
+            ` : `
+              <!-- Quantity Stepper Row (Above Action Buttons) -->
+              <div class="modal-qty-control">
+                <span class="modal-qty-label">Cantidad a solicitar:</span>
+                <div class="modal-qty-stepper">
+                  <button type="button" class="qty-btn" onclick="adjustModalQty(-1, ${product.price})" aria-label="Disminuir">-</button>
+                  <span class="qty-number num-tabular" id="modalQtyDisplay">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustModalQty(1, ${product.price})" aria-label="Aumentar">+</button>
+                </div>
+              </div>
+            `}
 
             <!-- Action Buttons for Desktop View -->
             <div class="modal-desktop-actions">
-              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="height: 46px; font-size: 0.94rem; flex: 1.35;">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                </svg>
-                Pedir por WhatsApp ⚡
-              </button>
-              <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="height: 46px; font-size: 0.90rem; flex: 1;">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <path d="M16 10a4 4 0 0 1-8 0"/>
-                </svg>
-                + Al Carrito
-              </button>
+              ${isOutOfStock ? `
+                <button type="button" class="btn-direct-buy is-sold-out-action" onclick="askStockWhatsApp('${product.id}')" style="height: 48px; font-size: 0.94rem; flex: 1.6; font-weight: 700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  Avisarme al Reponer vía WhatsApp 💬
+                </button>
+                <button type="button" class="btn-add-cart btn-disabled" disabled style="height: 48px; font-size: 0.90rem; flex: 0.8; opacity: 0.45; cursor: not-allowed;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                  </svg>
+                  Sin Stock
+                </button>
+              ` : `
+                <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="height: 46px; font-size: 0.94rem; flex: 1.35;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  Pedir por WhatsApp ⚡
+                </button>
+                <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="height: 46px; font-size: 0.90rem; flex: 1;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                  + Al Carrito
+                </button>
+              `}
             </div>
 
             <!-- Resumen Clave / AI Highlights (AliExpress style) -->
@@ -8940,35 +9195,48 @@
           </div>
         </div>
 
-        <div class="modal-footer">
+        <div class="modal-footer ${isOutOfStock ? 'is-sold-out-footer' : ''}">
           <div class="price-box">
             <div class="price-main-row">
               <span class="product-price-val num-tabular" id="modalPriceVal">${formatGs(product.price)}</span>
-              ${product.discountPercentage ? `<span class="discount-badge">${product.discountPercentage}</span>` : ''}
+              ${isOutOfStock ? `<span class="card-badge badge-sold-out" style="padding: 2px 7px; font-size: 0.68rem;"><span class="badge-dot-sold-out"></span> Agotado</span>` : (product.discountPercentage ? `<span class="discount-badge">${product.discountPercentage}</span>` : '')}
             </div>
-            ${savings > 0 ? `
+            ${isOutOfStock ? `
+              <div class="price-original-row">
+                <span style="font-size: 0.72rem; color: #f87171; font-weight: 600;">Sin stock disponible</span>
+              </div>
+            ` : (savings > 0 ? `
               <div class="price-original-row">
                 <span class="price-original-val num-tabular" id="modalOrigVal" data-unit-orig="${original}">${formatGs(original)}</span>
                 <span class="price-savings-label" id="modalSavingsVal">Ahorras ${formatGs(savings)}</span>
               </div>
-            ` : ''}
+            ` : '')}
           </div>
 
           <div style="display: flex; gap: 8px;">
-            <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="padding: 0 14px; height: 42px;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-              + Carrito
-            </button>
-            <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="padding: 0 18px; height: 42px; font-weight: 700;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-              </svg>
-              Pedir al Instante ⚡
-            </button>
+            ${isOutOfStock ? `
+              <button type="button" class="btn-direct-buy is-sold-out-action" onclick="askStockWhatsApp('${product.id}')" style="padding: 0 16px; height: 44px; font-weight: 700; font-size: 0.88rem; min-height: 44px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Consultar Reposición 💬
+              </button>
+            ` : `
+              <button type="button" class="btn-add-cart" onclick="addToCart('${product.id}', modalQuantity); closeProductDetails();" style="padding: 0 14px; height: 42px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                + Carrito
+              </button>
+              <button type="button" class="btn-direct-buy" onclick="buyDirectWhatsApp('${product.id}', modalQuantity)" style="padding: 0 18px; height: 42px; font-weight: 700;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                Pedir al Instante ⚡
+              </button>
+            `}
           </div>
         </div>
       `;
