@@ -7411,43 +7411,6 @@
     // Catalog Data in Guaraníes (Gs.)
     const PRODUCTS = [
       {
-        id: 'google-ai-pro-gemini-18m',
-        title: 'Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key',
-        name: 'Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key',
-        category: 'suscripcion',
-        isAI: true,
-        price: 99000,
-        originalPrice: 490000,
-        discountPercentage: '-80%',
-        rating: '5.0',
-        soldCount: '+48 vendidos',
-        stockLeft: 3,
-        image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.jpg',
-        badge: '18 Meses Trial',
-        badgeType: 'badge-purple',
-        extraBadge: '5 TB Cloud',
-        extraBadgeType: 'badge-green',
-        shortDesc: 'Suscripción oficial de 18 meses con 5 TB de almacenamiento en la nube, acceso ilimitado a Gemini Pro e IA en Google Workspace.',
-        description: 'Suscripción premium oficial de 18 meses con 5 TB (5.000 GB) de almacenamiento en la nube y acceso VIP a los modelos de inteligencia artificial más potentes de Google.\n\nDiseñado para creadores, profesionales e investigadores que buscan máxima velocidad, análisis profundo y generación de imágenes o código de nivel profesional.',
-        features: [
-          '5 TB (5.000 GB) de almacenamiento en la nube en Google One / Drive',
-          'Acceso prioritario a los modelos más capaces y avanzados de Gemini Pro',
-          'IA integrada directamente en Gmail, Google Docs, Drive y Sheets',
-          'Generación y análisis de imágenes, vídeo, redacción y código sin límites',
-          'Máxima velocidad de respuesta y ventana de contexto ultra extendida'
-        ],
-        notice: {
-          title: 'Aviso Importante',
-          type: '',
-          items: [
-            'Solo para cuentas de Google nuevas (sin suscripción previa a Gemini).',
-            'Se requiere asociar un método de pago al activar.',
-            'Canjear dentro de las 48 horas posteriores a la compra.',
-            'Válido únicamente para cuentas personales (no empresariales).'
-          ]
-        }
-      },
-      {
         id: 'assetto-corsa-pc-steam',
         title: 'Assetto Corsa (Global) (PC) - Steam - Digital Key',
         name: 'Assetto Corsa (Global) (PC) - Steam - Digital Key',
@@ -7516,6 +7479,43 @@
             'Solo se puede activar y canjear en la plataforma oficial de Steam para PC.',
             'Activación Global sin restricciones de región.',
             'Entrega digital garantizada al instante tras confirmar tu compra.'
+          ]
+        }
+      },
+      {
+        id: 'google-ai-pro-gemini-18m',
+        title: 'Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key',
+        name: 'Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key',
+        category: 'suscripcion',
+        isAI: true,
+        price: 99000,
+        originalPrice: 490000,
+        discountPercentage: '-80%',
+        rating: '5.0',
+        soldCount: '+48 vendidos',
+        stockLeft: 0,
+        image: 'imagenes/suscripciones/Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key.jpg',
+        badge: '18 Meses Trial',
+        badgeType: 'badge-purple',
+        extraBadge: '5 TB Cloud',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Suscripción oficial de 18 meses con 5 TB de almacenamiento en la nube, acceso ilimitado a Gemini Pro e IA en Google Workspace.',
+        description: 'Suscripción premium oficial de 18 meses con 5 TB (5.000 GB) de almacenamiento en la nube y acceso VIP a los modelos de inteligencia artificial más potentes de Google.\n\nDiseñado para creadores, profesionales e investigadores que buscan máxima velocidad, análisis profundo y generación de imágenes o código de nivel profesional.',
+        features: [
+          '5 TB (5.000 GB) de almacenamiento en la nube en Google One / Drive',
+          'Acceso prioritario a los modelos más capaces y avanzados de Gemini Pro',
+          'IA integrada directamente en Gmail, Google Docs, Drive y Sheets',
+          'Generación y análisis de imágenes, vídeo, redacción y código sin límites',
+          'Máxima velocidad de respuesta y ventana de contexto ultra extendida'
+        ],
+        notice: {
+          title: 'Aviso Importante',
+          type: '',
+          items: [
+            'Solo para cuentas de Google nuevas (sin suscripción previa a Gemini).',
+            'Se requiere asociar un método de pago al activar.',
+            'Canjear dentro de las 48 horas posteriores a la compra.',
+            'Válido únicamente para cuentas personales (no empresariales).'
           ]
         }
       }
@@ -8670,7 +8670,7 @@
                 <span class="social-proof-dot" aria-hidden="true">•</span>
                 <span class="sold-count-val num-tabular">${item.soldCount}</span>
                 <span class="delivery-status-dot social-proof-dot" aria-hidden="true">•</span>
-                <span class="delivery-status-tag">Entrega 5-15 min</span>
+                <span class="delivery-status-tag" style="${isOutOfStock ? 'color: #f87171; font-weight: 600;' : ''}">${isOutOfStock ? 'Agotado' : 'Entrega 5-15 min'}</span>
               </div>
             </div>
 
@@ -8978,7 +8978,9 @@
         categoryDisplay = 'Licencias & Software';
       }
 
-      const deliveryTagText = product.isPhysical ? 'Envíos a todo Paraguay' : 'Entrega 5-15 min';
+      const deliveryTagText = isOutOfStock
+        ? 'Agotado temporalmente'
+        : (product.isPhysical ? 'Envíos a todo Paraguay' : 'Entrega 5-15 min');
 
       modal.innerHTML = `
         <div class="sheet-grab-bar" id="sheetGrabBar" aria-hidden="true">
@@ -8998,7 +9000,7 @@
                   </span>
                 ` : ''}
                 <span class="card-badge ${badgeType}">${product.badge}</span>
-                ${product.extraBadge ? `<span class="card-badge ${product.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${product.extraBadge}</span>` : ''}
+                ${(!isOutOfStock && product.extraBadge) ? `<span class="card-badge ${product.extraBadgeType || 'badge-green'}" style="font-weight: 700;">${product.extraBadge}</span>` : ''}
               </div>
             </div>
           </div>
@@ -9076,7 +9078,7 @@
                 <span class="social-proof-dot" aria-hidden="true">•</span>
                 <span class="sold-count-val num-tabular">${product.soldCount}</span>
                 <span class="social-proof-dot" aria-hidden="true">•</span>
-                <span class="delivery-status-tag">${deliveryTagText}</span>
+                <span class="delivery-status-tag" style="${isOutOfStock ? 'color: #f87171; font-weight: 600;' : ''}">${deliveryTagText}</span>
               </div>
             </div>
 
@@ -9084,7 +9086,7 @@
             <div class="modal-promo-price-card ${isOutOfStock ? 'is-sold-out-card' : ''}">
               <div class="promo-header-row">
                 ${isOutOfStock ? `
-                  <span class="promo-tag-badge is-sold-out-badge">⚠️ Sin Stock en Depósito</span>
+                  <span class="promo-tag-badge is-sold-out-badge">⚠️ ${product.isPhysical ? 'Sin Stock en Depósito' : 'Sin Stock de Licencias'}</span>
                   <span class="promo-restock-tag">Próximo lote en camino</span>
                 ` : `
                   <span class="promo-tag-badge">⚡ Oferta Especial</span>
@@ -9125,7 +9127,7 @@
                 </div>
                 <div class="sold-out-alert-content">
                   <span class="sold-out-alert-title">Artículo agotado temporalmente</span>
-                  <span class="sold-out-alert-desc">Actualmente no quedan unidades en nuestro depósito. Pulsa el botón de abajo para consultar la fecha de reposición o solicitar que te avisemos prioritariamente al reingresar.</span>
+                  <span class="sold-out-alert-desc">${product.isPhysical ? 'Actualmente no quedan unidades en nuestro depósito. Pulsa el botón de abajo para consultar la fecha de reposición o solicitar que te avisemos prioritariamente al reingresar.' : 'Actualmente no quedan licencias ni claves disponibles en este lote. Pulsa el botón de abajo para consultar la fecha de reposición o solicitar que te avisemos prioritariamente al reingresar.'}</span>
                 </div>
               </div>
             ` : `
