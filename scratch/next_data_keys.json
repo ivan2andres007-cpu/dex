@@ -1,0 +1,17 @@
+[
+  "initialDevice",
+  "locale",
+  "localeData",
+  "reduxInitialState",
+  "navigation",
+  "product",
+  "mcPdpData",
+  "slug",
+  "sellerCentric",
+  "primarySeller",
+  "lowestOfferSeller",
+  "banners",
+  "externalDiscountedPriceBase",
+  "_sentryTraceData",
+  "_sentryBaggage"
+]
