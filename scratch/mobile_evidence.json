@@ -1,0 +1,1151 @@
+{
+  "tinyTextMobile": [
+    {
+      "tag": "KBD",
+      "className": "cart-kbd-hint",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "C",
+      "parentClass": "cart-trigger-btn"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-steam",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "STEAM KEY",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Global PC",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO STEAM PC",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+60 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 4 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-67%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 115.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-red",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "DOOM ETERNAL",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-xbox",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Microsoft PC",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO PC • MICROSOFT STORE / XBOX",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+115 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 6 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-76%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 120.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-steam",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "STEAM GRAND",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-purple",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Sorpresa PC",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO STEAM PC • GRAND",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.8",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+120 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 8 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-65%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 55.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-steam",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "STEAM BRONZE",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-amber",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Gemas Ocultas",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO STEAM PC • BRONZE",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.8",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+95 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 7 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-66%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 65.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-steam",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "STEAM SILVER",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Juegos hasta €30",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO STEAM PC • SILVER",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+140 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 6 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-65%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 75.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-steam",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "STEAM GOLD",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-green",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Juegos hasta €40",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "JUEGO STEAM PC • GOLD",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+160 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 5 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-66%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 85.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-purple",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "1 MES PRO",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Cuenta Global",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "EDICIÓN DE VIDEO • CAPCUT PRO",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+85 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 6 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-66%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 85.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "200 ROBUX",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-green",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Roblox Global",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "GAMING & GIFT CARD",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+140 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 8 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-29%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 45.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "1 MES STREAMING",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "STREAMING & VIDEO",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+110 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 7 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-67%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 45.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-purple",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "3 MESES NITRO",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "Clave Global",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "SUSCRIPCIÓN DIGITAL • DISCORD NITRO",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "4.9",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+180 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Últimas 9 disponibles",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-76%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 75.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "+ Carrito",
+      "parentClass": "btn-add-cart "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir al Instante ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Pedir ⚡",
+      "parentClass": "btn-direct-buy "
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-purple",
+      "fontSizePx": 10.24,
+      "fontSize": "10.24px",
+      "text": "18 Meses Trial",
+      "parentClass": "card-floating-badges"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "SUSCRIPCIÓN DIGITAL",
+      "parentClass": "card-body"
+    },
+    {
+      "tag": "SPAN",
+      "className": "rating-val num-tabular",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "5.0",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sold-count-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "+48 vendidos",
+      "parentClass": "card-social-proof"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Sin stock disponible",
+      "parentClass": "stock-live-badge"
+    },
+    {
+      "tag": "SPAN",
+      "className": "stock-count-text num-tabular",
+      "fontSizePx": 10.56,
+      "fontSize": "10.56px",
+      "text": "Agotado temporalmente",
+      "parentClass": "stock-indicator"
+    },
+    {
+      "tag": "SPAN",
+      "className": "discount-badge",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "-80%",
+      "parentClass": "price-main-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "price-original-val num-tabular",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Gs. 490.000",
+      "parentClass": "price-original-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-cart-text",
+      "fontSizePx": 11.2,
+      "fontSize": "11.2px",
+      "text": "Agotado",
+      "parentClass": "btn-add-cart btn-disabled"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-full",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Consultar Stock 💬",
+      "parentClass": "btn-direct-buy is-sold-out-action"
+    },
+    {
+      "tag": "SPAN",
+      "className": "btn-direct-text-short",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "Consultar 💬",
+      "parentClass": "btn-direct-buy is-sold-out-action"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-purple",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "HALL EFFECT",
+      "parentClass": "physical-card-badge"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "LIGHTNING NATIVO",
+      "parentClass": "physical-card-badge"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-blue",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "CPL ÓPTICO 52MM",
+      "parentClass": "physical-card-badge"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "BUTTON",
+      "className": "btn-phys-details",
+      "fontSizePx": 11.52,
+      "fontSize": "11.52px",
+      "text": "Ver detalles",
+      "parentClass": "physical-actions-row"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "fontSizePx": 11.84,
+      "fontSize": "11.84px",
+      "text": "🔒 SIPAP 0% comisión • Entrega 5-15 min • Garantía Escrita",
+      "parentClass": "cart-trust-single-line"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sticky-cart-badge num-tabular",
+      "fontSizePx": 10.4,
+      "fontSize": "10.4px",
+      "text": "0",
+      "parentClass": "sticky-cart-icon-wrap"
+    },
+    {
+      "tag": "SPAN",
+      "className": "sticky-cart-note",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "Entrega 5-15m • SIPAP",
+      "parentClass": "sticky-cart-text"
+    }
+  ],
+  "horizontalOverflow": false,
+  "viewportWidth": 375,
+  "scrollWidth": 375
+}

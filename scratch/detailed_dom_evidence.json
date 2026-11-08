@@ -1,0 +1,750 @@
+{
+  "hero": {
+    "found": true,
+    "tag": "SECTION",
+    "className": "hero-section relative overflow-hidden",
+    "title": {
+      "text": "Suscripciones digitales, licencias y software a medida en Paraguay.",
+      "fontSize": "70.4px",
+      "fontWeight": "700",
+      "lineHeight": "76.032px",
+      "color": "rgb(245, 246, 248)"
+    },
+    "subtitle": {
+      "text": "Marketplace local con entrega inmediata, precios transparentes en Guaraníes y desarrollo de páginas web de alta ingeniería estilo Apple.",
+      "fontSize": "16.8px",
+      "color": "rgb(161, 167, 181)"
+    },
+    "ctas": [
+      {
+        "tag": "A",
+        "text": "Explorar Ofertas y Catálogo",
+        "className": "btn-primary hero-btn-main",
+        "color": "rgb(9, 10, 13)",
+        "bg": "rgb(245, 246, 248)",
+        "fontSize": "15.2px"
+      },
+      {
+        "tag": "A",
+        "text": "WhatsApp directo",
+        "className": "btn-whatsapp-hero",
+        "color": "rgb(16, 185, 129)",
+        "bg": "rgba(16, 185, 129, 0.12)",
+        "fontSize": "15.2px"
+      },
+      {
+        "tag": "A",
+        "text": "Agencia Web",
+        "className": "btn-secondary hero-btn-sub",
+        "color": "rgb(245, 246, 248)",
+        "bg": "rgb(24, 27, 36)",
+        "fontSize": "13.44px"
+      }
+    ],
+    "badges": [
+      {
+        "text": "Entrega digital en 5-15 min • Precios en Guaraníes (Gs.) • Transferencia Bancaria SIPAP (0% comisión)",
+        "className": "hero-ticker-pill",
+        "fontSize": "14.08px",
+        "color": "rgb(161, 167, 181)",
+        "bg": "rgb(18, 20, 26)"
+      }
+    ],
+    "padding": "84px 0px 110px",
+    "bg": "rgba(0, 0, 0, 0)"
+  },
+  "catalog": {
+    "sectionFound": true,
+    "totalCardsRendered": 11,
+    "filterTabs": [
+      {
+        "text": "Suscripciones & IA",
+        "active": true,
+        "className": "vswitch-btn active"
+      },
+      {
+        "text": "Hardware & Periféricos",
+        "active": false,
+        "className": "vswitch-btn"
+      },
+      {
+        "text": "Desarrollo Web",
+        "active": false,
+        "className": "vswitch-btn"
+      },
+      {
+        "text": "Todos los productos\n11",
+        "active": true,
+        "className": "filter-pill active"
+      },
+      {
+        "text": "Suscripciones & IA\n4",
+        "active": false,
+        "className": "filter-pill"
+      },
+      {
+        "text": "Gaming & Steam\n7",
+        "active": false,
+        "className": "filter-pill"
+      },
+      {
+        "text": "Licencias & Claves\n4",
+        "active": false,
+        "className": "filter-pill"
+      },
+      {
+        "text": "Landing Page",
+        "active": true,
+        "className": "agency-tab-btn active"
+      },
+      {
+        "text": "E-Commerce ★",
+        "active": false,
+        "className": "agency-tab-btn"
+      },
+      {
+        "text": "Software",
+        "active": false,
+        "className": "agency-tab-btn"
+      }
+    ],
+    "cardDetails": [
+      {
+        "index": 0,
+        "title": "Assetto Corsa (Global) (PC) - Steam - Digital Key",
+        "price": "N/A",
+        "originalPrice": "Gs. 115.000",
+        "discount": "-67%",
+        "stockText": "Stock disponible\nÚltimas 4 disponibles",
+        "floatingBadges": [
+          {
+            "text": "STEAM KEY",
+            "className": "card-badge badge-steam",
+            "fontSize": "12.48px",
+            "color": "rgb(102, 192, 244)",
+            "bg": "rgba(102, 192, 244, 0.12)"
+          },
+          {
+            "text": "GLOBAL PC",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.345) 0px 2.34791px 7.94235px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 1,
+        "title": "DOOM Eternal (Global) (PC) - Microsoft Store - Digital Key",
+        "price": "N/A",
+        "originalPrice": "Gs. 120.000",
+        "discount": "-76%",
+        "stockText": "Stock disponible\nÚltimas 6 disponibles",
+        "floatingBadges": [
+          {
+            "text": "DOOM ETERNAL",
+            "className": "card-badge badge-red",
+            "fontSize": "12.48px",
+            "color": "rgb(252, 165, 165)",
+            "bg": "rgba(220, 38, 38, 0.22)"
+          },
+          {
+            "text": "MICROSOFT PC",
+            "className": "card-badge badge-xbox",
+            "fontSize": "12.48px",
+            "color": "rgb(134, 239, 172)",
+            "bg": "rgba(16, 124, 65, 0.22)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.37) 0px 3.0831px 10.638px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 2,
+        "title": "1 Juego Steam Aleatorio - Grand (Global) (PC) - Clave Digital",
+        "price": "N/A",
+        "originalPrice": "Gs. 55.000",
+        "discount": "-65%",
+        "stockText": "Stock disponible\nÚltimas 8 disponibles",
+        "floatingBadges": [
+          {
+            "text": "STEAM GRAND",
+            "className": "card-badge badge-steam",
+            "fontSize": "12.48px",
+            "color": "rgb(102, 192, 244)",
+            "bg": "rgba(102, 192, 244, 0.12)"
+          },
+          {
+            "text": "SORPRESA PC",
+            "className": "card-badge badge-purple",
+            "fontSize": "12.48px",
+            "color": "rgb(189, 52, 254)",
+            "bg": "rgba(189, 52, 254, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 3,
+        "title": "1 Juego Steam Aleatorio - Bronze (Global) (PC) - Clave Digital",
+        "price": "N/A",
+        "originalPrice": "Gs. 65.000",
+        "discount": "-66%",
+        "stockText": "Stock disponible\nÚltimas 7 disponibles",
+        "floatingBadges": [
+          {
+            "text": "STEAM BRONZE",
+            "className": "card-badge badge-steam",
+            "fontSize": "12.48px",
+            "color": "rgb(102, 192, 244)",
+            "bg": "rgba(102, 192, 244, 0.12)"
+          },
+          {
+            "text": "GEMAS OCULTAS",
+            "className": "card-badge badge-amber",
+            "fontSize": "12.48px",
+            "color": "rgb(245, 158, 11)",
+            "bg": "rgba(245, 158, 11, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.37) 0px 3.0831px 10.638px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 4,
+        "title": "1 Juego Steam Aleatorio - Silver (Global) (PC) - Clave Digital",
+        "price": "N/A",
+        "originalPrice": "Gs. 75.000",
+        "discount": "-65%",
+        "stockText": "Stock disponible\nÚltimas 6 disponibles",
+        "floatingBadges": [
+          {
+            "text": "STEAM SILVER",
+            "className": "card-badge badge-steam",
+            "fontSize": "12.48px",
+            "color": "rgb(102, 192, 244)",
+            "bg": "rgba(102, 192, 244, 0.12)"
+          },
+          {
+            "text": "JUEGOS HASTA €30",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.345) 0px 2.34791px 7.94235px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 5,
+        "title": "1 Juego Steam Aleatorio - Gold (Global) (PC) - Clave Digital",
+        "price": "N/A",
+        "originalPrice": "Gs. 85.000",
+        "discount": "-66%",
+        "stockText": "Stock disponible\nÚltimas 5 disponibles",
+        "floatingBadges": [
+          {
+            "text": "STEAM GOLD",
+            "className": "card-badge badge-steam",
+            "fontSize": "12.48px",
+            "color": "rgb(102, 192, 244)",
+            "bg": "rgba(102, 192, 244, 0.12)"
+          },
+          {
+            "text": "JUEGOS HASTA €40",
+            "className": "card-badge badge-green",
+            "fontSize": "12.48px",
+            "color": "rgb(16, 185, 129)",
+            "bg": "rgba(16, 185, 129, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 6,
+        "title": "CapCut Pro - 1 Month (Global) - CapCut Account",
+        "price": "N/A",
+        "originalPrice": "Gs. 85.000",
+        "discount": "-66%",
+        "stockText": "Stock disponible\nÚltimas 6 disponibles",
+        "floatingBadges": [
+          {
+            "text": "1 MES PRO",
+            "className": "card-badge badge-purple",
+            "fontSize": "12.48px",
+            "color": "rgb(189, 52, 254)",
+            "bg": "rgba(189, 52, 254, 0.12)"
+          },
+          {
+            "text": "CUENTA GLOBAL",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.345) 0px 2.34791px 7.94235px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 7,
+        "title": "Roblox - 200 Robux (Global) - Digital Key",
+        "price": "N/A",
+        "originalPrice": "Gs. 45.000",
+        "discount": "-29%",
+        "stockText": "Stock disponible\nÚltimas 8 disponibles",
+        "floatingBadges": [
+          {
+            "text": "200 ROBUX",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          },
+          {
+            "text": "ROBLOX GLOBAL",
+            "className": "card-badge badge-green",
+            "fontSize": "12.48px",
+            "color": "rgb(16, 185, 129)",
+            "bg": "rgba(16, 185, 129, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.37) 0px 3.0831px 10.638px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 8,
+        "title": "Amazon Prime Video - 1 Mes (Perfil Privado)",
+        "price": "N/A",
+        "originalPrice": "Gs. 45.000",
+        "discount": "-67%",
+        "stockText": "Stock disponible\nÚltimas 7 disponibles",
+        "floatingBadges": [
+          {
+            "text": "1 MES STREAMING",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 9,
+        "title": "Discord Nitro - 3 Months Trial Subscription (Global) - Digital Key",
+        "price": "N/A",
+        "originalPrice": "Gs. 75.000",
+        "discount": "-76%",
+        "stockText": "Stock disponible\nÚltimas 9 disponibles",
+        "floatingBadges": [
+          {
+            "text": "3 MESES NITRO",
+            "className": "card-badge badge-purple",
+            "fontSize": "12.48px",
+            "color": "rgb(189, 52, 254)",
+            "bg": "rgba(189, 52, 254, 0.12)"
+          },
+          {
+            "text": "CLAVE GLOBAL",
+            "className": "card-badge badge-blue",
+            "fontSize": "12.48px",
+            "color": "rgb(0, 168, 225)",
+            "bg": "rgba(0, 168, 225, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "+ Carrito",
+            "className": "btn-add-cart ",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Pedir al Instante ⚡",
+            "className": "btn-direct-buy ",
+            "fontSize": "14.08px",
+            "boxShadow": "rgba(0, 0, 0, 0.37) 0px 3.0831px 10.638px 0px"
+          }
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "index": 10,
+        "title": "Google AI Pro - Gemini 18 Months Trial (Global) - Digital Key",
+        "price": "N/A",
+        "originalPrice": "Gs. 490.000",
+        "discount": "-80%",
+        "stockText": "AGOTADO",
+        "floatingBadges": [
+          {
+            "text": "AGOTADO",
+            "className": "card-badge badge-sold-out",
+            "fontSize": "12.48px",
+            "color": "rgb(252, 165, 165)",
+            "bg": "rgba(239, 68, 68, 0.16)"
+          },
+          {
+            "text": "18 MESES TRIAL",
+            "className": "card-badge badge-purple",
+            "fontSize": "12.48px",
+            "color": "rgb(189, 52, 254)",
+            "bg": "rgba(189, 52, 254, 0.12)"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Agotado",
+            "className": "btn-add-cart btn-disabled",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          },
+          {
+            "text": "Consultar Stock 💬",
+            "className": "btn-direct-buy is-sold-out-action",
+            "fontSize": "14.08px",
+            "boxShadow": "none"
+          }
+        ],
+        "isOutOfStock": true
+      }
+    ]
+  },
+  "physical": {
+    "sectionFound": true,
+    "sectionTitle": "Artículos Físicos & Equipamiento",
+    "cardCount": 6,
+    "cards": [
+      {
+        "title": "Gamepad Inalámbrico Bluetooth Multiplataforma",
+        "badges": [
+          "HALL EFFECT",
+          "HALL EFFECT"
+        ],
+        "button": "Ver detalles"
+      },
+      {
+        "title": "Apple EarPods con Conector Lightning",
+        "badges": [
+          "LIGHTNING NATIVO",
+          "LIGHTNING NATIVO"
+        ],
+        "button": "Ver detalles"
+      },
+      {
+        "title": "Lente CPL Universal 52mm para Smartphone",
+        "badges": [
+          "CPL ÓPTICO 52MM",
+          "CPL ÓPTICO 52MM"
+        ],
+        "button": "Ver detalles"
+      },
+      {
+        "title": "Auriculares Gamer Inalámbricos 7.1 Surround",
+        "badges": [
+          "AGOTADO",
+          "AGOTADO"
+        ],
+        "button": "Ver detalles"
+      },
+      {
+        "title": "Teclado Mecánico Compacto 65% RGB",
+        "badges": [
+          "AGOTADO",
+          "AGOTADO"
+        ],
+        "button": "Ver detalles"
+      },
+      {
+        "title": "Mouse Gamer Ergonómico Ultra-Ligero",
+        "badges": [
+          "AGOTADO",
+          "AGOTADO"
+        ],
+        "button": "Ver detalles"
+      }
+    ],
+    "modalFound": true,
+    "modalId": "physicalCatalogModal",
+    "modalClass": "physical-modal-dialog",
+    "modalRole": null,
+    "modalAriaHidden": null
+  },
+  "agency": {
+    "sectionFound": true,
+    "sectionTitle": "Desarrollo Web & Software a Medida",
+    "tabs": [
+      {
+        "text": "Landing Page",
+        "active": true,
+        "controls": "pkg-landing"
+      },
+      {
+        "text": "E-Commerce ★",
+        "active": false,
+        "controls": "pkg-ecommerce"
+      },
+      {
+        "text": "Software",
+        "active": false,
+        "controls": "pkg-software"
+      }
+    ],
+    "plans": [
+      {
+        "id": "pkg-landing",
+        "name": "Landing Page Pro",
+        "badge": null,
+        "price": "Gs. 1.200.000",
+        "featuresCount": 5,
+        "features": [
+          "Diseño UI/UX exclusivo con estética minimalista",
+          "100% Adaptada a celulares (Mobile-First)",
+          "Botones y formulario directo a WhatsApp",
+          "Carga ultrarrápida optimizada para SEO Google",
+          "Alojamiento SSL de alta velocidad incluido por 1 año"
+        ],
+        "ctaText": "Cotizar Landing Page",
+        "ctaClass": "btn-agency-quote",
+        "isFeatured": false
+      },
+      {
+        "id": "pkg-ecommerce",
+        "name": "E-Commerce & Catálogo",
+        "badge": {
+          "text": "RECOMENDADO PARA NEGOCIOS",
+          "className": "card-badge badge-green",
+          "fontSize": "12.48px"
+        },
+        "price": "Gs. 2.800.000",
+        "featuresCount": 5,
+        "features": [
+          "Catálogo de productos interactivo y autogestionable",
+          "Carrito de compras con checkout automático a WhatsApp",
+          "Opción de pasarela de pago (Bancard / PagoMóvil / SIPAP)",
+          "Filtros instantáneos por categorías y buscador inteligente",
+          "Capacitación completa y soporte prioritario de 30 días"
+        ],
+        "ctaText": "Cotizar E-Commerce",
+        "ctaClass": "btn-agency-quote",
+        "isFeatured": true
+      },
+      {
+        "id": "pkg-software",
+        "name": "Software & Plataforma Web",
+        "badge": null,
+        "price": "Gs. 5.500.000",
+        "featuresCount": 5,
+        "features": [
+          "Arquitectura SPA moderna y base de datos en la nube",
+          "Módulos de autenticación, roles y permisos de usuario",
+          "Integraciones de API personalizadas y reportes PDF/Excel",
+          "Código fuente 100% de tu propiedad sin ataduras mensuales",
+          "Mantenimiento y consultoría técnica dedicada"
+        ],
+        "ctaText": "Consultar Desarrollo",
+        "ctaClass": "btn-agency-quote",
+        "isFeatured": false
+      }
+    ]
+  },
+  "modals": [
+    {
+      "id": "physicalCatalogModal",
+      "className": "physical-modal-dialog",
+      "role": null,
+      "ariaModal": null,
+      "zIndex": "1000",
+      "display": "none",
+      "visibility": "visible"
+    },
+    {
+      "id": "physModalHeading",
+      "className": "physical-modal-title",
+      "role": null,
+      "ariaModal": null,
+      "zIndex": "auto",
+      "display": "block",
+      "visibility": "visible"
+    },
+    {
+      "id": "physicalModalGrid",
+      "className": "physical-modal-grid",
+      "role": null,
+      "ariaModal": null,
+      "zIndex": "auto",
+      "display": "grid",
+      "visibility": "visible"
+    },
+    {
+      "id": "productModal",
+      "className": "",
+      "role": null,
+      "ariaModal": null,
+      "zIndex": "1000",
+      "display": "none",
+      "visibility": "visible"
+    }
+  ],
+  "zIndexes": [
+    {
+      "tag": "A",
+      "id": "",
+      "className": "skip-to-content",
+      "zIndex": 9999
+    },
+    {
+      "tag": "DIV",
+      "id": "toastContainer",
+      "className": "toast-container",
+      "zIndex": 2000
+    },
+    {
+      "tag": "DIALOG",
+      "id": "cartDrawer",
+      "className": "",
+      "zIndex": 1000
+    },
+    {
+      "tag": "DIALOG",
+      "id": "physicalCatalogModal",
+      "className": "physical-modal-dialog",
+      "zIndex": 1000
+    },
+    {
+      "tag": "DIALOG",
+      "id": "productModal",
+      "className": "",
+      "zIndex": 1000
+    },
+    {
+      "tag": "HEADER",
+      "id": "top",
+      "className": "site-header",
+      "zIndex": 100
+    }
+  ]
+}

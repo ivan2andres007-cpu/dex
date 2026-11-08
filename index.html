@@ -6011,7 +6011,7 @@
       .modal-media-frame img {
         height: 100% !important;
         max-height: 220px !important;
-        width: auto !important;
+        width: 100% !important;
         max-width: 100% !important;
         object-fit: contain !important;
         margin: 0 auto !important;
@@ -8955,7 +8955,7 @@
           return `
           <div class="cart-item-row" data-id="${item.id}">
             <div class="cart-item-thumb">
-              ${item.image ? `<img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-thumb-img">` : `
+              ${item.image ? `<img src="${encodeURI(item.image)}" alt="${escapeHtml(item.name)}" class="cart-thumb-img" decoding="async">` : `
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="2" y="3" width="20" height="18" rx="4"/>
                   <line x1="8" y1="12" x2="16" y2="12"/>
@@ -9528,7 +9528,7 @@
         <article class="product-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
           ${item.image ? `
             <div class="card-media-preview" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" title="Toca para ver detalles de ${escapeHtml(title)}" role="button" tabindex="0" aria-label="Ver detalles de ${escapeHtml(title)}">
-              <img src="${item.image}" alt="${escapeHtml(title)}" class="card-preview-art" loading="lazy">
+              <img src="${encodeURI(item.image)}" alt="${escapeHtml(title)}" class="card-preview-art" loading="lazy" decoding="async">
               ${isOutOfStock ? `
                 <div class="card-sold-out-watermark" aria-hidden="true">
                   <span class="sold-out-chip">
@@ -9951,17 +9951,17 @@
                   <div class="modal-thumbs-vertical" id="modalThumbnailsTrack">
                     ${imgList.map((img, idx) => `
                       <button type="button" class="modal-thumb-vertical-btn ${idx === 0 ? 'active' : ''}" onclick="goToProductSlide(${idx})" onmouseenter="goToProductSlide(${idx})" aria-label="Ver foto ${idx + 1}" data-index="${idx}">
-                        <img src="${img}" alt="Miniatura ${idx + 1}" class="modal-thumb-img">
+                        <img src="${encodeURI(img)}" alt="Miniatura ${idx + 1}" class="modal-thumb-img" decoding="async">
                       </button>
                     `).join('')}
                   </div>
                 ` : ''}
 
                 <div class="modal-carousel-container" id="modalCarouselContainer">
-                  <div class="modal-carousel-track" id="modalCarouselTrack" onscroll="handleCarouselScroll(this)" tabindex="0" role="region" aria-label="Galería de fotos de ${title}">
+                  <div class="modal-carousel-track" id="modalCarouselTrack" onscroll="handleCarouselScroll(this)" tabindex="0" role="region" aria-label="Galería de fotos de ${escapeHtml(title)}">
                     ${imgList.map((img, idx) => `
                       <div class="modal-carousel-slide" data-index="${idx}">
-                        <img src="${img}" alt="${title} - Vista ${idx + 1}" class="modal-carousel-img" draggable="false" loading="lazy">
+                        <img src="${encodeURI(img)}" alt="${escapeHtml(title)} - Vista ${idx + 1}" class="modal-carousel-img" draggable="false" loading="eager" decoding="async" fetchpriority="high">
                         ${isOutOfStock ? `
                           <div class="card-sold-out-watermark" aria-hidden="true" style="backdrop-filter: blur(1.5px);">
                             <span class="sold-out-chip" style="font-size: 0.72rem; padding: 5px 12px;">
@@ -10229,6 +10229,7 @@
       document.body.classList.add('modal-open');
       modal.classList.remove('is-closing');
       modal.showModal();
+      void modal.offsetHeight; // Force layout reflow/paint for WebKit & iOS Safari
       if (window.history && window.history.pushState) {
         window.history.pushState({ modalOpen: 'product' }, '');
       }
@@ -10605,7 +10606,7 @@
         return `
         <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
           <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
-            <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            <img src="${encodeURI(item.image)}" alt="${escapeHtml(title)}" class="physical-img" loading="lazy" decoding="async">
             ${isOutOfStock ? `
               <div class="card-sold-out-watermark" aria-hidden="true">
                 <span class="sold-out-chip">
@@ -10748,7 +10749,7 @@
         return `
         <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
           <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
-            <img src="${item.image}" alt="${title}" class="physical-img" loading="lazy">
+            <img src="${encodeURI(item.image)}" alt="${escapeHtml(title)}" class="physical-img" loading="lazy" decoding="async">
             ${isOutOfStock ? `
               <div class="card-sold-out-watermark" aria-hidden="true">
                 <span class="sold-out-chip">
@@ -10826,6 +10827,7 @@
       document.body.classList.add('modal-open');
       modal.classList.remove('is-closing');
       modal.showModal();
+      void modal.offsetHeight; // Force layout reflow/paint for WebKit & iOS Safari
       if (window.history && window.history.pushState) {
         window.history.pushState({ modalOpen: 'physical' }, '');
       }

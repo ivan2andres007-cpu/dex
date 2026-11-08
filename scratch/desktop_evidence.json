@@ -1,0 +1,310 @@
+{
+  "glows": [],
+  "allCaps": [
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "textLength": 33,
+      "text": "JUEGO PC • MICROSOFT STORE / XBOX",
+      "fontSize": "12.48px"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "textLength": 29,
+      "text": "EDICIÓN DE VIDEO • CAPCUT PRO",
+      "fontSize": "12.48px"
+    },
+    {
+      "tag": "DIV",
+      "className": "product-category-tag",
+      "textLength": 35,
+      "text": "SUSCRIPCIÓN DIGITAL • DISCORD NITRO",
+      "fontSize": "12.48px"
+    },
+    {
+      "tag": "SPAN",
+      "className": "card-badge badge-green",
+      "textLength": 25,
+      "text": "RECOMENDADO PARA NEGOCIOS",
+      "fontSize": "12.48px"
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-modal-badge",
+      "textLength": 29,
+      "text": "CATÁLOGO DE PRODUCTOS FÍSICOS",
+      "fontSize": "12.48px"
+    },
+    {
+      "tag": "SPAN",
+      "className": "",
+      "textLength": 29,
+      "text": "CATÁLOGO DE PRODUCTOS FÍSICOS",
+      "fontSize": "12.48px"
+    }
+  ],
+  "tinyText": [
+    {
+      "tag": "KBD",
+      "className": "cart-kbd-hint",
+      "fontSizePx": 10.88,
+      "fontSize": "10.88px",
+      "text": "C",
+      "parentClass": "cart-trigger-btn"
+    }
+  ],
+  "undersizedUi": [],
+  "clippedContainers": [
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "card-media-preview",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    },
+    {
+      "tag": "DIV",
+      "className": "physical-img-wrap",
+      "overflow": "hidden",
+      "childCount": 1
+    }
+  ],
+  "hero": {
+    "exists": true,
+    "tag": "HEADER",
+    "className": "site-header",
+    "buttons": [
+      {
+        "text": "Catálogo",
+        "class": "nav-link",
+        "href": "#catalogo"
+      },
+      {
+        "text": "Artículos Físicos",
+        "class": "nav-link",
+        "href": "#articulos-fisicos"
+      },
+      {
+        "text": "Desarrollo Web",
+        "class": "nav-link",
+        "href": "#agencia"
+      },
+      {
+        "text": "Garantías",
+        "class": "nav-link",
+        "href": "#garantias"
+      },
+      {
+        "text": "Próximamente",
+        "class": "nav-link",
+        "href": "#proximamente"
+      },
+      {
+        "text": "Carrito\n0\nC",
+        "class": "cart-trigger-btn",
+        "href": null
+      },
+      {
+        "text": "",
+        "class": "mobile-menu-btn",
+        "href": null
+      },
+      {
+        "text": "Catálogo de Cuentas & Juegos",
+        "class": "mobile-nav-link",
+        "href": "#catalogo"
+      },
+      {
+        "text": "Artículos Físicos (Envíos\n        Paraguay)",
+        "class": "mobile-nav-link",
+        "href": "#articulos-fisicos"
+      },
+      {
+        "text": "Desarrollo Web & Software",
+        "class": "mobile-nav-link",
+        "href": "#agencia"
+      },
+      {
+        "text": "Garantías & Medios de Pago",
+        "class": "mobile-nav-link",
+        "href": "#garantias"
+      },
+      {
+        "text": "Próximamente • En el Radar",
+        "class": "mobile-nav-link",
+        "href": "#proximamente"
+      },
+      {
+        "text": "Contactar por\n        WhatsApp",
+        "class": "mobile-nav-link",
+        "href": "https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta."
+      }
+    ]
+  },
+  "catalog": {
+    "cardCount": 15,
+    "sampleCards": [
+      {
+        "id": "",
+        "badges": [],
+        "hasFloatingElements": false
+      },
+      {
+        "id": "",
+        "badges": [],
+        "hasFloatingElements": false
+      },
+      {
+        "id": "",
+        "badges": [],
+        "hasFloatingElements": false
+      },
+      {
+        "id": "",
+        "badges": [],
+        "hasFloatingElements": false
+      },
+      {
+        "id": "",
+        "title": "Assetto Corsa (Global) (PC) - Steam - Digital Key",
+        "badges": [
+          "STEAM KEY",
+          "GLOBAL PC"
+        ],
+        "hasFloatingElements": true
+      }
+    ]
+  },
+  "physical": {
+    "bannerFound": true,
+    "bannerClass": "physical-card ",
+    "bannerText": "HALL EFFECT\nGAMING & MANDOS\nGamepad Inalámbrico Bluetooth Multiplataforma\n5.0\n•\n+28 vendidos\n•\nEn st",
+    "modalFound": true,
+    "modalClass": "section-title"
+  },
+  "plans": {
+    "count": 3,
+    "plans": [
+      {
+        "name": "Landing Page Pro",
+        "features": [
+          "Diseño UI/UX exclusivo con estética minimalista",
+          "100% Adaptada a celulares (Mobile-First)",
+          "Botones y formulario directo a WhatsApp",
+          "Carga ultrarrápida optimizada para SEO Google",
+          "Alojamiento SSL de alta velocidad incluido por 1 año"
+        ]
+      },
+      {
+        "name": "E-Commerce & Catálogo",
+        "features": [
+          "Catálogo de productos interactivo y autogestionable",
+          "Carrito de compras con checkout automático a WhatsApp",
+          "Opción de pasarela de pago (Bancard / PagoMóvil / SIPAP)",
+          "Filtros instantáneos por categorías y buscador inteligente",
+          "Capacitación completa y soporte prioritario de 30 días"
+        ]
+      },
+      {
+        "name": "Software & Plataforma Web",
+        "features": [
+          "Arquitectura SPA moderna y base de datos en la nube",
+          "Módulos de autenticación, roles y permisos de usuario",
+          "Integraciones de API personalizadas y reportes PDF/Excel",
+          "Código fuente 100% de tu propiedad sin ataduras mensuales",
+          "Mantenimiento y consultoría técnica dedicada"
+        ]
+      }
+    ]
+  }
+}
