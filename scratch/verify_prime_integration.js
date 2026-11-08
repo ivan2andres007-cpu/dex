@@ -3,7 +3,7 @@ const path = require('path');
 
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1280, height: 1100 } });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 950 } });
 
   const errors = [];
   page.on('pageerror', err => errors.push(err.message));
@@ -17,7 +17,7 @@ const path = require('path');
     process.exit(1);
   }
 
-  // 1. Verify Prime Video card in DOM
+  // 1. Verify Amazon Prime card in DOM
   const cardData = await page.evaluate(() => {
     const card = document.querySelector('.product-card[data-id="amazon-prime-video-1m-perfil"]');
     if (!card) return null;
@@ -30,7 +30,7 @@ const path = require('path');
       extraBadgeText: card.querySelector('.card-badge.badge-purple')?.textContent?.trim()
     };
   });
-  console.log('Prime Video Card rendered in DOM:', cardData);
+  console.log('Amazon Prime Card rendered in DOM:', cardData);
 
   // 2. Verify filter counts
   const counts = await page.evaluate(() => {
@@ -43,9 +43,9 @@ const path = require('path');
   });
   console.log('Category filter counts:', counts);
 
-  // 3. Desktop screenshot of catalog showing Prime Video
-  const primeCard = page.locator('.product-card[data-id="amazon-prime-video-1m-perfil"]');
-  await primeCard.scrollIntoViewIfNeeded();
+  // 3. Desktop screenshot of catalog
+  const card = page.locator('.product-card[data-id="amazon-prime-video-1m-perfil"]');
+  await card.scrollIntoViewIfNeeded();
   await page.waitForTimeout(400);
   await page.screenshot({ path: 'scratch/desktop_catalog_prime.png' });
   console.log('Desktop catalog screenshot saved');
@@ -59,7 +59,7 @@ const path = require('path');
     return {
       title: document.getElementById('modalProductTitle')?.textContent?.trim(),
       imageSrc: modal?.querySelector('.modal-carousel-img')?.getAttribute('src'),
-      categoryTag: modal?.querySelector('.product-category-tag')?.textContent?.trim()
+      price: modal?.querySelector('.modal-current-price')?.textContent?.trim()
     };
   });
   console.log('Modal details opened:', modalInfo);
@@ -71,7 +71,8 @@ const path = require('path');
 
   // 5. Test Mobile view (375px)
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.locator('.product-card[data-id="amazon-prime-video-1m-perfil"]').scrollIntoViewIfNeeded();
+  const cardMobile = page.locator('.product-card[data-id="amazon-prime-video-1m-perfil"]');
+  await cardMobile.scrollIntoViewIfNeeded();
   await page.waitForTimeout(400);
   await page.screenshot({ path: 'scratch/mobile_catalog_prime.png' });
   console.log('Mobile catalog screenshot saved');
@@ -94,5 +95,6 @@ const path = require('path');
   console.log('Cards visible when searching "Prime":', searchResult);
 
   await browser.close();
-  console.log('PRIME VIDEO VERIFICATIONS FINISHED SUCCESSFULLY!');
+  console.log('ALL PRIME VERIFICATIONS FINISHED SUCCESSFULLY!');
 })();
+
