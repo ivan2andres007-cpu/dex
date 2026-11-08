@@ -2055,28 +2055,39 @@
       text-wrap: pretty;
     }
 
-    .btn-open-catalog-header {
-      display: inline-flex;
+    .physical-filter-bar {
+      display: flex;
       align-items: center;
       gap: 8px;
-      height: 44px;
-      padding: 0 22px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-medium);
-      color: var(--text-primary);
-      font-size: var(--text-body-sm);
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 140ms var(--ease-out);
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
 
-    .btn-open-catalog-header:hover {
-      background: var(--accent-emerald);
-      color: #032115;
-      border-color: var(--accent-emerald);
-      transform: translateY(-1px);
+    .phys-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      height: 34px;
+      padding: 0 16px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: var(--text-label);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 120ms var(--ease-out);
+    }
+
+    .phys-filter-btn:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+
+    .phys-filter-btn.active {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
+      font-weight: 700;
     }
 
     .physical-preview-grid {
@@ -2310,7 +2321,10 @@
       transform: scale(1.08) !important;
     }
 
-    .physical-explore-bar {
+    /* -------------------------------------------------------------
+       HIGH-TRUST LOCAL SHIPPING & LOGISTICS STRIP
+       ------------------------------------------------------------- */
+    .physical-shipping-trust-strip {
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
@@ -2320,15 +2334,17 @@
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      margin-top: 16px;
     }
 
-    .explore-info {
+    .shipping-trust-info {
       display: flex;
       align-items: center;
       gap: 16px;
+      min-width: 0;
     }
 
-    .explore-icon-frame {
+    .shipping-trust-icon-box {
       width: 44px;
       height: 44px;
       border-radius: var(--radius-md);
@@ -2338,285 +2354,54 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
-    .explore-title {
+    .shipping-trust-title {
       display: block;
       font-size: var(--text-title-sm);
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
       text-wrap: balance;
     }
 
-    .explore-desc {
-      display: block;
+    .shipping-trust-desc {
       font-size: var(--text-body-sm);
       color: var(--text-secondary);
-      line-height: var(--leading-body);
+      line-height: 1.5;
+      margin: 0;
       max-width: var(--measure-prose);
       text-wrap: pretty;
     }
 
-    .btn-explore-full {
+    .btn-shipping-query {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       height: 44px;
-      padding: 0 24px;
+      padding: 0 22px;
       border-radius: var(--radius-pill);
+      background: var(--accent-emerald-soft);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald-border);
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 140ms var(--ease-out);
+    }
+
+    .btn-shipping-query:hover {
       background: var(--accent-emerald);
       color: #032115;
-      border: none;
-      font-size: var(--text-body-sm);
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 140ms var(--ease-out), box-shadow var(--transition-snappy);
-      animation: heartbeatEmerald 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      animation-delay: 0.5s;
-      will-change: transform, box-shadow;
-    }
-
-    .btn-explore-full:hover {
-      background: var(--accent-emerald-hover);
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      animation-play-state: paused;
-    }
-
-    .btn-explore-full:active {
-      transform: scale(0.96) !important;
-      box-shadow: none !important;
-      animation: none !important;
-    }
-
-    /* -------------------------------------------------------------
-       DEDICATED FULL PHYSICAL CATALOG MODAL
-       ------------------------------------------------------------- */
-    dialog.physical-modal-dialog {
-      position: fixed;
-      inset: 0;
-      margin: auto;
-      width: 92%;
-      max-width: 1040px;
-      max-height: 90vh;
-      border-radius: var(--radius-xl);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
-      padding: 0;
-      z-index: 1000;
-      overflow: hidden;
-      opacity: 0;
-      transform: scale(0.96);
-      transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
-        display 260ms allow-discrete,
-        overlay 260ms allow-discrete;
-    }
-
-    dialog.physical-modal-dialog:not([open]) {
-      display: none;
-    }
-
-    dialog.physical-modal-dialog[open] {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    @starting-style {
-      dialog.physical-modal-dialog[open] {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-    }
-
-    dialog.physical-modal-dialog.is-closing {
-      opacity: 0 !important;
-      transform: scale(0.96) !important;
-    }
-
-    .physical-modal-shell {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-height: 90vh;
-    }
-
-    .physical-modal-header {
-      padding: 22px 28px;
-      background: var(--bg-surface-elevated);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-shrink: 0;
-    }
-
-    .physical-modal-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: var(--text-label);
-      font-weight: 600;
-      letter-spacing: var(--tracking-label);
-      text-transform: uppercase;
-      color: var(--accent-emerald);
-      margin-bottom: 6px;
-    }
-
-    .physical-modal-title {
-      font-size: var(--text-title-lg);
-      font-weight: 700;
-      letter-spacing: var(--tracking-title);
-      text-wrap: balance;
-      color: var(--text-primary);
-    }
-
-    .physical-modal-subtitle {
-      font-size: var(--text-body-sm);
-      color: var(--text-secondary);
-      margin-top: 4px;
-      text-wrap: pretty;
-    }
-
-    .physical-modal-toolbar {
-      padding: 16px 28px;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-
-    .physical-search-box {
-      position: relative;
-      width: 100%;
-    }
-
-    .physical-search-box .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      color: var(--text-tertiary);
-      pointer-events: none;
-    }
-
-    .physical-search-input {
-      width: 100%;
-      height: 42px;
-      padding: 0 16px 0 42px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
-      font-size: var(--text-body-sm);
-      font-family: inherit;
-      transition: border-color var(--transition-snappy), background var(--transition-snappy);
-    }
-
-    .physical-search-input:focus {
-      outline: none;
       border-color: var(--accent-emerald);
-      background: var(--bg-surface-hover);
+      transform: translateY(-1px);
     }
 
-    .physical-filters-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      scrollbar-width: none;
-    }
-
-    .physical-filters-bar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .phys-filter-pill {
-      height: 32px;
-      padding: 0 14px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
-      font-size: var(--text-label);
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 120ms var(--ease-out);
-    }
-
-    .phys-filter-pill:hover {
-      background: var(--bg-surface-hover);
-      color: var(--text-primary);
-    }
-
-    .phys-filter-pill.active {
-      background: var(--text-primary);
-      color: var(--bg-base);
-      border-color: var(--text-primary);
-      font-weight: 700;
-    }
-
-    .physical-modal-body {
-      padding: 24px 28px;
-      overflow-y: auto;
-      flex: 1 1 auto;
-      min-height: 0;
-    }
-
-    .physical-modal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .physical-modal-footer {
-      padding: 20px 28px;
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-    }
-
-    .physical-footer-info {
-      display: flex;
-      align-items: center;
-    }
-
-    .physical-footer-note {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      line-height: 1.45;
-      margin: 0;
-    }
-
-    .btn-phys-close-footer {
-      height: 38px;
-      padding: 0 18px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-hover);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
-      font-size: 0.86rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background var(--transition-snappy);
-    }
-
-    .btn-phys-close-footer:hover {
-      background: var(--bg-surface-active);
+    .btn-shipping-query:active {
+      transform: scale(0.97);
     }
 
     /* -------------------------------------------------------------
@@ -5011,7 +4796,7 @@
       .btn-agency-quote:active,
       .btn-checkout-whatsapp:active,
       .btn-phys-cart:active,
-      .btn-explore-full:active,
+      .btn-shipping-query:active,
       .cart-trigger-btn:active,
       .filter-pill:active,
       .qty-btn:active {
@@ -5199,8 +4984,8 @@
       .hero-cta-group {
         flex-direction: column;
         width: 100%;
-        gap: 8px;
-        margin-bottom: 16px;
+        gap: 10px;
+        margin-bottom: 18px;
       }
 
       .btn-primary.hero-btn-main {
@@ -5208,48 +4993,22 @@
         height: 48px;
         font-size: 0.95rem;
         font-weight: 700;
+        justify-content: center;
       }
 
-      .hero-sub-ctas {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100%;
-      }
-
-      .hero-sub-ctas .btn-whatsapp-hero {
+      .hero-cta-group .btn-whatsapp-hero {
         width: 100% !important;
         max-width: none !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        padding: 0 10px !important;
-        font-size: 0.78rem !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        padding: 0 16px !important;
+        font-size: 0.9rem !important;
         font-weight: 600 !important;
-        align-self: stretch !important;
-        background: rgba(16, 185, 129, 0.08) !important;
-        border: 1px solid rgba(16, 185, 129, 0.3) !important;
-        color: var(--accent-emerald) !important;
-        border-radius: var(--radius-pill) !important;
-        gap: 5px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
         white-space: nowrap !important;
-      }
-
-      .hero-sub-ctas .hero-btn-sub {
-        width: 100% !important;
-        max-width: none !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        padding: 0 10px !important;
-        font-size: 0.78rem !important;
-        font-weight: 600 !important;
         border-radius: var(--radius-pill) !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        white-space: nowrap !important;
       }
 
       .hero-ticker-pill {
@@ -6436,10 +6195,27 @@
         margin-bottom: 20px;
       }
 
-      .btn-open-catalog-header {
+      .physical-filter-bar {
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
         width: 100%;
-        justify-content: center;
-        height: 44px;
+        margin-bottom: 18px;
+      }
+
+      .physical-filter-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .phys-filter-btn {
+        height: 30px;
+        padding: 0 12px;
+        font-size: var(--text-label);
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .physical-preview-grid {
@@ -6588,129 +6364,17 @@
         height: 14px;
       }
 
-      .physical-explore-bar {
+      .physical-shipping-trust-strip {
         padding: 16px 14px;
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
       }
 
-      .btn-explore-full {
+      .btn-shipping-query {
         width: 100%;
         justify-content: center;
         height: 44px;
-      }
-
-      dialog.physical-modal-dialog {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 100% !important;
-        max-height: 100dvh !important;
-        max-height: 100vh !important;
-        border-radius: 0 !important;
-        inset: 0 !important;
-        border: none !important;
-      }
-
-      .physical-modal-shell {
-        height: 100dvh;
-        max-height: 100dvh;
-      }
-
-      .physical-modal-header {
-        padding: 8px 14px !important;
-        padding-top: calc(8px + var(--sat)) !important;
-        gap: 10px !important;
-        align-items: center !important;
-        background: var(--bg-surface-elevated) !important;
-        border-bottom: 1px solid var(--border-subtle) !important;
-      }
-
-      .physical-modal-badge {
-        font-size: var(--text-label) !important;
-        letter-spacing: 0.04em !important;
-        margin-bottom: 2px !important;
-        gap: 4px !important;
-      }
-
-      .physical-modal-badge .status-dot {
-        width: 5px !important;
-        height: 5px !important;
-      }
-
-      .physical-modal-title {
-        font-size: 1.05rem !important;
-        font-weight: 700 !important;
-        line-height: 1.3 !important;
-        margin: 0 !important;
-        letter-spacing: -0.01em !important;
-      }
-
-      .physical-modal-subtitle {
-        font-size: var(--text-label) !important;
-        line-height: 1.35 !important;
-        margin-top: 2px !important;
-        color: var(--text-tertiary) !important;
-      }
-
-      .physical-modal-header .drawer-close-btn {
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 32px !important;
-        min-height: 32px !important;
-        flex-shrink: 0 !important;
-      }
-
-      /* Physical Toolbar Compact */
-      .physical-modal-toolbar {
-        padding: 6px 12px !important;
-        gap: 6px !important;
-        border-bottom: 1px solid var(--border-subtle) !important;
-      }
-
-      .physical-search-box {
-        height: 34px !important;
-        min-height: 34px !important;
-      }
-
-      .physical-search-box .search-icon {
-        width: 14px !important;
-        height: 14px !important;
-        left: 10px !important;
-      }
-
-      .physical-search-input {
-        height: 34px !important;
-        min-height: 34px !important;
-        padding: 0 10px 0 32px !important;
-        font-size: 0.82rem !important;
-        border-radius: var(--radius-sm) !important;
-      }
-
-      .physical-filters-bar {
-        gap: 6px !important;
-        padding-bottom: 2px !important;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .phys-filter-pill {
-        height: 28px !important;
-        min-height: 28px !important;
-        padding: 0 10px !important;
-        font-size: var(--text-label) !important;
-        white-space: nowrap !important;
-      }
-
-      /* Physical Grid & Cards */
-      .physical-modal-body {
-        padding: 8px 10px !important;
-      }
-
-      .physical-modal-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 8px !important;
-        width: 100%;
       }
 
       .physical-card {
@@ -6762,63 +6426,7 @@
         gap: 4px !important;
       }
 
-      .physical-modal-grid .btn-phys-details {
-        height: 32px !important;
-        min-height: 32px !important;
-        font-size: var(--text-label) !important;
-        padding: 0 8px !important;
-        border-radius: var(--radius-sm) !important;
-      }
 
-      .physical-modal-grid .btn-phys-cart {
-        height: 32px !important;
-        width: 32px !important;
-        min-height: 32px !important;
-        min-width: 32px !important;
-        border-radius: var(--radius-sm) !important;
-      }
-
-      .physical-modal-grid .btn-phys-cart svg {
-        width: 13px !important;
-        height: 13px !important;
-      }
-
-      /* Physical Footer Compact */
-      .physical-modal-footer {
-        padding: 6px 12px calc(8px + var(--sab)) !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 6px !important;
-        background: var(--bg-surface) !important;
-        border-top: 1px solid var(--border-subtle) !important;
-      }
-
-      .physical-footer-info {
-        width: 100% !important;
-        text-align: center !important;
-      }
-
-      .physical-footer-note {
-        font-size: var(--text-label) !important;
-        line-height: 1.35 !important;
-        color: var(--text-tertiary) !important;
-        margin: 0 !important;
-        text-align: center !important;
-      }
-
-      .btn-phys-close-footer {
-        width: auto !important;
-        min-width: 160px !important;
-        height: 32px !important;
-        min-height: 32px !important;
-        padding: 0 16px !important;
-        font-size: var(--text-label) !important;
-        font-weight: 600 !important;
-        border-radius: var(--radius-pill) !important;
-        background: var(--bg-surface-hover) !important;
-        border: 1px solid var(--border-subtle) !important;
-        color: var(--text-secondary) !important;
-      }
     }
 
     @media (max-width: 480px) {
@@ -6900,10 +6508,6 @@
         min-height: 38px;
       }
 
-      .physical-modal-grid {
-        gap: 6px !important;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 28px;
@@ -6956,7 +6560,7 @@
       .btn-direct-buy,
       .btn-whatsapp-hero,
       .btn-phys-cart,
-      .btn-explore-full,
+      .btn-shipping-query,
       .btn-checkout-whatsapp {
         animation: none !important;
         transform: none !important;
@@ -7071,8 +6675,8 @@
         </p>
 
         <div class="hero-cta-group">
-          <a href="#catalogo" class="btn-primary hero-btn-main" style="padding: 0 22px; font-weight: 700;">
-            Explorar Ofertas y Catálogo
+          <a href="#catalogo" class="btn-primary hero-btn-main">
+            <span>Explorar Ofertas y Catálogo</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -7080,21 +6684,15 @@
             </svg>
           </a>
 
-          <div class="hero-sub-ctas">
-            <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20sobre%20productos%20y%20pagos%20SIPAP."
-              target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path
-                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
-              <span>WhatsApp directo</span>
-            </a>
-
-            <a href="#agencia" class="btn-secondary hero-btn-sub" style="font-size: 0.84rem; opacity: 0.88;">
-              <span>Agencia Web</span>
-            </a>
-          </div>
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20deseo%20hacer%20una%20consulta%20sobre%20productos%20y%20pagos%20SIPAP."
+            target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            <span>WhatsApp directo</span>
+          </a>
         </div>
 
         <div class="hero-ticker-pill">
@@ -7225,23 +6823,32 @@
           <div>
             <div class="physical-badge">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>Envíos a todo el país • Stock inmediato</span>
+              <span>Envíos a todo el país • Garantía escrita oficial</span>
             </div>
             <h2 class="section-title" id="physicalHeading">Artículos Físicos & Equipamiento</h2>
             <p class="physical-header-desc">
-              Periféricos, controles y accesorios con garantía oficial. Envíos express en el día para Asunción y Gran
-              Asunción, y encomiendas a todo Paraguay.
+              Periféricos, mandos y accesorios originales con garantía escrita. Envíos express en el día para Asunción y Gran
+              Asunción, y encomiendas aseguradas a todo Paraguay.
             </p>
           </div>
-          <button type="button" class="btn-open-catalog-header" onclick="openPhysicalCatalogModal()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-            Ver todos los artículos
+        </div>
+
+        <!-- Inline Stock & Category Filter Pills -->
+        <div class="physical-filter-bar" role="tablist" aria-label="Filtro de stock y categorías de artículos físicos">
+          <button type="button" class="phys-filter-btn active" data-filter="all" onclick="filterPhysicalGrid('all', this)" role="tab" aria-selected="true">
+            Todos (<span id="physCountAll">6</span>)
+          </button>
+          <button type="button" class="phys-filter-btn" data-filter="in-stock" onclick="filterPhysicalGrid('in-stock', this)" role="tab" aria-selected="false">
+            <span class="status-dot" style="width: 6px; height: 6px; margin-right: 5px; display: inline-block; vertical-align: middle;" aria-hidden="true"></span>Disponibles ahora (<span id="physCountInStock">3</span>)
+          </button>
+          <button type="button" class="phys-filter-btn" data-filter="gaming" onclick="filterPhysicalGrid('gaming', this)" role="tab" aria-selected="false">
+            Gaming & Mandos (<span id="physCountGaming">1</span>)
+          </button>
+          <button type="button" class="phys-filter-btn" data-filter="audio" onclick="filterPhysicalGrid('audio', this)" role="tab" aria-selected="false">
+            Audio (<span id="physCountAudio">2</span>)
+          </button>
+          <button type="button" class="phys-filter-btn" data-filter="perifericos" onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
+            Óptica & Periféricos (<span id="physCountPerifericos">3</span>)
           </button>
         </div>
 
@@ -7250,33 +6857,32 @@
           <!-- Rendered dynamically by renderPhysicalPreview() -->
         </div>
 
-        <!-- Explore Full Catalog Callout Bar -->
-        <div class="physical-explore-bar">
-          <div class="explore-info">
-            <span class="explore-icon-frame" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                </path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        <!-- High-Trust Local Logistics & Shipping Strip -->
+        <div class="physical-shipping-trust-strip">
+          <div class="shipping-trust-info">
+            <span class="shipping-trust-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
               </svg>
             </span>
-            <div>
-              <strong class="explore-title">¿Deseas explorar todo el catálogo de artículos físicos?</strong>
-              <span class="explore-desc">Abre la ventana dedicada con buscador instantáneo, filtros por categoría y
-                disponibilidad.</span>
+            <div class="shipping-trust-text">
+              <strong class="shipping-trust-title">Envíos Garantizados y Cobertura Nacional</strong>
+              <p class="shipping-trust-desc">
+                🛵 <strong>Asunción y Gran Asunción:</strong> Envíos express en el día por motomensajería o Bolt Envíos.<br>
+                📦 <strong>Interior de Paraguay:</strong> Encomiendas seguras vía transportadora con código de seguimiento.<br>
+                🛡️ <strong>Garantía escrita:</strong> 3 meses de respaldo oficial en todos nuestros equipos y periféricos.
+              </p>
             </div>
           </div>
-          <button type="button" class="btn-explore-full" onclick="openPhysicalCatalogModal()">
-            Explorar catálogo completo
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20de%20art%C3%ADculos%20f%C3%ADsicos." target="_blank" rel="noopener noreferrer" class="btn-shipping-query">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
-          </button>
+            Consultar envíos por WhatsApp
+          </a>
         </div>
       </div>
     </section>
@@ -7771,83 +7377,6 @@
     </div>
   </dialog>
 
-  <!-- ==========================================
-       DEDICATED FULL PHYSICAL CATALOG MODAL
-       ========================================== -->
-  <dialog id="physicalCatalogModal" class="physical-modal-dialog" closedby="any" aria-labelledby="physModalHeading">
-    <div class="physical-modal-shell">
-      <header class="physical-modal-header">
-        <div class="physical-modal-title-wrap">
-          <div class="physical-modal-badge">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span>CATÁLOGO DE PRODUCTOS FÍSICOS</span>
-          </div>
-          <h2 class="physical-modal-title" id="physModalHeading">Artículos Físicos Disponibles</h2>
-          <p class="physical-modal-subtitle">Envíos directos a todo Paraguay • Garantía oficial escrita</p>
-        </div>
-        <button type="button" class="drawer-close-btn" onclick="closePhysicalCatalogModal()"
-          aria-label="Cerrar catálogo físico">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-      </header>
-
-      <!-- Search & Filter Controls Toolbar Inside Modal -->
-      <div class="physical-modal-toolbar">
-        <div class="physical-search-box">
-          <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="9" cy="9" r="6" />
-            <line x1="13.5" y1="13.5" x2="18" y2="18" />
-          </svg>
-          <input type="search" id="physSearchInput" class="physical-search-input"
-            placeholder="Buscar por nombre o periférico..." oninput="handlePhysicalSearch(event)"
-            aria-label="Buscar artículos físicos">
-        </div>
-
-        <div class="physical-filters-bar" role="tablist" aria-label="Categorías físicas">
-          <button type="button" class="phys-filter-pill active" data-phys-category="all"
-            onclick="filterPhysicalCategory('all', this)">
-            Todos (<span id="phys-count-all">0</span>)
-          </button>
-          <button type="button" class="phys-filter-pill" data-phys-category="gaming"
-            onclick="filterPhysicalCategory('gaming', this)">
-            Gaming & Controles (<span id="phys-count-gaming">0</span>)
-          </button>
-          <button type="button" class="phys-filter-pill" data-phys-category="audio"
-            onclick="filterPhysicalCategory('audio', this)">
-            Audio (<span id="phys-count-audio">0</span>)
-          </button>
-          <button type="button" class="phys-filter-pill" data-phys-category="perifericos"
-            onclick="filterPhysicalCategory('perifericos', this)">
-            Periféricos (<span id="phys-count-perifericos">0</span>)
-          </button>
-        </div>
-      </div>
-
-      <!-- Scrollable Grid Body -->
-      <div class="physical-modal-body">
-        <div class="physical-modal-grid" id="physicalModalGrid">
-          <!-- Dynamically populated via JS renderPhysicalModalGrid() -->
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="physical-modal-footer">
-        <div class="physical-footer-info">
-          <p class="physical-footer-note">
-            🛵 Entrega en el día para Gran Asunción • 🚚 Envíos al interior por encomienda vía WhatsApp
-          </p>
-        </div>
-        <button type="button" class="btn-phys-close-footer" onclick="closePhysicalCatalogModal()">
-          Cerrar Catálogo
-        </button>
-      </div>
-    </div>
-  </dialog>
 
   <!-- ==========================================
        PRODUCT DETAILS MODAL (Apple-grade panel)
@@ -9479,7 +9008,7 @@
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('CapCut')">✂️ CapCut Pro</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Gemini')">✦ Gemini Pro</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Assetto')">🏎️ Assetto Corsa</button>
-              <button type="button" class="zero-chip-btn" onclick="openPhysicalCatalogModal()">📦 Ver artículos físicos</button>
+              <button type="button" class="zero-chip-btn" onclick="scrollToPhysicalCatalog()">📦 Ver artículos físicos</button>
             </div>
 
             <div class="zero-state-actions">
@@ -10283,10 +9812,7 @@
       setTimeout(() => {
         modal.close();
         modal.classList.remove('is-closing');
-        const physModal = document.getElementById('physicalCatalogModal');
-        if (!physModal || !physModal.open) {
-          document.body.classList.remove('modal-open');
-        }
+        document.body.classList.remove('modal-open');
         if (lastFocusedElement) {
           lastFocusedElement.focus();
           lastFocusedElement = null;
@@ -10545,11 +10071,9 @@
       // Hotkey: 'c' or 'C' -> Toggle Cart Drawer (if no modal is open)
       else if ((e.key === 'c' || e.key === 'C') && !isInput) {
         const prodModal = document.getElementById('productModal');
-        const physModal = document.getElementById('physicalCatalogModal');
         const isProdOpen = prodModal && prodModal.open;
-        const isPhysOpen = physModal && physModal.open;
 
-        if (!isProdOpen && !isPhysOpen) {
+        if (!isProdOpen) {
           e.preventDefault();
           if (cartDrawer && cartDrawer.open) {
             closeCartDrawer();
@@ -10584,16 +10108,63 @@
     // CONTROLLERS FOR ARTÍCULOS FÍSICOS & HARDWARE
     // -------------------------------------------------------------
 
-    // Render Featured Physical Products Preview Grid
-    function renderPhysicalPreview() {
+    let currentPhysicalFilter = 'all';
+
+    function filterPhysicalGrid(filter, btn) {
+      currentPhysicalFilter = filter;
+      const buttons = document.querySelectorAll('.phys-filter-btn');
+      buttons.forEach(b => {
+        const isMatch = b.dataset.filter === filter;
+        b.classList.toggle('active', isMatch);
+        b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+      renderPhysicalPreview(filter);
+    }
+
+    function updatePhysicalCounts() {
+      const cAll = document.getElementById('physCountAll');
+      const cStock = document.getElementById('physCountInStock');
+      const cGaming = document.getElementById('physCountGaming');
+      const cAudio = document.getElementById('physCountAudio');
+      const cPerif = document.getElementById('physCountPerifericos');
+
+      if (cAll) cAll.textContent = PHYSICAL_PRODUCTS.length;
+      if (cStock) cStock.textContent = PHYSICAL_PRODUCTS.filter(p => p.stockLeft > 0).length;
+      if (cGaming) cGaming.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'gaming').length;
+      if (cAudio) cAudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'audio').length;
+      if (cPerif) cPerif.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'perifericos').length;
+    }
+
+    // Render Physical Products Grid directly on page with stock prioritizing & filter tabs
+    function renderPhysicalPreview(filter = currentPhysicalFilter) {
       const grid = document.getElementById('physicalPreviewGrid');
       if (!grid) return;
 
-      const items = [...PHYSICAL_PRODUCTS].sort((a, b) => {
+      updatePhysicalCounts();
+
+      let items = [...PHYSICAL_PRODUCTS];
+      if (filter === 'in-stock') {
+        items = items.filter(p => p.stockLeft > 0);
+      } else if (filter !== 'all') {
+        items = items.filter(p => p.category === filter);
+      }
+
+      // Always sort available in-stock items first
+      items.sort((a, b) => {
         const aOut = (a.stockLeft === 0) ? 1 : 0;
         const bOut = (b.stockLeft === 0) ? 1 : 0;
         return aOut - bOut;
       });
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="catalog-zero-state" style="grid-column: 1 / -1; margin: 24px auto; max-width: 500px; text-align: center; padding: 32px 20px;">
+            <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 12px;">No hay artículos en esta categoría en este momento.</p>
+            <button type="button" class="btn-secondary" onclick="filterPhysicalGrid('all', document.querySelector('.phys-filter-btn[data-filter=\\'all\\']'))" style="height: 38px; padding: 0 16px; font-size: 0.85rem;">Ver todos los artículos</button>
+          </div>
+        `;
+        return;
+      }
 
       grid.innerHTML = items.map(item => {
         const title = item.title || item.name;
@@ -10601,11 +10172,11 @@
         let categoryName = 'Hardware';
         if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
         else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
-        else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
+        else if (item.category === 'perifericos') categoryName = item.subCategory || 'Óptica & Periféricos';
 
         return `
         <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
-          <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
+          <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${escapeHtml(title)}">
             <img src="${encodeURI(item.image)}" alt="${escapeHtml(title)}" class="physical-img" loading="lazy" decoding="async">
             ${isOutOfStock ? `
               <div class="card-sold-out-watermark" aria-hidden="true">
@@ -10626,7 +10197,7 @@
           </div>
 
           <div class="physical-card-category">${categoryName}</div>
-          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" style="cursor: pointer;" title="${title}">${item.name}</h3>
+          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" style="cursor: pointer;" title="${escapeHtml(title)}">${escapeHtml(item.name)}</h3>
 
           <div class="physical-meta-row">
             <span class="phys-rating-wrap" style="display: inline-flex; align-items: center; gap: 3px;">
@@ -10641,7 +10212,7 @@
             ${isOutOfStock ? `
               <span class="phys-stock-tag" style="color: #f87171; font-weight: 700;">Agotado</span>
             ` : `
-              <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
+              <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock (${item.stockLeft} disp.)</span>
             `}
           </div>
 
@@ -10661,7 +10232,7 @@
                 </svg>
               </button>
             ` : `
-              <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
+              <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${escapeHtml(title)} al carrito">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                   <line x1="3" y1="6" x2="21" y2="6"/>
@@ -10675,253 +10246,23 @@
       }).join('');
     }
 
-    // Update Counts inside Dedicated Physical Modal
-    function updatePhysicalCategoryCounts() {
-      const countAll = document.getElementById('phys-count-all');
-      const countGaming = document.getElementById('phys-count-gaming');
-      const countAudio = document.getElementById('phys-count-audio');
-      const countPerifericos = document.getElementById('phys-count-perifericos');
-
-      if (countAll) countAll.textContent = PHYSICAL_PRODUCTS.length;
-      if (countGaming) countGaming.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'gaming').length;
-      if (countAudio) countAudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'audio').length;
-      if (countPerifericos) countPerifericos.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'perifericos').length;
-    }
-
-    // Render Full Catalog Grid inside Modal with Category & Search Filters
-    function renderPhysicalModalGrid(category = currentPhysicalCategory, query = currentPhysicalSearch) {
-      const grid = document.getElementById('physicalModalGrid');
-      if (!grid) return;
-
-      const q = (query || '').toLowerCase().trim();
-      const filtered = PHYSICAL_PRODUCTS.filter(item => {
-        const matchesCategory = (category === 'all') || (item.category === category);
-        const title = (item.title || item.name || '').toLowerCase();
-        const desc = (item.description || item.shortDesc || '').toLowerCase();
-        const matchesQuery = q === '' || title.includes(q) || desc.includes(q);
-        return matchesCategory && matchesQuery;
-      }).sort((a, b) => {
-        const aOut = (a.stockLeft === 0) ? 1 : 0;
-        const bOut = (b.stockLeft === 0) ? 1 : 0;
-        return aOut - bOut;
-      });
-
-      if (filtered.length === 0) {
-        const queryTerm = q.trim();
-        grid.innerHTML = `
-          <div class="catalog-zero-state" style="margin: 20px auto; max-width: 580px;">
-            <div class="zero-state-icon-box" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </div>
-            <h3 class="zero-state-title">
-              ${queryTerm ? `No encontramos artículos para "${escapeHtml(queryTerm)}"` : 'No hay artículos en esta categoría'}
-            </h3>
-            <p class="zero-state-desc">
-              Revisa si hay algún error de tipeo o pregúntanos por WhatsApp si podemos conseguir el periférico o accesorio que buscas.
-            </p>
-            <div class="zero-state-actions">
-              <button type="button" class="btn-secondary" onclick="filterPhysicalCategory('all')" style="height: 40px; padding: 0 18px; font-size: 0.86rem;">
-                Ver todos los artículos
-              </button>
-              <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(queryTerm ? `Hola Punto Prisma, busco el artículo físico "${queryTerm}" y no figura en la web. ¿Pueden cotizarlo?` : 'Hola Punto Prisma, busco un artículo físico específico.')}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-query" style="height: 40px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                </svg>
-                Consultar por WhatsApp
-              </a>
-            </div>
-          </div>
-        `;
-        return;
+    // Smooth scroll to physical catalog from search zero-state or links
+    function scrollToPhysicalCatalog() {
+      const section = document.getElementById('articulos-fisicos');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      grid.innerHTML = filtered.map(item => {
-        const title = item.title || item.name;
-        const isOutOfStock = item.stockLeft === 0;
-        let categoryName = 'Hardware';
-        if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
-        else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
-        else if (item.category === 'perifericos') categoryName = item.subCategory || 'Periféricos';
-
-        return `
-        <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
-          <div class="physical-img-wrap" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" aria-label="Ver detalles de ${title}">
-            <img src="${encodeURI(item.image)}" alt="${escapeHtml(title)}" class="physical-img" loading="lazy" decoding="async">
-            ${isOutOfStock ? `
-              <div class="card-sold-out-watermark" aria-hidden="true">
-                <span class="sold-out-chip">
-                  <span class="sold-out-dot"></span> Agotado
-                </span>
-              </div>
-            ` : ''}
-            <div class="physical-card-badge">
-              ${isOutOfStock ? `
-                <span class="card-badge badge-sold-out" style="font-weight: 700;">
-                  <span class="badge-dot-sold-out" aria-hidden="true"></span> Agotado
-                </span>
-              ` : `
-                <span class="card-badge ${item.badgeType}">${item.badge}</span>
-              `}
-            </div>
-          </div>
-
-          <div class="physical-card-category">${categoryName}</div>
-          <h3 class="physical-card-title" onclick="openProductDetails('${item.id}')" onkeydown="handleCardKeydown(event, '${item.id}')" tabindex="0" role="button" title="${title}">${item.name}</h3>
-
-          <div class="physical-meta-row">
-            <span class="phys-rating-wrap" style="display: inline-flex; align-items: center; gap: 3px;">
-              <svg class="star-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="width: 13px; height: 13px; color: var(--accent-amber); display: inline-block; vertical-align: -1px;">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-              <span class="num-tabular" style="font-weight: 600; color: var(--text-primary);">${item.rating}</span>
-            </span>
-            <span class="phys-meta-sep">•</span>
-            <span class="phys-sold-count">${item.soldCount}</span>
-            <span class="phys-meta-sep phys-stock-sep">•</span>
-            ${isOutOfStock ? `
-              <span class="phys-stock-tag" style="color: #f87171; font-weight: 700;">Agotado</span>
-            ` : `
-              <span class="phys-stock-tag" style="color: var(--accent-emerald); font-weight: 600;">En stock</span>
-            `}
-          </div>
-
-          <div class="physical-price-row">
-            <span class="physical-current-price num-tabular">${formatGs(item.price)}</span>
-            ${item.originalPrice ? `<span class="physical-orig-price num-tabular">${formatGs(item.originalPrice)}</span>` : ''}
-          </div>
-
-          <div class="physical-actions-row">
-            <button type="button" class="btn-phys-details" onclick="openProductDetails('${item.id}')">
-              Ver detalles
-            </button>
-            ${isOutOfStock ? `
-              <button type="button" class="btn-phys-cart is-sold-out-action" onclick="askStockWhatsApp('${item.id}')" aria-label="Consultar reposición de ${escapeHtml(title)} por WhatsApp" title="Consultar reposición por WhatsApp">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                </svg>
-              </button>
-            ` : `
-              <button type="button" class="btn-phys-cart" onclick="addToCart('${item.id}')" aria-label="Añadir ${title} al carrito">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <path d="M16 10a4 4 0 0 1-8 0"/>
-                </svg>
-              </button>
-            `}
-          </div>
-        </article>
-        `;
-      }).join('');
-    }
-
-    // Open Dedicated Physical Goods Catalog Modal
-    function openPhysicalCatalogModal() {
-      const modal = document.getElementById('physicalCatalogModal');
-      if (!modal) return;
-
-      lastFocusedElement = document.activeElement;
-      document.body.classList.add('modal-open');
-      modal.classList.remove('is-closing');
-      modal.showModal();
-      void modal.offsetHeight; // Force layout reflow/paint for WebKit & iOS Safari
-      if (window.history && window.history.pushState) {
-        window.history.pushState({ modalOpen: 'physical' }, '');
-      }
-
-      currentPhysicalCategory = 'all';
-      currentPhysicalSearch = '';
-      const input = document.getElementById('physSearchInput');
-      if (input) input.value = '';
-
-      const pills = document.querySelectorAll('.phys-filter-pill');
-      pills.forEach(p => {
-        const isAll = p.dataset.physCategory === 'all';
-        p.classList.toggle('active', isAll);
-        p.setAttribute('aria-selected', isAll ? 'true' : 'false');
-      });
-
-      updatePhysicalCategoryCounts();
-      renderPhysicalModalGrid('all', '');
-    }
-
-    // Close Dedicated Physical Goods Catalog Modal
-    function closePhysicalCatalogModal(syncHistory = true) {
-      const modal = document.getElementById('physicalCatalogModal');
-      if (!modal || !modal.open) return;
-
-      modal.classList.add('is-closing');
-      if (syncHistory && window.history && window.history.state && window.history.state.modalOpen === 'physical') {
-        window.history.back();
-      }
-      setTimeout(() => {
-        modal.close();
-        modal.classList.remove('is-closing');
-        document.body.classList.remove('modal-open');
-        if (lastFocusedElement) {
-          lastFocusedElement.focus();
-          lastFocusedElement = null;
-        }
-      }, 260);
-    }
-
-    // Physical Search Input Handler
-    function handlePhysicalSearch(event) {
-      currentPhysicalSearch = event.target.value;
-      renderPhysicalModalGrid(currentPhysicalCategory, currentPhysicalSearch);
-    }
-
-    // Physical Category Filter Handler
-    function filterPhysicalCategory(category, button) {
-      currentPhysicalCategory = category;
-      const pills = document.querySelectorAll('.phys-filter-pill');
-      pills.forEach(p => {
-        const isMatch = p.dataset.physCategory === category;
-        p.classList.toggle('active', isMatch);
-        p.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-      });
-
-      const input = document.getElementById('physSearchInput');
-      renderPhysicalModalGrid(category, input ? input.value : '');
-    }
-
-    // Physical Modal light-dismiss and escape listeners
-    const physicalModalElem = document.getElementById('physicalCatalogModal');
-    if (physicalModalElem) {
-      physicalModalElem.addEventListener('cancel', (e) => {
-        e.preventDefault();
-        closePhysicalCatalogModal();
-      });
-      physicalModalElem.addEventListener('click', (event) => {
-        if (event.target !== physicalModalElem) return;
-        const rect = physicalModalElem.getBoundingClientRect();
-        const isInDialog = (
-          rect.top <= event.clientY &&
-          event.clientY <= rect.top + rect.height &&
-          rect.left <= event.clientX &&
-          event.clientX <= rect.left + rect.width
-        );
-        if (!isInDialog) {
-          closePhysicalCatalogModal();
-        }
-      });
     }
 
     // Global popstate handler to dismiss modals on mobile back gesture / hardware back
     window.addEventListener('popstate', () => {
       const pModal = document.getElementById('productModal');
       const cDrawer = document.getElementById('cartDrawer');
-      const physModal = document.getElementById('physicalCatalogModal');
 
       if (pModal && pModal.open) {
         closeProductDetails(false);
       } else if (cDrawer && cDrawer.open) {
         closeCartDrawer(false);
-      } else if (physModal && physModal.open) {
-        closePhysicalCatalogModal(false);
       }
     });
 
@@ -10929,8 +10270,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       updateCategoryPillCounts();
       renderProducts();
-      updatePhysicalCategoryCounts();
-      renderPhysicalPreview();
+      renderPhysicalPreview('all');
       loadCart();
       initVerticalScrollSpy();
     });
