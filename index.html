@@ -4049,6 +4049,8 @@
 
     .modal-carousel-track {
       display: flex;
+      width: 100%;
+      height: 100%;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
@@ -4070,8 +4072,8 @@
     .modal-carousel-slide {
       flex: 0 0 100%;
       width: 100%;
+      height: 100%;
       aspect-ratio: 1 / 1;
-      max-height: min(440px, 48vh);
       scroll-snap-align: start;
       scroll-snap-stop: always;
       display: flex;
@@ -4085,7 +4087,7 @@
     .modal-carousel-img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
       pointer-events: none;
       transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
