@@ -335,6 +335,18 @@
       -webkit-touch-callout: none;
     }
 
+    /* Impeccable accessible focus ring (keyboard navigation) */
+    :focus-visible {
+      outline: 2px solid var(--accent-emerald) !important;
+      outline-offset: 2px !important;
+    }
+
+    button:focus:not(:focus-visible),
+    a:focus:not(:focus-visible),
+    [role="button"]:focus:not(:focus-visible) {
+      outline: none;
+    }
+
     /* iOS Auto-Zoom Prevention: Inputs < 16px force viewport zoom in Safari */
     @media (max-width: 768px),
     (pointer: coarse) {
@@ -1086,10 +1098,12 @@
       transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 120ms var(--ease-out);
     }
 
-    .filter-pill:hover {
-      background: var(--bg-surface-hover);
-      color: var(--text-primary);
-      border-color: var(--border-medium);
+    @media (hover: hover) and (pointer: fine) {
+      .filter-pill:hover {
+        background: var(--bg-surface-hover);
+        color: var(--text-primary);
+        border-color: var(--border-medium);
+      }
     }
 
     .filter-pill:active {
@@ -1197,14 +1211,27 @@
       justify-content: space-between;
       position: relative;
       overflow: hidden;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
       animation: cardFadeIn 220ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
       transition: transform var(--transition-smooth), border-color var(--transition-snappy), box-shadow var(--transition-smooth);
     }
 
-    .product-card:hover {
-      border-color: var(--border-medium);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+    @media (hover: hover) and (pointer: fine) {
+      .product-card:hover {
+        border-color: var(--border-medium);
+        transform: translateY(-3px);
+        box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), var(--shadow-md);
+      }
+
+      .product-card:hover::after {
+        animation: cardShineSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+    }
+
+    /* Direct tactile manipulation response (Apple HIG / Emil Design Eng) */
+    .product-card:active {
+      transform: scale(0.985);
+      transition-duration: 0.1s;
     }
 
     /* Subtle Glass Shine Sweep Effect (Apple Craftsmanship) */
@@ -1225,10 +1252,6 @@
       pointer-events: none;
       opacity: 0;
       z-index: 2;
-    }
-
-    .product-card:hover::after {
-      animation: cardShineSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes cardShineSweep {
@@ -1339,18 +1362,27 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: var(--text-secondary);
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
       font-feature-settings: "tnum";
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .variant-pill-btn:hover {
-      background: rgba(102, 192, 244, 0.15);
-      border-color: rgba(102, 192, 244, 0.4);
-      color: #66c0f4;
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .variant-pill-btn:hover {
+        background: rgba(102, 192, 244, 0.15);
+        border-color: rgba(102, 192, 244, 0.4);
+        color: #66c0f4;
+        transform: translateY(-1px);
+      }
+    }
+
+    .variant-pill-btn:active {
+      transform: scale(0.96);
     }
 
     .variant-pill-btn.is-active {
@@ -1498,6 +1530,11 @@
       text-wrap: balance;
       overflow-wrap: anywhere;
       word-break: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(var(--leading-title) * 2);
       transition: color var(--transition-snappy);
     }
 
@@ -1826,6 +1863,7 @@
       letter-spacing: -0.025em;
       line-height: 1.1;
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
     .discount-badge {
@@ -1887,9 +1925,11 @@
       transition: background-color var(--transition-snappy), border-color var(--transition-snappy), color var(--transition-snappy), transform 140ms var(--ease-out);
     }
 
-    .btn-add-cart:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--border-medium);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-add-cart:hover {
+        background: var(--bg-surface-hover);
+        border-color: var(--border-medium);
+      }
     }
 
     .btn-add-cart:active {
@@ -1921,11 +1961,13 @@
       animation-delay: 0.7s;
     }
 
-    .btn-direct-buy:hover {
-      background: var(--accent-emerald-hover);
-      transform: translateY(-2px) scale(1.025);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-      animation-play-state: paused;
+    @media (hover: hover) and (pointer: fine) {
+      .btn-direct-buy:hover {
+        background: var(--accent-emerald-hover);
+        transform: translateY(-2px) scale(1.025);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        animation-play-state: paused;
+      }
     }
 
     .btn-direct-buy:active {
@@ -2020,6 +2062,8 @@
       padding: 56px 40px;
       margin-bottom: 80px;
       position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 650px;
     }
 
     .physical-header-row {
@@ -2107,13 +2151,21 @@
       position: relative;
       min-width: 0;
       overflow: hidden;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
       transition: transform var(--transition-snappy), border-color var(--transition-snappy), box-shadow var(--transition-snappy);
     }
 
-    .physical-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-medium);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    @media (hover: hover) and (pointer: fine) {
+      .physical-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-medium);
+        box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 8px 24px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    .physical-card:active {
+      transform: scale(0.985);
+      transition-duration: 0.1s;
     }
 
     .physical-img-wrap {
@@ -2227,6 +2279,7 @@
       font-weight: 700;
       color: var(--text-primary);
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
     .physical-orig-price {
@@ -2413,22 +2466,27 @@
 
     .studio-subdomain-card {
       width: 100%;
-      max-width: 74rem; /* max-w-6xl+ = 1184px (expanded visual footprint) */
+      max-width: 74rem;
+      /* max-w-6xl+ = 1184px (expanded visual footprint) */
       margin-left: auto;
       margin-right: auto;
-      background-color: #0a0a0a; /* bg-[#0a0a0a] */
-      border: 1px solid #27272a; /* border-zinc-800 */
-      border-radius: 2rem; /* rounded-3xl / 32px */
+      background-color: #0a0a0a;
+      /* bg-[#0a0a0a] */
+      border: 1px solid #27272a;
+      /* border-zinc-800 */
+      border-radius: 2rem;
+      /* rounded-3xl / 32px */
       padding: 3.5rem 1.75rem;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.12), inset 0 0 1px 1px rgba(255, 255, 255, 0.04);
     }
 
     @media (min-width: 768px) {
       .studio-subdomain-card {
-        padding: 5.75rem 3.5rem; /* Expanded internal padding */
+        padding: 5.75rem 3.5rem;
+        /* Expanded internal padding */
       }
     }
 
@@ -2449,9 +2507,11 @@
       display: inline-block;
       font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.22em; /* tracking-widest */
+      letter-spacing: 0.22em;
+      /* tracking-widest */
       text-transform: uppercase;
-      color: #a1a1aa; /* text-zinc-400 */
+      color: #a1a1aa;
+      /* text-zinc-400 */
       margin-bottom: 1rem;
     }
 
@@ -2465,7 +2525,8 @@
       font-size: 2.35rem;
       line-height: 1.08;
       font-weight: 800;
-      letter-spacing: -0.035em; /* tracking-tight */
+      letter-spacing: -0.035em;
+      /* tracking-tight */
       color: #ffffff;
       margin-bottom: 1.25rem;
       text-wrap: balance;
@@ -2473,16 +2534,19 @@
 
     @media (min-width: 768px) {
       .studio-banner-heading {
-        font-size: clamp(3.25rem, 5.2vw, 4.35rem); /* Grand scale headline */
+        font-size: clamp(3.25rem, 5.2vw, 4.35rem);
+        /* Grand scale headline */
         line-height: 1.06;
       }
     }
 
     .studio-banner-subtext {
-      color: #a1a1aa; /* text-zinc-400 */
+      color: #a1a1aa;
+      /* text-zinc-400 */
       font-size: 1.05rem;
       line-height: 1.625;
-      max-width: 50rem; /* expanded width for comfortable reading */
+      max-width: 50rem;
+      /* expanded width for comfortable reading */
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2.75rem;
@@ -2491,7 +2555,8 @@
 
     @media (min-width: 768px) {
       .studio-banner-subtext {
-        font-size: 1.25rem; /* Larger comfortable subtext */
+        font-size: 1.25rem;
+        /* Larger comfortable subtext */
         line-height: 1.65;
       }
     }
@@ -2502,18 +2567,23 @@
       justify-content: center;
       gap: 0.85rem;
       background-color: #ffffff;
-      color: #09090b; /* text-zinc-950 */
+      color: #09090b;
+      /* text-zinc-950 */
       font-weight: 600;
-      font-size: 1.125rem; /* Enlarged button text */
-      padding: 1.05rem 2.75rem; /* Larger pill target */
-      border-radius: 9999px; /* rounded-full */
+      font-size: 1.125rem;
+      /* Enlarged button text */
+      padding: 1.05rem 2.75rem;
+      /* Larger pill target */
+      border-radius: 9999px;
+      /* rounded-full */
       text-decoration: none;
       box-shadow: 0 12px 30px -5px rgba(255, 255, 255, 0.12), 0 8px 12px -6px rgba(0, 0, 0, 0.5);
       transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .studio-banner-btn:hover {
-      background-color: #e4e4e7; /* zinc-200 */
+      background-color: #e4e4e7;
+      /* zinc-200 */
       color: #09090b;
       transform: scale(1.025);
       box-shadow: 0 18px 36px -4px rgba(255, 255, 255, 0.2), 0 10px 14px -5px rgba(0, 0, 0, 0.6);
@@ -2532,13 +2602,33 @@
     }
 
     /* Direct Tailwind utility fallbacks for bulletproof rendering */
-    .bg-\[\#0a0a0a\] { background-color: #0a0a0a !important; }
-    .border-zinc-800 { border-color: #27272a !important; }
-    .text-zinc-400 { color: #a1a1aa !important; }
-    .text-zinc-950 { color: #09090b !important; }
-    .rounded-3xl { border-radius: 2rem !important; }
-    .max-w-5xl { max-width: 64rem !important; }
-    .max-w-6xl { max-width: 74rem !important; }
+    .bg-\[\#0a0a0a\] {
+      background-color: #0a0a0a !important;
+    }
+
+    .border-zinc-800 {
+      border-color: #27272a !important;
+    }
+
+    .text-zinc-400 {
+      color: #a1a1aa !important;
+    }
+
+    .text-zinc-950 {
+      color: #09090b !important;
+    }
+
+    .rounded-3xl {
+      border-radius: 2rem !important;
+    }
+
+    .max-w-5xl {
+      max-width: 64rem !important;
+    }
+
+    .max-w-6xl {
+      max-width: 74rem !important;
+    }
 
     /* -------------------------------------------------------------
        GUARANTEES / TRUST SECTION
@@ -2548,6 +2638,8 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       margin-bottom: 96px;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 240px;
     }
 
     .trust-item {
@@ -2604,6 +2696,7 @@
       height: 100dvh;
       max-height: 100vh;
       max-height: 100dvh;
+      overscroll-behavior: contain;
       border: none;
       background: var(--bg-surface);
       border-left: 1px solid var(--border-subtle);
@@ -3580,7 +3673,7 @@
       max-width: 440px;
       margin: 0 auto;
       aspect-ratio: 1 / 1;
-      max-height: min(440px, 48vh);
+      max-height: min(440px, 48dvh, 48vh);
       border-radius: var(--radius-lg);
       background: radial-gradient(circle at 50% 50%, #151821 0%, #090a0d 100%);
       border: 1px solid var(--border-subtle);
@@ -6458,7 +6551,8 @@
             </div>
             <h2 class="section-title" id="physicalHeading">Artículos Físicos & Equipamiento</h2>
             <p class="physical-header-desc">
-              Periféricos, mandos y accesorios originales con garantía escrita. Envíos express en el día para Asunción y Gran
+              Periféricos, mandos y accesorios originales con garantía escrita. Envíos express en el día para Asunción y
+              Gran
               Asunción, y encomiendas aseguradas a todo Paraguay.
             </p>
           </div>
@@ -6466,19 +6560,26 @@
 
         <!-- Inline Stock & Category Filter Pills -->
         <div class="physical-filter-bar" role="tablist" aria-label="Filtro de stock y categorías de artículos físicos">
-          <button type="button" class="phys-filter-btn active" data-filter="all" onclick="filterPhysicalGrid('all', this)" role="tab" aria-selected="true">
+          <button type="button" class="phys-filter-btn active" data-filter="all"
+            onclick="filterPhysicalGrid('all', this)" role="tab" aria-selected="true">
             Todos (<span id="physCountAll">6</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="in-stock" onclick="filterPhysicalGrid('in-stock', this)" role="tab" aria-selected="false">
-            <span class="status-dot" style="width: 6px; height: 6px; margin-right: 5px; display: inline-block; vertical-align: middle;" aria-hidden="true"></span>Disponibles ahora (<span id="physCountInStock">3</span>)
+          <button type="button" class="phys-filter-btn" data-filter="in-stock"
+            onclick="filterPhysicalGrid('in-stock', this)" role="tab" aria-selected="false">
+            <span class="status-dot"
+              style="width: 6px; height: 6px; margin-right: 5px; display: inline-block; vertical-align: middle;"
+              aria-hidden="true"></span>Disponibles ahora (<span id="physCountInStock">3</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="gaming" onclick="filterPhysicalGrid('gaming', this)" role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="gaming"
+            onclick="filterPhysicalGrid('gaming', this)" role="tab" aria-selected="false">
             Gaming & Mandos (<span id="physCountGaming">1</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="audio" onclick="filterPhysicalGrid('audio', this)" role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="audio" onclick="filterPhysicalGrid('audio', this)"
+            role="tab" aria-selected="false">
             Audio (<span id="physCountAudio">2</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="perifericos" onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="perifericos"
+            onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
             Óptica & Periféricos (<span id="physCountPerifericos">3</span>)
           </button>
         </div>
@@ -6492,7 +6593,8 @@
         <div class="physical-shipping-trust-strip">
           <div class="shipping-trust-info">
             <span class="shipping-trust-icon-box" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="1" y="3" width="15" height="13"></rect>
                 <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
@@ -6502,15 +6604,21 @@
             <div class="shipping-trust-text">
               <strong class="shipping-trust-title">Envíos Garantizados y Cobertura Nacional</strong>
               <p class="shipping-trust-desc">
-                🛵 <strong>Asunción y Gran Asunción:</strong> Envíos express en el día por motomensajería o Bolt Envíos.<br>
-                📦 <strong>Interior de Paraguay:</strong> Encomiendas seguras vía transportadora con código de seguimiento.<br>
-                🛡️ <strong>Garantía escrita:</strong> 3 meses de respaldo oficial en todos nuestros equipos y periféricos.
+                🛵 <strong>Asunción y Gran Asunción:</strong> Envíos express en el día por motomensajería o Bolt
+                Envíos.<br>
+                📦 <strong>Interior de Paraguay:</strong> Encomiendas seguras vía transportadora con código de
+                seguimiento.<br>
+                🛡️ <strong>Garantía escrita:</strong> 3 meses de respaldo oficial en todos nuestros equipos y
+                periféricos.
               </p>
             </div>
           </div>
-          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20de%20art%C3%ADculos%20f%C3%ADsicos." target="_blank" rel="noopener noreferrer" class="btn-shipping-query">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20de%20art%C3%ADculos%20f%C3%ADsicos."
+            target="_blank" rel="noopener noreferrer" class="btn-shipping-query">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
             </svg>
             Consultar envíos por WhatsApp
           </a>
@@ -6523,26 +6631,33 @@
          ========================================== -->
     <section class="container" id="agencia" aria-labelledby="studioBannerHeading" style="margin-bottom: 96px;">
       <!-- Studio Subdomain Announcement Banner (Apple / Impeccable Style) -->
-      <div class="studio-subdomain-card w-full max-w-6xl mx-auto bg-[#0a0a0a] border border-zinc-800 rounded-3xl p-10 md:p-20 text-center shadow-2xl relative overflow-hidden">
+      <div
+        class="studio-subdomain-card w-full max-w-6xl mx-auto bg-[#0a0a0a] border border-zinc-800 rounded-3xl p-10 md:p-20 text-center shadow-2xl relative overflow-hidden">
         <!-- Ambient gradient glow effect -->
         <div class="studio-banner-ambient pointer-events-none" aria-hidden="true"></div>
 
         <div class="relative z-10 flex flex-col items-center">
-          <span class="studio-banner-eyebrow text-xs md:text-sm font-semibold tracking-widest uppercase text-zinc-400 mb-4">
+          <span
+            class="studio-banner-eyebrow text-xs md:text-sm font-semibold tracking-widest uppercase text-zinc-400 mb-4">
             — PUNTO PRISMA STUDIO
           </span>
 
-          <h2 class="studio-banner-heading text-3xl md:text-6xl font-bold tracking-tight text-white mb-5" id="studioBannerHeading">
+          <h2 class="studio-banner-heading text-3xl md:text-6xl font-bold tracking-tight text-white mb-5"
+            id="studioBannerHeading">
             Elevá tu presencia digital.
           </h2>
 
           <p class="studio-banner-subtext text-zinc-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-            Descubrí nuestro espacio dedicado exclusivamente al desarrollo de ecosistemas web: landing pages, catálogos móviles y sistemas a medida de alto rendimiento.
+            Descubrí nuestro espacio dedicado exclusivamente al desarrollo de ecosistemas web: landing pages, catálogos
+            móviles y sistemas a medida de alto rendimiento.
           </p>
 
-          <a href="https://studio.puntoprisma.store" target="_blank" rel="noopener noreferrer" class="studio-banner-btn inline-flex items-center gap-3.5 bg-white text-zinc-950 font-semibold text-base md:text-lg py-4 px-10 rounded-full shadow-xl hover:bg-zinc-200 transition-all duration-200 group">
+          <a href="https://studio.puntoprisma.store" target="_blank" rel="noopener noreferrer"
+            class="studio-banner-btn inline-flex items-center gap-3.5 bg-white text-zinc-950 font-semibold text-base md:text-lg py-4 px-10 rounded-full shadow-xl hover:bg-zinc-200 group">
             <span>Explorar el Studio</span>
-            <svg class="studio-banner-arrow transition-transform duration-200 group-hover:translate-x-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="studio-banner-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -7863,7 +7978,7 @@
                   <span class="bump-discount-tag">Ahorras Gs. 36.000 (-65%)</span>
                 </div>
                 <div class="cart-order-bump-body">
-                  <img src="imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.jpg" alt="1 Juego Steam Grand" class="bump-thumb-img" loading="lazy">
+                  <img src="imagenes/juegos/1 Juego Aleatorio de Steam - Grand (Global) (PC) - Clave Digital.jpg" alt="1 Juego Steam Grand" class="bump-thumb-img" loading="lazy" decoding="async">
                   <div class="bump-info">
                     <div class="bump-title">1 Juego Steam Sorpresa (Grand PC)</div>
                     <div class="bump-prices">
