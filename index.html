@@ -2480,7 +2480,7 @@
     }
 
     /* Hide digital request banner if zero-state search is currently shown */
-    #productsGrid:has(.catalog-zero-state)+.digital-request-card {
+    #productsGrid:has(.catalog-zero-state) + .digital-request-card {
       display: none;
     }
 
@@ -2652,16 +2652,12 @@
 
     .studio-subdomain-card {
       width: 100%;
-      max-width: 74rem;
-      /* max-w-6xl+ = 1184px (expanded visual footprint) */
+      max-width: 74rem; /* max-w-6xl+ = 1184px (expanded visual footprint) */
       margin-left: auto;
       margin-right: auto;
-      background-color: #0a0a0a;
-      /* bg-[#0a0a0a] */
-      border: 1px solid #27272a;
-      /* border-zinc-800 */
-      border-radius: 2rem;
-      /* rounded-3xl / 32px */
+      background-color: #0a0a0a; /* bg-[#0a0a0a] */
+      border: 1px solid #27272a; /* border-zinc-800 */
+      border-radius: 2rem; /* rounded-3xl / 32px */
       padding: 3.5rem 1.75rem;
       text-align: center;
       position: relative;
@@ -2671,8 +2667,7 @@
 
     @media (min-width: 768px) {
       .studio-subdomain-card {
-        padding: 5.75rem 3.5rem;
-        /* Expanded internal padding */
+        padding: 5.75rem 3.5rem; /* Expanded internal padding */
       }
     }
 
@@ -2693,11 +2688,9 @@
       display: inline-block;
       font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
-      /* tracking-widest */
+      letter-spacing: 0.22em; /* tracking-widest */
       text-transform: uppercase;
-      color: #a1a1aa;
-      /* text-zinc-400 */
+      color: #a1a1aa; /* text-zinc-400 */
       margin-bottom: 1rem;
     }
 
@@ -2711,8 +2704,7 @@
       font-size: 2.35rem;
       line-height: 1.08;
       font-weight: 800;
-      letter-spacing: -0.035em;
-      /* tracking-tight */
+      letter-spacing: -0.035em; /* tracking-tight */
       color: #ffffff;
       margin-bottom: 1.25rem;
       text-wrap: balance;
@@ -2720,19 +2712,16 @@
 
     @media (min-width: 768px) {
       .studio-banner-heading {
-        font-size: clamp(3.25rem, 5.2vw, 4.35rem);
-        /* Grand scale headline */
+        font-size: clamp(3.25rem, 5.2vw, 4.35rem); /* Grand scale headline */
         line-height: 1.06;
       }
     }
 
     .studio-banner-subtext {
-      color: #a1a1aa;
-      /* text-zinc-400 */
+      color: #a1a1aa; /* text-zinc-400 */
       font-size: 1.05rem;
       line-height: 1.625;
-      max-width: 50rem;
-      /* expanded width for comfortable reading */
+      max-width: 50rem; /* expanded width for comfortable reading */
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2.75rem;
@@ -2741,8 +2730,7 @@
 
     @media (min-width: 768px) {
       .studio-banner-subtext {
-        font-size: 1.25rem;
-        /* Larger comfortable subtext */
+        font-size: 1.25rem; /* Larger comfortable subtext */
         line-height: 1.65;
       }
     }
@@ -2753,23 +2741,18 @@
       justify-content: center;
       gap: 0.85rem;
       background-color: #ffffff;
-      color: #09090b;
-      /* text-zinc-950 */
+      color: #09090b; /* text-zinc-950 */
       font-weight: 600;
-      font-size: 1.125rem;
-      /* Enlarged button text */
-      padding: 1.05rem 2.75rem;
-      /* Larger pill target */
-      border-radius: 9999px;
-      /* rounded-full */
+      font-size: 1.125rem; /* Enlarged button text */
+      padding: 1.05rem 2.75rem; /* Larger pill target */
+      border-radius: 9999px; /* rounded-full */
       text-decoration: none;
       box-shadow: 0 12px 30px -5px rgba(255, 255, 255, 0.12), 0 8px 12px -6px rgba(0, 0, 0, 0.5);
       transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .studio-banner-btn:hover {
-      background-color: #e4e4e7;
-      /* zinc-200 */
+      background-color: #e4e4e7; /* zinc-200 */
       color: #09090b;
       transform: scale(1.025);
       box-shadow: 0 18px 36px -4px rgba(255, 255, 255, 0.2), 0 10px 14px -5px rgba(0, 0, 0, 0.6);
@@ -2788,33 +2771,13 @@
     }
 
     /* Direct Tailwind utility fallbacks for bulletproof rendering */
-    .bg-\[\#0a0a0a\] {
-      background-color: #0a0a0a !important;
-    }
-
-    .border-zinc-800 {
-      border-color: #27272a !important;
-    }
-
-    .text-zinc-400 {
-      color: #a1a1aa !important;
-    }
-
-    .text-zinc-950 {
-      color: #09090b !important;
-    }
-
-    .rounded-3xl {
-      border-radius: 2rem !important;
-    }
-
-    .max-w-5xl {
-      max-width: 64rem !important;
-    }
-
-    .max-w-6xl {
-      max-width: 74rem !important;
-    }
+    .bg-\[\#0a0a0a\] { background-color: #0a0a0a !important; }
+    .border-zinc-800 { border-color: #27272a !important; }
+    .text-zinc-400 { color: #a1a1aa !important; }
+    .text-zinc-950 { color: #09090b !important; }
+    .rounded-3xl { border-radius: 2rem !important; }
+    .max-w-5xl { max-width: 64rem !important; }
+    .max-w-6xl { max-width: 74rem !important; }
 
     /* -------------------------------------------------------------
        GUARANTEES / TRUST SECTION
@@ -6724,13 +6687,11 @@
       </div>
 
       <!-- Custom Digital Product Request Card (Apple / Impeccable Design) -->
-      <div class="custom-request-card digital-request-card" role="region"
-        aria-label="Consulta de productos digitales no listados">
+      <div class="custom-request-card digital-request-card" role="region" aria-label="Consulta de productos digitales no listados">
         <div class="custom-request-ambient" aria-hidden="true"></div>
         <div class="custom-request-main">
           <div class="custom-request-icon-box" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -6741,22 +6702,16 @@
             <span class="custom-request-eyebrow">— PEDIDOS PERSONALIZADOS & CATÁLOGO EXTENDIDO</span>
             <h3 class="custom-request-title">¿Buscás un juego, suscripción o licencia que no encontrás aquí?</h3>
             <p class="custom-request-desc">
-              Conseguimos prácticamente cualquier clave digital de Steam, PlayStation, Xbox, suscripciones de IA o
-              software profesional bajo pedido con entrega garantizada en minutos.
+              Conseguimos prácticamente cualquier clave digital de Steam, PlayStation, Xbox, suscripciones de IA o software profesional bajo pedido con entrega garantizada en minutos.
             </p>
           </div>
         </div>
-        <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20busco%20un%20producto%20digital%20(juego,%20suscripci%C3%B3n%20o%20licencia)%20que%20no%20figura%20en%20el%20cat%C3%A1logo%20web.%20%C2%BFTienen%20disponibilidad?"
-          target="_blank" rel="noopener noreferrer" class="btn-custom-request"
-          aria-label="Consultar por producto digital no listado en WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path
-              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20busco%20un%20producto%20digital%20(juego,%20suscripci%C3%B3n%20o%20licencia)%20que%20no%20figura%20en%20el%20cat%C3%A1logo%20web.%20%C2%BFTienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="btn-custom-request" aria-label="Consultar por producto digital no listado en WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
           </svg>
           <span>Consultar por WhatsApp</span>
-          <svg class="request-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="request-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -6777,8 +6732,7 @@
             </div>
             <h2 class="section-title" id="physicalHeading">Artículos Físicos & Equipamiento</h2>
             <p class="physical-header-desc">
-              Periféricos, mandos y accesorios originales con garantía escrita. Envíos express en el día para Asunción y
-              Gran
+              Periféricos, mandos y accesorios originales con garantía escrita. Envíos express en el día para Asunción y Gran
               Asunción, y encomiendas aseguradas a todo Paraguay.
             </p>
           </div>
@@ -6786,26 +6740,19 @@
 
         <!-- Inline Stock & Category Filter Pills -->
         <div class="physical-filter-bar" role="tablist" aria-label="Filtro de stock y categorías de artículos físicos">
-          <button type="button" class="phys-filter-btn active" data-filter="all"
-            onclick="filterPhysicalGrid('all', this)" role="tab" aria-selected="true">
+          <button type="button" class="phys-filter-btn active" data-filter="all" onclick="filterPhysicalGrid('all', this)" role="tab" aria-selected="true">
             Todos (<span id="physCountAll">6</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="in-stock"
-            onclick="filterPhysicalGrid('in-stock', this)" role="tab" aria-selected="false">
-            <span class="status-dot"
-              style="width: 6px; height: 6px; margin-right: 5px; display: inline-block; vertical-align: middle;"
-              aria-hidden="true"></span>Disponibles ahora (<span id="physCountInStock">3</span>)
+          <button type="button" class="phys-filter-btn" data-filter="in-stock" onclick="filterPhysicalGrid('in-stock', this)" role="tab" aria-selected="false">
+            <span class="status-dot" style="width: 6px; height: 6px; margin-right: 5px; display: inline-block; vertical-align: middle;" aria-hidden="true"></span>Disponibles ahora (<span id="physCountInStock">3</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="gaming"
-            onclick="filterPhysicalGrid('gaming', this)" role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="gaming" onclick="filterPhysicalGrid('gaming', this)" role="tab" aria-selected="false">
             Gaming & Mandos (<span id="physCountGaming">1</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="audio" onclick="filterPhysicalGrid('audio', this)"
-            role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="audio" onclick="filterPhysicalGrid('audio', this)" role="tab" aria-selected="false">
             Audio (<span id="physCountAudio">2</span>)
           </button>
-          <button type="button" class="phys-filter-btn" data-filter="perifericos"
-            onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
+          <button type="button" class="phys-filter-btn" data-filter="perifericos" onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
             Óptica & Periféricos (<span id="physCountPerifericos">3</span>)
           </button>
         </div>
@@ -6816,13 +6763,11 @@
         </div>
 
         <!-- Custom Physical Hardware Request Card (Apple / Impeccable Design) -->
-        <div class="custom-request-card physical-request-card" role="region"
-          aria-label="Consulta de artículos físicos y hardware a pedido">
+        <div class="custom-request-card physical-request-card" role="region" aria-label="Consulta de artículos físicos y hardware a pedido">
           <div class="custom-request-ambient physical-ambient" aria-hidden="true"></div>
           <div class="custom-request-main">
             <div class="custom-request-icon-box physical-icon-box" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               </svg>
@@ -6831,22 +6776,16 @@
               <span class="custom-request-eyebrow">— ENCARGOS DE HARDWARE & ACCESORIOS</span>
               <h3 class="custom-request-title">¿Buscás algún accesorio, periférico o equipo específico?</h3>
               <p class="custom-request-desc">
-                Si necesitás mandos especiales, auriculares, soportes, adaptadores o componentes gamer que no veas en
-                stock, podemos gestionarlos y cotizártelos con nuestros importadores oficiales.
+                Si necesitás mandos especiales, auriculares, soportes, adaptadores o componentes gamer que no veas en stock, podemos gestionarlos y cotizártelos con nuestros importadores oficiales.
               </p>
             </div>
           </div>
-          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20busco%20un%20art%C3%ADculo%20f%C3%ADsico,%20perif%C3%A9rico%20o%20accesorio%20que%20no%20figura%20en%20la%20tienda%20web.%20%C2%BFPueden%20conseguirlo?"
-            target="_blank" rel="noopener noreferrer" class="btn-custom-request"
-            aria-label="Consultar por artículo físico o hardware no listado en WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path
-                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20busco%20un%20art%C3%ADculo%20f%C3%ADsico,%20perif%C3%A9rico%20o%20accesorio%20que%20no%20figura%20en%20la%20tienda%20web.%20%C2%BFPueden%20conseguirlo?" target="_blank" rel="noopener noreferrer" class="btn-custom-request" aria-label="Consultar por artículo físico o hardware no listado en WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
             <span>Consultar por WhatsApp</span>
-            <svg class="request-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="request-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -6857,8 +6796,7 @@
         <div class="physical-shipping-trust-strip">
           <div class="shipping-trust-info">
             <span class="shipping-trust-icon-box" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="1" y="3" width="15" height="13"></rect>
                 <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
@@ -6868,21 +6806,15 @@
             <div class="shipping-trust-text">
               <strong class="shipping-trust-title">Envíos Garantizados y Cobertura Nacional</strong>
               <p class="shipping-trust-desc">
-                🛵 <strong>Asunción y Gran Asunción:</strong> Envíos express en el día por motomensajería o Bolt
-                Envíos.<br>
-                📦 <strong>Interior de Paraguay:</strong> Encomiendas seguras vía transportadora con código de
-                seguimiento.<br>
-                🛡️ <strong>Garantía escrita:</strong> 3 meses de respaldo oficial en todos nuestros equipos y
-                periféricos.
+                🛵 <strong>Asunción y Gran Asunción:</strong> Envíos express en el día por motomensajería o Bolt Envíos.<br>
+                📦 <strong>Interior de Paraguay:</strong> Encomiendas seguras vía transportadora con código de seguimiento.<br>
+                🛡️ <strong>Garantía escrita:</strong> 3 meses de respaldo oficial en todos nuestros equipos y periféricos.
               </p>
             </div>
           </div>
-          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20de%20art%C3%ADculos%20f%C3%ADsicos."
-            target="_blank" rel="noopener noreferrer" class="btn-shipping-query">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path
-                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          <a href="https://wa.me/595986125649?text=Hola%20Punto%20Prisma,%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20de%20art%C3%ADculos%20f%C3%ADsicos." target="_blank" rel="noopener noreferrer" class="btn-shipping-query">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
             Consultar envíos por WhatsApp
           </a>
@@ -6895,33 +6827,26 @@
          ========================================== -->
     <section class="container" id="agencia" aria-labelledby="studioBannerHeading" style="margin-bottom: 96px;">
       <!-- Studio Subdomain Announcement Banner (Apple / Impeccable Style) -->
-      <div
-        class="studio-subdomain-card w-full max-w-6xl mx-auto bg-[#0a0a0a] border border-zinc-800 rounded-3xl p-10 md:p-20 text-center shadow-2xl relative overflow-hidden">
+      <div class="studio-subdomain-card w-full max-w-6xl mx-auto bg-[#0a0a0a] border border-zinc-800 rounded-3xl p-10 md:p-20 text-center shadow-2xl relative overflow-hidden">
         <!-- Ambient gradient glow effect -->
         <div class="studio-banner-ambient pointer-events-none" aria-hidden="true"></div>
 
         <div class="relative z-10 flex flex-col items-center">
-          <span
-            class="studio-banner-eyebrow text-xs md:text-sm font-semibold tracking-widest uppercase text-zinc-400 mb-4">
+          <span class="studio-banner-eyebrow text-xs md:text-sm font-semibold tracking-widest uppercase text-zinc-400 mb-4">
             — PUNTO PRISMA STUDIO
           </span>
 
-          <h2 class="studio-banner-heading text-3xl md:text-6xl font-bold tracking-tight text-white mb-5"
-            id="studioBannerHeading">
+          <h2 class="studio-banner-heading text-3xl md:text-6xl font-bold tracking-tight text-white mb-5" id="studioBannerHeading">
             Elevá tu presencia digital.
           </h2>
 
           <p class="studio-banner-subtext text-zinc-400 text-base md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-            Descubrí nuestro espacio dedicado exclusivamente al desarrollo de ecosistemas web: landing pages, catálogos
-            móviles y sistemas a medida de alto rendimiento.
+            Descubrí nuestro espacio dedicado exclusivamente al desarrollo de ecosistemas web: landing pages, catálogos móviles y sistemas a medida de alto rendimiento.
           </p>
 
-          <a href="https://studio.puntoprisma.store" target="_blank" rel="noopener noreferrer"
-            class="studio-banner-btn inline-flex items-center gap-3.5 bg-white text-zinc-950 font-semibold text-base md:text-lg py-4 px-10 rounded-full shadow-xl hover:bg-zinc-200 group">
+          <a href="https://studio.puntoprisma.store" target="_blank" rel="noopener noreferrer" class="studio-banner-btn inline-flex items-center gap-3.5 bg-white text-zinc-950 font-semibold text-base md:text-lg py-4 px-10 rounded-full shadow-xl hover:bg-zinc-200 group">
             <span>Explorar el Studio</span>
-            <svg class="studio-banner-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-              aria-hidden="true">
+            <svg class="studio-banner-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
