@@ -7685,6 +7685,46 @@
             '5. ¡Listo! Tu equipo quedará protegido con 1 año de suscripción activa de inmediato.'
           ]
         }
+      },
+      {
+        id: 'google-ai-subscription-12m',
+        title: 'Google AI Subscription Plus - 12 Meses (Google One AI) - Enlace de Activación',
+        name: 'Google AI Subscription Plus - 12 Meses (Google One AI) - Enlace de Activación',
+        category: 'suscripcion',
+        isAI: true,
+        price: 69000,
+        originalPrice: 390000,
+        discountPercentage: '-82%',
+        rating: '5.0',
+        soldCount: '+75 vendidos',
+        stockLeft: 6,
+        image: 'imagenes/suscripciones/Google AI Subscription Plus - 12 Months (Global) - Activation Link.jpg',
+        badge: '12 Meses Plus',
+        badgeType: 'badge-purple',
+        extraBadge: '2 TB Cloud & IA',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Suscripción anual oficial de 12 meses con 2 TB de almacenamiento en Google One, acceso ilimitado a Gemini Advanced e IA integrada en Gmail y Docs.',
+        description: 'Accede al poder completo de la inteligencia artificial de Google con la suscripción anual de Google One AI Premium (12 Meses Plus).\n\nIncluye 2 TB (2.000 GB) de almacenamiento en la nube para Google Drive, Gmail y Google Fotos en calidad original, junto con acceso prioritario a los modelos más avanzados de Gemini (Gemini Advanced con capacidades multimodales de análisis profundo, programación y razonamiento lógico).\n\nAdemás, potencia tu flujo de trabajo diario con Gemini integrado directamente dentro de Google Workspace: redacta correos automáticamente en Gmail, genera resúmenes y documentos en Google Docs, formula hojas de cálculo en Sheets y diseña presentaciones en Slides.',
+        features: [
+          'Suscripción anual completa de 12 Meses (365 Días) a Google One AI Premium',
+          '2 TB (2.000 GB) de almacenamiento seguro en la nube para Drive, Gmail y Fotos',
+          'Gemini Advanced: Acceso prioritario a los modelos de IA más potentes de Google',
+          'IA integrada directamente en Google Workspace (Gmail, Docs, Sheets, Slides y Meet)',
+          'Edición de fotos avanzada con Magic Eraser, desenfoque de retrato y HDR en Google Fotos',
+          'Enlace de activación oficial 1-Click canjeable directamente en tu cuenta de Google personal',
+          'Activación Global sin restricciones regionales ni necesidad de VPN'
+        ],
+        notice: {
+          title: 'Cómo activar tu enlace de Google One AI Premium',
+          type: 'notice-blue',
+          items: [
+            '1. Recibirás tu enlace de activación oficial 1-Click directamente por WhatsApp tras confirmar tu pago.',
+            '2. Asegúrate de tener iniciada sesión en el navegador con la cuenta de Google personal donde deseas activar la suscripción.',
+            '3. Abre el enlace de activación recibido y presiona el botón para confirmar y activar la suscripción.',
+            '4. ¡Listo! Se acreditarán automáticamente los 2 TB de almacenamiento y se activará Gemini Advanced por 12 meses.',
+            '5. Entrega inmediata garantizada en 5 a 15 minutos con asistencia personalizada de Punto Prisma.'
+          ]
+        }
       }
     ];
 
@@ -8604,6 +8644,7 @@
           </svg>`;
 
         case 'google-ai-pro-gemini-18m':
+        case 'google-ai-subscription-12m':
           // Google Gemini Spark
           return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Google AI Gemini Pro">
             <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" fill="url(#geminiGrad)"/>
@@ -8847,6 +8888,7 @@
         else if (item.id && item.id.includes('capcut')) categoryDisplay = 'Edición de Video • CapCut Pro';
         else if (item.id && item.id.includes('avast')) categoryDisplay = 'Seguridad & Antivirus • PC';
         else if (item.id && item.id.includes('mcafee')) categoryDisplay = 'Seguridad & Antivirus • Multiplataforma';
+        else if (item.id && (item.id.includes('gemini') || item.id.includes('google-ai'))) categoryDisplay = 'Suscripción Digital • Google One AI';
         else if (item.id && item.id.includes('random-steam')) {
           if (item.id.includes('grand')) categoryDisplay = 'Juego Steam PC • Grand';
           else if (item.id.includes('bronze')) categoryDisplay = 'Juego Steam PC • Bronze';
@@ -9230,6 +9272,8 @@
         categoryDisplay = 'Seguridad • Avast Ultimate PC';
       } else if (product.id && product.id.includes('mcafee')) {
         categoryDisplay = 'Seguridad • McAfee AntiVirus Plus';
+      } else if (product.id && (product.id.includes('gemini') || product.id.includes('google-ai'))) {
+        categoryDisplay = 'Suscripción Digital • Google One AI Premium';
       } else if (product.category === 'suscripcion') {
         categoryDisplay = 'Suscripción Digital • IA';
       } else if (product.category === 'gaming') {
