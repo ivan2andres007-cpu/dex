@@ -6815,6 +6815,10 @@
             onclick="filterPhysicalGrid('perifericos', this)" role="tab" aria-selected="false">
             Óptica & Periféricos (<span id="physCountPerifericos">3</span>)
           </button>
+          <button type="button" class="phys-filter-btn" data-filter="hogar"
+            onclick="filterPhysicalGrid('hogar', this)" role="tab" aria-selected="false">
+            Hogar & Cocina (<span id="physCountHogar">1</span>)
+          </button>
         </div>
 
         <!-- Featured Physical Preview Grid -->
@@ -7730,6 +7734,57 @@
 
     // Physical Products Catalog Data in Guaraníes (Gs.)
     const PHYSICAL_PRODUCTS = [
+      {
+        id: 'freidora-horno-digital-10l',
+        title: 'Freidora de Aire y Horno Eléctrico Digital 10L Home Land 2 en 1 (Touch Screen)',
+        name: 'Freidora de Aire y Horno Digital 10L Home Land',
+        category: 'hogar',
+        subCategory: 'Hogar & Cocina',
+        isPhysical: true,
+        price: 349000,
+        originalPrice: 495000,
+        discountPercentage: '-30%',
+        rating: '5.0',
+        soldCount: '+24 vendidos',
+        stockLeft: 4,
+        image: 'imagenes/productos/freidora-horno-digital-10l/1.jpg',
+        images: [
+          'imagenes/productos/freidora-horno-digital-10l/1.jpg',
+          'imagenes/productos/freidora-horno-digital-10l/2.jpg',
+          'imagenes/productos/freidora-horno-digital-10l/3.jpg',
+          'imagenes/productos/freidora-horno-digital-10l/4.jpg',
+          'imagenes/productos/freidora-horno-digital-10l/5.jpg',
+          'imagenes/productos/freidora-horno-digital-10l/6.jpg'
+        ],
+        badge: '10L Capacidad Familiar',
+        badgeType: 'badge-purple',
+        extraBadge: 'Touch Screen 2 en 1',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Freidora sin aceite y horno digital de 10 litros 2 en 1. Panel táctil Full Glass de 8 programas, ventana panorámica con luz interior y cocción 360° multinivel.',
+        description: 'Revolucioná tu forma de cocinar con la Freidora de Aire y Horno Eléctrico Digital Home Land de 10 Litros. Diseñada con tecnología 2 en 1 de flujo de aire ciclónico 360°, combina la rapidez y crocancia de una freidora de aire con la amplitud, potencia y versatilidad de un horno eléctrico convector inteligente.\n\nSu generosa capacidad familiar de 10 Litros te permite cocinar un pollo entero perfectamente dorado o preparar comidas completas en múltiples niveles simultáneos sin tener que esperar ni cocinar en tandas. Lográ platos ultra crujientes por fuera y tiernos por dentro con hasta un 85% menos de grasa, sin humo y sin olores en tu hogar.\n\nEquipada con una moderna pantalla digital Full Glass Touch Screen con 8 programas preestablecidos a un solo toque (papas fritas, pollo, carnes, pescados, camarones, pizzas, repostería y deshidratación), además de ajuste manual de temperatura exacta hasta 200°C y temporizador programable. Su amplia ventana panorámica de vidrio templado con luz interior te permite supervisar el punto justo de tus alimentos en tiempo real sin abrir la puerta ni perder calor.\n\nIncluye kit de bandejas de rejilla de acero para cocción multinivel, bandeja recolectora antiadherente de fácil lavado y eje espiedo rotatorio (rotisserie).',
+        features: [
+          'Gran capacidad familiar XL de 10 Litros (338 oz): Espacio ideal para pollos enteros, asados y pizzas familiares',
+          'Tecnología 2 en 1 inteligente: Funciona como freidora de aire por aire caliente y horno convector eléctrico',
+          'Cocción saludable 360° de alta velocidad: Comidas doradas y ultra crujientes con hasta 85% menos de grasa',
+          'Ventana panorámica con luz interior: Observá el punto de cocción en vivo sin abrir la puerta ni perder calor',
+          'Pantalla Touch Screen Full Glass: Panel táctil con 8 programas preestablecidos a un solo toque y display digital',
+          'Control térmico y timer programable: Ajuste exacto de temperatura hasta 200°C y temporizador con apagado automático',
+          'Sistema multinivel con accesorios: Bandejas de rejilla de acero para cocinar dos platos simultáneos y bandeja antiadherente',
+          'Espiedo / Rotisserie giratorio incluido: Para asar pollos y carnes con rotación uniforme de 360 grados',
+          'Fácil limpieza y mantenimiento: Bandejas desmontables con recubrimiento antiadherente aptas para lavavajillas',
+          'Construcción prémium y segura: Carcasa con aislamiento térmico exterior, base antideslizante y protección contra sobrecalentamiento'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos asegurados a todo el interior de Paraguay por encomienda (24 a 48 hs).',
+            '🛡️ Garantía escrita oficial de 3 meses por desperfectos de fábrica.',
+            '🔌 Producto nuevo en caja original sellada con manual y kit completo de accesorios.'
+          ]
+        }
+      },
       {
         id: 'gamepad-bluetooth-multiplataforma',
         title: 'Gamepad Inalámbrico Bluetooth Multiplataforma (Switch / PC / Móvil)',
@@ -8750,6 +8805,16 @@
             <line x1="16" y1="12" x2="21" y2="12"/>
           </svg>`;
 
+        case 'freidora-horno-digital-10l':
+          // Digital Oven / Air Fryer Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Freidora y Horno Digital 10L">
+            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+            <path d="M7 8h10"></path>
+            <rect x="6" y="11" width="12" height="7" rx="1.5"></rect>
+            <circle cx="8" cy="5.5" r="0.75" fill="currentColor"></circle>
+            <circle cx="11" cy="5.5" r="0.75" fill="currentColor"></circle>
+          </svg>`;
+
         default:
           return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>`;
       }
@@ -8858,6 +8923,7 @@
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('McAfee')">🛡️ McAfee AntiVirus</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Gemini')">✦ Gemini Pro</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Assetto')">🏎️ Assetto Corsa</button>
+              <button type="button" class="zero-chip-btn" onclick="scrollToPhysicalCatalog()">🍳 Freidora de Aire 10L</button>
               <button type="button" class="zero-chip-btn" onclick="scrollToPhysicalCatalog()">📦 Ver artículos físicos</button>
             </div>
 
@@ -9251,6 +9317,7 @@
       if (product.isPhysical) {
         if (product.category === 'gaming') categoryDisplay = 'Hardware • Gaming & Mandos';
         else if (product.category === 'audio') categoryDisplay = `Hardware • ${product.subCategory || 'Audio & Sonido'}`;
+        else if (product.category === 'hogar') categoryDisplay = `Equipamiento • ${product.subCategory || 'Hogar & Cocina'}`;
         else categoryDisplay = 'Hardware • Periféricos PC';
       } else if (product.id && product.id.includes('random-steam')) {
         if (product.id.includes('grand')) categoryDisplay = 'Gaming • Steam Aleatorio Grand';
@@ -9974,12 +10041,14 @@
       const cGaming = document.getElementById('physCountGaming');
       const cAudio = document.getElementById('physCountAudio');
       const cPerif = document.getElementById('physCountPerifericos');
+      const cHogar = document.getElementById('physCountHogar');
 
       if (cAll) cAll.textContent = PHYSICAL_PRODUCTS.length;
       if (cStock) cStock.textContent = PHYSICAL_PRODUCTS.filter(p => p.stockLeft > 0).length;
       if (cGaming) cGaming.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'gaming').length;
       if (cAudio) cAudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'audio').length;
       if (cPerif) cPerif.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'perifericos').length;
+      if (cHogar) cHogar.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'hogar').length;
     }
 
     // Render Physical Products Grid directly on page with stock prioritizing & filter tabs
@@ -10020,6 +10089,7 @@
         if (item.category === 'gaming') categoryName = item.subCategory || 'Gaming & Mandos';
         else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
         else if (item.category === 'perifericos') categoryName = item.subCategory || 'Óptica & Periféricos';
+        else if (item.category === 'hogar') categoryName = item.subCategory || 'Hogar & Cocina';
 
         return `
         <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
