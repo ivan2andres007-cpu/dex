@@ -6819,6 +6819,10 @@
             onclick="filterPhysicalGrid('hogar', this)" role="tab" aria-selected="false">
             Hogar & Cocina (<span id="physCountHogar">1</span>)
           </button>
+          <button type="button" class="phys-filter-btn" data-filter="estudio"
+            onclick="filterPhysicalGrid('estudio', this)" role="tab" aria-selected="false">
+            Libros & Estudio (<span id="physCountEstudio">1</span>)
+          </button>
         </div>
 
         <!-- Featured Physical Preview Grid -->
@@ -7729,11 +7733,92 @@
             '5. Entrega inmediata garantizada en 5 a 15 minutos con asistencia personalizada de Punto Prisma.'
           ]
         }
+      },
+      {
+        id: 'ingreso-ctn-pack-completo-3en1-digital',
+        title: 'Pack Ingreso CTN 3 en 1 - Edición 2025 (Matemáticas, Castellano, Guaraní) - Material Digital',
+        name: 'Ingreso CTN Pack Completo 3 en 1 (Digital)',
+        category: 'software',
+        price: 50000,
+        originalPrice: 120000,
+        discountPercentage: '-58%',
+        rating: '5.0',
+        soldCount: '+110 vendidos',
+        stockLeft: 12,
+        image: 'imagenes/suscripciones/Ingreso CTN Pack Completo 3 en 1 - Edicion 2025.jpg',
+        badge: 'Edición 2025',
+        badgeType: 'badge-purple',
+        extraBadge: 'Digital PDF',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Pack de estudio digital 3 en 1 para el examen de ingreso al Colegio Técnico Nacional (CTN). Teoría completa, ejercitarios prácticos y exámenes oficiales resueltos.',
+        description: 'Asegurá tu ingreso al prestigioso Colegio Técnico Nacional (CTN) con el material didáctico más completo y actualizado para la Edición 2025.\n\nEste Pack Integral reúne todo el programa oficial evaluado en las tres materias claves del cursillo de admisión:\n\n• Matemáticas: Aritmética, álgebra, geometría plana y del espacio, ecuaciones, fórmulas esenciales y cientos de ejercicios explicados paso a paso.\n• Castellano: Gramática completa, análisis sintáctico y morfológico, ortografía, vocabulario y comprensión de textos modelo.\n• Guaraní (Ñe\'ẽtekuaa): Estructura gramatical, reglas ortográficas (achegety), conjugación de verbos y ejercitarios prácticos con respuestas.\n\nAdemás, incluye exámenes anteriores oficiales de convocatorias pasadas resueltos en su totalidad para familiarizarte con el formato real y optimizar tu tiempo. Formato digital PDF de alta calidad para estudiar en tu teléfono, tablet o computadora, o para imprimir según tu preferencia.',
+        features: [
+          'Alineado 100% al programa oficial de admisión del Colegio Técnico Nacional (CTN)',
+          'Las 3 materias indispensables: Matemáticas (Álgebra/Geometría), Castellano (Gramática/Lectura) y Guaraní (Ñe\'ẽtekuaa)',
+          'Exámenes oficiales de años anteriores completamente resueltos y comentados',
+          'Teoría sintética, fórmulas clave y ejemplos guiados paso a paso',
+          'Más de 500 ejercicios prácticos tipo examen con solucionario',
+          'Formato digital PDF nítido en alta resolución listo para imprimir o leer en pantalla',
+          'Acceso ilimitado y permanente a carpeta en Google Drive',
+          'Entrega instantánea en 5 a 15 minutos vía WhatsApp tras confirmar tu transferencia SIPAP'
+        ],
+        notice: {
+          title: 'Entrega Digital Inmediata & Garantía',
+          type: 'notice-blue',
+          items: [
+            '⚡ Entrega digital garantizada en 5 a 15 minutos por WhatsApp o correo.',
+            '📁 Acceso permanente a carpeta privada de Google Drive con todos los archivos PDF en alta resolución.',
+            '🔄 Material verificado y actualizado con el temario oficial del examen de admisión.',
+            '💳 Medios de pago: Transferencia bancaria SIPAP (0% comisión).'
+          ]
+        }
       }
     ];
 
     // Physical Products Catalog Data in Guaraníes (Gs.)
     const PHYSICAL_PRODUCTS = [
+      {
+        id: 'ingreso-ctn-pack-completo-3en1',
+        title: 'Libro Pack Ingreso CTN 3 en 1 - Edición 2025 (Matemáticas, Castellano, Guaraní)',
+        name: 'Libro Pack Ingreso CTN 3 en 1 (Físico)',
+        category: 'estudio',
+        subCategory: 'Libros & Estudio',
+        isPhysical: true,
+        price: 50000,
+        originalPrice: 120000,
+        discountPercentage: '-58%',
+        rating: '5.0',
+        soldCount: '+85 vendidos',
+        stockLeft: 6,
+        image: 'imagenes/productos/ingreso-ctn-pack-completo-3en1/1.jpg',
+        images: [
+          'imagenes/productos/ingreso-ctn-pack-completo-3en1/1.jpg'
+        ],
+        badge: 'Edición 2025',
+        badgeType: 'badge-purple',
+        extraBadge: 'Material Impreso',
+        extraBadgeType: 'badge-green',
+        shortDesc: 'Pack de estudio impreso 3 en 1 para el cursillo e ingreso al Colegio Técnico Nacional (CTN). Matemáticas, Castellano y Guaraní con teoría, ejercicios y exámenes resueltos.',
+        description: 'El material definitivo para preparar con éxito tu ingreso al Colegio Técnico Nacional (CTN). Edición 2025 impresa en papel de alta calidad con encuadernación reforzada, pensada para estudiar sin distracciones y resolver los ejercitarios directamente sobre el papel.\n\nContiene el temario integral de las 3 materias del examen de admisión:\n\n• Matemáticas: Álgebra, geometría, aritmética y problemas prácticos con soluciones paso a paso.\n• Castellano: Comprensión lectora, gramática, ortografía y modelos de preguntas tipo test.\n• Guaraní (Ñe\'ẽtekuaa): Gramática normativa, vocabulario y ejercicios resueltos.\n\nIncluye exámenes de convocatorias anteriores para simular la prueba en condiciones reales de tiempo y evaluación.',
+        features: [
+          'Material impreso nítido de alta durabilidad con encuadernación reforzada para estudio intensivo',
+          'Las 3 materias completas en un solo tomo: Matemáticas, Castellano y Guaraní',
+          'Recopilación de exámenes de ingreso anteriores con soluciones explicadas',
+          'Cientos de ejercicios prácticos con espacio para resolver directamente',
+          'Cuadros de fórmulas matemáticas y resúmenes teóricos rápidos',
+          'Envíos express en el día para Asunción y Gran Asunción, y encomiendas a todo Paraguay'
+        ],
+        notice: {
+          title: 'Garantía & Envíos en Paraguay',
+          type: 'notice-blue',
+          items: [
+            '📦 Envíos express en el día para Asunción y Gran Asunción.',
+            '🚚 Envíos asegurados a todo el interior de Paraguay por encomienda (24 a 48 hs).',
+            '🛡️ Garantía de impresión nítida y encuadernación de calidad.',
+            '💳 Medios de pago: Transferencia bancaria SIPAP (0% comisión) o efectivo contra entrega a coordinar.'
+          ]
+        }
+      },
       {
         id: 'freidora-horno-digital-10l',
         title: 'Freidora de Aire y Horno Eléctrico Digital 10L Home Land 2 en 1 (Touch Screen)',
@@ -8815,6 +8900,16 @@
             <circle cx="11" cy="5.5" r="0.75" fill="currentColor"></circle>
           </svg>`;
 
+        case 'ingreso-ctn-pack-completo-3en1':
+        case 'ingreso-ctn-pack-completo-3en1-digital':
+          // Academic Book / Shield Icon
+          return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="Ingreso CTN Pack 3 en 1">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <path d="M8 7h8"></path>
+            <path d="M8 11h6"></path>
+          </svg>`;
+
         default:
           return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>`;
       }
@@ -8923,6 +9018,7 @@
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('McAfee')">🛡️ McAfee AntiVirus</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Gemini')">✦ Gemini Pro</button>
               <button type="button" class="zero-chip-btn" onclick="applySearchTerm('Assetto')">🏎️ Assetto Corsa</button>
+              <button type="button" class="zero-chip-btn" onclick="applySearchTerm('CTN')">📚 Ingreso CTN 3 en 1</button>
               <button type="button" class="zero-chip-btn" onclick="scrollToPhysicalCatalog()">🍳 Freidora de Aire 10L</button>
               <button type="button" class="zero-chip-btn" onclick="scrollToPhysicalCatalog()">📦 Ver artículos físicos</button>
             </div>
@@ -9318,7 +9414,10 @@
         if (product.category === 'gaming') categoryDisplay = 'Hardware • Gaming & Mandos';
         else if (product.category === 'audio') categoryDisplay = `Hardware • ${product.subCategory || 'Audio & Sonido'}`;
         else if (product.category === 'hogar') categoryDisplay = `Equipamiento • ${product.subCategory || 'Hogar & Cocina'}`;
+        else if (product.category === 'estudio' || (product.id && product.id.includes('ctn'))) categoryDisplay = 'Educación • Material Ingreso CTN';
         else categoryDisplay = 'Hardware • Periféricos PC';
+      } else if (product.id && product.id.includes('ctn')) {
+        categoryDisplay = 'Material de Estudio • Ingreso CTN 2025';
       } else if (product.id && product.id.includes('random-steam')) {
         if (product.id.includes('grand')) categoryDisplay = 'Gaming • Steam Aleatorio Grand';
         else if (product.id.includes('bronze')) categoryDisplay = 'Gaming • Steam Aleatorio Bronze';
@@ -10042,6 +10141,7 @@
       const cAudio = document.getElementById('physCountAudio');
       const cPerif = document.getElementById('physCountPerifericos');
       const cHogar = document.getElementById('physCountHogar');
+      const cEstudio = document.getElementById('physCountEstudio');
 
       if (cAll) cAll.textContent = PHYSICAL_PRODUCTS.length;
       if (cStock) cStock.textContent = PHYSICAL_PRODUCTS.filter(p => p.stockLeft > 0).length;
@@ -10049,6 +10149,7 @@
       if (cAudio) cAudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'audio').length;
       if (cPerif) cPerif.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'perifericos').length;
       if (cHogar) cHogar.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'hogar').length;
+      if (cEstudio) cEstudio.textContent = PHYSICAL_PRODUCTS.filter(p => p.category === 'estudio').length;
     }
 
     // Render Physical Products Grid directly on page with stock prioritizing & filter tabs
@@ -10090,6 +10191,7 @@
         else if (item.category === 'audio') categoryName = item.subCategory || 'Audio & Sonido';
         else if (item.category === 'perifericos') categoryName = item.subCategory || 'Óptica & Periféricos';
         else if (item.category === 'hogar') categoryName = item.subCategory || 'Hogar & Cocina';
+        else if (item.category === 'estudio') categoryName = item.subCategory || 'Libros & Estudio';
 
         return `
         <article class="physical-card ${isOutOfStock ? 'is-out-of-stock' : ''}" data-id="${item.id}">
