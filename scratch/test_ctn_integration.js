@@ -2,107 +2,142 @@ const { chromium } = require('playwright');
 const path = require('path');
 
 (async () => {
-  const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-  const fileUrl = 'file:///' + path.resolve('index.html').replace(/\\/g, '/');
+  console.log('--- Starting Playwright CTN Digital Consistency Test ---');
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
 
-  await page.goto(fileUrl, { waitUntil: 'networkidle' });
-  console.log('✔ Page loaded');
+  const fileUrl = 'file:///' + path.resolve(__dirname, '../index.html').replace(/\\/g, '/');
+  await page.goto(fileUrl, { waitUntil: 'domcontentloaded' });
 
-  // --- PART 1: TEST DIGITAL CATALOG ---
-  const searchInput = page.locator('#searchInput');
-  await searchInput.fill('CTN');
-  await page.waitForTimeout(400);
+  // 1. Check Product Data using findProduct
+  const dataCheck = await page.evaluate(() => {
+    const digital = findProduct('ingreso-ctn-pack-completo-3en1-digital');
+    const physical = findProduct('ingreso-ctn-pack-completo-3en1');
+    return {
+      digital: {
+        id: digital?.id,
+        name: digital?.name,
+        isPhysical: digital?.isPhysical,
+        price: digital?.price,
+        badge: digital?.badge,
+        extraBadge: digital?.extraBadge,
+        noticeTitle: digital?.notice?.title
+      },
+      physical: {
+        id: physical?.id,
+        name: physical?.name,
+        isPhysical: physical?.isPhysical,
+        price: physical?.price,
+        badge: physical?.badge,
+        extraBadge: physical?.extraBadge,
+        noticeTitle: physical?.notice?.title,
+        subCategory: physical?.subCategory
+      }
+    };
+  });
 
-  const digitalCard = page.locator('.product-card[data-id="ingreso-ctn-pack-completo-3en1-digital"]');
-  if (await digitalCard.count() === 0) {
-    console.error('FAIL: Digital CTN card not found in grid!');
-    process.exit(1);
+  console.log('Data Check Results:', JSON.stringify(dataCheck, null, 2));
+
+  if (dataCheck.physical.isPhysical !== false) {
+    throw new Error('Physical catalog item must have isPhysical: false to represent digital product');
   }
-  console.log('✔ Digital CTN card found in digital catalog');
+  if (dataCheck.physical.extraBadge !== 'Digital PDF') {
+    throw new Error('Physical catalog item extraBadge must be Digital PDF');
+  }
+  if (!dataCheck.physical.name.includes('(Digital)')) {
+    throw new Error('Physical catalog item name must include (Digital)');
+  }
+  if (!dataCheck.physical.noticeTitle.includes('Digital')) {
+    throw new Error('Physical catalog item notice title must be digital delivery');
+  }
 
-  const digPrice = await digitalCard.locator('.product-price-val').textContent();
-  const digTitle = await digitalCard.locator('.product-name').textContent();
-  console.log(`✔ Digital Card: "${digTitle.trim()}" | Price: "${digPrice.trim()}"`);
-  await digitalCard.screenshot({ path: 'scratch/ctn_digital_card.png' });
+  // 2. Test Digital Catalog Card & Modal
+  console.log('Testing Digital Catalog Modal...');
+  await page.evaluate(() => {
+    openProductDetails('ingreso-ctn-pack-completo-3en1-digital');
+  });
+  await page.waitForTimeout(300);
 
-  // Open digital modal
-  await digitalCard.locator('.card-media-preview').click();
-  await page.waitForTimeout(500);
+  const modalCategory = await page.locator('#productModal .product-category-tag').textContent();
+  const modalDeliveryTag = await page.locator('#productModal .delivery-status-tag').textContent();
+  const modalNoticeHeader = await page.locator('#productModal .product-notice-box .notice-header').textContent();
 
-  const modal = page.locator('#productModal');
-  const isDigModalOpen = await modal.evaluate(el => el.open);
-  console.log('✔ Digital Modal open:', isDigModalOpen);
+  console.log('Digital Modal Category:', modalCategory.trim());
+  console.log('Digital Modal Delivery Tag:', modalDeliveryTag.trim());
+  console.log('Digital Modal Notice Header:', modalNoticeHeader.trim());
 
-  const digModalPrice = await modal.locator('#modalPriceVal').first().textContent();
-  const digModalCategory = await modal.locator('.product-category-tag').first().textContent();
-  const digDelivery = await modal.locator('.delivery-status-tag').textContent();
-  console.log(`✔ Digital Modal: Price "${digModalPrice.trim()}" | Category: "${digModalCategory.trim()}" | Delivery: "${digDelivery.trim()}"`);
-  await modal.screenshot({ path: 'scratch/ctn_digital_modal.png' });
+  if (!modalDeliveryTag.includes('5-15 min')) {
+    throw new Error('Expected delivery tag to say 5-15 min in digital modal');
+  }
 
-  // Add digital item to cart
-  await modal.locator('.btn-add-cart').first().click();
-  await page.waitForTimeout(400);
-  console.log('✔ Digital item added to cart');
+  await page.screenshot({ path: path.resolve(__dirname, 'screenshot_digital_ctn_modal.png') });
 
   // Close modal
-  await page.keyboard.press('Escape');
-  await page.waitForTimeout(300);
+  await page.evaluate(() => closeProductDetails());
+  await page.waitForTimeout(200);
 
-  // Clear search
-  await page.locator('#clearSearchBtn').click();
-  await page.waitForTimeout(300);
+  // 3. Test Physical Catalog Section Card & Modal
+  console.log('Testing Physical Catalog Section Card & Modal...');
+  const physCardTitle = await page.locator('.physical-card[data-id="ingreso-ctn-pack-completo-3en1"] .physical-card-title').textContent();
+  const physCardCategory = await page.locator('.physical-card[data-id="ingreso-ctn-pack-completo-3en1"] .physical-card-category').textContent();
+  const physCardBadges = await page.locator('.physical-card[data-id="ingreso-ctn-pack-completo-3en1"] .physical-card-badge').textContent();
 
-  // --- PART 2: TEST PHYSICAL CATALOG ---
-  await page.evaluate(() => scrollToPhysicalCatalog());
-  await page.waitForTimeout(500);
+  console.log('Physical Card Title:', physCardTitle.trim());
+  console.log('Physical Card Category:', physCardCategory.trim());
+  console.log('Physical Card Badges:', physCardBadges.trim().replace(/\s+/g, ' '));
 
-  const countEstudio = await page.$eval('#physCountEstudio', el => el.textContent.trim());
-  console.log(`✔ Physical count for Libros & Estudio: ${countEstudio}`);
-
-  const estudioTab = page.locator('.phys-filter-btn[data-filter="estudio"]');
-  await estudioTab.click();
-  await page.waitForTimeout(400);
-
-  const physCard = page.locator('.physical-card[data-id="ingreso-ctn-pack-completo-3en1"]');
-  if (await physCard.count() === 0) {
-    console.error('FAIL: Physical CTN card not found!');
-    process.exit(1);
+  if (!physCardBadges.includes('Digital PDF')) {
+    throw new Error('Expected physical card to show Digital PDF badge');
   }
-  console.log('✔ Physical CTN card found in physical catalog');
 
-  const physPrice = await physCard.locator('.physical-current-price').textContent();
-  const physTitle = await physCard.locator('.physical-card-title').textContent();
-  console.log(`✔ Physical Card: "${physTitle.trim()}" | Price: "${physPrice.trim()}"`);
-  await physCard.screenshot({ path: 'scratch/ctn_physical_card.png' });
+  // Open modal from physical catalog
+  await page.evaluate(() => {
+    openProductDetails('ingreso-ctn-pack-completo-3en1');
+  });
+  await page.waitForTimeout(300);
 
-  // Open physical modal
-  await physCard.locator('.btn-phys-details').click();
-  await page.waitForTimeout(500);
+  const physModalCategory = await page.locator('#productModal .product-category-tag').textContent();
+  const physModalDeliveryTag = await page.locator('#productModal .delivery-status-tag').textContent();
+  const physModalNoticeHeader = await page.locator('#productModal .product-notice-box .notice-header').textContent();
 
-  const physModalPrice = await modal.locator('#modalPriceVal').first().textContent();
-  const physModalCategory = await modal.locator('.product-category-tag').first().textContent();
-  const physDelivery = await modal.locator('.delivery-status-tag').textContent();
-  console.log(`✔ Physical Modal: Price "${physModalPrice.trim()}" | Category: "${physModalCategory.trim()}" | Delivery: "${physDelivery.trim()}"`);
-  await modal.screenshot({ path: 'scratch/ctn_physical_modal.png' });
+  console.log('Phys Modal Category:', physModalCategory.trim());
+  console.log('Phys Modal Delivery Tag:', physModalDeliveryTag.trim());
+  console.log('Phys Modal Notice Header:', physModalNoticeHeader.trim());
 
-  // Add physical item to cart
-  await modal.locator('.btn-add-cart').first().click();
-  await page.waitForTimeout(400);
-  console.log('✔ Physical item added to cart');
+  if (!physModalDeliveryTag.includes('5-15 min')) {
+    throw new Error('Expected delivery tag to say 5-15 min in physical section modal');
+  }
 
-  // Check cart drawer
-  await page.evaluate(() => openCartDrawer());
-  await page.waitForTimeout(400);
+  await page.screenshot({ path: path.resolve(__dirname, 'screenshot_physical_ctn_modal.png') });
 
-  const cartCount = await page.$eval('#cartBadge', el => el.textContent.trim());
-  const cartTotal = await page.$eval('#cartTotalVal', el => el.textContent.trim());
-  console.log(`✔ Cart badge count: ${cartCount} | Total: ${cartTotal}`);
+  // Close modal
+  await page.evaluate(() => closeProductDetails());
+  await page.waitForTimeout(200);
 
-  const cartDrawer = page.locator('#cartDrawer');
-  await cartDrawer.screenshot({ path: 'scratch/ctn_cart_drawer.png' });
-  console.log('✔ Saved scratch/ctn_cart_drawer.png');
+  // 4. Test Add to Cart from Physical Section and Cart Drawer verification
+  console.log('Testing Add to Cart and Cart Drawer...');
+  await page.evaluate(() => {
+    addToCart('ingreso-ctn-pack-completo-3en1');
+    openCartDrawer();
+  });
+  await page.waitForTimeout(300);
 
+  const cartTypeBadge = await page.locator('.cart-item-row[data-id="ingreso-ctn-pack-completo-3en1"] .cart-item-type-badge').textContent();
+  const cartDeliveryNotice = await page.locator('.cart-delivery-pill').textContent();
+
+  console.log('Cart Item Type Badge:', cartTypeBadge.trim());
+  console.log('Cart Delivery Pill Notice:', cartDeliveryNotice.trim().replace(/\s+/g, ' '));
+
+  if (cartTypeBadge.trim() !== 'Digital') {
+    throw new Error(`Expected cart item type badge to be "Digital", got "${cartTypeBadge}"`);
+  }
+  if (!cartDeliveryNotice.includes('Entrega digital inmediata')) {
+    throw new Error('Expected cart delivery pill to state Entrega digital inmediata');
+  }
+
+  await page.screenshot({ path: path.resolve(__dirname, 'screenshot_cart_drawer_ctn.png') });
+
+  console.log('--- ALL VERIFICATIONS PASSED SUCCESSFULLY! ---');
   await browser.close();
-  console.log('✨ ALL CTN 3 EN 1 INTEGRATION TESTS PASSED 100%! ✨');
 })();
